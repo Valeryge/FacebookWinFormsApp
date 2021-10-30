@@ -13,7 +13,9 @@ namespace BasicFacebookFeatures
 {
     public partial class LoginForm : Form
     {
-	    public LoginForm()
+        LoggedUserForm m_MainForm;
+
+        public LoginForm()
         {
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
@@ -24,29 +26,38 @@ namespace BasicFacebookFeatures
             Clipboard.SetText("design.patterns20cc"); /// the current password for Desig Patter
 
             FacebookWrapper.LoginResult loginResult = FacebookService.Login(
-                    /// (This is Desig Patter's App ID. replace it with your own)
-                    "162373509365377", 
-                    /// requested permissions:
-					"email",
-                    "public_profile"
-                    /// add any relevant permissions
-                    );
-            if (loginResult != null)
-            {
-	            LoggedUserForm UsingFBForm = new LoggedUserForm(loginResult);
-                this.Hide(); //there's got to be a better way for doing this
-	            UsingFBForm.ShowDialog();
-            }
+                    "162373509365377",
+                    "email",
+                    "public_profile",
+                    "user_age_range",
+                    "user_birthday",
+                    "user_events",
+                    "user_friends",
+                    "user_gender",
+                    "user_hometown",
+                    "user_likes",
+                    "user_link",
+                    "user_location",
+                    "user_photos",
+                    "user_posts",
+                    "user_videos");
 
-            // buttonLogin.Text = $"Logged in as {loginResult.LoggedInUser.Name}";
+            if (!string.IsNullOrEmpty(loginResult.AccessToken))
+            {
+                m_MainForm = new LoggedUserForm(loginResult);
+                this.Hide();
+                m_MainForm.Closed += mainForm_Closed;
+                m_MainForm.Show();
+            }
+            else
+            {
+                MessageBox.Show(loginResult.ErrorMessage, "Login Failed");
+            }
         }
 
-        private void buttonLogout_Click(object sender, EventArgs e)
+        private void mainForm_Closed(object sender, EventArgs e)
         {
-			FacebookService.Logout();
-			buttonLogin.Text = "Login";
-		}
-	}
-
-    
+            this.Show();
+        }
+    }
 }

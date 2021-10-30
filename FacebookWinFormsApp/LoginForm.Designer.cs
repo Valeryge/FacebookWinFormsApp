@@ -1,6 +1,6 @@
 ﻿namespace BasicFacebookFeatures
 {
-    partial class FormMain
+    partial class LoginForm
     {
         /// <summary>
         /// Required designer variable.
@@ -52,14 +52,14 @@
 			this.buttonLogout.UseVisualStyleBackColor = true;
 			this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
 			// 
-			// FormMain
+			// FormLogin
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(842, 657);
 			this.Controls.Add(this.buttonLogout);
 			this.Controls.Add(this.buttonLogin);
-			this.Name = "FormMain";
+			this.Name = "FormLogin";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Form1";
 			this.ResumeLayout(false);

@@ -11,11 +11,9 @@ using FacebookWrapper;
 
 namespace BasicFacebookFeatures
 {
-    public partial class FormMain : Form
+    public partial class LoginForm : Form
     {
-
-
-        public FormMain()
+	    public LoginForm()
         {
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
@@ -33,8 +31,14 @@ namespace BasicFacebookFeatures
                     "public_profile"
                     /// add any relevant permissions
                     );
+            if (loginResult != null)
+            {
+	            LoggedUserForm UsingFBForm = new LoggedUserForm(loginResult);
+                this.Hide(); //there's got to be a better way for doing this
+	            UsingFBForm.ShowDialog();
+            }
 
-           // buttonLogin.Text = $"Logged in as {loginResult.LoggedInUser.Name}";
+            // buttonLogin.Text = $"Logged in as {loginResult.LoggedInUser.Name}";
         }
 
         private void buttonLogout_Click(object sender, EventArgs e)
@@ -43,4 +47,6 @@ namespace BasicFacebookFeatures
 			buttonLogin.Text = "Login";
 		}
 	}
+
+    
 }

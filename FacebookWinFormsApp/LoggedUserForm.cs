@@ -17,29 +17,28 @@ namespace BasicFacebookFeatures
     {
         private readonly LoginResult k_LoginResult;
         private readonly User k_LoggedUser;
+
         public LoggedUserForm(LoginResult i_LoginResult)
         {
             k_LoginResult = i_LoginResult;
             k_LoggedUser = i_LoginResult.LoggedInUser;
             this.InitializeComponent();
             this.MyInitializeComponent();
-
         }
 
         private void MyInitializeComponent()
         {
             this.Text = k_LoggedUser.Name + "'s FaceBook";
-            labelLoggedUserName.Text = "User: " + k_LoggedUser.Name;
+            labelLoggedUserName.Text = k_LoggedUser.Name;
             pictureBoxLoggedUserPicture.Image = k_LoggedUser.ImageNormal; //TODO: fix size;
+            pictureBoxLoggedUserPicture.BringToFront();
 
             foreach (Album album in k_LoggedUser.Albums)
             { 
                 listBoxAlbums.Items.Add(album);
-                
             }
 
             listBoxAlbums.SelectedValueChanged += OnSelectionAlbumChanged;
-
         }
 
         //TODO: this function should update the pictures to the user

@@ -96,79 +96,90 @@ namespace BasicFacebookFeatures
         private void loadPosts()
         {
             LinkedList<PictureBox> foundPictures = new LinkedList<PictureBox>();
+            FlowLayoutPanel vBoxWrapper = new FlowLayoutPanel();
+            vBoxWrapper.Size = new Size(300, 1000);
+            vBoxWrapper.Padding = new Padding(10);
+            vBoxWrapper.FlowDirection = FlowDirection.TopDown;
+            vBoxWrapper.Location = new Point(800, 100);
+            vBoxWrapper.BorderStyle = BorderStyle.FixedSingle;
+
+            FlowLayoutPanel hBoxHeaders = new FlowLayoutPanel();
+            hBoxHeaders.FlowDirection = FlowDirection.RightToLeft;
+            hBoxHeaders.BorderStyle = BorderStyle.FixedSingle;
+            hBoxHeaders.Size = new Size(280, 100);
+            hBoxHeaders.Padding = new Padding(10);
+
+            TextBox labelHeaderName = new TextBox();
+            labelHeaderName.Text = "Author's Description";
+
+            TextBox labelHeaderTime = new TextBox();
+            labelHeaderName.Text = "Time";
+
+            TextBox labelHeaderPicture = new TextBox();
+            labelHeaderName.Text = "Album";
+
+            hBoxHeaders.Controls.Add(labelHeaderName);
+            hBoxHeaders.Controls.Add(labelHeaderTime);
+            hBoxHeaders.Controls.Add(labelHeaderPicture);
+
+            vBoxWrapper.Controls.Add(hBoxHeaders);
 
             int i = 0;
             foreach (Post post in k_LoggedUser.Posts)
             {
+                FlowLayoutPanel hBox = new FlowLayoutPanel();
+                hBox.FlowDirection = FlowDirection.RightToLeft;
+                hBox.Size = new Size(280, 50);
+                hBox.Padding = new Padding(10);
+                hBox.BorderStyle = BorderStyle.FixedSingle;
+                hBox.BackColor = Color.Blue;
+                
+                // hBox.HorizontalScroll.Enabled = true;
                 //only shows one of the uploaded picture, maybe theres an algorithm that allows guessing the next pictures url if such exists.
-                string thisPostsPictureUrl = post.PictureURL;
-
-                //real:
-                //handle names
-                //handle time
 
                 //Fake:
                 //handle likes
                 //handle comments
-                 // Panel panelPost = new Panel();
-                 // FlowLayoutPanel panelPost2 = new FlowLayoutPanel();
-//
-                 Label labelPostTime = new Label();
+                string thisPostsPictureUrl = post.PictureURL;
+                Label labelPostTime = new Label();
                  labelPostTime.Text = post.CreatedTime.Value.ToString();
-                 labelPostTime.Location = new Point(850 + 50, 100 * i + 10);
                  labelPostTime.Name = "labelPostNum" + i;
-//                 // panelPost.Controls.Add(labelPostTime);
-// //                panelPost2.Controls.Add(labelPostTime);
-                 this.Controls.Add(labelPostTime);
-                 //
+                 hBox.Controls.Add(labelPostTime);
+
+
                  if (thisPostsPictureUrl != null)
                  {
-                     //handle pictures
-                     PictureBox addedPictureBox = new PictureBox();
-                     addedPictureBox.Location = new Point(labelPostTime.Location.X - 110, labelPostTime.Location.Y);
-                     addedPictureBox.Name = "pictureBoxNum " + i;
+                    hBox.Size = new Size(280, 150);
+                    //handle pictures
+                    PictureBox addedPictureBox = new PictureBox();
+                    addedPictureBox.Name = "pictureBoxNum " + i;
                      addedPictureBox.Size = new Size(100, 100); //What's the size limit??
                      i += 1;
-                     this.Controls.Add(addedPictureBox);
-                 
-                     // panelPost.Controls.Add(addedPictureBox);
-                     // panelPost2.Controls.Add(addedPictureBox);
-
+                     hBox.Controls.Add(addedPictureBox);
                      foundPictures.AddLast(new LinkedListNode<PictureBox>(addedPictureBox));
                      addedPictureBox.Load(thisPostsPictureUrl);
 
                  }
+                 else
+                 {
+                    PictureBox addedPictureBox = new PictureBox();
+                    addedPictureBox.Size = new Size(50, 50);
+                }
 
-            
                  Label labelPost = new Label();
                  if (labelPost != null)
                  {
                      labelPost.Text = post.Message;
                      labelPost.AutoSize = true;
-                     labelPost.Location = new Point(foundPictures.Last.Value.Location.X + 220, foundPictures.Last.Value.Location.Y);
                      labelPost.Name = "labelPostNum" + i;
                      labelPost.BackColor = Color.Aqua;
-                     // panelPost.Controls.Add(labelPost);
-                     // panelPost2.Controls.Add(labelPostTime);
-                   
-                     this.Controls.Add(labelPost);
-                     
+                     hBox.Controls.Add(labelPost);
+
                  }
+                 vBoxWrapper.Controls.Add(hBox);
 
-
-                
-                //     panelPost.Location = new Point(500 + 50, 0);
-            // //    panelPost.Padding = new Padding(5);
-            //     this.Controls.Add(panelPost);
-            //     panelPost.Visible = true;
-            //
-            //     panelPost2.Location = new Point(500 + 50, 0);
-            //     panelPost2.Visible = true;
-            //     this.Controls.Add(panelPost2);
-
-                
-               
             }
+            this.Controls.Add(vBoxWrapper);
         }
 
         private void onButtonTestClicked(object sender, EventArgs e)

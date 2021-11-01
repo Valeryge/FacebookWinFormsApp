@@ -1,4 +1,6 @@
-﻿namespace BasicFacebookFeatures
+﻿using System.Windows.Forms;
+
+namespace BasicFacebookFeatures
 {
     partial class LoginForm
     {
@@ -67,6 +69,7 @@
 		#endregion
 
 		private System.Windows.Forms.Button buttonLogin;
-	}
+        private Panel screen;
+    }
 }
 

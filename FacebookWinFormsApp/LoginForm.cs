@@ -24,7 +24,7 @@ namespace BasicFacebookFeatures
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             Clipboard.SetText("design.patterns20cc"); /// the current password for Desig Patter
-
+            
             FacebookWrapper.LoginResult loginResult = FacebookService.Login(
                     "162373509365377",
                     "email",
@@ -40,7 +40,16 @@ namespace BasicFacebookFeatures
                     "user_location",
                     "user_photos",
                     "user_posts",
-                    "user_videos");
+                    "user_videos",
+                  
+                   // "manage_pages" - doesn't work
+                   "pages_manage_posts",
+                   "public_profile",
+                    "publish_to_groups"
+                  //  "user_messenger_contact"
+                    // "publish_pages"- doesn't work
+                    //  "can_post" taken from developers.facebook.com - should work but doesn't.
+                    );
 
             if (!string.IsNullOrEmpty(loginResult.AccessToken))
             {

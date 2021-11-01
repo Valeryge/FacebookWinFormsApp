@@ -14,11 +14,19 @@ namespace BasicFacebookFeatures
     public partial class LoginForm : Form
     {
         LoggedUserForm m_MainForm;
-
+        private Panel m_Panel;
         public LoginForm()
         {
             InitializeComponent();
+            myInitComponent();
+            m_Panel = new Panel();
+
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
+        }
+
+        private void myInitComponent()
+        {
+            int k_PanelSize = 300;
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)

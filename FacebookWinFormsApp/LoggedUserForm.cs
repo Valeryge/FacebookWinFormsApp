@@ -20,13 +20,15 @@ namespace BasicFacebookFeatures
 {
     public partial class LoggedUserForm : Form
     {
-        private readonly LoginResult k_LoginResult;
-        private readonly User k_LoggedUser;
+        //private readonly LoginResult k_LoginResult;
+        // private readonly User k_LoggedUser;
+        private MyFacebookService m_FacebookService = new MyFacebookService();
 
         public LoggedUserForm(LoginResult i_LoginResult)
         {
-            k_LoginResult = i_LoginResult;
-            k_LoggedUser = i_LoginResult.LoggedInUser;
+            //  k_LoginResult = i_LoginResult;
+            //k_LoggedUser = i_LoginResult.LoggedInUser;
+            m_FacebookService.Init(i_LoginResult);
             this.InitializeComponent();
             this.MyInitializeComponent();
         }
@@ -34,26 +36,36 @@ namespace BasicFacebookFeatures
         private void MyInitializeComponent()
         {
             //loadWindowName
-            this.Text = k_LoggedUser.Name + "'s FaceBook";
+            String usersName = m_FacebookService.GetUser().Name;
+            this.Text = usersName + "'s FaceBook";
 
             //loadUsersName
-            labelLoggedUserName.Text = k_LoggedUser.Name;
+            labelLoggedUserName.Text = usersName;
 
             //loadProfilePicture
-            pictureBoxLoggedUserPicture.Image = k_LoggedUser.ImageNormal; //TODO: fix size;
+            pictureBoxLoggedUserPicture.Image = m_FacebookService.GetUser().ImageNormal; //TODO: fix size;
             pictureBoxLoggedUserPicture.BringToFront();
-            
-            this.loadAlbums();
+            minimizedProfilePicture.Text = m_FacebookService.GetUser().FirstName;
+            minimizedProfilePicture.Image = m_FacebookService.GetUser().ImageSmall;
 
+            loadProfile();
+        }
+
+        private void loadProfile()
+        {
+            this.loadAlbums();
             this.loadPosts();
         }
 
         private void loadAlbums()
         {
-            foreach (Album album in k_LoggedUser.Albums)
+            FacebookObjectCollection<Album> albums = m_FacebookService.GetUser().Albums;
+
+            foreach (Album album in albums)
             {
                 listBoxAlbums.Items.Add(album);
             }
+
             listBoxAlbums.SelectedValueChanged += OnSelectionAlbumChanged;
         }
 
@@ -125,7 +137,8 @@ namespace BasicFacebookFeatures
             vBoxWrapper.Controls.Add(hBoxHeaders);
 
             int i = 0;
-            foreach (Post post in k_LoggedUser.Posts)
+            FacebookObjectCollection<Post> posts = m_FacebookService.GetUser().Posts;
+            foreach (Post post in posts)
             {
                 FlowLayoutPanel hBox = new FlowLayoutPanel();
                 hBox.FlowDirection = FlowDirection.RightToLeft;
@@ -146,7 +159,6 @@ namespace BasicFacebookFeatures
                  labelPostTime.Name = "labelPostNum" + i;
                  hBox.Controls.Add(labelPostTime);
 
-
                  if (thisPostsPictureUrl != null)
                  {
                     hBox.Size = new Size(280, 150);
@@ -158,7 +170,7 @@ namespace BasicFacebookFeatures
                      hBox.Controls.Add(addedPictureBox);
                      foundPictures.AddLast(new LinkedListNode<PictureBox>(addedPictureBox));
                      addedPictureBox.Load(thisPostsPictureUrl);
-
+                   
                  }
                  else
                  {
@@ -184,7 +196,7 @@ namespace BasicFacebookFeatures
 
         private void onButtonTestClicked(object sender, EventArgs e)
         {
-            User user = this.k_LoggedUser;
+            User user = m_FacebookService.GetUser();
             // FacebookObjectCollection<FriendList> thisUsersFL = user.FriendLists;
             FacebookObjectCollection<User> thisUsersFriends = user.Friends; //this also returns 0 friends
 
@@ -197,14 +209,24 @@ namespace BasicFacebookFeatures
             //created time works
             //onlyway to get more data on the posts themselves
             //doesn't show tagged users
-
             loadPosts();
+
 
             FacebookObjectCollection<Post> thisUsersFeed = user.NewsFeed;
             FacebookObjectCollection<Checkin> thisUsersCheckins = user.Checkins;
             FacebookObjectCollection<Post> thisUsersWallPosts = user.WallPosts;
+
         }
 
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void signoutButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
     }
 }

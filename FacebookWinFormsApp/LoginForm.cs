@@ -13,20 +13,64 @@ namespace BasicFacebookFeatures
 {
     public partial class LoginForm : Form
     {
+        
         LoggedUserForm m_MainForm;
-        private Panel m_Panel;
+       
         public LoginForm()
         {
+           // initTablePanel(3);
             InitializeComponent();
             myInitComponent();
-            m_Panel = new Panel();
 
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
+
+       //     HorizontalBox box = new HorizontalBox(1);
+         //   this.Controls.Add(box);
+        }
+
+        private void initTablePanel(int i_ColumnCount)
+        {
+            // this.hBox.Anchor = AnchorStyles.Right;
+            // this.hBox.CellBorderStyle = TableLayoutPanelCellBorderStyle.Inset;
+            // this.hBox.GrowStyle = TableLayoutPanelGrowStyle.AddColumns;
+            // this.hBox.AutoSize = true;
+            // this.hBox.Location = new Point(400, 400);
+
+
+            // hBox.RowCount = 1;
+            // hBox.ColumnCount = i_ColumnCount;
+
+            HorizontalBox hbox = new HorizontalBox(3);
+            hbox.AllowDrop = true;
+            //hbox.AutoScroll = true;
+            hbox.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            hbox.AutoSize = true;
+          //  hbox.MaximumSize = new Size(1000, 1000);
+
+            Label labelTest1 = new Label();
+            labelTest1.Text = "test1";
+
+            Label labelTest2 = new Label();
+            labelTest2.Text = "test2";
+
+            Label labelTest3 = new Label();
+            labelTest3.Text = "test3";
+
+            // hBox.SetRow(labelTest1,0);
+            // hBox.SetRow(labelTest2, 1);
+            // hBox.SetRow(labelTest3, 2);
+            
+            hbox.Controls.Add(labelTest1);
+            hbox.Controls.Add(labelTest3);
+            hbox.Controls.Add(labelTest2);
+
+            this.Controls.Add(hbox);
         }
 
         private void myInitComponent()
         {
-            int k_PanelSize = 300;
+            this.AutoSize = true;
+            
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)

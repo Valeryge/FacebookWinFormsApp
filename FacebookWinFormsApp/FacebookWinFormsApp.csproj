@@ -92,6 +92,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlComponents\HorizontalBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,7 +109,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VBox.cs" />
+    <Compile Include="ControlComponents\VerticalBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="ControlComponents\HorizontalBox.resx">
+      <DependentUpon>HorizontalBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoggedUserForm.resx">
       <DependentUpon>LoggedUserForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,6 +151,7 @@
   <ItemGroup>
     <None Include="Resources\login.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

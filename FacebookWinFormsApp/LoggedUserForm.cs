@@ -71,7 +71,7 @@ namespace BasicFacebookFeatures
 
             k_PostsContainer.Controls.Add(createHeaderHbox());
             
-            foreach (Post post in k_LoggedUser.Posts)
+            foreach (Post post in m_FacebookService.User.Posts)
             {
                 HorizontalBox hBox = new HorizontalBox(k_ElementsInPostsList);
                 hBox.AutoSize = true;

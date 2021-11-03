@@ -33,7 +33,6 @@ namespace BasicFacebookFeatures
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoggedUserForm));
             this.buttonTest2WithoutDesigner = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.labelLoggedUserName = new System.Windows.Forms.Label();
             this.listBoxAlbums = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -41,6 +40,7 @@ namespace BasicFacebookFeatures
             this.buttonPost = new System.Windows.Forms.Button();
             this.textBoxPost = new System.Windows.Forms.RichTextBox();
             this.buttonTest = new System.Windows.Forms.Button();
+
             this.minimizedProfilePicture = new System.Windows.Forms.ToolStripLabel();
             this.toolstrip = new System.Windows.Forms.ToolStrip();
             this.settingsButton = new System.Windows.Forms.ToolStripButton();
@@ -53,6 +53,10 @@ namespace BasicFacebookFeatures
             this.toolstrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoggedUserPicture)).BeginInit();
+          
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoggedUserPicture)).BeginInit();
+           this.panel12.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonTest2WithoutDesigner
@@ -64,16 +68,6 @@ namespace BasicFacebookFeatures
             this.buttonTest2WithoutDesigner.Text = "button test 2";
             this.buttonTest2WithoutDesigner.UseVisualStyleBackColor = true;
             this.buttonTest2WithoutDesigner.Click += new System.EventHandler(this.OnPostButtonClicked);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(2, 93);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(49, 21);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // labelLoggedUserName
             // 
@@ -88,8 +82,7 @@ namespace BasicFacebookFeatures
             // listBoxAlbums
             // 
             this.listBoxAlbums.FormattingEnabled = true;
-            this.listBoxAlbums.ItemHeight = 16;
-            this.listBoxAlbums.Location = new System.Drawing.Point(14, 133);
+            this.listBoxAlbums.Location = new System.Drawing.Point(25, 98);
             this.listBoxAlbums.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxAlbums.Name = "listBoxAlbums";
             this.listBoxAlbums.Size = new System.Drawing.Size(126, 116);
@@ -98,12 +91,12 @@ namespace BasicFacebookFeatures
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.listBoxAlbums);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Location = new System.Drawing.Point(21, 193);
+            this.panel2.Location = new System.Drawing.Point(21, 210);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(180, 266);
+            this.panel2.Size = new System.Drawing.Size(180, 249);
             this.panel2.TabIndex = 5;
             // 
             // postsListsBox
@@ -113,7 +106,8 @@ namespace BasicFacebookFeatures
             this.postsListsBox.Location = new System.Drawing.Point(244, 327);
             this.postsListsBox.Margin = new System.Windows.Forms.Padding(2);
             this.postsListsBox.Name = "postsListsBox";
-            this.postsListsBox.Size = new System.Drawing.Size(331, 212);
+
+            this.postsListsBox.Size = new System.Drawing.Size(331, 134);
             this.postsListsBox.TabIndex = 8;
             // 
             // buttonPost
@@ -217,12 +211,14 @@ namespace BasicFacebookFeatures
             this.facebookLogo.Text = "toolStripLabel1";
             // 
             // pictureBoxTest
+
             // 
-            this.pictureBoxTest.Location = new System.Drawing.Point(24, 518);
-            this.pictureBoxTest.Name = "pictureBoxTest";
-            this.pictureBoxTest.Size = new System.Drawing.Size(187, 79);
-            this.pictureBoxTest.TabIndex = 13;
-            this.pictureBoxTest.TabStop = false;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(49, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "label1";
             // 
             // pictureBoxLoggedUserPicture
             // 
@@ -238,6 +234,7 @@ namespace BasicFacebookFeatures
             this.ClientSize = new System.Drawing.Size(1133, 618);
             this.Controls.Add(this.toolstrip);
             this.Controls.Add(this.pictureBoxTest);
+
             this.Controls.Add(this.buttonTest);
             this.Controls.Add(this.textBoxPost);
             this.Controls.Add(this.buttonPost);
@@ -253,14 +250,13 @@ namespace BasicFacebookFeatures
             this.toolstrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoggedUserPicture)).EndInit();
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label labelLoggedUserName;
         private PictureBox pictureBoxLoggedUserPicture;
         private System.Windows.Forms.ListBox listBoxAlbums;
@@ -277,5 +273,6 @@ namespace BasicFacebookFeatures
         private ToolStripLabel minimizedProfilePicture;
         private ToolStrip toolstrip;
         private ToolStripLabel facebookLogo;
+        private Label label1;
     }
 }

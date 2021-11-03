@@ -23,17 +23,22 @@ namespace BasicFacebookFeatures
         //private readonly LoginResult k_LoginResult;
         // private readonly User k_LoggedUser;
         private MyFacebookService m_FacebookService = new MyFacebookService();
-
+        private readonly int k_ElementsInPostsList = 3;
+        private readonly VerticalBox k_PostsContainer;
         public LoggedUserForm(LoginResult i_LoginResult)
         {
             //  k_LoginResult = i_LoginResult;
             //k_LoggedUser = i_LoginResult.LoggedInUser;
             m_FacebookService.Init(i_LoginResult);
+            k_PostsContainer = new VerticalBox(m_FacebookService.User.Posts.Count);
+            k_PostsContainer.MaximumSize = new Size(450, 600);
+            k_PostsContainer.BackColor = Color.CornflowerBlue;
+            k_PostsContainer.Location = new Point(this.Location.X + 600,  210);
             this.InitializeComponent();
-            this.MyInitializeComponent();
+            this.myInitializeComponent();
         }
 
-        private void MyInitializeComponent()
+        private void myInitializeComponent()
         {
             //loadWindowName
             String usersName = m_FacebookService.User.Name;
@@ -41,6 +46,8 @@ namespace BasicFacebookFeatures
 
             //loadUsersName
             labelLoggedUserName.Text = usersName;
+            this.Controls.Add(k_PostsContainer);
+
 
             //loadProfilePicture
             pictureBoxLoggedUserPicture.Image = m_FacebookService.User.ImageNormal; //TODO: fix size;
@@ -55,6 +62,79 @@ namespace BasicFacebookFeatures
         {
             this.loadAlbums();
             this.loadPosts();
+        }
+
+        private void loadPosts()
+        {
+            // LinkedList<PictureBox> foundPictures = new LinkedList<PictureBox>();
+            int i = 0;
+
+            k_PostsContainer.Controls.Add(createHeaderHbox());
+            
+            foreach (Post post in k_LoggedUser.Posts)
+            {
+                HorizontalBox hBox = new HorizontalBox(k_ElementsInPostsList);
+                hBox.AutoSize = true;
+                string thisPostsPictureUrl = post.PictureURL;
+                Label labelPostTime = new Label();
+                labelPostTime.Text = post.CreatedTime.Value.ToString();
+                labelPostTime.Name = "labelPostNum" + i;
+                hBox.Controls.Add(labelPostTime);
+
+                if (!(thisPostsPictureUrl == null && post.Name == null))
+                {
+                    if (thisPostsPictureUrl != null)
+                    {
+                        //handle pictures
+                        PictureBox addedPictureBox = new PictureBox();
+                        addedPictureBox.Name = "pictureBoxNum " + i;
+                        addedPictureBox.Size = new Size(100, 100); 
+                        hBox.Controls.Add(addedPictureBox);
+                        // foundPictures.AddLast(new LinkedListNode<PictureBox>(addedPictureBox));
+                        addedPictureBox.Load(thisPostsPictureUrl);
+                    }
+                    else
+                    {
+                        Label labelPicture = new Label();
+                        labelPicture.Text = "-No Pictures-";
+                        hBox.Controls.Add(labelPicture);
+                    }
+
+                    Label labelPost = new Label();
+                    if (post.Message != null)
+                    {
+                        labelPost.AutoSize = true;
+                        labelPost.Text = post.Message;
+                        labelPost.Name = "labelPostNum" + i;
+                    }
+                    else
+                    {
+                        labelPost.Text = "-No description-";
+                    }
+
+                    hBox.Controls.Add(labelPost);
+                    k_PostsContainer.Controls.Add(hBox);
+                }
+            }
+        }
+
+        private HorizontalBox createHeaderHbox()
+        {
+            HorizontalBox hBoxHeader = new HorizontalBox(k_ElementsInPostsList);
+
+            Label labelTime = new Label();
+            labelTime.Text = "Time";
+            hBoxHeader.Controls.Add((labelTime));
+
+            Label labelPicture = new Label();
+            labelPicture.Text = "Photo";
+            hBoxHeader.Controls.Add(labelPicture);
+
+            Label labelName = new Label();
+            labelName.Text = "Name/Description";
+            hBoxHeader.Controls.Add(labelName);
+            
+            return hBoxHeader;
         }
 
         private void loadAlbums()
@@ -100,100 +180,6 @@ namespace BasicFacebookFeatures
 
         }
 
-        //1. we need to try and create an Hbox component - would be really helpful and cool
-        //2. we need to create some sort of pane (flowpane seems the best here) and add the Hboxes to our posts.
-        //3. we need to make the larger component scrollable
-        //maybe a table would do just fine for (1-3)
-        //4. hey - we can make a fictive feed out of this feature.
-        private void loadPosts()
-        {
-            LinkedList<PictureBox> foundPictures = new LinkedList<PictureBox>();
-            FlowLayoutPanel vBoxWrapper = new FlowLayoutPanel();
-            vBoxWrapper.Size = new Size(300, 1000);
-            vBoxWrapper.Padding = new Padding(10);
-            vBoxWrapper.FlowDirection = FlowDirection.TopDown;
-            vBoxWrapper.Location = new Point(800, 100);
-            vBoxWrapper.BorderStyle = BorderStyle.FixedSingle;
-
-            FlowLayoutPanel hBoxHeaders = new FlowLayoutPanel();
-            hBoxHeaders.FlowDirection = FlowDirection.RightToLeft;
-            hBoxHeaders.BorderStyle = BorderStyle.FixedSingle;
-            hBoxHeaders.Size = new Size(280, 100);
-            hBoxHeaders.Padding = new Padding(10);
-
-            TextBox labelHeaderName = new TextBox();
-            labelHeaderName.Text = "Author's Description";
-
-            TextBox labelHeaderTime = new TextBox();
-            labelHeaderName.Text = "Time";
-
-            TextBox labelHeaderPicture = new TextBox();
-            labelHeaderName.Text = "Album";
-
-            hBoxHeaders.Controls.Add(labelHeaderName);
-            hBoxHeaders.Controls.Add(labelHeaderTime);
-            hBoxHeaders.Controls.Add(labelHeaderPicture);
-
-            vBoxWrapper.Controls.Add(hBoxHeaders);
-
-            int i = 0;
-            FacebookObjectCollection<Post> posts = m_FacebookService.User.Posts;
-            foreach (Post post in posts)
-            {
-                FlowLayoutPanel hBox = new FlowLayoutPanel();
-                hBox.FlowDirection = FlowDirection.RightToLeft;
-                hBox.Size = new Size(280, 50);
-                hBox.Padding = new Padding(10);
-                hBox.BorderStyle = BorderStyle.FixedSingle;
-                hBox.BackColor = Color.Blue;
-                
-                // hBox.HorizontalScroll.Enabled = true;
-                //only shows one of the uploaded picture, maybe theres an algorithm that allows guessing the next pictures url if such exists.
-
-                //Fake:
-                //handle likes
-                //handle comments
-                string thisPostsPictureUrl = post.PictureURL;
-                Label labelPostTime = new Label();
-                 labelPostTime.Text = post.CreatedTime.Value.ToString();
-                 labelPostTime.Name = "labelPostNum" + i;
-                 hBox.Controls.Add(labelPostTime);
-
-                 if (thisPostsPictureUrl != null)
-                 {
-                    hBox.Size = new Size(280, 150);
-                    //handle pictures
-                    PictureBox addedPictureBox = new PictureBox();
-                    addedPictureBox.Name = "pictureBoxNum " + i;
-                     addedPictureBox.Size = new Size(100, 100); //What's the size limit??
-                     i += 1;
-                     hBox.Controls.Add(addedPictureBox);
-                     foundPictures.AddLast(new LinkedListNode<PictureBox>(addedPictureBox));
-                     addedPictureBox.Load(thisPostsPictureUrl);
-                   
-                 }
-                 else
-                 {
-                    PictureBox addedPictureBox = new PictureBox();
-                    addedPictureBox.Size = new Size(50, 50);
-                }
-
-                 Label labelPost = new Label();
-                 if (labelPost != null)
-                 {
-                     labelPost.Text = post.Message;
-                     labelPost.AutoSize = true;
-                     labelPost.Name = "labelPostNum" + i;
-                     labelPost.BackColor = Color.Aqua;
-                     hBox.Controls.Add(labelPost);
-
-                 }
-                 vBoxWrapper.Controls.Add(hBox);
-
-            }
-            this.Controls.Add(vBoxWrapper);
-        }
-
         private void onButtonTestClicked(object sender, EventArgs e)
         {
             User user = m_FacebookService.User;
@@ -209,13 +195,13 @@ namespace BasicFacebookFeatures
             //created time works
             //onlyway to get more data on the posts themselves
             //doesn't show tagged users
-            loadPosts();
 
 
             FacebookObjectCollection<Post> thisUsersFeed = user.NewsFeed;
             FacebookObjectCollection<Checkin> thisUsersCheckins = user.Checkins;
             FacebookObjectCollection<Post> thisUsersWallPosts = user.WallPosts;
 
+            //my newsfeed = my checkins = my wallposts = my posts
         }
 
         private void refreshButton_Click(object sender, EventArgs e)

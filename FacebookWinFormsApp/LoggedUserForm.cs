@@ -20,19 +20,20 @@ namespace BasicFacebookFeatures
 {
     public partial class LoggedUserForm : Form
     {
-        private readonly LoginResult k_LoginResult;
-        private readonly User k_LoggedUser;
+        //private readonly LoginResult k_LoginResult;
+        // private readonly User k_LoggedUser;
+        private MyFacebookService m_FacebookService = new MyFacebookService();
         private readonly int k_ElementsInPostsList = 3;
         private readonly VerticalBox k_PostsContainer;
         public LoggedUserForm(LoginResult i_LoginResult)
         {
-            k_LoginResult = i_LoginResult;
-            k_LoggedUser = i_LoginResult.LoggedInUser;
-            k_PostsContainer = new VerticalBox(k_LoggedUser.Posts.Count);
+            //  k_LoginResult = i_LoginResult;
+            //k_LoggedUser = i_LoginResult.LoggedInUser;
+            m_FacebookService.Init(i_LoginResult);
+            k_PostsContainer = new VerticalBox(m_FacebookService.User.Posts.Count);
             k_PostsContainer.MaximumSize = new Size(450, 600);
             k_PostsContainer.BackColor = Color.CornflowerBlue;
             k_PostsContainer.Location = new Point(this.Location.X + 600,  210);
-
             this.InitializeComponent();
             this.myInitializeComponent();
         }
@@ -40,16 +41,26 @@ namespace BasicFacebookFeatures
         private void myInitializeComponent()
         {
             //loadWindowName
-            this.Controls.Add(k_PostsContainer);
-            this.Text = k_LoggedUser.Name + "'s FaceBook";
-            //loadUsersName
-            labelLoggedUserName.Text = k_LoggedUser.Name;
-            //loadProfilePicture
-            pictureBoxLoggedUserPicture.Image = k_LoggedUser.ImageNormal; //TODO: fix size;
-            pictureBoxLoggedUserPicture.BringToFront();
-            
-            this.loadAlbums();
+            String usersName = m_FacebookService.User.Name;
+            this.Text = usersName + "'s FaceBook";
 
+            //loadUsersName
+            labelLoggedUserName.Text = usersName;
+            this.Controls.Add(k_PostsContainer);
+
+
+            //loadProfilePicture
+            pictureBoxLoggedUserPicture.Image = m_FacebookService.User.ImageNormal; //TODO: fix size;
+            pictureBoxLoggedUserPicture.BringToFront();
+            minimizedProfilePicture.Text = m_FacebookService.User.FirstName;
+            minimizedProfilePicture.Image = m_FacebookService.User.ImageSmall;
+
+            loadProfile();
+        }
+
+        private void loadProfile()
+        {
+            this.loadAlbums();
             this.loadPosts();
         }
 
@@ -128,10 +139,13 @@ namespace BasicFacebookFeatures
 
         private void loadAlbums()
         {
-            foreach (Album album in k_LoggedUser.Albums)
+            FacebookObjectCollection<Album> albums = m_FacebookService.User.Albums;
+
+            foreach (Album album in albums)
             {
                 listBoxAlbums.Items.Add(album);
             }
+
             listBoxAlbums.SelectedValueChanged += OnSelectionAlbumChanged;
         }
 
@@ -166,11 +180,9 @@ namespace BasicFacebookFeatures
 
         }
 
-      
-
         private void onButtonTestClicked(object sender, EventArgs e)
         {
-            User user = this.k_LoggedUser;
+            User user = m_FacebookService.User;
             // FacebookObjectCollection<FriendList> thisUsersFL = user.FriendLists;
             FacebookObjectCollection<User> thisUsersFriends = user.Friends; //this also returns 0 friends
 
@@ -188,9 +200,19 @@ namespace BasicFacebookFeatures
             FacebookObjectCollection<Post> thisUsersFeed = user.NewsFeed;
             FacebookObjectCollection<Checkin> thisUsersCheckins = user.Checkins;
             FacebookObjectCollection<Post> thisUsersWallPosts = user.WallPosts;
+
             //my newsfeed = my checkins = my wallposts = my posts
         }
 
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void signoutButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
     }
 }

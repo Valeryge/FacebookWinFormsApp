@@ -147,7 +147,7 @@ namespace BasicFacebookFeatures
             // minimizedProfilePicture
             // 
             this.minimizedProfilePicture.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.minimizedProfilePicture.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.minimizedProfilePicture.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.minimizedProfilePicture.Margin = new System.Windows.Forms.Padding(0);
             this.minimizedProfilePicture.Name = "minimizedProfilePicture";
             this.minimizedProfilePicture.Size = new System.Drawing.Size(204, 30);

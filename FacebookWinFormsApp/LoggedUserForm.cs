@@ -36,17 +36,17 @@ namespace BasicFacebookFeatures
         private void MyInitializeComponent()
         {
             //loadWindowName
-            String usersName = m_FacebookService.GetUser().Name;
+            String usersName = m_FacebookService.User.Name;
             this.Text = usersName + "'s FaceBook";
 
             //loadUsersName
             labelLoggedUserName.Text = usersName;
 
             //loadProfilePicture
-            pictureBoxLoggedUserPicture.Image = m_FacebookService.GetUser().ImageNormal; //TODO: fix size;
+            pictureBoxLoggedUserPicture.Image = m_FacebookService.User.ImageNormal; //TODO: fix size;
             pictureBoxLoggedUserPicture.BringToFront();
-            minimizedProfilePicture.Text = m_FacebookService.GetUser().FirstName;
-            minimizedProfilePicture.Image = m_FacebookService.GetUser().ImageSmall;
+            minimizedProfilePicture.Text = m_FacebookService.User.FirstName;
+            minimizedProfilePicture.Image = m_FacebookService.User.ImageSmall;
 
             loadProfile();
         }
@@ -59,7 +59,7 @@ namespace BasicFacebookFeatures
 
         private void loadAlbums()
         {
-            FacebookObjectCollection<Album> albums = m_FacebookService.GetUser().Albums;
+            FacebookObjectCollection<Album> albums = m_FacebookService.User.Albums;
 
             foreach (Album album in albums)
             {
@@ -137,7 +137,7 @@ namespace BasicFacebookFeatures
             vBoxWrapper.Controls.Add(hBoxHeaders);
 
             int i = 0;
-            FacebookObjectCollection<Post> posts = m_FacebookService.GetUser().Posts;
+            FacebookObjectCollection<Post> posts = m_FacebookService.User.Posts;
             foreach (Post post in posts)
             {
                 FlowLayoutPanel hBox = new FlowLayoutPanel();
@@ -196,7 +196,7 @@ namespace BasicFacebookFeatures
 
         private void onButtonTestClicked(object sender, EventArgs e)
         {
-            User user = m_FacebookService.GetUser();
+            User user = m_FacebookService.User;
             // FacebookObjectCollection<FriendList> thisUsersFL = user.FriendLists;
             FacebookObjectCollection<User> thisUsersFriends = user.Friends; //this also returns 0 friends
 

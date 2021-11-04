@@ -32,88 +32,53 @@ namespace BasicFacebookFeatures
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoggedUserForm));
-            this.buttonTest2WithoutDesigner = new System.Windows.Forms.Button();
             this.labelLoggedUserName = new System.Windows.Forms.Label();
-            this.listBoxAlbums = new System.Windows.Forms.ListBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.postsListsBox = new System.Windows.Forms.ListBox();
             this.buttonPost = new System.Windows.Forms.Button();
             this.textBoxPost = new System.Windows.Forms.RichTextBox();
             this.buttonTest = new System.Windows.Forms.Button();
-
             this.minimizedProfilePicture = new System.Windows.Forms.ToolStripLabel();
             this.toolstrip = new System.Windows.Forms.ToolStrip();
+            this.facebookLogo = new System.Windows.Forms.ToolStripLabel();
             this.settingsButton = new System.Windows.Forms.ToolStripButton();
             this.refreshButton = new System.Windows.Forms.ToolStripButton();
             this.signoutButton = new System.Windows.Forms.ToolStripButton();
-            this.facebookLogo = new System.Windows.Forms.ToolStripLabel();
-            this.pictureBoxTest = new System.Windows.Forms.PictureBox();
             this.pictureBoxLoggedUserPicture = new System.Windows.Forms.PictureBox();
-            this.panel2.SuspendLayout();
-            this.toolstrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTest)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoggedUserPicture)).BeginInit();
-          
+            this.listBoxAlbums = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tableLayountPanelLibrary = new System.Windows.Forms.TableLayoutPanel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.listBoxLikedPages = new System.Windows.Forms.ListBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.listBoxFriends = new System.Windows.Forms.ListBox();
+            this.centralPanelArea = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.toolstrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoggedUserPicture)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.tableLayountPanelLibrary.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.centralPanelArea.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // buttonTest2WithoutDesigner
-            // 
-            this.buttonTest2WithoutDesigner.Location = new System.Drawing.Point(500, 287);
-            this.buttonTest2WithoutDesigner.Name = "buttonTest2WithoutDesigner";
-            this.buttonTest2WithoutDesigner.Size = new System.Drawing.Size(75, 23);
-            this.buttonTest2WithoutDesigner.TabIndex = 9;
-            this.buttonTest2WithoutDesigner.Text = "button test 2";
-            this.buttonTest2WithoutDesigner.UseVisualStyleBackColor = true;
-            this.buttonTest2WithoutDesigner.Click += new System.EventHandler(this.OnPostButtonClicked);
             // 
             // labelLoggedUserName
             // 
             this.labelLoggedUserName.AutoSize = true;
-            this.labelLoggedUserName.Location = new System.Drawing.Point(346, 170);
+            this.labelLoggedUserName.Location = new System.Drawing.Point(488, 167);
             this.labelLoggedUserName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelLoggedUserName.Name = "labelLoggedUserName";
-            this.labelLoggedUserName.Size = new System.Drawing.Size(132, 17);
+            this.labelLoggedUserName.Size = new System.Drawing.Size(97, 13);
             this.labelLoggedUserName.TabIndex = 1;
             this.labelLoggedUserName.Text = "-Logged user label-";
             // 
-            // listBoxAlbums
-            // 
-            this.listBoxAlbums.FormattingEnabled = true;
-            this.listBoxAlbums.Location = new System.Drawing.Point(25, 98);
-            this.listBoxAlbums.Margin = new System.Windows.Forms.Padding(2);
-            this.listBoxAlbums.Name = "listBoxAlbums";
-            this.listBoxAlbums.Size = new System.Drawing.Size(126, 116);
-            this.listBoxAlbums.TabIndex = 3;
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.listBoxAlbums);
-            this.panel2.Location = new System.Drawing.Point(21, 210);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(180, 249);
-            this.panel2.TabIndex = 5;
-            // 
-            // postsListsBox
-            // 
-            this.postsListsBox.FormattingEnabled = true;
-            this.postsListsBox.ItemHeight = 16;
-            this.postsListsBox.Location = new System.Drawing.Point(244, 327);
-            this.postsListsBox.Margin = new System.Windows.Forms.Padding(2);
-            this.postsListsBox.Name = "postsListsBox";
-
-            this.postsListsBox.Size = new System.Drawing.Size(331, 134);
-            this.postsListsBox.TabIndex = 8;
-            // 
             // buttonPost
             // 
-            this.buttonPost.Location = new System.Drawing.Point(244, 287);
+            this.buttonPost.Location = new System.Drawing.Point(45, 266);
             this.buttonPost.Name = "buttonPost";
-            this.buttonPost.Size = new System.Drawing.Size(75, 23);
+            this.buttonPost.Size = new System.Drawing.Size(331, 23);
             this.buttonPost.TabIndex = 9;
             this.buttonPost.Text = "post Button";
             this.buttonPost.UseVisualStyleBackColor = true;
@@ -121,15 +86,16 @@ namespace BasicFacebookFeatures
             // 
             // textBoxPost
             // 
-            this.textBoxPost.Location = new System.Drawing.Point(244, 210);
+            this.textBoxPost.Location = new System.Drawing.Point(45, 189);
             this.textBoxPost.Name = "textBoxPost";
             this.textBoxPost.Size = new System.Drawing.Size(331, 71);
             this.textBoxPost.TabIndex = 11;
-            this.textBoxPost.Text = "";
+            this.textBoxPost.Text = "Enter  post here:";
+            this.textBoxPost.TextChanged += new System.EventHandler(this.textBoxPost_TextChanged);
             // 
             // buttonTest
             // 
-            this.buttonTest.Location = new System.Drawing.Point(87, 488);
+            this.buttonTest.Location = new System.Drawing.Point(152, 408);
             this.buttonTest.Name = "buttonTest";
             this.buttonTest.Size = new System.Drawing.Size(75, 23);
             this.buttonTest.TabIndex = 12;
@@ -143,7 +109,7 @@ namespace BasicFacebookFeatures
             this.minimizedProfilePicture.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.minimizedProfilePicture.Margin = new System.Windows.Forms.Padding(0);
             this.minimizedProfilePicture.Name = "minimizedProfilePicture";
-            this.minimizedProfilePicture.Size = new System.Drawing.Size(204, 30);
+            this.minimizedProfilePicture.Size = new System.Drawing.Size(171, 26);
             this.minimizedProfilePicture.Text = "minimizedProfilePicture";
             // 
             // toolstrip
@@ -162,9 +128,18 @@ namespace BasicFacebookFeatures
             this.toolstrip.Location = new System.Drawing.Point(0, 0);
             this.toolstrip.Name = "toolstrip";
             this.toolstrip.Padding = new System.Windows.Forms.Padding(2);
-            this.toolstrip.Size = new System.Drawing.Size(1133, 34);
+            this.toolstrip.Size = new System.Drawing.Size(1133, 30);
             this.toolstrip.TabIndex = 14;
             this.toolstrip.Text = "toolStrip1";
+            // 
+            // facebookLogo
+            // 
+            this.facebookLogo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.facebookLogo.Image = global::BasicFacebookFeatures.Properties.Resources.logo;
+            this.facebookLogo.Margin = new System.Windows.Forms.Padding(0);
+            this.facebookLogo.Name = "facebookLogo";
+            this.facebookLogo.Size = new System.Drawing.Size(20, 26);
+            this.facebookLogo.Text = "toolStripLabel1";
             // 
             // settingsButton
             // 
@@ -173,7 +148,7 @@ namespace BasicFacebookFeatures
             this.settingsButton.Image = ((System.Drawing.Image)(resources.GetObject("settingsButton.Image")));
             this.settingsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(80, 27);
+            this.settingsButton.Size = new System.Drawing.Size(66, 23);
             this.settingsButton.Text = "Settings";
             // 
             // refreshButton
@@ -184,7 +159,7 @@ namespace BasicFacebookFeatures
             this.refreshButton.Image = ((System.Drawing.Image)(resources.GetObject("refreshButton.Image")));
             this.refreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(70, 27);
+            this.refreshButton.Size = new System.Drawing.Size(60, 23);
             this.refreshButton.Text = "refresh";
             this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
@@ -196,60 +171,172 @@ namespace BasicFacebookFeatures
             this.signoutButton.Image = ((System.Drawing.Image)(resources.GetObject("signoutButton.Image")));
             this.signoutButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.signoutButton.Name = "signoutButton";
-            this.signoutButton.Size = new System.Drawing.Size(77, 27);
+            this.signoutButton.Size = new System.Drawing.Size(64, 23);
             this.signoutButton.Text = "Signout";
             this.signoutButton.Click += new System.EventHandler(this.signoutButton_Click);
             // 
-            // facebookLogo
-            // 
-            this.facebookLogo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.facebookLogo.Image = global::BasicFacebookFeatures.Properties.Resources.logo;
-            this.facebookLogo.Margin = new System.Windows.Forms.Padding(0);
-            this.facebookLogo.Name = "facebookLogo";
-            this.facebookLogo.Size = new System.Drawing.Size(20, 30);
-            this.facebookLogo.Text = "toolStripLabel1";
-            // 
-            // pictureBoxTest
-
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(49, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "label1";
-            // 
             // pictureBoxLoggedUserPicture
             // 
-            this.pictureBoxLoggedUserPicture.Location = new System.Drawing.Point(357, 77);
+            this.pictureBoxLoggedUserPicture.Location = new System.Drawing.Point(161, 40);
             this.pictureBoxLoggedUserPicture.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxLoggedUserPicture.Name = "pictureBoxLoggedUserPicture";
             this.pictureBoxLoggedUserPicture.Size = new System.Drawing.Size(88, 91);
             this.pictureBoxLoggedUserPicture.TabIndex = 2;
             this.pictureBoxLoggedUserPicture.TabStop = false;
             // 
+            // listBoxAlbums
+            // 
+            this.listBoxAlbums.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.listBoxAlbums.FormattingEnabled = true;
+            this.listBoxAlbums.Location = new System.Drawing.Point(0, 24);
+            this.listBoxAlbums.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxAlbums.Name = "listBoxAlbums";
+            this.listBoxAlbums.Size = new System.Drawing.Size(157, 134);
+            this.listBoxAlbums.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(50, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "My Albums:";
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.listBoxAlbums);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(159, 160);
+            this.panel2.TabIndex = 5;
+            // 
+            // tableLayountPanelLibrary
+            // 
+            this.tableLayountPanelLibrary.AutoScroll = true;
+            this.tableLayountPanelLibrary.ColumnCount = 2;
+            this.tableLayountPanelLibrary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayountPanelLibrary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayountPanelLibrary.Controls.Add(this.panel3, 0, 1);
+            this.tableLayountPanelLibrary.Controls.Add(this.panel2, 0, 0);
+            this.tableLayountPanelLibrary.Controls.Add(this.panel1, 1, 0);
+            this.tableLayountPanelLibrary.Location = new System.Drawing.Point(0, 30);
+            this.tableLayountPanelLibrary.Name = "tableLayountPanelLibrary";
+            this.tableLayountPanelLibrary.RowCount = 2;
+            this.tableLayountPanelLibrary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.27211F));
+            this.tableLayountPanelLibrary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 69.72789F));
+            this.tableLayountPanelLibrary.Size = new System.Drawing.Size(326, 542);
+            this.tableLayountPanelLibrary.TabIndex = 17;
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.listBoxLikedPages);
+            this.panel3.Location = new System.Drawing.Point(2, 166);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(159, 173);
+            this.panel3.TabIndex = 19;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(50, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(82, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "My liked Pages:";
+            // 
+            // listBoxLikedPages
+            // 
+            this.listBoxLikedPages.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.listBoxLikedPages.FormattingEnabled = true;
+            this.listBoxLikedPages.Location = new System.Drawing.Point(0, 37);
+            this.listBoxLikedPages.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxLikedPages.Name = "listBoxLikedPages";
+            this.listBoxLikedPages.Size = new System.Drawing.Size(157, 134);
+            this.listBoxLikedPages.TabIndex = 3;
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.listBoxFriends);
+            this.panel1.Location = new System.Drawing.Point(165, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(159, 160);
+            this.panel1.TabIndex = 18;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(50, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "My Friends";
+            // 
+            // listBoxFriends
+            // 
+            this.listBoxFriends.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.listBoxFriends.FormattingEnabled = true;
+            this.listBoxFriends.Location = new System.Drawing.Point(0, 24);
+            this.listBoxFriends.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxFriends.Name = "listBoxFriends";
+            this.listBoxFriends.Size = new System.Drawing.Size(157, 134);
+            this.listBoxFriends.TabIndex = 3;
+            // 
+            // centralPanelArea
+            // 
+            this.centralPanelArea.Controls.Add(this.label4);
+            this.centralPanelArea.Controls.Add(this.pictureBoxLoggedUserPicture);
+            this.centralPanelArea.Controls.Add(this.textBoxPost);
+            this.centralPanelArea.Controls.Add(this.buttonTest);
+            this.centralPanelArea.Controls.Add(this.buttonPost);
+            this.centralPanelArea.Location = new System.Drawing.Point(332, 33);
+            this.centralPanelArea.Name = "centralPanelArea";
+            this.centralPanelArea.Size = new System.Drawing.Size(406, 539);
+            this.centralPanelArea.TabIndex = 18;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(142, 170);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "label4";
+            // 
             // LoggedUserForm
             // 
             this.ClientSize = new System.Drawing.Size(1133, 618);
+            this.Controls.Add(this.tableLayountPanelLibrary);
             this.Controls.Add(this.toolstrip);
-            this.Controls.Add(this.pictureBoxTest);
-
-            this.Controls.Add(this.buttonTest);
-            this.Controls.Add(this.textBoxPost);
-            this.Controls.Add(this.buttonPost);
-            this.Controls.Add(this.postsListsBox);
             this.Controls.Add(this.labelLoggedUserName);
-            this.Controls.Add(this.pictureBoxLoggedUserPicture);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.buttonTest2WithoutDesigner);
+            this.Controls.Add(this.centralPanelArea);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "LoggedUserForm";
-            this.panel2.ResumeLayout(false);
             this.toolstrip.ResumeLayout(false);
             this.toolstrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoggedUserPicture)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.tableLayountPanelLibrary.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.centralPanelArea.ResumeLayout(false);
+            this.centralPanelArea.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,20 +345,26 @@ namespace BasicFacebookFeatures
         #endregion
         private System.Windows.Forms.Label labelLoggedUserName;
         private PictureBox pictureBoxLoggedUserPicture;
-        private System.Windows.Forms.ListBox listBoxAlbums;
-        private Panel panel2;
-        private ListBox postsListsBox;
         private Button buttonPost;
-        private Button buttonTest2WithoutDesigner;
         private RichTextBox textBoxPost;
         private Button buttonTest;
-        private PictureBox pictureBoxTest;
         private ToolStripButton signoutButton;
         private ToolStripButton settingsButton;
         private ToolStripButton refreshButton;
         private ToolStripLabel minimizedProfilePicture;
         private ToolStrip toolstrip;
         private ToolStripLabel facebookLogo;
+        private ListBox listBoxAlbums;
         private Label label1;
+        private Panel panel2;
+        private TableLayoutPanel tableLayountPanelLibrary;
+        private Panel panel3;
+        private Label label3;
+        private ListBox listBoxLikedPages;
+        private Panel panel1;
+        private Label label2;
+        private ListBox listBoxFriends;
+        private Panel centralPanelArea;
+        private Label label4;
     }
 }

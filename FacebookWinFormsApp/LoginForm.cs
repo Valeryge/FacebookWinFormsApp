@@ -93,10 +93,14 @@ namespace BasicFacebookFeatures
                     "user_photos",
                     "user_posts",
                     "user_videos",
-                  
+
+                    "pages_manage_posts",
+                  "pages_read_engagement",
+                  "pages_manage_posts", 
+    
+
                    // "manage_pages" - doesn't work
-                   "pages_manage_posts",
-                   "public_profile",
+                    
                     "publish_to_groups"
                   //  "user_messenger_contact"
                     // "publish_pages"- doesn't work

@@ -56,7 +56,7 @@ namespace BasicFacebookFeatures
           
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoggedUserPicture)).BeginInit();
-           this.panel12.SuspendLayout();
+          
             this.SuspendLayout();
             // 
             // buttonTest2WithoutDesigner

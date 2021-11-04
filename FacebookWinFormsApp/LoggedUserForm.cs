@@ -30,10 +30,9 @@ namespace BasicFacebookFeatures
             //  k_LoginResult = i_LoginResult;
             //k_LoggedUser = i_LoginResult.LoggedInUser;
             m_FacebookService.Init(i_LoginResult);
+
+
             k_PostsContainer = new VerticalBox(m_FacebookService.User.Posts.Count);
-            k_PostsContainer.MaximumSize = new Size(450, 600);
-            k_PostsContainer.BackColor = Color.CornflowerBlue;
-            k_PostsContainer.Location = new Point(this.Location.X + 600,  210);
             this.InitializeComponent();
             this.myInitializeComponent();
         }
@@ -55,20 +54,46 @@ namespace BasicFacebookFeatures
             minimizedProfilePicture.Text = m_FacebookService.User.FirstName;
             minimizedProfilePicture.Image = m_FacebookService.User.ImageSmall;
 
+            
+            k_PostsContainer.MaximumSize = new Size(500, 600);
+            k_PostsContainer.Location = new Point(800, tableLayountPanelLibrary.Location.Y);  //better
+            //k_PostsContainer.Location = new Point(this.Location.X + 600, 210);
+
             loadProfile();
         }
 
         private void loadProfile()
         {
             this.loadAlbums();
+            this.loadLikedPages();
+            this.loadFriends();
             this.loadPosts();
         }
+
+        private void loadLikedPages()
+        {
+            foreach (Page page in m_FacebookService.User.LikedPages)
+            {
+                listBoxLikedPages.Items.Add(page);
+            }
+        }
+
+    private void loadFriends()
+        {
+            foreach (User friend in m_FacebookService.User.Friends)
+            {
+                listBoxFriends.Items.Add(friend);
+            }
+        }
+
 
         private void loadPosts()
         {
             // LinkedList<PictureBox> foundPictures = new LinkedList<PictureBox>();
             int i = 0;
-
+            Label labelPosts = new Label();
+            labelPosts.Text = "Posts:";
+            k_PostsContainer.Controls.Add(labelPosts);
             k_PostsContainer.Controls.Add(createHeaderHbox());
             
             foreach (Post post in m_FacebookService.User.Posts)
@@ -111,8 +136,8 @@ namespace BasicFacebookFeatures
                     {
                         labelPost.Text = "-No description-";
                     }
-
                     hBox.Controls.Add(labelPost);
+                    hBox.Dock = DockStyle.Fill;
                     k_PostsContainer.Controls.Add(hBox);
                 }
             }
@@ -173,11 +198,11 @@ namespace BasicFacebookFeatures
 
             MessageBox.Show("Exhibition(awkward): \n" + "The names of all the pictures:\n " + DescriptionsOfPhotoList);
         }
-
+     
         //TODO: Post
         private void OnPostButtonClicked(object sender, EventArgs e)
         {
-
+            m_FacebookService.User.PostStatus("test1", "test2");
         }
 
         private void onButtonTestClicked(object sender, EventArgs e)
@@ -185,7 +210,9 @@ namespace BasicFacebookFeatures
             User user = m_FacebookService.User;
             // FacebookObjectCollection<FriendList> thisUsersFL = user.FriendLists;
             FacebookObjectCollection<User> thisUsersFriends = user.Friends; //this also returns 0 friends
-
+            loadLikedPages();
+            loadFriends();
+            
             FacebookObjectCollection<Post> thisUsersPosts = user.Posts;
             //doesn't show comments on posts
             //doesn't show the likes, there is however a property "LikedBy" with an error
@@ -214,5 +241,9 @@ namespace BasicFacebookFeatures
             this.Close();
         }
 
+        private void textBoxPost_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace BasicFacebookFeatures
         public HorizontalBox(int i_ColumnCount)
         {
             this.Padding = new Padding(10);
-            this.CellBorderStyle = TableLayoutPanelCellBorderStyle.Inset;
+            this.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
             this.GrowStyle = TableLayoutPanelGrowStyle.AddColumns;
             this.MaximumSize = new Size(400, 400);
             this.AutoSize = true;

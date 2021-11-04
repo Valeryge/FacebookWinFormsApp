@@ -1,5 +1,4 @@
-﻿
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
 {
@@ -56,7 +55,7 @@ namespace BasicFacebookFeatures
           
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoggedUserPicture)).BeginInit();
-          
+
             this.SuspendLayout();
             // 
             // buttonTest2WithoutDesigner

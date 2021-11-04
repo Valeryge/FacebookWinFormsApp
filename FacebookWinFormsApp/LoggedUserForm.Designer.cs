@@ -1,5 +1,4 @@
-﻿
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
 {
@@ -57,11 +56,7 @@ namespace BasicFacebookFeatures
             this.label4 = new System.Windows.Forms.Label();
             this.toolstrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoggedUserPicture)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.tableLayountPanelLibrary.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.centralPanelArea.SuspendLayout();
+
             this.SuspendLayout();
             // 
             // labelLoggedUserName

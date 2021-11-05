@@ -13,10 +13,16 @@ namespace BasicFacebookFeatures
     {
         private LoginResult k_LoginResult;
         private User k_LoggedUser;
+        private User m_CurrentProfileUser;
 
-        public User User
+        public User LoggedUser
         {
             get { return k_LoggedUser; }
+        }
+        public User User
+        {
+            get { return m_CurrentProfileUser; }
+            set { m_CurrentProfileUser = value; }
         }
 
         public MyFacebookService() { }
@@ -25,6 +31,12 @@ namespace BasicFacebookFeatures
         {
             k_LoginResult = i_Result;
             k_LoggedUser = i_Result.LoggedInUser;
+            m_CurrentProfileUser = k_LoggedUser;
+        }
+
+        public void InitCurrentProfile(User i_NewUser)
+        {
+            m_CurrentProfileUser = i_NewUser;
         }
     }
 }

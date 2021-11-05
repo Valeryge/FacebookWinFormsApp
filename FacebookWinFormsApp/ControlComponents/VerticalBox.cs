@@ -20,5 +20,10 @@ namespace BasicFacebookFeatures
             this.RowCount = i_RowsCount;
             this.AutoSize = true;
         }
+
+        public void Clear()
+        {
+            base.Controls.Clear();
+        }
     }
 }

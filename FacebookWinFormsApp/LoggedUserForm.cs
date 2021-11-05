@@ -20,18 +20,13 @@ namespace BasicFacebookFeatures
 {
     public partial class LoggedUserForm : Form
     {
-        //private readonly LoginResult k_LoginResult;
-        // private readonly User k_LoggedUser;
         private MyFacebookService m_FacebookService = new MyFacebookService();
         private readonly int k_ElementsInPostsList = 3;
         private readonly VerticalBox k_PostsContainer;
+
         public LoggedUserForm(LoginResult i_LoginResult)
         {
-            //  k_LoginResult = i_LoginResult;
-            //k_LoggedUser = i_LoginResult.LoggedInUser;
             m_FacebookService.Init(i_LoginResult);
-
-
             k_PostsContainer = new VerticalBox(m_FacebookService.User.Posts.Count);
             this.InitializeComponent();
             this.myInitializeComponent();
@@ -39,31 +34,34 @@ namespace BasicFacebookFeatures
 
         private void myInitializeComponent()
         {
+            loadToolbar();
+            loadProfile();
+            this.Controls.Add(k_PostsContainer);
+        }
+
+        private void loadToolbar()
+        {
+            minimizedProfilePicture.Text = m_FacebookService.LoggedUser.FirstName;
+            minimizedProfilePicture.Image = m_FacebookService.LoggedUser.ImageSmall;
+        }
+
+        private void loadProfile()
+        {
             //loadWindowName
             String usersName = m_FacebookService.User.Name;
             this.Text = usersName + "'s FaceBook";
 
             //loadUsersName
             labelLoggedUserName.Text = usersName;
-            this.Controls.Add(k_PostsContainer);
-
 
             //loadProfilePicture
             pictureBoxLoggedUserPicture.Image = m_FacebookService.User.ImageNormal; //TODO: fix size;
             pictureBoxLoggedUserPicture.BringToFront();
-            minimizedProfilePicture.Text = m_FacebookService.User.FirstName;
-            minimizedProfilePicture.Image = m_FacebookService.User.ImageSmall;
 
-            
+
             k_PostsContainer.MaximumSize = new Size(500, 600);
             k_PostsContainer.Location = new Point(800, tableLayountPanelLibrary.Location.Y);  //better
             //k_PostsContainer.Location = new Point(this.Location.X + 600, 210);
-
-            loadProfile();
-        }
-
-        private void loadProfile()
-        {
             this.loadAlbums();
             this.loadLikedPages();
             this.loadFriends();
@@ -244,6 +242,41 @@ namespace BasicFacebookFeatures
         private void textBoxPost_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void listBoxFriends_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadNewProfile((User)listBoxFriends.SelectedItem);
+        }
+
+        private void loadNewProfile(User i_NewProfile)
+        {
+            m_FacebookService.InitCurrentProfile(i_NewProfile);
+            clearAllData();
+            loadProfile();
+        }
+
+        private void clearAllData()
+        {
+            listBoxAlbums.Items.Clear();
+            listBoxFriends.Items.Clear();
+            listBoxLikedPages.Items.Clear();
+            k_PostsContainer.Clear();
+        }
+
+        private void minimizedProfilePicture_Click(object sender, EventArgs e)
+        {
+            loadNewProfile(m_FacebookService.LoggedUser);
+        }
+
+        private void minimizedProfilePicture_MouseHover(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void minimizedProfilePicture_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
         }
     }
 }

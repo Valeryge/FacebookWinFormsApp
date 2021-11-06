@@ -4,6 +4,7 @@ namespace BasicFacebookFeatures
 {
     partial class LoggedUserForm
     {
+        
         /// <summary>
         /// Required designer variable.
         /// </summary>

@@ -85,15 +85,29 @@ namespace BasicFacebookFeatures
         }
 
 
-        private void loadPosts()
+    private void loadPosts()
+    {
+        // LinkedList<PictureBox> foundPictures = new LinkedList<PictureBox>();
+        k_PostsContainer.Clear();
+        Label labelPosts = new Label();
+        labelPosts.Text = "Posts:";
+        k_PostsContainer.Controls.Add(labelPosts);
+        k_PostsContainer.Controls.Add(createHeaderHbox());
+
+        //this exists since we cannot post, thus we've created a demo to add as new posts
+        if (m_FacebookService.LocalAddedPosts.ContainsKey(m_FacebookService.User))
         {
-            // LinkedList<PictureBox> foundPictures = new LinkedList<PictureBox>();
-            int i = 0;
-            Label labelPosts = new Label();
-            labelPosts.Text = "Posts:";
-            k_PostsContainer.Controls.Add(labelPosts);
-            k_PostsContainer.Controls.Add(createHeaderHbox());
-            
+            addLocalPosts();
+          
+        }
+        
+        //this is data returned from fb services
+        addRemotePosts();
+    }
+
+    private void addRemotePosts()
+    {
+        int i = 0;
             foreach (Post post in m_FacebookService.User.Posts)
             {
                 HorizontalBox hBox = new HorizontalBox(k_ElementsInPostsList);
@@ -111,7 +125,7 @@ namespace BasicFacebookFeatures
                         //handle pictures
                         PictureBox addedPictureBox = new PictureBox();
                         addedPictureBox.Name = "pictureBoxNum " + i;
-                        addedPictureBox.Size = new Size(100, 100); 
+                        addedPictureBox.Size = new Size(100, 100);
                         hBox.Controls.Add(addedPictureBox);
                         // foundPictures.AddLast(new LinkedListNode<PictureBox>(addedPictureBox));
                         addedPictureBox.Load(thisPostsPictureUrl);
@@ -139,9 +153,32 @@ namespace BasicFacebookFeatures
                     k_PostsContainer.Controls.Add(hBox);
                 }
             }
+
         }
 
-        private HorizontalBox createHeaderHbox()
+        private void addLocalPosts()
+    {
+        foreach (MyFacebookService.LocalPost localAddedPost in m_FacebookService.LocalAddedPosts
+            [m_FacebookService.User])
+        {
+            HorizontalBox box = new HorizontalBox(3);
+            Label labelPostTime = new Label();
+            labelPostTime.Text = DateTime.Now.ToString();
+            box.Controls.Add(labelPostTime);
+
+            Label labelPicture = new Label();
+            labelPicture.Text = "-No Pictures-";
+            box.Controls.Add(labelPicture);
+
+            Label localPost = new Label();
+            localPost.Text = localAddedPost.Message;
+
+            box.Controls.Add(localPost);
+            k_PostsContainer.Controls.Add(box);
+        }
+        }
+
+    private HorizontalBox createHeaderHbox()
         {
             HorizontalBox hBoxHeader = new HorizontalBox(k_ElementsInPostsList);
 
@@ -200,7 +237,9 @@ namespace BasicFacebookFeatures
         //TODO: Post
         private void OnPostButtonClicked(object sender, EventArgs e)
         {
-            m_FacebookService.User.PostStatus("test1", "test2");
+         //   m_FacebookService.User.PostStatus("test1", "test2");
+         m_FacebookService.addNewLocalPost(textBoxPost.Text);
+         this.loadPosts();
         }
 
         private void onButtonTestClicked(object sender, EventArgs e)

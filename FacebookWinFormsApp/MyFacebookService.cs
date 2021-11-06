@@ -14,9 +14,10 @@ namespace BasicFacebookFeatures
     public class MyFacebookService
     {
 
-        private Dictionary<FaceBookAction.ActionType, List<FaceBookAction>> k_LogManager;
 
-        public Dictionary<FaceBookAction.ActionType, List<FaceBookAction>> LogManager
+        private LogManager k_LogManager;
+
+        public LogManager LogManager
         {
             get => k_LogManager;
             set => k_LogManager = value;
@@ -36,14 +37,8 @@ namespace BasicFacebookFeatures
 
         public MyFacebookService()
         {
-            k_LogManager = new Dictionary<FaceBookAction.ActionType, List<FaceBookAction>>();
-            foreach (FaceBookAction.ActionType enumsValue  in Enum.GetValues(typeof(FaceBookAction.ActionType)))
-            {
-                k_LogManager.Add(enumsValue, new List<FaceBookAction>());
-            }
-
+            k_LogManager = new LogManager();
             k_LocalAddedPosts = new Dictionary<User, List<LocalPost>>();
-
         }
         public class LocalPost
         {

@@ -26,7 +26,7 @@ namespace BasicFacebookFeatures
 
         public LoggedUserForm(LoginResult i_LoginResult)
         {
-            m_FacebookService.LogManager[FaceBookAction.ActionType.LOGIN_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
+            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.LOGIN_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
 
             m_FacebookService.Init(i_LoginResult);
             k_PostsContainer = new VerticalBox(m_FacebookService.User.Posts.Count);
@@ -50,9 +50,9 @@ namespace BasicFacebookFeatures
 
         private void loadActions()
         {
-            foreach (var actionType in m_FacebookService.LogManager.Keys)
+            foreach (var actionType in m_FacebookService.LogManager.logCollection.Keys)
             {
-                foreach (var singleAction in m_FacebookService.LogManager[actionType])
+                foreach (var singleAction in m_FacebookService.LogManager.logCollection[actionType])
                 {
                     listBoxLatestActions.Items.Add("Action Type: " + actionType + " " + singleAction.ToString());
                 }
@@ -236,7 +236,7 @@ namespace BasicFacebookFeatures
         //TODO: this function should update the pictures to the user
         private void OnSelectionAlbumChanged(object i_Sender, EventArgs i_E)
         {
-            m_FacebookService.LogManager[FaceBookAction.ActionType.ALBUM_VIEWED].Add(new FaceBookAction(DateTime.Now, false));
+            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.ALBUM_VIEWED].Add(new FaceBookAction(DateTime.Now, false));
 
             Album selectedAlbum = (Album)listBoxAlbums.SelectedItem;
             string DescriptionsOfPhotoList = "";
@@ -260,7 +260,7 @@ namespace BasicFacebookFeatures
         //TODO: Post
         private void OnPostButtonClicked(object sender, EventArgs e)
         {
-            m_FacebookService.LogManager[FaceBookAction.ActionType.POST_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
+            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.POST_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
             //   m_FacebookService.User.PostStatus("test1", "test2");
             m_FacebookService.AddNewLocalPost(textBoxPost.Text);
          this.loadPosts();
@@ -294,13 +294,13 @@ namespace BasicFacebookFeatures
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
-            m_FacebookService.LogManager[FaceBookAction.ActionType.REFRESH_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
+            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.REFRESH_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
             myRefresh();
         }
 
         private void signoutButton_Click(object sender, EventArgs e)
         {
-            m_FacebookService.LogManager[FaceBookAction.ActionType.LOGOUT_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
+            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.LOGOUT_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
             this.Close();
         }
 
@@ -316,7 +316,7 @@ namespace BasicFacebookFeatures
 
         private void loadNewProfile(User i_NewProfile)
         {
-            m_FacebookService.LogManager[FaceBookAction.ActionType.LOADED_DIFFERENT_PROFILE].Add(new FaceBookAction(DateTime.Now, false));
+            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.LOADED_DIFFERENT_PROFILE].Add(new FaceBookAction(DateTime.Now, false));
             m_FacebookService.InitCurrentProfile(i_NewProfile);
             myRefresh();
         }
@@ -347,7 +347,7 @@ namespace BasicFacebookFeatures
 
         private void settingsButton_Click(object sender, EventArgs e)
         {
-            m_FacebookService.LogManager[FaceBookAction.ActionType.SETTINGS_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
+            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.SETTINGS_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
         }
     }
 }

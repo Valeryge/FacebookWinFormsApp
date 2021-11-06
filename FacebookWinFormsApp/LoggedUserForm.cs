@@ -230,7 +230,7 @@ namespace BasicFacebookFeatures
                 listBoxAlbums.Items.Add(album);
             }
 
-            listBoxAlbums.SelectedValueChanged += OnSelectionAlbumChanged;
+           // listBoxAlbums.SelectedValueChanged += OnSelectionAlbumChanged;
         }
 
         //TODO: this function should update the pictures to the user
@@ -311,12 +311,18 @@ namespace BasicFacebookFeatures
 
         private void listBoxFriends_SelectedIndexChanged(object sender, EventArgs e)
         {
-            loadNewProfile((User)listBoxFriends.SelectedItem);
+            if (listBoxFriends.SelectedItem != null)
+            {
+                loadNewProfile((User)listBoxFriends.SelectedItem);
+            }
         }
 
         private void loadNewProfile(User i_NewProfile)
         {
-            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.LOADED_DIFFERENT_PROFILE].Add(new FaceBookAction(DateTime.Now, false));
+            if (i_NewProfile != m_FacebookService.LoggedUser)
+            {
+                m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.LOADED_DIFFERENT_PROFILE].Add(new FaceBookAction(DateTime.Now, false));
+            } 
             m_FacebookService.InitCurrentProfile(i_NewProfile);
             myRefresh();
         }
@@ -348,6 +354,19 @@ namespace BasicFacebookFeatures
         private void settingsButton_Click(object sender, EventArgs e)
         {
             m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.SETTINGS_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
+        }
+
+        private void listBoxAlbums_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AlbumForm albumForm = new AlbumForm((Album)listBoxAlbums.SelectedItem);
+            albumForm.FormClosed += albumForm_Closed;
+            this.Hide();
+            albumForm.Show();
+        }
+
+        private void albumForm_Closed(object sender, EventArgs e)
+        {
+            this.Show();
         }
     }
 }

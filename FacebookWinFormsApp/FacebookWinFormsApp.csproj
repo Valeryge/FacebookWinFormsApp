@@ -92,6 +92,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FaceBookAction.cs" />
+    <Compile Include="LogManager.cs" />
     <Compile Include="MyFacebookService.cs" />
     <Compile Include="ControlComponents\HorizontalBox.cs">
       <SubType>Component</SubType>

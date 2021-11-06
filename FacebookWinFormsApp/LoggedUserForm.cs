@@ -26,6 +26,8 @@ namespace BasicFacebookFeatures
 
         public LoggedUserForm(LoginResult i_LoginResult)
         {
+            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.LOGIN_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
+
             m_FacebookService.Init(i_LoginResult);
             k_PostsContainer = new VerticalBox(m_FacebookService.User.Posts.Count);
             this.InitializeComponent();
@@ -34,9 +36,28 @@ namespace BasicFacebookFeatures
 
         private void myInitializeComponent()
         {
-            loadToolbar();
-            loadProfile();
             this.Controls.Add(k_PostsContainer);
+            loadToolbar();
+            myRefresh();
+        }
+
+        private void myRefresh()
+        {
+            clearAllData();
+            loadProfile();
+            loadActions();
+        }
+
+        private void loadActions()
+        {
+            foreach (var actionType in m_FacebookService.LogManager.logCollection.Keys)
+            {
+                foreach (var singleAction in m_FacebookService.LogManager.logCollection[actionType])
+                {
+                    listBoxLatestActions.Items.Add("Action Type: " + actionType + " " + singleAction.ToString());
+                }
+            }
+        
         }
 
         private void loadToolbar()
@@ -61,11 +82,13 @@ namespace BasicFacebookFeatures
 
             k_PostsContainer.MaximumSize = new Size(500, 600);
             k_PostsContainer.Location = new Point(800, tableLayountPanelLibrary.Location.Y);  //better
-            //k_PostsContainer.Location = new Point(this.Location.X + 600, 210);
+           
             this.loadAlbums();
             this.loadLikedPages();
             this.loadFriends();
             this.loadPosts();
+
+           
         }
 
         private void loadLikedPages()
@@ -175,6 +198,7 @@ namespace BasicFacebookFeatures
 
             box.Controls.Add(localPost);
             k_PostsContainer.Controls.Add(box);
+            
         }
         }
 
@@ -212,10 +236,9 @@ namespace BasicFacebookFeatures
         //TODO: this function should update the pictures to the user
         private void OnSelectionAlbumChanged(object i_Sender, EventArgs i_E)
         {
+            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.ALBUM_VIEWED].Add(new FaceBookAction(DateTime.Now, false));
+
             Album selectedAlbum = (Album)listBoxAlbums.SelectedItem;
-
-            //     pictureBoxLoggedUserPicture.Image = selectedAlbum.CoverPhoto.ImageNormal;
-
             string DescriptionsOfPhotoList = "";
             foreach (Photo photo in selectedAlbum.Photos)
             {
@@ -237,8 +260,9 @@ namespace BasicFacebookFeatures
         //TODO: Post
         private void OnPostButtonClicked(object sender, EventArgs e)
         {
-         //   m_FacebookService.User.PostStatus("test1", "test2");
-         m_FacebookService.addNewLocalPost(textBoxPost.Text);
+            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.POST_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
+            //   m_FacebookService.User.PostStatus("test1", "test2");
+            m_FacebookService.AddNewLocalPost(textBoxPost.Text);
          this.loadPosts();
         }
 
@@ -270,11 +294,13 @@ namespace BasicFacebookFeatures
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
-
+            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.REFRESH_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
+            myRefresh();
         }
 
         private void signoutButton_Click(object sender, EventArgs e)
         {
+            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.LOGOUT_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
             this.Close();
         }
 
@@ -290,13 +316,14 @@ namespace BasicFacebookFeatures
 
         private void loadNewProfile(User i_NewProfile)
         {
+            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.LOADED_DIFFERENT_PROFILE].Add(new FaceBookAction(DateTime.Now, false));
             m_FacebookService.InitCurrentProfile(i_NewProfile);
-            clearAllData();
-            loadProfile();
+            myRefresh();
         }
 
         private void clearAllData()
         {
+            listBoxLatestActions.Items.Clear();
             listBoxAlbums.Items.Clear();
             listBoxFriends.Items.Clear();
             listBoxLikedPages.Items.Clear();
@@ -316,6 +343,11 @@ namespace BasicFacebookFeatures
         private void minimizedProfilePicture_MouseLeave(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Default;
+        }
+
+        private void settingsButton_Click(object sender, EventArgs e)
+        {
+            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.SETTINGS_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
         }
     }
 }

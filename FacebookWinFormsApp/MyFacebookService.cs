@@ -9,20 +9,37 @@ using System.Drawing;
 
 namespace BasicFacebookFeatures
 {
+
+    
     public class MyFacebookService
     {
+
+
+        private LogManager k_LogManager;
+
+        public LogManager LogManager
+        {
+            get => k_LogManager;
+            set => k_LogManager = value;
+        }
+
+        private Dictionary<User, List<LocalPost>> k_LocalAddedPosts;
         private LoginResult k_LoginResult;
         private User k_LoggedUser;
         private User m_CurrentProfileUser;
-        private Dictionary<User,List<LocalPost>> m_LocalAddedPosts = new Dictionary<User,List<LocalPost>>();
+        
 
         public Dictionary<User, List<LocalPost>> LocalAddedPosts
         {
-            get => m_LocalAddedPosts;
-            set => m_LocalAddedPosts = value;
+            get => k_LocalAddedPosts;
+            set => k_LocalAddedPosts = value;
         }
 
-
+        public MyFacebookService()
+        {
+            k_LogManager = new LogManager();
+            k_LocalAddedPosts = new Dictionary<User, List<LocalPost>>();
+        }
         public class LocalPost
         {
             private string k_Message;
@@ -48,7 +65,7 @@ namespace BasicFacebookFeatures
             set { m_CurrentProfileUser = value; }
         }
 
-        public MyFacebookService() { }
+       
 
         public void Init(LoginResult i_Result)
         {
@@ -63,7 +80,7 @@ namespace BasicFacebookFeatures
         }
 
 
-        public LocalPost addNewLocalPost(string i_Text)
+        public LocalPost AddNewLocalPost(string i_Text)
         {
             LocalPost lp = new LocalPost(i_Text);
             if (!this.LocalAddedPosts.ContainsKey(User))

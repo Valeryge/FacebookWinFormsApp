@@ -25,7 +25,9 @@ namespace BasicFacebookFeatures
             int currentX = 40;
             int currentY = 50;
 
-            this.Size = new Size(1500, 800);
+            albumNameLabel.Text = i_Album.Name;
+        
+            this.Size = new Size(1200, 700);
             this.AutoScroll = true;
             foreach (Photo photo in i_Album.Photos)
             {

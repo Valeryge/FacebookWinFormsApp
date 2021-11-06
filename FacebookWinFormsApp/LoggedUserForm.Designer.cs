@@ -123,7 +123,7 @@ namespace BasicFacebookFeatures
             this.toolstrip.Location = new System.Drawing.Point(0, 0);
             this.toolstrip.Name = "toolstrip";
             this.toolstrip.Padding = new System.Windows.Forms.Padding(2);
-            this.toolstrip.Size = new System.Drawing.Size(1440, 34);
+            this.toolstrip.Size = new System.Drawing.Size(1481, 43);
             this.toolstrip.TabIndex = 14;
             this.toolstrip.Text = "toolStrip1";
             // 
@@ -259,7 +259,7 @@ namespace BasicFacebookFeatures
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.listBoxLatestActions);
             this.panel4.Controls.Add(this.label5);
-            this.panel4.Location = new System.Drawing.Point(2, 396);
+            this.panel4.Location = new System.Drawing.Point(53, 569);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(736, 160);
@@ -270,19 +270,19 @@ namespace BasicFacebookFeatures
             this.listBoxLatestActions.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.listBoxLatestActions.FormattingEnabled = true;
             this.listBoxLatestActions.ItemHeight = 16;
-            this.listBoxLatestActions.Location = new System.Drawing.Point(0, 81);
+            this.listBoxLatestActions.Location = new System.Drawing.Point(0, 42);
             this.listBoxLatestActions.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxLatestActions.Name = "listBoxLatestActions";
-            this.listBoxLatestActions.Size = new System.Drawing.Size(918, 116);
+            this.listBoxLatestActions.Size = new System.Drawing.Size(734, 116);
             this.listBoxLatestActions.TabIndex = 3;
             // 
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 26);
+            this.label5.Location = new System.Drawing.Point(9, 21);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(215, 21);
+            this.label5.Size = new System.Drawing.Size(172, 17);
             this.label5.TabIndex = 4;
             this.label5.Text = "My Latest On-App Actions";
             // 
@@ -302,7 +302,7 @@ namespace BasicFacebookFeatures
             this.settingsButton.Image = ((System.Drawing.Image)(resources.GetObject("settingsButton.Image")));
             this.settingsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(80, 27);
+            this.settingsButton.Size = new System.Drawing.Size(80, 36);
             this.settingsButton.Text = "Settings";
             this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
@@ -341,7 +341,7 @@ namespace BasicFacebookFeatures
             // 
             // LoggedUserForm
             // 
-            this.ClientSize = new System.Drawing.Size(1440, 743);
+            this.ClientSize = new System.Drawing.Size(1185, 662);
             this.Controls.Add(this.tableLayountPanelLibrary);
             this.Controls.Add(this.toolstrip);
             this.Controls.Add(this.panel4);
@@ -349,6 +349,7 @@ namespace BasicFacebookFeatures
             this.Controls.Add(this.centralPanelArea);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "LoggedUserForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.toolstrip.ResumeLayout(false);
             this.toolstrip.PerformLayout();
             this.panel2.ResumeLayout(false);

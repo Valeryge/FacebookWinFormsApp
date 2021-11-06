@@ -69,7 +69,7 @@ namespace BasicFacebookFeatures
 
         private void myInitComponent()
         {
-            this.AutoSize = true;
+            this.Size = new Size(1200, 700);
             
         }
 

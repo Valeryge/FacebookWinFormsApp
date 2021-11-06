@@ -36,6 +36,7 @@ namespace BasicFacebookFeatures
 
         private void myInitializeComponent()
         {
+            this.Size = new Size(1200, 700);
             this.Controls.Add(k_PostsContainer);
             loadToolbar();
             myRefresh();

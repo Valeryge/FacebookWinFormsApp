@@ -41,10 +41,10 @@ namespace BasicFacebookFeatures
             this.buttonLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonLogin.FlatAppearance.BorderSize = 0;
             this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLogin.Location = new System.Drawing.Point(328, 180);
-            this.buttonLogin.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.buttonLogin.Location = new System.Drawing.Point(570, 301);
+            this.buttonLogin.Margin = new System.Windows.Forms.Padding(0);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(254, 50);
+            this.buttonLogin.Size = new System.Drawing.Size(378, 65);
             this.buttonLogin.TabIndex = 36;
             this.buttonLogin.UseVisualStyleBackColor = true;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
@@ -55,7 +55,7 @@ namespace BasicFacebookFeatures
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::BasicFacebookFeatures.Properties.Resources.facebook_reactions;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(900, 453);
+            this.ClientSize = new System.Drawing.Size(1185, 662);
             this.Controls.Add(this.buttonLogin);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "LoginForm";

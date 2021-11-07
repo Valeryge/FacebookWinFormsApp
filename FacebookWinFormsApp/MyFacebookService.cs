@@ -16,7 +16,7 @@ namespace BasicFacebookFeatures
 
 
         private LogManager k_LogManager;
-
+        
         public LogManager LogManager
         {
             get => k_LogManager;
@@ -25,9 +25,16 @@ namespace BasicFacebookFeatures
 
         private Dictionary<User, List<LocalPost>> k_LocalAddedPosts;
         private LoginResult k_LoginResult;
+
+        public LoginResult LoginResult
+        {
+            get => k_LoginResult;
+            set => k_LoginResult = value;
+        }
+
         private User k_LoggedUser;
         private User m_CurrentProfileUser;
-        
+
 
         public Dictionary<User, List<LocalPost>> LocalAddedPosts
         {

@@ -20,15 +20,16 @@ namespace BasicFacebookFeatures
 {
     public partial class LoggedUserForm : Form
     {
-        private MyFacebookService m_FacebookService = new MyFacebookService();
+        private MyFacebookService m_FacebookService;
         private readonly int k_ElementsInPostsList = 3;
         private readonly VerticalBox k_PostsContainer;
 
-        public LoggedUserForm(LoginResult i_LoginResult)
+        public LoggedUserForm(MyFacebookService i_FbService)
         {
-            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.LOGIN_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
+            m_FacebookService = i_FbService;
+            //m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.LOGIN_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
+          
 
-            m_FacebookService.Init(i_LoginResult);
             k_PostsContainer = new VerticalBox(m_FacebookService.User.Posts.Count);
             this.InitializeComponent();
             this.myInitializeComponent();
@@ -51,12 +52,17 @@ namespace BasicFacebookFeatures
 
         private void loadActions()
         {
-            foreach (var actionType in m_FacebookService.LogManager.logCollection.Keys)
+            // foreach (var actionType in m_FacebookService.LogManager.logCollection.Keys)
+            // {
+            //     foreach (var singleAction in m_FacebookService.LogManager.logCollection[actionType])
+            //     {
+            //         listBoxLatestActions.Items.Add("Action Type: " + actionType + " " + singleAction.ToString());
+            //     }
+            // }
+
+            foreach (FaceBookAction action in m_FacebookService.LogManager.ActionsList)
             {
-                foreach (var singleAction in m_FacebookService.LogManager.logCollection[actionType])
-                {
-                    listBoxLatestActions.Items.Add("Action Type: " + actionType + " " + singleAction.ToString());
-                }
+                listBoxLatestActions.Items.Add(action.ToString());
             }
         
         }
@@ -109,7 +115,8 @@ namespace BasicFacebookFeatures
         }
 
 
-    private void loadPosts()
+    //TODO: condition to if was today show time and write today, otherwise write date.
+        private void loadPosts()
     {
         // LinkedList<PictureBox> foundPictures = new LinkedList<PictureBox>();
         k_PostsContainer.Clear();
@@ -235,33 +242,34 @@ namespace BasicFacebookFeatures
         }
 
         //TODO: this function should update the pictures to the user
-        private void OnSelectionAlbumChanged(object i_Sender, EventArgs i_E)
-        {
-            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.ALBUM_VIEWED].Add(new FaceBookAction(DateTime.Now, false));
-
-            Album selectedAlbum = (Album)listBoxAlbums.SelectedItem;
-            string DescriptionsOfPhotoList = "";
-            foreach (Photo photo in selectedAlbum.Photos)
-            {
-                if (photo.Name == "")
-                {
-
-                }
-                else
-                {
-                    DescriptionsOfPhotoList += photo.Name;
-                    DescriptionsOfPhotoList += "\n";
-                }
-
-            }
-
-            MessageBox.Show("Exhibition(awkward): \n" + "The names of all the pictures:\n " + DescriptionsOfPhotoList);
-        }
+//         private void OnSelectionAlbumChanged(object i_Sender, EventArgs i_E)
+//         {
+// //            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.ALBUM_VIEWED].Add(new FaceBookAction(DateTime.Now, false));
+//
+//             Album selectedAlbum = (Album)listBoxAlbums.SelectedItem;
+//             string DescriptionsOfPhotoList = "";
+//             foreach (Photo photo in selectedAlbum.Photos)
+//             {
+//                 if (photo.Name == "")
+//                 {
+//
+//                 }
+//                 else
+//                 {
+//                     DescriptionsOfPhotoList += photo.Name;
+//                     DescriptionsOfPhotoList += "\n";
+//                 }
+//
+//             }
+//
+//             MessageBox.Show("Exhibition(awkward): \n" + "The names of all the pictures:\n " + DescriptionsOfPhotoList);
+//         }
      
         //TODO: Post
         private void OnPostButtonClicked(object sender, EventArgs e)
         {
-            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.POST_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
+            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.POST_CLICKED].Add(new FaceBookAction(DateTime.Now, false, FaceBookAction.ActionType.POST_CLICKED));
+            //m_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(DateTime.Now, false));
             //   m_FacebookService.User.PostStatus("test1", "test2");
             m_FacebookService.AddNewLocalPost(textBoxPost.Text);
          this.loadPosts();
@@ -295,13 +303,15 @@ namespace BasicFacebookFeatures
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
-            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.REFRESH_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
+            //m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.REFRESH_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
+            m_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(DateTime.Now, false, FaceBookAction.ActionType.REFRESH_CLICKED));
             myRefresh();
         }
 
-        private void signoutButton_Click(object sender, EventArgs e)
+        private void signOutButton_Click(object sender, EventArgs e)
         {
-            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.LOGOUT_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
+            // m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.LOGOUT_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
+            m_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(DateTime.Now, false, FaceBookAction.ActionType.LOGOUT_CLICKED));
             this.Close();
         }
 
@@ -315,15 +325,12 @@ namespace BasicFacebookFeatures
             if (listBoxFriends.SelectedItem != null)
             {
                 loadNewProfile((User)listBoxFriends.SelectedItem);
+                m_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(DateTime.Now, false, FaceBookAction.ActionType.LOADED_DIFFERENT_PROFILE));
             }
         }
 
         private void loadNewProfile(User i_NewProfile)
         {
-            if (i_NewProfile != m_FacebookService.LoggedUser)
-            {
-                m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.LOADED_DIFFERENT_PROFILE].Add(new FaceBookAction(DateTime.Now, false));
-            } 
             m_FacebookService.InitCurrentProfile(i_NewProfile);
             myRefresh();
         }
@@ -354,17 +361,28 @@ namespace BasicFacebookFeatures
 
         private void settingsButton_Click(object sender, EventArgs e)
         {
-            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.SETTINGS_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
+            //            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.SETTINGS_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
+            m_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(DateTime.Now, false, FaceBookAction.ActionType.SETTINGS_CLICKED));
+            SettingsForm settingsFrom = new SettingsForm(m_FacebookService.LogManager);
+            settingsFrom.FormClosed += settingsForm_Closed;
+            this.Hide();
+            settingsFrom.Show();
         }
 
         private void listBoxAlbums_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             AlbumForm albumForm = new AlbumForm((Album)listBoxAlbums.SelectedItem);
+            m_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(DateTime.Now, false, FaceBookAction.ActionType.ALBUM_VIEWED));
             albumForm.FormClosed += albumForm_Closed;
             this.Hide();
             albumForm.Show();
         }
 
+        private void settingsForm_Closed(object sender, EventArgs e)
+        {
+            this.Show();
+        }
         private void albumForm_Closed(object sender, EventArgs e)
         {
             this.Show();

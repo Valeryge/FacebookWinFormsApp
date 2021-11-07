@@ -44,5 +44,18 @@ namespace BasicFacebookFeatures
             }
 
         }
+
+        private void statisticsTab_Selected(object sender, TabControlEventArgs e)
+        {
+            loadStatistics();
+        }
+
+        private void loadStatistics()
+        {
+            foreach(FaceBookAction.ActionType type in Enum.GetValues(typeof(FaceBookAction.ActionType)))
+            {
+                this.actionTypeChart.Series["Activity Type"].Points.AddXY(type.ToString(), k_LogManager.GetActivityCountByType(type));
+            }
+        }
     }
 }

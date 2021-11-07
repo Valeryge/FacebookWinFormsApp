@@ -38,6 +38,9 @@ namespace BasicFacebookFeatures
             //var sortedDict = from entry in m_LogCollection orderby entry.Value ascending select entry;
         }
 
-        
+        public int GetActivityCountByType(FaceBookAction.ActionType i_ActionType)
+        {
+            return k_ActionsList.Where(action => action.Type == i_ActionType).Count();
+        }
     }
 }

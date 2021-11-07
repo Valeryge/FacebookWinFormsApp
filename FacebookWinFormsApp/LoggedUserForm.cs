@@ -64,7 +64,6 @@ namespace BasicFacebookFeatures
             {
                 listBoxLatestActions.Items.Add(action.ToString());
             }
-        
         }
 
         private void loadToolbar()
@@ -241,29 +240,7 @@ namespace BasicFacebookFeatures
            // listBoxAlbums.SelectedValueChanged += OnSelectionAlbumChanged;
         }
 
-        //TODO: this function should update the pictures to the user
-//         private void OnSelectionAlbumChanged(object i_Sender, EventArgs i_E)
-//         {
-// //            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.ALBUM_VIEWED].Add(new FaceBookAction(DateTime.Now, false));
-//
-//             Album selectedAlbum = (Album)listBoxAlbums.SelectedItem;
-//             string DescriptionsOfPhotoList = "";
-//             foreach (Photo photo in selectedAlbum.Photos)
-//             {
-//                 if (photo.Name == "")
-//                 {
-//
-//                 }
-//                 else
-//                 {
-//                     DescriptionsOfPhotoList += photo.Name;
-//                     DescriptionsOfPhotoList += "\n";
-//                 }
-//
-//             }
-//
-//             MessageBox.Show("Exhibition(awkward): \n" + "The names of all the pictures:\n " + DescriptionsOfPhotoList);
-//         }
+  
      
         //TODO: Post
         private void OnPostButtonClicked(object sender, EventArgs e)
@@ -275,31 +252,7 @@ namespace BasicFacebookFeatures
          this.loadPosts();
         }
 
-        private void onButtonTestClicked(object sender, EventArgs e)
-        {
-            User user = m_FacebookService.User;
-            // FacebookObjectCollection<FriendList> thisUsersFL = user.FriendLists;
-            FacebookObjectCollection<User> thisUsersFriends = user.Friends; //this also returns 0 friends
-            loadLikedPages();
-            loadFriends();
-            
-            FacebookObjectCollection<Post> thisUsersPosts = user.Posts;
-            //doesn't show comments on posts
-            //doesn't show the likes, there is however a property "LikedBy" with an error
-            //show links work
-            //shows message/description
-            //doesn't show place (maybe has no place?)
-            //created time works
-            //onlyway to get more data on the posts themselves
-            //doesn't show tagged users
-
-
-            FacebookObjectCollection<Post> thisUsersFeed = user.NewsFeed;
-            FacebookObjectCollection<Checkin> thisUsersCheckins = user.Checkins;
-            FacebookObjectCollection<Post> thisUsersWallPosts = user.WallPosts;
-
-            //my newsfeed = my checkins = my wallposts = my posts
-        }
+    
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
@@ -371,12 +324,18 @@ namespace BasicFacebookFeatures
 
         private void listBoxAlbums_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             AlbumForm albumForm = new AlbumForm((Album)listBoxAlbums.SelectedItem);
             m_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(DateTime.Now, false, FaceBookAction.ActionType.ALBUM_VIEWED));
-            albumForm.FormClosed += albumForm_Closed;
-            this.Hide();
-            albumForm.Show();
+            // albumForm.FormClosed += albumForm_Closed;
+            // this.Hide();
+            // albumForm.Show();
+            TabPage tp = new TabPage();
+            tp.Name = "test";
+            foreach (Control control in albumForm.Controls)
+            {
+                tp.Controls.Add(control);
+            }
+            tabControlMainApp.TabPages.Add(tp);
         }
 
         private void settingsForm_Closed(object sender, EventArgs e)

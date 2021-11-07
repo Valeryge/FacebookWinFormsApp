@@ -13,16 +13,19 @@ namespace BasicFacebookFeatures
 {
     public partial class LoginForm : Form
     {
-        
-        LoggedUserForm m_MainForm;
-       
+        private int k_CollectionLimit = 50;
+        private LoggedUserForm m_MainForm;
+        private readonly MyFacebookService k_MyFBServices;
         public LoginForm()
         {
            // initTablePanel(3);
             InitializeComponent();
+
+           
             myInitComponent();
 
-            FacebookWrapper.FacebookService.s_CollectionLimit = 100;
+            k_MyFBServices = new MyFacebookService();
+            FacebookWrapper.FacebookService.s_CollectionLimit = k_CollectionLimit;
 
        //     HorizontalBox box = new HorizontalBox(1);
          //   this.Controls.Add(box);
@@ -76,7 +79,8 @@ namespace BasicFacebookFeatures
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             Clipboard.SetText("design.patterns20cc"); /// the current password for Desig Patter
-            
+            k_MyFBServices.LogManager.ActionsList.Add(new FaceBookAction(DateTime.Now, false, FaceBookAction.ActionType.LOGIN_CLICKED));
+
             FacebookWrapper.LoginResult loginResult = FacebookService.Login(
                     "162373509365377",
                     "email",
@@ -94,13 +98,10 @@ namespace BasicFacebookFeatures
                     "user_posts",
                     "user_videos",
 
+                    "pages_manage_posts", 
+                    "pages_read_engagement", 
                     "pages_manage_posts",
-                  "pages_read_engagement",
-                  "pages_manage_posts", 
-    
 
-                   // "manage_pages" - doesn't work
-                    
                     "publish_to_groups"
                   //  "user_messenger_contact"
                     // "publish_pages"- doesn't work
@@ -109,7 +110,8 @@ namespace BasicFacebookFeatures
 
             if (!string.IsNullOrEmpty(loginResult.AccessToken))
             {
-                m_MainForm = new LoggedUserForm(loginResult);
+                k_MyFBServices.Init(loginResult);
+                m_MainForm = new LoggedUserForm(k_MyFBServices);
                 this.Hide();
                 m_MainForm.Closed += mainForm_Closed;
                 m_MainForm.Show();

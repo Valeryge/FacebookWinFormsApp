@@ -22,6 +22,7 @@ namespace BasicFacebookFeatures
 
         private void myInitializeComponent(Album i_Album)
         {
+            this.Padding = new Padding(10);
             int currentX = 40;
             int currentY = 50;
 
@@ -37,7 +38,9 @@ namespace BasicFacebookFeatures
                 pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
                 pictureBox.Size = new Size(300, 300);
                 pictureBox.Location = new Point(currentX, currentY);
+
                 new ToolTip().SetToolTip(pictureBox, buildPhotoDescription(photo));
+
                 if (currentX + 300 > this.Width)
                 {
                     currentX = 40;
@@ -58,6 +61,10 @@ namespace BasicFacebookFeatures
             if (!string.IsNullOrEmpty(i_Photo.Name))
             {
                 description.AppendLine("Name: " + i_Photo.Name);
+            }
+            else
+            {
+                description.AppendLine("Unnamed photo");
             }
             description.AppendLine("Date: " + i_Photo.CreatedTime);
             description.AppendLine("Liked by: " + getStringOfUsers(i_Photo.LikedBy));
@@ -93,5 +100,7 @@ namespace BasicFacebookFeatures
         {
             this.Close();
         }
+
+  
     }
 }

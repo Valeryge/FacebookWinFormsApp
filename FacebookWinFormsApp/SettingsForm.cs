@@ -16,7 +16,7 @@ namespace BasicFacebookFeatures
         public SettingsForm(LogManager i_LogManager)
         {
             this.k_LogManager = i_LogManager;
-            //k_LogManager.ActionsList.Add(new FaceBookAction(DateTime.Now, false, FaceBookAction.ActionType.SETTINGS_CLICKED));
+            //k_LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.SETTINGS_CLICKED));
           
             InitializeComponent();
             myInitComponents();

@@ -79,7 +79,7 @@ namespace BasicFacebookFeatures
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             Clipboard.SetText("design.patterns20cc"); /// the current password for Desig Patter
-            k_MyFBServices.LogManager.ActionsList.Add(new FaceBookAction(DateTime.Now, false, FaceBookAction.ActionType.LOGIN_CLICKED));
+            k_MyFBServices.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.LOGIN_CLICKED));
 
             FacebookWrapper.LoginResult loginResult = FacebookService.Login(
                     "162373509365377",

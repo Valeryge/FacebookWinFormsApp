@@ -18,8 +18,10 @@ using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures
 {
+    
     public partial class LoggedUserForm : Form
     {
+        
         private MyFacebookService m_FacebookService;
         private readonly int k_ElementsInPostsList = 3;
         private readonly VerticalBox k_PostsContainer;
@@ -38,7 +40,7 @@ namespace BasicFacebookFeatures
         private void myInitializeComponent()
         {
             this.Size = new Size(1200, 700);
-            this.Controls.Add(k_PostsContainer);
+            tabInitPage.Controls.Add(k_PostsContainer);
             loadToolbar();
             myRefresh();
         }
@@ -202,6 +204,8 @@ namespace BasicFacebookFeatures
                 Label localPost = new Label();
                 localPost.Text = localAddedPost.Message;
 
+                Post post = new Post();
+                
                 box.Controls.Add(localPost);
                 k_PostsContainer.Controls.Add(box);
 
@@ -245,32 +249,25 @@ namespace BasicFacebookFeatures
         private void OnPostButtonClicked(object sender, EventArgs e)
         {
             m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.POST_CLICKED].Add(new FaceBookAction(FaceBookAction.ActionType.POST_CLICKED));
-            //m_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(DateTime.Now, false));
-            //   m_FacebookService.User.PostStatus("test1", "test2");
             m_FacebookService.AddNewLocalPost(textBoxPost.Text);
             this.loadPosts();
         }
-
+         
 
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
-            //m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.REFRESH_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
             m_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.REFRESH_CLICKED));
             myRefresh();
         }
 
         private void signOutButton_Click(object sender, EventArgs e)
         {
-            // m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.LOGOUT_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
             m_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.LOGOUT_CLICKED));
             this.Close();
         }
 
-        private void textBoxPost_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+ 
 
         private void listBoxFriends_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -313,7 +310,6 @@ namespace BasicFacebookFeatures
 
         private void settingsButton_Click(object sender, EventArgs e)
         {
-            //            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.SETTINGS_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
             m_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.SETTINGS_CLICKED));
             SettingsForm settingsFrom = new SettingsForm(m_FacebookService.LogManager);
             settingsFrom.FormClosed += settingsForm_Closed;
@@ -322,6 +318,11 @@ namespace BasicFacebookFeatures
         }
 
         private void listBoxAlbums_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fetchAlbumsWindow();
+        }
+
+        private void fetchAlbumsWindow()
         {
             AlbumForm albumForm = new AlbumForm((Album)listBoxAlbums.SelectedItem);
             m_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.ALBUM_VIEWED));

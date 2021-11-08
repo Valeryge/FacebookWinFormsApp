@@ -179,6 +179,15 @@
   <ItemGroup>
     <None Include="Resources\back.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Commercials\commercial1.png" />
+    <Content Include="Resources\Commercials\commercial2.PNG" />
+    <Content Include="Resources\Commercials\commercial3.PNG" />
+    <Content Include="Resources\Commercials\commercial4.PNG" />
+    <Content Include="Resources\Commercials\commercial5.PNG" />
+    <Content Include="Resources\Commercials\commercial6.PNG" />
+    <Content Include="Resources\Commercials\commercial7.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -7,15 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FacebookWrapper;
+using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures
 {
     public partial class SettingsForm : Form
     {
         private LogManager k_LogManager;
-        public SettingsForm(LogManager i_LogManager)
+        private MyFacebookService k_MyFacebookService;
+
+        public SettingsForm(MyFacebookService i_MyFacebookService)
         {
-            this.k_LogManager = i_LogManager;
+            k_LogManager = i_MyFacebookService.LogManager;
+            k_MyFacebookService = i_MyFacebookService;
+            
             //k_LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.SETTINGS_CLICKED));
           
             InitializeComponent();
@@ -43,6 +49,42 @@ namespace BasicFacebookFeatures
 
             }
 
+        }
+
+        private void friendsTab_Selected(object sender, TabControlEventArgs e)
+        {
+            loadPotentialFriends();
+        }
+
+        private void loadPotentialFriends()
+        {
+            int currentX = 40;
+            int currentY = 50;
+
+            this.Size = new Size(1200, 700);
+            this.AutoScroll = true;
+            foreach (User suggestion in k_MyFacebookService.GetFriendSuggestions().Take(10))
+            {
+                Button pictureBox = new Button();
+
+                pictureBox.Image = suggestion.ImageNormal;
+               // pictureBox.Image. = PictureBoxSizeMode.Zoom;
+                pictureBox.Size = new Size(300, 300);
+                pictureBox.Text = suggestion.Name;
+                pictureBox.Location = new Point(currentX, currentY);
+
+                if (currentX + 300 > this.Width)
+                {
+                    currentX = 40;
+                    currentY += 300;
+                }
+                else
+                {
+                    currentX += 300;
+                }
+                this.Controls.Add(pictureBox);
+            }
+           
         }
 
         private void statisticsTab_Selected(object sender, TabControlEventArgs e)

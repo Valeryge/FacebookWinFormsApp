@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using CefSharp.DevTools.DOM;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
+using System.Threading;
 
 namespace BasicFacebookFeatures
 {
@@ -43,6 +44,28 @@ namespace BasicFacebookFeatures
             tabInitPage.Controls.Add(k_PostsContainer);
             loadToolbar();
             myRefresh();
+        }
+
+        private void initNotifications()
+        {
+            System.Windows.Forms.Timer notificationTimer = new System.Windows.Forms.Timer();
+            notificationTimer.Tick += Timer_Tick;
+            notificationTimer.Interval = 10000;
+            notificationTimer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            notification.Text = m_FacebookService.GetNotification();
+            notification.Visible = true;
+            Task.Run(() =>
+            {
+                Thread.Sleep(2000);
+                this.Invoke(new Action(() =>
+                {
+                    notification.Visible = false;
+                }));
+            });
         }
 
         private void myRefresh()
@@ -311,7 +334,7 @@ namespace BasicFacebookFeatures
         private void settingsButton_Click(object sender, EventArgs e)
         {
             m_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.SETTINGS_CLICKED));
-            SettingsForm settingsFrom = new SettingsForm(m_FacebookService.LogManager);
+            SettingsForm settingsFrom = new SettingsForm(m_FacebookService);
             settingsFrom.FormClosed += settingsForm_Closed;
             this.Hide();
             settingsFrom.Show();
@@ -346,6 +369,29 @@ namespace BasicFacebookFeatures
         private void albumForm_Closed(object sender, EventArgs e)
         {
             this.Show();
+        }
+
+        private void LoggedUserForm_Load(object sender, EventArgs e)
+        {
+            initNotifications();
+            System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
+            timer1.Tick += Timer1_Tick;
+            timer1.Interval = 10000;
+            timer1.Start();
+            showCommercial();
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            showCommercial();
+        }
+
+        private void showCommercial()
+        {
+            string runningPath = System.AppDomain.CurrentDomain.BaseDirectory;
+            List<string> files = new List<string>(Directory.GetFiles(String.Format("{0}Resources/Commercials/", Path.GetFullPath(Path.Combine(runningPath, @"..\..\..\")))));
+            string File = files.OrderBy(s => Guid.NewGuid()).First();
+            pictureBoxCommercial.Load(File);
         }
     }
 }

@@ -80,8 +80,9 @@ namespace BasicFacebookFeatures
         {
             Clipboard.SetText("design.patterns20cc"); /// the current password for Desig Patter
             k_MyFBServices.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.LOGIN_CLICKED));
-
-            FacebookWrapper.LoginResult loginResult = FacebookService.Login(
+            //TODO: change back to login
+            FacebookWrapper.LoginResult loginResult = FacebookService.Connect("EAACTrYdYvoEBAEGE204BTL51O4sP0guav6s1Y0h7KZCptt5lAd5o31G226SKhvsKwOvFbdek3I4vVqc7jZCzM2e75m9BwmX7ZABS8eGimqpKZB2ZBXRRwvmZAQZBEQOpeEYexqSQLARf9YVMb6eIB4gkpJZBFlD6feDQn6tYP8mLlwZDZD");
+      /*      FacebookWrapper.LoginResult loginResult = FacebookService.Login(
                     "162373509365377",
                     "email",
                     "public_profile",
@@ -102,11 +103,11 @@ namespace BasicFacebookFeatures
                     "pages_read_engagement", 
                     "pages_manage_posts",
 
-                    "publish_to_groups"
+                    "publish_to_groups" 
                   //  "user_messenger_contact"
                     // "publish_pages"- doesn't work
                     //  "can_post" taken from developers.facebook.com - should work but doesn't.
-                    );
+                    ); */
 
             if (!string.IsNullOrEmpty(loginResult.AccessToken))
             {
@@ -119,7 +120,7 @@ namespace BasicFacebookFeatures
             else
             {
                 MessageBox.Show(loginResult.ErrorMessage, "Login Failed");
-            }
+            } 
         }
 
         private void mainForm_Closed(object sender, EventArgs e)

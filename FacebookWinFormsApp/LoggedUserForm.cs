@@ -374,14 +374,17 @@ namespace BasicFacebookFeatures
         private void LoggedUserForm_Load(object sender, EventArgs e)
         {
            // initNotifications();
+         // initCommercials();
+        }
+
+        private void initCommercials()
+        {
             System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
             timer1.Tick += Timer1_Tick;
             timer1.Interval = 10000;
             timer1.Start();
             showCommercial();
         }
-
-
 
         private void Timer1_Tick(object sender, EventArgs e)
         {

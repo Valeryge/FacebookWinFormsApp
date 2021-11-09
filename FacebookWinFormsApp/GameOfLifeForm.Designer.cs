@@ -37,7 +37,7 @@ namespace BasicFacebookFeatures
             this.TableLayoutGameOfLife.ColumnCount = 2;
             this.TableLayoutGameOfLife.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.TableLayoutGameOfLife.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableLayoutGameOfLife.Location = new System.Drawing.Point(0, 0);
+            this.TableLayoutGameOfLife.Location = new System.Drawing.Point(2, 0);
             this.TableLayoutGameOfLife.Name = "TableLayoutGameOfLife";
             this.TableLayoutGameOfLife.RowCount = 2;
             this.TableLayoutGameOfLife.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));

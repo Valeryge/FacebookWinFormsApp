@@ -373,13 +373,15 @@ namespace BasicFacebookFeatures
 
         private void LoggedUserForm_Load(object sender, EventArgs e)
         {
-            initNotifications();
+           // initNotifications();
             System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
             timer1.Tick += Timer1_Tick;
             timer1.Interval = 10000;
             timer1.Start();
             showCommercial();
         }
+
+
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
@@ -392,6 +394,19 @@ namespace BasicFacebookFeatures
             List<string> files = new List<string>(Directory.GetFiles(String.Format("{0}Resources/Commercials/", Path.GetFullPath(Path.Combine(runningPath, @"..\..\..\")))));
             string File = files.OrderBy(s => Guid.NewGuid()).First();
             pictureBoxCommercial.Load(File);
+        }
+
+        private void gameOfLifeButton_Click(object sender, EventArgs e)
+        {
+            GameOfLifeForm gameForm = new GameOfLifeForm();
+            this.Hide();
+            gameForm.FormClosed += GameForm_FormClosed;
+            gameForm.Show();
+        }
+
+        private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
         }
     }
 }

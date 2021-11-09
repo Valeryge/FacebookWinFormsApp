@@ -50,7 +50,7 @@ namespace BasicFacebookFeatures
         {
             System.Windows.Forms.Timer notificationTimer = new System.Windows.Forms.Timer();
             notificationTimer.Tick += Timer_Tick;
-            notificationTimer.Interval = 10000;
+            notificationTimer.Interval = 40000;
             notificationTimer.Start();
         }
 
@@ -373,8 +373,8 @@ namespace BasicFacebookFeatures
 
         private void LoggedUserForm_Load(object sender, EventArgs e)
         {
-           // initNotifications();
-         // initCommercials();
+            initNotifications();
+            initCommercials();
         }
 
         private void initCommercials()
@@ -401,7 +401,7 @@ namespace BasicFacebookFeatures
 
         private void gameOfLifeButton_Click(object sender, EventArgs e)
         {
-            GameOfLifeForm gameForm = new GameOfLifeForm();
+            GameOfLifeForm gameForm = new GameOfLifeForm(m_FacebookService);
             this.Hide();
             gameForm.FormClosed += GameForm_FormClosed;
             gameForm.Show();

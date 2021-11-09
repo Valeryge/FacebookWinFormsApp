@@ -34,10 +34,13 @@ namespace BasicFacebookFeatures
             // 
             // TableLayoutGameOfLife
             // 
+            this.TableLayoutGameOfLife.BackColor = System.Drawing.Color.Black;
+            this.TableLayoutGameOfLife.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.TableLayoutGameOfLife.ColumnCount = 2;
             this.TableLayoutGameOfLife.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.TableLayoutGameOfLife.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.TableLayoutGameOfLife.Location = new System.Drawing.Point(2, 0);
+            this.TableLayoutGameOfLife.Margin = new System.Windows.Forms.Padding(0);
             this.TableLayoutGameOfLife.Name = "TableLayoutGameOfLife";
             this.TableLayoutGameOfLife.RowCount = 2;
             this.TableLayoutGameOfLife.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -53,6 +56,7 @@ namespace BasicFacebookFeatures
             this.Controls.Add(this.TableLayoutGameOfLife);
             this.Name = "GameOfLifeForm";
             this.Text = "GameOfLifeForm";
+            this.Load += new System.EventHandler(this.NextGeneration_Load);
             this.ResumeLayout(false);
 
         }

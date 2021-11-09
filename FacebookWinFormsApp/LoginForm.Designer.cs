@@ -69,7 +69,6 @@ namespace BasicFacebookFeatures
 		#endregion
 
 		private System.Windows.Forms.Button buttonLogin;
-        private Panel screen;
     }
 }
 

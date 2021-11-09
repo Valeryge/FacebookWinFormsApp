@@ -31,6 +31,17 @@ namespace BasicFacebookFeatures
         //TODO: condition to if was today show time and write today, otherwise write date.
         private void myInitComponents()
         {
+            List<string> titles = new List<string> { "Time", "Action Type", "Status" }; 
+
+            foreach (string title in titles)
+            {
+                Label titleLabel = new Label();
+                titleLabel.ForeColor = Color.White;
+                titleLabel.BackColor = Color.CornflowerBlue;
+                titleLabel.Text = title;
+                tableLayoutRecentActions.Controls.Add(titleLabel);
+            }
+
             tableLayoutRecentActions.RowCount = k_LogManager.ActionsList.Count;
             foreach (FaceBookAction fbAction in k_LogManager.ActionsList)
             {
@@ -41,7 +52,7 @@ namespace BasicFacebookFeatures
                 labelType.Text = fbAction.Type.ToString();
 
                 Label labelErrorStatus = new Label();
-                labelErrorStatus.Text = fbAction.ErrorStatus.ToString();
+                labelErrorStatus.Text = fbAction.ErrorStatus ? "Failed" : "Completed Successfully";
 
                 tableLayoutRecentActions.Controls.Add(labelTime);
                 tableLayoutRecentActions.Controls.Add(labelType);

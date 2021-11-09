@@ -29,9 +29,9 @@ namespace BasicFacebookFeatures
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabPersonalData = new System.Windows.Forms.TabPage();
             this.tabPageLog = new System.Windows.Forms.TabPage();
             this.statisticsTabControl = new System.Windows.Forms.TabControl();
@@ -101,6 +101,7 @@ namespace BasicFacebookFeatures
             // 
             // tableLayoutRecentActions
             // 
+            this.tableLayoutRecentActions.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble;
             this.tableLayoutRecentActions.ColumnCount = 3;
             this.tableLayoutRecentActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutRecentActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -147,19 +148,19 @@ namespace BasicFacebookFeatures
             // 
             // actionTypeChart
             // 
-            chartArea3.Name = "ChartArea1";
-            this.actionTypeChart.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.actionTypeChart.Legends.Add(legend3);
-            this.actionTypeChart.Location = new System.Drawing.Point(4, 4);
+            chartArea2.Name = "ChartArea1";
+            this.actionTypeChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.actionTypeChart.Legends.Add(legend2);
+            this.actionTypeChart.Location = new System.Drawing.Point(3, 3);
             this.actionTypeChart.Name = "actionTypeChart";
-            series3.ChartArea = "ChartArea1";
-            series3.EmptyPointStyle.IsValueShownAsLabel = true;
-            series3.IsValueShownAsLabel = true;
-            series3.Legend = "Legend1";
-            series3.Name = "Activity Type";
-            this.actionTypeChart.Series.Add(series3);
-            this.actionTypeChart.Size = new System.Drawing.Size(720, 288);
+            series2.ChartArea = "ChartArea1";
+            series2.EmptyPointStyle.IsValueShownAsLabel = true;
+            series2.IsValueShownAsLabel = true;
+            series2.Legend = "Legend1";
+            series2.Name = "Activity Type";
+            this.actionTypeChart.Series.Add(series2);
+            this.actionTypeChart.Size = new System.Drawing.Size(576, 230);
             this.actionTypeChart.TabIndex = 1;
             this.actionTypeChart.Text = "chart1";
             // 
@@ -173,7 +174,7 @@ namespace BasicFacebookFeatures
             this.friendsTab.Margin = new System.Windows.Forms.Padding(4);
             this.friendsTab.Name = "friendsTab";
             this.friendsTab.SelectedIndex = 0;
-            this.friendsTab.Size = new System.Drawing.Size(1485, 661);
+            this.friendsTab.Size = new System.Drawing.Size(1485, 662);
             this.friendsTab.TabIndex = 0;
             this.friendsTab.Selected += new System.Windows.Forms.TabControlEventHandler(this.friendsTab_Selected);
             // 
@@ -182,7 +183,7 @@ namespace BasicFacebookFeatures
             this.friendsTabPage.Location = new System.Drawing.Point(4, 25);
             this.friendsTabPage.Name = "friendsTabPage";
             this.friendsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.friendsTabPage.Size = new System.Drawing.Size(1477, 632);
+            this.friendsTabPage.Size = new System.Drawing.Size(1477, 633);
             this.friendsTabPage.TabIndex = 2;
             this.friendsTabPage.Text = "Friend Suggestions";
             this.friendsTabPage.UseVisualStyleBackColor = true;
@@ -191,7 +192,7 @@ namespace BasicFacebookFeatures
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1188, 529);
+            this.ClientSize = new System.Drawing.Size(1485, 662);
             this.Controls.Add(this.friendsTab);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SettingsForm";

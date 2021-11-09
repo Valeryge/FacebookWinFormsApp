@@ -174,5 +174,13 @@ namespace BasicFacebookFeatures
 
             return k_LoggedUser.Friends[r].Name;
         }
+
+        public Image GetRandomFriendImage()
+        {
+            Random rnd = new Random();
+            int r = rnd.Next(k_LoggedUser.Friends.Count);
+
+            return k_LoggedUser.Friends[r].ImageLarge;
+        }
     }
 }

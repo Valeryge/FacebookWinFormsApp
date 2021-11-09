@@ -12,9 +12,12 @@ namespace BasicFacebookFeatures
 {
     public partial class GameOfLifeForm : Form
     {
-        public GameOfLifeForm()
+        private MyFacebookService k_FacebookService;
+
+        public GameOfLifeForm(MyFacebookService i_FacebookService)
         {
             k_Engine = new GameEngine(k_GameRows, k_GameColumns, k_GameMatrixModel1);
+            k_FacebookService = i_FacebookService;
             InitializeComponent();
             myInitComponents();
         }
@@ -24,6 +27,7 @@ namespace BasicFacebookFeatures
             TableLayoutGameOfLife.RowCount = k_GameRows;
             TableLayoutGameOfLife.ColumnCount = k_GameColumns;
             TableLayoutGameOfLife.Size = new Size(k_CellLength * k_GameRows, k_CellLength * k_GameColumns);
+            TableLayoutGameOfLife.BackgroundImage = k_FacebookService.GetRandomFriendImage();
             // Photo gamePhotos = FaceBookServices.getPhotos();
             //GridTemplateNum1 gt = k_Engine.
             createCellButtons();
@@ -53,7 +57,7 @@ namespace BasicFacebookFeatures
 
                             Padding = new Padding(0),
                             Margin = new Padding(0),
-                            ForeColor = Color.Gray
+                            ForeColor = Color.Black
                         }, columIndex, rowsIndex);
 
                     }
@@ -81,14 +85,14 @@ namespace BasicFacebookFeatures
                             //      Button currButton = TableLayoutGameOfLife.GetControlFromPosition(i, j) as Button;
 
                             // TableLayoutGameOfLife.GetControlFromPosition(colIndex, rowIndex).ForeColor = Color.Yellow;
-                            TableLayoutGameOfLife.GetControlFromPosition(colIndex, rowIndex).BackColor = Color.Yellow;
+                            TableLayoutGameOfLife.GetControlFromPosition(colIndex, rowIndex).Visible = false;
                             //    test();
 
                         }
                         else
                         {
                             // TableLayoutGameOfLife.GetControlFromPosition(colIndex, rowIndex).ForeColor = Color.Gray;
-                            TableLayoutGameOfLife.GetControlFromPosition(colIndex, rowIndex).BackColor = Color.Gray;
+                            TableLayoutGameOfLife.GetControlFromPosition(colIndex, rowIndex).Visible = true;
                         }
                 }
             }
@@ -169,6 +173,5 @@ namespace BasicFacebookFeatures
 
 
         };
-
     }
 }

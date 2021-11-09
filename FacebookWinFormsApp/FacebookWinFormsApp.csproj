@@ -100,6 +100,14 @@
     <Compile Include="AlbumForm.Designer.cs">
       <DependentUpon>AlbumForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameEngine.cs" />
+    <Compile Include="GameOfLifeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GameOfLifeForm.Designer.cs">
+      <DependentUpon>GameOfLifeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GridTemplate.cs" />
     <Compile Include="LogManager.cs" />
     <Compile Include="MyFacebookService.cs" />
     <Compile Include="ControlComponents\HorizontalBox.cs">
@@ -133,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ControlComponents\HorizontalBox.resx">
       <DependentUpon>HorizontalBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GameOfLifeForm.resx">
+      <DependentUpon>GameOfLifeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoggedUserForm.resx">
       <DependentUpon>LoggedUserForm.cs</DependentUpon>

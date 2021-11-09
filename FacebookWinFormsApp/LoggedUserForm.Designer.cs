@@ -38,11 +38,14 @@ namespace BasicFacebookFeatures
             this.refreshButton = new System.Windows.Forms.ToolStripButton();
             this.signoutButton = new System.Windows.Forms.ToolStripButton();
             this.minimizedProfilePicture = new System.Windows.Forms.ToolStripLabel();
+            this.gameOfLifeButton = new System.Windows.Forms.ToolStripButton();
             this.panel4 = new System.Windows.Forms.Panel();
             this.listBoxLatestActions = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tabControlMainApp = new System.Windows.Forms.TabControl();
             this.tabInitPage = new System.Windows.Forms.TabPage();
+            this.notification = new System.Windows.Forms.Button();
+            this.pictureBoxCommercial = new System.Windows.Forms.PictureBox();
             this.tableLayountPanelLibrary = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -59,19 +62,17 @@ namespace BasicFacebookFeatures
             this.textBoxPost = new System.Windows.Forms.RichTextBox();
             this.buttonPost = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.pictureBoxCommercial = new System.Windows.Forms.PictureBox();
-            this.notification = new System.Windows.Forms.Button();
             this.toolstrip.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tabControlMainApp.SuspendLayout();
             this.tabInitPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCommercial)).BeginInit();
             this.tableLayountPanelLibrary.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.centralPanelArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoggedUserPicture)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCommercial)).BeginInit();
             this.SuspendLayout();
             // 
             // toolstrip
@@ -85,7 +86,8 @@ namespace BasicFacebookFeatures
             this.settingsButton,
             this.refreshButton,
             this.signoutButton,
-            this.minimizedProfilePicture});
+            this.minimizedProfilePicture,
+            this.gameOfLifeButton});
             this.toolstrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.toolstrip.Location = new System.Drawing.Point(0, 0);
             this.toolstrip.Name = "toolstrip";
@@ -150,6 +152,17 @@ namespace BasicFacebookFeatures
             this.minimizedProfilePicture.MouseLeave += new System.EventHandler(this.minimizedProfilePicture_MouseLeave);
             this.minimizedProfilePicture.MouseHover += new System.EventHandler(this.minimizedProfilePicture_MouseHover);
             // 
+            // gameOfLifeButton
+            // 
+            this.gameOfLifeButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.gameOfLifeButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.gameOfLifeButton.Image = ((System.Drawing.Image)(resources.GetObject("gameOfLifeButton.Image")));
+            this.gameOfLifeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.gameOfLifeButton.Name = "gameOfLifeButton";
+            this.gameOfLifeButton.Size = new System.Drawing.Size(117, 27);
+            this.gameOfLifeButton.Text = "Game of Life";
+            this.gameOfLifeButton.Click += new System.EventHandler(this.gameOfLifeButton_Click);
+            // 
             // panel4
             // 
             this.panel4.AutoScroll = true;
@@ -177,7 +190,7 @@ namespace BasicFacebookFeatures
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 21);
+            this.label5.Location = new System.Drawing.Point(11, 26);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(172, 17);
             this.label5.TabIndex = 4;
@@ -208,6 +221,27 @@ namespace BasicFacebookFeatures
             this.tabInitPage.TabIndex = 0;
             this.tabInitPage.Text = "tabPage1";
             this.tabInitPage.UseVisualStyleBackColor = true;
+            // 
+            // notification
+            // 
+            this.notification.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.notification.Location = new System.Drawing.Point(961, -22);
+            this.notification.Name = "notification";
+            this.notification.Size = new System.Drawing.Size(213, 77);
+            this.notification.TabIndex = 23;
+            this.notification.Text = "notify";
+            this.notification.UseVisualStyleBackColor = false;
+            this.notification.Visible = false;
+            // 
+            // pictureBoxCommercial
+            // 
+            this.pictureBoxCommercial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxCommercial.Location = new System.Drawing.Point(0, 446);
+            this.pictureBoxCommercial.Name = "pictureBoxCommercial";
+            this.pictureBoxCommercial.Size = new System.Drawing.Size(180, 153);
+            this.pictureBoxCommercial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxCommercial.TabIndex = 22;
+            this.pictureBoxCommercial.TabStop = false;
             // 
             // tableLayountPanelLibrary
             // 
@@ -253,10 +287,10 @@ namespace BasicFacebookFeatures
             this.listBoxAlbums.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.listBoxAlbums.FormattingEnabled = true;
             this.listBoxAlbums.ItemHeight = 16;
-            this.listBoxAlbums.Location = new System.Drawing.Point(0, 58);
+            this.listBoxAlbums.Location = new System.Drawing.Point(0, 42);
             this.listBoxAlbums.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxAlbums.Name = "listBoxAlbums";
-            this.listBoxAlbums.Size = new System.Drawing.Size(157, 100);
+            this.listBoxAlbums.Size = new System.Drawing.Size(157, 116);
             this.listBoxAlbums.TabIndex = 3;
             this.listBoxAlbums.SelectedIndexChanged += new System.EventHandler(this.listBoxAlbums_SelectedIndexChanged);
             // 
@@ -286,10 +320,10 @@ namespace BasicFacebookFeatures
             this.listBoxFriends.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.listBoxFriends.FormattingEnabled = true;
             this.listBoxFriends.ItemHeight = 16;
-            this.listBoxFriends.Location = new System.Drawing.Point(0, 58);
+            this.listBoxFriends.Location = new System.Drawing.Point(0, 42);
             this.listBoxFriends.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxFriends.Name = "listBoxFriends";
-            this.listBoxFriends.Size = new System.Drawing.Size(157, 100);
+            this.listBoxFriends.Size = new System.Drawing.Size(157, 116);
             this.listBoxFriends.TabIndex = 3;
             // 
             // panel3
@@ -318,10 +352,10 @@ namespace BasicFacebookFeatures
             this.listBoxLikedPages.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.listBoxLikedPages.FormattingEnabled = true;
             this.listBoxLikedPages.ItemHeight = 16;
-            this.listBoxLikedPages.Location = new System.Drawing.Point(0, 57);
+            this.listBoxLikedPages.Location = new System.Drawing.Point(0, 41);
             this.listBoxLikedPages.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxLikedPages.Name = "listBoxLikedPages";
-            this.listBoxLikedPages.Size = new System.Drawing.Size(157, 100);
+            this.listBoxLikedPages.Size = new System.Drawing.Size(157, 116);
             this.listBoxLikedPages.TabIndex = 3;
             // 
             // labelLoggedUserName
@@ -376,31 +410,10 @@ namespace BasicFacebookFeatures
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1177, 603);
+            this.tabPage2.Size = new System.Drawing.Size(1177, 599);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // pictureBoxCommercial
-            // 
-            this.pictureBoxCommercial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxCommercial.Location = new System.Drawing.Point(0, 446);
-            this.pictureBoxCommercial.Name = "pictureBoxCommercial";
-            this.pictureBoxCommercial.Size = new System.Drawing.Size(180, 153);
-            this.pictureBoxCommercial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxCommercial.TabIndex = 22;
-            this.pictureBoxCommercial.TabStop = false;
-            // 
-            // notification
-            // 
-            this.notification.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.notification.Location = new System.Drawing.Point(961, -22);
-            this.notification.Name = "notification";
-            this.notification.Size = new System.Drawing.Size(213, 77);
-            this.notification.TabIndex = 23;
-            this.notification.Text = "notify";
-            this.notification.UseVisualStyleBackColor = false;
-            this.notification.Visible = false;
             // 
             // LoggedUserForm
             // 
@@ -419,6 +432,7 @@ namespace BasicFacebookFeatures
             this.tabControlMainApp.ResumeLayout(false);
             this.tabInitPage.ResumeLayout(false);
             this.tabInitPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCommercial)).EndInit();
             this.tableLayountPanelLibrary.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -428,7 +442,6 @@ namespace BasicFacebookFeatures
             this.panel3.PerformLayout();
             this.centralPanelArea.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoggedUserPicture)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCommercial)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -465,5 +478,6 @@ namespace BasicFacebookFeatures
         private TabPage tabPage2;
         private PictureBox pictureBoxCommercial;
         private Button notification;
+        private ToolStripButton gameOfLifeButton;
     }
 }

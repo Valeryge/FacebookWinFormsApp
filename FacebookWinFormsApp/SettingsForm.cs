@@ -66,6 +66,7 @@ namespace BasicFacebookFeatures
         {
             loadPotentialFriends();
         }
+        
 
         private void loadPotentialFriends()
         {
@@ -109,6 +110,10 @@ namespace BasicFacebookFeatures
             {
                 this.actionTypeChart.Series["Activity Type"].Points.AddXY(type.ToString(), k_LogManager.GetActivityCountByType(type));
             }
+        }
+
+        private void personalDataTab_Selected(object sender, TabControlEventArgs e)
+        {
         }
     }
 }

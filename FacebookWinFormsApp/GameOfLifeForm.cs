@@ -12,6 +12,7 @@ namespace BasicFacebookFeatures
 {
     public partial class GameOfLifeForm : Form
     {
+        private bool isPlaying = false;
         private MyFacebookService k_FacebookService;
 
         public GameOfLifeForm(MyFacebookService i_FacebookService)
@@ -173,5 +174,18 @@ namespace BasicFacebookFeatures
 
 
         };
+
+        private void buttonStart_Click(object sender, EventArgs e)
+        {
+            if (isPlaying)
+            {
+                isPlaying = false;
+                buttonStart.BackgroundImage = new Bitmap(BasicFacebookFeatures.Properties.Resources.START);
+            } else
+            {
+                isPlaying = true;
+                buttonStart.BackgroundImage = new Bitmap(BasicFacebookFeatures.Properties.Resources.STOP);
+            }
+        }
     }
 }

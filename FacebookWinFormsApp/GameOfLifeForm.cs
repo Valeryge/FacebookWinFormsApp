@@ -187,5 +187,15 @@ namespace BasicFacebookFeatures
                 buttonStart.BackgroundImage = new Bitmap(BasicFacebookFeatures.Properties.Resources.STOP);
             }
         }
+
+        private void buttonRules_MouseHover(object sender, EventArgs e)
+        {
+            pictureBoxRules.Visible = true;
+        }
+
+        private void buttonRules_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBoxRules.Visible = false;
+        }
     }
 }

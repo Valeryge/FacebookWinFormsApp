@@ -198,6 +198,7 @@
     <Content Include="Resources\Commercials\commercial5.PNG" />
     <Content Include="Resources\Commercials\commercial6.PNG" />
     <Content Include="Resources\Commercials\commercial7.PNG" />
+    <None Include="Resources\gameoflife.PNG" />
     <Content Include="Resources\NEXT.PNG" />
     <None Include="Resources\STOP1.PNG" />
     <None Include="Resources\NEXT1.PNG" />

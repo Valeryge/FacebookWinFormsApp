@@ -33,26 +33,27 @@ namespace BasicFacebookFeatures
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabPersonalData = new System.Windows.Forms.TabPage();
+            this.title = new System.Windows.Forms.Label();
             this.tabPageLog = new System.Windows.Forms.TabPage();
             this.statisticsTabControl = new System.Windows.Forms.TabControl();
             this.tabRecentActions = new System.Windows.Forms.TabPage();
             this.tableLayoutRecentActions = new System.Windows.Forms.TableLayoutPanel();
             this.tabLogStatistics = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.actionTypeChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.friendsTab = new System.Windows.Forms.TabControl();
+            this.personalDataTab = new System.Windows.Forms.TabControl();
             this.friendsTabPage = new System.Windows.Forms.TabPage();
+            this.tabPersonalData.SuspendLayout();
             this.tabPageLog.SuspendLayout();
             this.statisticsTabControl.SuspendLayout();
             this.tabRecentActions.SuspendLayout();
             this.tabLogStatistics.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.actionTypeChart)).BeginInit();
-            this.friendsTab.SuspendLayout();
+            this.personalDataTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPersonalData
             // 
+            this.tabPersonalData.Controls.Add(this.title);
             this.tabPersonalData.Location = new System.Drawing.Point(4, 25);
             this.tabPersonalData.Margin = new System.Windows.Forms.Padding(4);
             this.tabPersonalData.Name = "tabPersonalData";
@@ -61,6 +62,16 @@ namespace BasicFacebookFeatures
             this.tabPersonalData.TabIndex = 1;
             this.tabPersonalData.Text = "Personal Data";
             this.tabPersonalData.UseVisualStyleBackColor = true;
+            // 
+            // title
+            // 
+            this.title.AutoSize = true;
+            this.title.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.title.Location = new System.Drawing.Point(561, 22);
+            this.title.Name = "title";
+            this.title.Size = new System.Drawing.Size(233, 39);
+            this.title.TabIndex = 0;
+            this.title.Text = "Personal Data";
             // 
             // tabPageLog
             // 
@@ -105,7 +116,7 @@ namespace BasicFacebookFeatures
             this.tableLayoutRecentActions.ColumnCount = 3;
             this.tableLayoutRecentActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutRecentActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutRecentActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 339F));
+            this.tableLayoutRecentActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 350F));
             this.tableLayoutRecentActions.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutRecentActions.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutRecentActions.Margin = new System.Windows.Forms.Padding(4);
@@ -118,7 +129,7 @@ namespace BasicFacebookFeatures
             // 
             // tabLogStatistics
             // 
-            this.tabLogStatistics.Controls.Add(this.tableLayoutPanel1);
+            this.tabLogStatistics.Controls.Add(this.actionTypeChart);
             this.tabLogStatistics.Location = new System.Drawing.Point(4, 25);
             this.tabLogStatistics.Margin = new System.Windows.Forms.Padding(4);
             this.tabLogStatistics.Name = "tabLogStatistics";
@@ -128,31 +139,13 @@ namespace BasicFacebookFeatures
             this.tabLogStatistics.Text = "Log Statistics";
             this.tabLogStatistics.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.AutoScroll = true;
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 373F));
-            this.tableLayoutPanel1.Controls.Add(this.actionTypeChart, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 4);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1453, 588);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
             // actionTypeChart
             // 
             chartArea2.Name = "ChartArea1";
             this.actionTypeChart.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.actionTypeChart.Legends.Add(legend2);
-            this.actionTypeChart.Location = new System.Drawing.Point(3, 3);
+            this.actionTypeChart.Location = new System.Drawing.Point(259, 57);
             this.actionTypeChart.Name = "actionTypeChart";
             series2.ChartArea = "ChartArea1";
             series2.EmptyPointStyle.IsValueShownAsLabel = true;
@@ -160,23 +153,23 @@ namespace BasicFacebookFeatures
             series2.Legend = "Legend1";
             series2.Name = "Activity Type";
             this.actionTypeChart.Series.Add(series2);
-            this.actionTypeChart.Size = new System.Drawing.Size(576, 230);
-            this.actionTypeChart.TabIndex = 1;
+            this.actionTypeChart.Size = new System.Drawing.Size(945, 438);
+            this.actionTypeChart.TabIndex = 2;
             this.actionTypeChart.Text = "chart1";
             // 
-            // friendsTab
+            // personalDataTab
             // 
-            this.friendsTab.Controls.Add(this.tabPageLog);
-            this.friendsTab.Controls.Add(this.tabPersonalData);
-            this.friendsTab.Controls.Add(this.friendsTabPage);
-            this.friendsTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.friendsTab.Location = new System.Drawing.Point(0, 0);
-            this.friendsTab.Margin = new System.Windows.Forms.Padding(4);
-            this.friendsTab.Name = "friendsTab";
-            this.friendsTab.SelectedIndex = 0;
-            this.friendsTab.Size = new System.Drawing.Size(1485, 662);
-            this.friendsTab.TabIndex = 0;
-            this.friendsTab.Selected += new System.Windows.Forms.TabControlEventHandler(this.friendsTab_Selected);
+            this.personalDataTab.Controls.Add(this.tabPageLog);
+            this.personalDataTab.Controls.Add(this.tabPersonalData);
+            this.personalDataTab.Controls.Add(this.friendsTabPage);
+            this.personalDataTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.personalDataTab.Location = new System.Drawing.Point(0, 0);
+            this.personalDataTab.Margin = new System.Windows.Forms.Padding(4);
+            this.personalDataTab.Name = "personalDataTab";
+            this.personalDataTab.SelectedIndex = 0;
+            this.personalDataTab.Size = new System.Drawing.Size(1485, 662);
+            this.personalDataTab.TabIndex = 0;
+            this.personalDataTab.Selected += new System.Windows.Forms.TabControlEventHandler(this.personalDataTab_Selected);
             // 
             // friendsTabPage
             // 
@@ -193,17 +186,18 @@ namespace BasicFacebookFeatures
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1485, 662);
-            this.Controls.Add(this.friendsTab);
+            this.Controls.Add(this.personalDataTab);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SettingsForm";
             this.Text = "Settings";
+            this.tabPersonalData.ResumeLayout(false);
+            this.tabPersonalData.PerformLayout();
             this.tabPageLog.ResumeLayout(false);
             this.statisticsTabControl.ResumeLayout(false);
             this.tabRecentActions.ResumeLayout(false);
             this.tabLogStatistics.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.actionTypeChart)).EndInit();
-            this.friendsTab.ResumeLayout(false);
+            this.personalDataTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -215,10 +209,10 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.TabControl statisticsTabControl;
         private System.Windows.Forms.TabPage tabRecentActions;
         private System.Windows.Forms.TableLayoutPanel tableLayoutRecentActions;
-        private System.Windows.Forms.TabPage tabLogStatistics;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart actionTypeChart;
-        private System.Windows.Forms.TabControl friendsTab;
+        private System.Windows.Forms.TabControl personalDataTab;
         private System.Windows.Forms.TabPage friendsTabPage;
+        private System.Windows.Forms.Label title;
+        private System.Windows.Forms.TabPage tabLogStatistics;
+        private System.Windows.Forms.DataVisualization.Charting.Chart actionTypeChart;
     }
 }

@@ -40,7 +40,7 @@ namespace BasicFacebookFeatures
 
         private void myInitializeComponent()
         {
-            this.Size = new Size(1200, 700);
+            this.Size = new Size(1500, 700);
             tabInitPage.Controls.Add(k_PostsContainer);
             loadToolbar();
             myRefresh();
@@ -107,19 +107,32 @@ namespace BasicFacebookFeatures
             labelLoggedUserName.Text = usersName;
 
             //loadProfilePicture
-            pictureBoxLoggedUserPicture.Image = m_FacebookService.User.ImageNormal; //TODO: fix size;
+            pictureBoxLoggedUserPicture.BackgroundImage = m_FacebookService.User.ImageLarge; //TODO: fix size;
             pictureBoxLoggedUserPicture.BringToFront();
 
 
-            k_PostsContainer.MaximumSize = new Size(500, 600);
-            k_PostsContainer.Location = new Point(800, tableLayountPanelLibrary.Location.Y);  //better
+            k_PostsContainer.MaximumSize = new Size(700, 500);
+            k_PostsContainer.Location = new Point(450, 350);  //better
 
             this.loadAlbums();
             this.loadLikedPages();
             this.loadFriends();
             this.loadPosts();
+            this.loadInfo();
+        }
 
+        private void loadInfo()
+        {
+            StringBuilder text = new StringBuilder();
 
+            text.AppendLine(m_FacebookService.User.Hometown != null ? 
+                String.Format("From {0}", m_FacebookService.User.Hometown.Name) : "No hometown to show"); 
+            text.AppendLine(m_FacebookService.User.Educations != null && m_FacebookService.User.Educations.Length > 0 ? 
+                String.Format("Went to {0}", m_FacebookService.User.Educations[0].School.Name) : "No schools to show"); 
+            text.AppendLine(m_FacebookService.User.Birthday != null ? 
+                String.Format("Born on {0}", m_FacebookService.User.Birthday) : "No birthday to show");
+            infoLabel.Text = text.ToString();
+            
         }
 
         private void loadLikedPages()
@@ -410,6 +423,11 @@ namespace BasicFacebookFeatures
         private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Show();
+        }
+
+        private void listBoxLikedPages_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

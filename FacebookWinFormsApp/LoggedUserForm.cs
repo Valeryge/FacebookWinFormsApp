@@ -41,7 +41,7 @@ namespace BasicFacebookFeatures
         private void myInitializeComponent()
         {
             this.Size = new Size(1500, 700);
-            tabInitPage.Controls.Add(k_PostsContainer);
+            this.Controls.Add(k_PostsContainer);
             loadToolbar();
             myRefresh();
         }
@@ -72,24 +72,8 @@ namespace BasicFacebookFeatures
         {
             clearAllData();
             loadProfile();
-            loadActions();
         }
 
-        private void loadActions()
-        {
-            // foreach (var actionType in m_FacebookService.LogManager.logCollection.Keys)
-            // {
-            //     foreach (var singleAction in m_FacebookService.LogManager.logCollection[actionType])
-            //     {
-            //         listBoxLatestActions.Items.Add("Action Type: " + actionType + " " + singleAction.ToString());
-            //     }
-            // }
-
-            foreach (FaceBookAction action in m_FacebookService.LogManager.ActionsList)
-            {
-                listBoxLatestActions.Items.Add(action.ToString());
-            }
-        }
 
         private void loadToolbar()
         {
@@ -322,7 +306,6 @@ namespace BasicFacebookFeatures
 
         private void clearAllData()
         {
-            listBoxLatestActions.Items.Clear();
             listBoxAlbums.Items.Clear();
             listBoxFriends.Items.Clear();
             listBoxLikedPages.Items.Clear();
@@ -362,17 +345,10 @@ namespace BasicFacebookFeatures
         {
             AlbumForm albumForm = new AlbumForm((Album)listBoxAlbums.SelectedItem);
             m_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.ALBUM_VIEWED));
-            // albumForm.FormClosed += albumForm_Closed;
-            // this.Hide();
-            // albumForm.Show();
-            TabPage tp = new TabPage();
-            tp.Name = "test";
-            foreach (Control control in albumForm.Controls)
-            {
-                tp.Controls.Add(control);
-            }
-
-            tabControlMainApp.TabPages.Add(tp);
+            albumForm.FormClosed += albumForm_Closed;
+            this.Hide();
+            albumForm.Show();
+           
         }
 
         private void settingsForm_Closed(object sender, EventArgs e)
@@ -406,10 +382,10 @@ namespace BasicFacebookFeatures
 
         private void showCommercial()
         {
-            string runningPath = System.AppDomain.CurrentDomain.BaseDirectory;
-            List<string> files = new List<string>(Directory.GetFiles(String.Format("{0}Resources/Commercials/", Path.GetFullPath(Path.Combine(runningPath, @"..\..\..\")))));
-            string File = files.OrderBy(s => Guid.NewGuid()).First();
-            pictureBoxCommercial.Load(File);
+            // string runningPath = System.AppDomain.CurrentDomain.BaseDirectory;
+            // List<string> files = new List<string>(Directory.GetFiles(String.Format("{0}Resources/Commercials/", Path.GetFullPath(Path.Combine(runningPath, @"..\..\..\")))));
+            // string File = files.OrderBy(s => Guid.NewGuid()).First();
+            // pictureBoxCommercial.Load(File);
         }
 
         private void gameOfLifeButton_Click(object sender, EventArgs e)

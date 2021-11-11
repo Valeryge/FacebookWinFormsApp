@@ -12,15 +12,21 @@ namespace BasicFacebookFeatures
 {
     public partial class GameOfLifeForm : Form
     {
-        private bool isPlaying = false;
-        private MyFacebookService k_FacebookService;
-
         public GameOfLifeForm(MyFacebookService i_FacebookService)
         {
-            k_Engine = new GameEngine(k_GameRows, k_GameColumns, k_GameMatrixModel1);
+            initGameTimer();
+            k_Engine = new GameEngine(k_GameRows, k_GameColumns);
             k_FacebookService = i_FacebookService;
             InitializeComponent();
             myInitComponents();
+        }
+
+        private void initGameTimer()
+        {
+            m_GameProgressionTimer = new System.Windows.Forms.Timer();
+            m_GameProgressionTimer.Tick += updateAndDrawNextGeneration;
+            m_GameProgressionTimer.Interval = 1000;
+
         }
 
         private void myInitComponents()
@@ -36,11 +42,6 @@ namespace BasicFacebookFeatures
             updatesVisualEffects();
             updateAndDrawNextGeneration();
             //updateAndDrawNextGeneration();
-        }
-
-        protected override void OnShown(EventArgs e)
-        {
-            base.OnShown(e);
         }
 
         private void createCellButtons()
@@ -81,7 +82,7 @@ namespace BasicFacebookFeatures
                 {
                     for (int colIndex = 0; colIndex < k_GameColumns; ++colIndex)
 
-                        if (k_Engine.TemplateCurrentlyBeingUsed.GameMatrix[rowIndex, colIndex] == 1)
+                        if (k_Engine.TemplateCurrentlyBeingUsed.GameMatrix[rowIndex, colIndex] == true)
                         {
                             //      Button currButton = TableLayoutGameOfLife.GetControlFromPosition(i, j) as Button;
 
@@ -103,6 +104,7 @@ namespace BasicFacebookFeatures
         {
             k_Engine.UpdateToNextGeneration();
             updatesVisualEffects();
+         
         }
 
         private void updateAndDrawNextGeneration()
@@ -110,79 +112,20 @@ namespace BasicFacebookFeatures
             k_Engine.UpdateToNextGeneration();
             updatesVisualEffects();
         }
-
-
         //TODO: Move to an engine class
-        private void InitGameProgression()
-        {
-            System.Windows.Forms.Timer gameProgressionTimer = new System.Windows.Forms.Timer();
-            gameProgressionTimer.Tick += updateAndDrawNextGeneration;
-            gameProgressionTimer.Interval = 1000;
-            gameProgressionTimer.Start();
-
-        }
-
-
-        private void NextGeneration_Load(object sender, EventArgs e)
-        {
-            InitGameProgression();
-
-        }
-
-
-
-        // private static void Main(string[] args)
-        // {
-        //     int runs = 0;
-        //     LifeSimulation sim = new LifeSimulation(Heigth, Width);
-        //
-        //     while (runs++ < MaxRuns)
-        //     {
-        //         sim.updateAndDrawNextGeneration();
-        //
-        //         // Give the user a chance to view the game in a more reasonable speed.
-        //         System.Threading.Thread.Sleep(100);
-        //     }
-        // }
-
-        private readonly int k_CellLength = 30;
-        private readonly int k_GameRows = 10;
-        private readonly int k_GameColumns = 10;
-        private readonly GameEngine k_Engine;
-        private readonly int[,] k_GameMatrixModel1 =
-        {
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, },
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, },
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, },
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, },
-            { 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, },
-            { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, },
-            { 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, },
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, },
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, },
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, },
-
-
-        };
-        private readonly int[,] k_GameMatrixModel2 =
-        {
-            { 0, 0, 0, 0, 0},
-            { 0, 0, 1, 0, 0},
-            { 0, 0, 1, 0, 0},
-            { 0, 0, 1, 0, 0},
-            { 0, 0, 0, 0, 0},
-
-
-        };
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
+            
             if (isPlaying)
             {
+                m_GameProgressionTimer.Stop();
                 isPlaying = false;
                 buttonStart.BackgroundImage = new Bitmap(BasicFacebookFeatures.Properties.Resources.START);
+
             } else
             {
+                m_GameProgressionTimer.Start();
                 isPlaying = true;
                 buttonStart.BackgroundImage = new Bitmap(BasicFacebookFeatures.Properties.Resources.STOP);
             }
@@ -197,5 +140,30 @@ namespace BasicFacebookFeatures
         {
             pictureBoxRules.Visible = false;
         }
+
+      
+
+        private void buttonNext_Click(object sender, EventArgs e)
+        {
+            updateAndDrawNextGeneration(sender,e);
+        }
+
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            k_Engine.restart();
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+        }
+
+        private bool isPlaying = false;
+        private MyFacebookService k_FacebookService;
+        private readonly int k_CellLength = 30;
+        private readonly int k_GameRows = 10;
+        private readonly int k_GameColumns = 10;
+        private readonly GameEngine k_Engine;
+        private Timer m_GameProgressionTimer;//TODO: this should be inside the engine
     }
 }

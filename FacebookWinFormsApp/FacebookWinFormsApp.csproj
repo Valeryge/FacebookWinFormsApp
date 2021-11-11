@@ -100,14 +100,14 @@
     <Compile Include="AlbumForm.Designer.cs">
       <DependentUpon>AlbumForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GameEngine.cs" />
-    <Compile Include="GameOfLifeForm.cs">
+    <Compile Include="GameOfLifeFiles\GameEngine.cs" />
+    <Compile Include="GameOfLifeFiles\GameOfLifeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GameOfLifeForm.Designer.cs">
+    <Compile Include="GameOfLifeFiles\GameOfLifeForm.Designer.cs">
       <DependentUpon>GameOfLifeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GridTemplate.cs" />
+    <Compile Include="GameOfLifeFiles\GameBoard.cs" />
     <Compile Include="LogManager.cs" />
     <Compile Include="MyFacebookService.cs" />
     <Compile Include="ControlComponents\HorizontalBox.cs">
@@ -142,7 +142,7 @@
     <EmbeddedResource Include="ControlComponents\HorizontalBox.resx">
       <DependentUpon>HorizontalBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GameOfLifeForm.resx">
+    <EmbeddedResource Include="GameOfLifeFiles\GameOfLifeForm.resx">
       <DependentUpon>GameOfLifeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoggedUserForm.resx">
@@ -212,6 +212,7 @@
     <None Include="Resources\START1.PNG" />
     <Content Include="Resources\STOP.PNG" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

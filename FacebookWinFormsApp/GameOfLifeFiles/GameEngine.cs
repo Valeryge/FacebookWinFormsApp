@@ -8,12 +8,12 @@ namespace BasicFacebookFeatures
 {
     public class GameEngine
     {
-        private GridTemplate m_TemplateCurrentlyBeingUsedCurrentlyBeingUsed;
+        private GameBoard m_gameBoard;
 
-        public GridTemplate TemplateCurrentlyBeingUsed
+        public GameBoard TemplateCurrentlyBeingUsed
         {
-            get => m_TemplateCurrentlyBeingUsedCurrentlyBeingUsed;
-            set => m_TemplateCurrentlyBeingUsedCurrentlyBeingUsed = value;
+            get => m_gameBoard;
+            set => m_gameBoard = value;
         }
 
         public int GameRows => k_GameRows;
@@ -23,14 +23,15 @@ namespace BasicFacebookFeatures
         private readonly int k_GameRows;
         private readonly int k_GameColumns;
 
-        public GameEngine(int i_GameRows, int i_GameColumns, int[,] i_GameMatrixModel)
+        public GameEngine(int i_GameRows, int i_GameColumns)
         {
+            Rounds = 0;
             k_GameRows = i_GameRows;
             k_GameColumns = i_GameColumns;
-            m_TemplateCurrentlyBeingUsedCurrentlyBeingUsed = new GridTemplate(i_GameMatrixModel);
+            m_gameBoard = new GameBoard(k_GameRows,k_GameColumns);
         }
 
-        public int GetNeighbors(int i_RowIndex, int i_ColumnIndex, int[,] tmp)
+        public int GetNeighbors(int i_RowIndex, int i_ColumnIndex, bool[,] tmp)
         {
             int numOfAliveNeighbors = 0;
             for (int rowIndex = i_RowIndex - 1; rowIndex < i_RowIndex + 2; rowIndex++)
@@ -41,7 +42,7 @@ namespace BasicFacebookFeatures
                     {
                         if (!((rowIndex < 0 || columnIndex < 0) || (rowIndex >= k_GameRows || columnIndex >= k_GameColumns)))
                         {
-                            if (tmp[rowIndex, columnIndex] == 1)
+                            if (tmp[rowIndex, columnIndex] == true)
                             {
                                 numOfAliveNeighbors++;
                             }
@@ -55,12 +56,12 @@ namespace BasicFacebookFeatures
         public void UpdateToNextGeneration()
         {
 
-            int[,] tmp = new int[k_GameRows, k_GameColumns];
+            bool[,] tmp = new bool[k_GameRows, k_GameColumns];
             for (int i = 0; i < k_GameRows; ++i)
             {
                 for (int j = 0; j < k_GameColumns; ++j)
                 {
-                    tmp[i, j] = m_TemplateCurrentlyBeingUsedCurrentlyBeingUsed.GameMatrix[i, j];
+                    tmp[i, j] = m_gameBoard.GameMatrix[i, j];
                 }
             }
 
@@ -71,28 +72,42 @@ namespace BasicFacebookFeatures
                 {
                     int numOfAliveNeighbors = GetNeighbors(rowIndex, columnIndex, tmp);
 
-                    if (m_TemplateCurrentlyBeingUsedCurrentlyBeingUsed.GameMatrix[rowIndex, columnIndex] == 1)
+                    if (m_gameBoard.GameMatrix[rowIndex, columnIndex] == true)
                     {
                         if (numOfAliveNeighbors < 2)
                         {
-                            m_TemplateCurrentlyBeingUsedCurrentlyBeingUsed.GameMatrix[rowIndex, columnIndex] = 0;
+                            m_gameBoard.GameMatrix[rowIndex, columnIndex] = false;
                         }
 
                         if (numOfAliveNeighbors > 3)
                         {
-                            m_TemplateCurrentlyBeingUsedCurrentlyBeingUsed.GameMatrix[rowIndex, columnIndex] = 0;
+                            m_gameBoard.GameMatrix[rowIndex, columnIndex] = false;
                         }
                     }
                     else
                     {
                         if (numOfAliveNeighbors == 3)
                         {
-                            m_TemplateCurrentlyBeingUsedCurrentlyBeingUsed.GameMatrix[rowIndex, columnIndex] = 1;
+                            m_gameBoard.GameMatrix[rowIndex, columnIndex] = true;
                         }
                     }
                 }
             }
+
+            m_Rounds++;
+        }
+        private int m_Rounds;
+        public int Rounds
+        {
+            get => m_Rounds;
+            set => m_Rounds = value;
         }
 
+
+        public void restart()
+        {
+            m_gameBoard.CleanBoard();
+            
+        }
     }
 }

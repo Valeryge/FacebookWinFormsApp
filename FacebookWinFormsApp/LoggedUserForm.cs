@@ -263,14 +263,6 @@ namespace BasicFacebookFeatures
         {
             k_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.POST_CLICKED].Add(new FaceBookAction(FaceBookAction.ActionType.POST_CLICKED));
             k_FacebookService.AddNewLocalPost(textBoxPost.Text);
-            Post newPost = new Post();
-            //newPost.Caption = "g";
-            //Post.s_FieldsToLoadFull = "g";
-            //newPost.Message = textBoxPost.Text;
-            //k_FacebookService.User.Posts.Add(newPost);
-
-
-
             this.loadPosts();
         }
         
@@ -379,10 +371,10 @@ namespace BasicFacebookFeatures
 
         private void showCommercial(object sender, EventArgs e)
         {
-            // string runningPath = System.AppDomain.CurrentDomain.BaseDirectory;
-            // List<string> files = new List<string>(Directory.GetFiles(String.Format("{0}Resources/Commercials/", Path.GetFullPath(Path.Combine(runningPath, @"..\..\..\")))));
-            // string File = files.OrderBy(s => Guid.NewGuid()).First();
-            // pictureBoxCommercial.Load(File);
+            string runningPath = System.AppDomain.CurrentDomain.BaseDirectory;
+            List<string> files = new List<string>(Directory.GetFiles(String.Format("{0}Resources/Commercials/", Path.GetFullPath(Path.Combine(runningPath, @"..\..\..\")))));
+            string File = files.OrderBy(s => Guid.NewGuid()).First();
+            pictureBoxCommercial.Load(File);
         }
 
         private void gameOfLifeButton_Click(object sender, EventArgs e)

@@ -21,7 +21,7 @@ namespace BasicFacebookFeatures
         {
             k_LogManager = i_MyFacebookService.LogManager;
             k_MyFacebookService = i_MyFacebookService;
-            initializePersonalSettingsPage();
+           
             //k_LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.SETTINGS_CLICKED));
           
             InitializeComponent();
@@ -30,30 +30,43 @@ namespace BasicFacebookFeatures
 
         private void initializePersonalSettingsPage()
         {
-            // User user = k_MyFacebookService.User;
-            // validateData();
-            // textBoxAge.Text = getAgeFromBirthDay();
-            // textBoxEmail.Text = user.Email;
-            // textBoxEducation.Text = user.Educations[0].ToString();
-            //textBoxFamily.Text = user.
+             User user = k_MyFacebookService.User;
+
+             validateData();
+
+             textBoxName.Text = user.Name;
+
+             textBoxBirthDay.Text = user.Birthday;
+
+             textBoxEmail.Text = user.Email;
+
+             textBoxEducation.Text = "Go ask Guy Ronen";
+
+             textBoxWorkPlace.Text = "Worked here, Worked there.";
+
+             textBoxSignificantOther.Text = "Love of my life";
+
+             textBoxHomeTown.Text = "TLV baby";
+
         }
+
         //this is a demo, not really validating.
         private void validateData()
         {
-            throw new NotImplementedException();
+          
         }
-
-        //TODO: this
-        private string getAgeFromBirthDay()
-        {
-            return "26";
-        }
-
 
         //TODO: condition to if was today show time and write today, otherwise write date.
         private void myInitComponents()
         {
-            List<string> titles = new List<string> { "Time", "Action Type", "Status" }; 
+            loadStatistics();
+            createTableOfUserActions();
+            initializePersonalSettingsPage();
+        }
+
+        private void createTableOfUserActions()
+        {
+            List<string> titles = new List<string> { "Time", "Action Type", "Status" };
 
             foreach (string title in titles)
             {
@@ -63,6 +76,7 @@ namespace BasicFacebookFeatures
                 titleLabel.Text = title;
                 tableLayoutRecentActions.Controls.Add(titleLabel);
             }
+
 
             tableLayoutRecentActions.RowCount = k_LogManager.ActionsList.Count;
             foreach (FaceBookAction fbAction in k_LogManager.ActionsList)
@@ -81,7 +95,6 @@ namespace BasicFacebookFeatures
                 tableLayoutRecentActions.Controls.Add(labelErrorStatus);
 
             }
-
         }
 
         private void friendsTab_Selected(object sender, TabControlEventArgs e)
@@ -134,13 +147,11 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void personalDataTab_Selected(object sender, TabControlEventArgs e)
+        private void Confirmation_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Press O.K if you're sure the data you've entered is correct.", "Confirmation", MessageBoxButtons.OKCancel);
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-          //  changeSettings();
-        }
     }
 }

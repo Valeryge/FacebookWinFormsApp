@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures
@@ -53,8 +47,6 @@ namespace BasicFacebookFeatures
                 this.Controls.Add(pictureBox);
             }
         }
-
-
         private String buildPhotoDescription(Photo i_Photo)
         {
             StringBuilder description = new StringBuilder();
@@ -72,16 +64,13 @@ namespace BasicFacebookFeatures
 
             return description.ToString();
         }
-
         private String getStringOfUsers(FacebookObjectCollection<User> i_Users)
         {
             StringBuilder names = new StringBuilder();
-
             foreach(User user in i_Users)
             {
                 names.Append(user.Name + ", ");
             }
-
             return names.ToString();
         }
 
@@ -95,12 +84,9 @@ namespace BasicFacebookFeatures
             }
             return names.ToString();
         }
-
-        private void backButton_Click(object sender, EventArgs e)
+        private void backButton_Click(object i_Sender, EventArgs i_E)
         {
             this.Close();
         }
-
-  
-    }
+        }
 }

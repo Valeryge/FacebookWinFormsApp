@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
 
 namespace BasicFacebookFeatures
@@ -20,66 +14,21 @@ namespace BasicFacebookFeatures
         {
            // initTablePanel(3);
             InitializeComponent();
-
-           
             myInitComponent();
-
             k_MyFBServices = new MyFacebookService();
-            FacebookWrapper.FacebookService.s_CollectionLimit = k_CollectionLimit;
+            FacebookService.s_CollectionLimit = k_CollectionLimit;
 
-       //     HorizontalBox box = new HorizontalBox(1);
-         //   this.Controls.Add(box);
         }
-
-        private void initTablePanel(int i_ColumnCount)
-        {
-            // this.hBox.Anchor = AnchorStyles.Right;
-            // this.hBox.CellBorderStyle = TableLayoutPanelCellBorderStyle.Inset;
-            // this.hBox.GrowStyle = TableLayoutPanelGrowStyle.AddColumns;
-            // this.hBox.AutoSize = true;
-            // this.hBox.Location = new Point(400, 400);
-
-
-            // hBox.RowCount = 1;
-            // hBox.ColumnCount = i_ColumnCount;
-
-            HorizontalBox hbox = new HorizontalBox(3);
-            hbox.AllowDrop = true;
-            //hbox.AutoScroll = true;
-            hbox.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            hbox.AutoSize = true;
-          //  hbox.MaximumSize = new Size(1000, 1000);
-
-            Label labelTest1 = new Label();
-            labelTest1.Text = "test1";
-
-            Label labelTest2 = new Label();
-            labelTest2.Text = "test2";
-
-            Label labelTest3 = new Label();
-            labelTest3.Text = "test3";
-
-            // hBox.SetRow(labelTest1,0);
-            // hBox.SetRow(labelTest2, 1);
-            // hBox.SetRow(labelTest3, 2);
-            
-            hbox.Controls.Add(labelTest1);
-            hbox.Controls.Add(labelTest3);
-            hbox.Controls.Add(labelTest2);
-
-            this.Controls.Add(hbox);
-        }
-
+        
         private void myInitComponent()
         {
             this.Size = new Size(1200, 700);
-            
         }
 
-        private void buttonLogin_Click(object sender, EventArgs e)
+        private void buttonLogin_Click(object i_Sender, EventArgs i_E)
         {
             Clipboard.SetText("design.patterns20cc"); /// the current password for Desig Patter
-            k_MyFBServices.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.LOGIN_CLICKED));
+            k_MyFBServices.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.eActionType.LoginClicked));
             //TODO: change back to login
             FacebookWrapper.LoginResult loginResult = FacebookService.Connect("EAACTrYdYvoEBAEGE204BTL51O4sP0guav6s1Y0h7KZCptt5lAd5o31G226SKhvsKwOvFbdek3I4vVqc7jZCzM2e75m9BwmX7ZABS8eGimqpKZB2ZBXRRwvmZAQZBEQOpeEYexqSQLARf9YVMb6eIB4gkpJZBFlD6feDQn6tYP8mLlwZDZD");
       /*      FacebookWrapper.LoginResult loginResult = FacebookService.Login(
@@ -123,7 +72,7 @@ namespace BasicFacebookFeatures
             } 
         }
 
-        private void mainForm_Closed(object sender, EventArgs e)
+        private void mainForm_Closed(object i_Sender, EventArgs i_E)
         {
             this.Show();
         }

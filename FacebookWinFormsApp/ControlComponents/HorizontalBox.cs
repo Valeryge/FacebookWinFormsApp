@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CefSharp.DevTools.Debugger;
-using CefSharp.DevTools.SystemInfo;
+﻿using System.Windows.Forms;
 using Size = System.Drawing.Size;
 
-namespace BasicFacebookFeatures
+namespace BasicFacebookFeatures.ControlComponents
 {
     public class HorizontalBox : TableLayoutPanel
     {

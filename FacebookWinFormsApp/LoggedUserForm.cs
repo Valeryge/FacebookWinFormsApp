@@ -1,40 +1,31 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.Remoting.Channels;
-using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CefSharp.DevTools.DOM;
-using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 using System.Threading;
+using BasicFacebookFeatures.ControlComponents;
+using BasicFacebookFeatures.GameOfLifeFiles;
+using Timer = System.Windows.Forms.Timer;
 
 namespace BasicFacebookFeatures
 {
-    
     public partial class LoggedUserForm : Form
     {
-        private readonly MyFacebookService k_FacebookService;
-        private readonly int k_ElementsInPostsList = 3;
-        private readonly VerticalBox k_PostsContainer;
-
+       
         public LoggedUserForm(MyFacebookService i_FbService)
         {
             k_FacebookService = i_FbService;
             k_PostsContainer = new VerticalBox(k_FacebookService.User.Posts.Count);
-            User thisUser = k_FacebookService.User;
+           r_CommercialsTimer = new Timer();
+            r_NotificationTimer = new Timer();
             this.InitializeComponent();
             this.myInitializeComponent();
         }
-
         private void myInitializeComponent()
         {
             this.Size = new Size(1500, 700);
@@ -42,16 +33,15 @@ namespace BasicFacebookFeatures
             loadToolbar();
             myRefresh();
         }
-
+        
         private void initNotifications()
         {
-            System.Windows.Forms.Timer notificationTimer = new System.Windows.Forms.Timer();
-            notificationTimer.Tick += Timer_Tick;
-            notificationTimer.Interval = 40000;
-            notificationTimer.Start();
+            r_NotificationTimer.Tick += Timer_Tick;
+            r_NotificationTimer.Interval = 10000;
+            r_NotificationTimer.Start();
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object i_Sender, EventArgs i_E)
         {
             notification.Text = k_FacebookService.GetNotification();
             notification.Visible = true;
@@ -69,7 +59,6 @@ namespace BasicFacebookFeatures
             clearAllData();
             loadProfile();
         }
-
 
         private void loadToolbar()
         {
@@ -90,9 +79,8 @@ namespace BasicFacebookFeatures
             pictureBoxLoggedUserPicture.BackgroundImage = k_FacebookService.User.ImageLarge; //TODO: fix size;
             pictureBoxLoggedUserPicture.BringToFront();
 
-
             k_PostsContainer.MaximumSize = new Size(700, 500);
-            k_PostsContainer.Location = new Point(450, 350);  //better
+            k_PostsContainer.Location = new Point(450,450);  //better
 
             this.loadAlbums();
             this.loadLikedPages();
@@ -132,11 +120,9 @@ namespace BasicFacebookFeatures
             }
         }
 
-
-        //TODO: condition to if was today show time and write today, otherwise write date.
+        
         private void loadPosts()
         {
-            // LinkedList<PictureBox> foundPictures = new LinkedList<PictureBox>();
             k_PostsContainer.Clear();
             Label labelPosts = new Label();
             labelPosts.Text = "Posts:";
@@ -149,8 +135,7 @@ namespace BasicFacebookFeatures
              {
                  addLocalPosts();
              }
-
-            //this is data returned from fb services
+             //this is data returned from fb services
             addRemotePosts();
         }
 
@@ -256,43 +241,35 @@ namespace BasicFacebookFeatures
                 listBoxAlbums.Items.Add(album);
             }
 
-            // listBoxAlbums.SelectedValueChanged += OnSelectionAlbumChanged;
         }
 
         //TODO: Post
-        private void OnPostButtonClicked(object sender, EventArgs e)
+        private void OnPostButtonClicked(object i_Sender, EventArgs i_E)
         {
-            k_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.POST_CLICKED].Add(new FaceBookAction(FaceBookAction.ActionType.POST_CLICKED));
+            k_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.eActionType.PostClicked));
             k_FacebookService.AddNewLocalPost(textBoxPost.Text);
             Post newPost = new Post();
-            //newPost.Caption = "g";
-            //Post.s_FieldsToLoadFull = "g";
-            //newPost.Message = textBoxPost.Text;
-            //k_FacebookService.User.Posts.Add(newPost);
-
-
-
             this.loadPosts();
         }
         
-        private void refreshButton_Click(object sender, EventArgs e)
+        private void refreshButton_Click(object i_Sender, EventArgs i_E)
         {
-            k_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.REFRESH_CLICKED));
+            k_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.eActionType.RefreshClicked));
             myRefresh();
         }
 
-        private void signOutButton_Click(object sender, EventArgs e)
+        private void signOutButton_Click(object i_Sender, EventArgs i_E)
         {
-            k_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.LOGOUT_CLICKED));
+            k_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.eActionType.LogoutClicked));
             this.Close();
         }
 
-        private void listBoxFriends_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBoxFriends_SelectedIndexChanged(object i_Sender, EventArgs i_E)
         {
             if (listBoxFriends.SelectedItem != null)
             {
                 loadNewProfile((User)listBoxFriends.SelectedItem);
-                k_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.LOADED_DIFFERENT_PROFILE));
+                k_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.eActionType.LoadedDifferentProfile));
             }
         }
 
@@ -310,31 +287,31 @@ namespace BasicFacebookFeatures
             k_PostsContainer.Clear();
         }
 
-        private void minimizedProfilePicture_Click(object sender, EventArgs e)
+        private void minimizedProfilePicture_Click(object i_Sender, EventArgs i_E)
         {
             loadNewProfile(k_FacebookService.LoggedUser);
         }
 
-        private void minimizedProfilePicture_MouseHover(object sender, EventArgs e)
+        private void minimizedProfilePicture_MouseHover(object i_Sender, EventArgs i_E)
         {
             this.Cursor = Cursors.Hand;
         }
 
-        private void minimizedProfilePicture_MouseLeave(object sender, EventArgs e)
+        private void minimizedProfilePicture_MouseLeave(object i_Sender, EventArgs i_E)
         {
             this.Cursor = Cursors.Default;
         }
 
-        private void settingsButton_Click(object sender, EventArgs e)
+        private void settingsButton_Click(object i_Sender, EventArgs i_E)
         {
-            k_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.SETTINGS_CLICKED));
+            k_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.eActionType.SettingClicked));
             SettingsForm settingsFrom = new SettingsForm(k_FacebookService);
             settingsFrom.FormClosed += settingsForm_Closed;
             this.Hide();
             settingsFrom.Show();
         }
 
-        private void listBoxAlbums_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBoxAlbums_SelectedIndexChanged(object i_Sender, EventArgs i_E)
         {
             fetchAlbumsWindow();
         }
@@ -342,23 +319,23 @@ namespace BasicFacebookFeatures
         private void fetchAlbumsWindow()
         {
             AlbumForm albumForm = new AlbumForm((Album)listBoxAlbums.SelectedItem);
-            k_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.ALBUM_VIEWED));
+            k_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.eActionType.AlbumViewed));
             albumForm.FormClosed += albumForm_Closed;
             this.Hide();
             albumForm.Show();
            
         }
 
-        private void settingsForm_Closed(object sender, EventArgs e)
+        private void settingsForm_Closed(object i_Sender, EventArgs i_E)
         {
             this.Show();
         }
-        private void albumForm_Closed(object sender, EventArgs e)
+        private void albumForm_Closed(object i_Sender, EventArgs i_E)
         {
             this.Show();
         }
 
-        private void LoggedUserForm_Load(object sender, EventArgs e)
+        private void LoggedUserForm_Load(object i_Sender, EventArgs i_E)
         {
             initNotifications();
             initCommercials();
@@ -366,14 +343,13 @@ namespace BasicFacebookFeatures
 
         private void initCommercials()
         {
-            System.Windows.Forms.Timer commercialTimer = new System.Windows.Forms.Timer();
-            commercialTimer.Tick += commercialTimer_Tick;
-            commercialTimer.Interval = 10000;
-            commercialTimer.Start();
+            r_CommercialsTimer.Tick += commercialTimer_Tick;
+            r_CommercialsTimer.Interval = 10000;
+            r_CommercialsTimer.Start();
             showCommercial();
         }
 
-         private void commercialTimer_Tick(object sender, EventArgs e)
+         private void commercialTimer_Tick(object i_Sender, EventArgs i_E)
          {
              showCommercial();
          }
@@ -381,29 +357,40 @@ namespace BasicFacebookFeatures
         private void showCommercial()
         {
             string runningPath = System.AppDomain.CurrentDomain.BaseDirectory;
-             List<string> files = new List<string>(Directory.GetFiles(String.Format("{0}Resources/Commercials/", Path.GetFullPath(Path.Combine(runningPath, @"..\..\..\")))));
+             List<string> files = new List<string>(Directory.GetFiles(string.Format(@"{0}Resources/Commercials/", Path.GetFullPath(Path.Combine(runningPath, @"..\..\..\")))));
              string File = files.OrderBy(s => Guid.NewGuid()).First();
              pictureBoxCommercial.Load(File);
         }
 
         private void gameOfLifeButton_Click(object sender, EventArgs e)
         {
-            k_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.POST_CLICKED].Add(new FaceBookAction(FaceBookAction.ActionType.PLAYING_GAME_OF_LIFE)); //TODO: maybe can update some value to the user, same for every event
+            k_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.eActionType.PlayingGameOfLife));
             GameOfLifeForm gameForm = new GameOfLifeForm(k_FacebookService);
             this.Hide();
             gameForm.FormClosed += GameForm_FormClosed;
             gameForm.Show();
         }
 
-        private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void GameForm_FormClosed(object i_Sender, EventArgs i_E)
         {
             this.Show();
         }
 
-        private void listBoxLikedPages_SelectedIndexChanged(object sender, EventArgs e)
+        private void LoggedUserForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            removeTimers();
         }
 
+        private void removeTimers()
+        {
+            r_CommercialsTimer.Stop();
+            r_NotificationTimer.Stop();
+        }
+
+        private readonly MyFacebookService k_FacebookService;
+        private readonly int k_ElementsInPostsList = 3;
+        private readonly VerticalBox k_PostsContainer;
+        private readonly Timer r_CommercialsTimer;
+        private readonly Timer r_NotificationTimer;
     }
 }

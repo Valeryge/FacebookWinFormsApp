@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
 {
@@ -11,7 +6,6 @@ namespace BasicFacebookFeatures
     {
         public VerticalBox(int i_RowsCount)
         {
-            
             this.Padding = new Padding(10);
             this.CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
             this.GrowStyle = TableLayoutPanelGrowStyle.AddRows;
@@ -19,6 +13,7 @@ namespace BasicFacebookFeatures
             this.AutoScroll = true;
             this.RowCount = i_RowsCount;
             this.AutoSize = true;
+            this.Anchor = AnchorStyles.Top;
         }
 
         public void Clear()

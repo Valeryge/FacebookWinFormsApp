@@ -22,18 +22,15 @@ namespace BasicFacebookFeatures
     
     public partial class LoggedUserForm : Form
     {
-        
-        private MyFacebookService m_FacebookService;
+        private readonly MyFacebookService k_FacebookService;
         private readonly int k_ElementsInPostsList = 3;
         private readonly VerticalBox k_PostsContainer;
 
         public LoggedUserForm(MyFacebookService i_FbService)
         {
-            m_FacebookService = i_FbService;
-            //m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.LOGIN_CLICKED].Add(new FaceBookAction(DateTime.Now, false));
-
-
-            k_PostsContainer = new VerticalBox(m_FacebookService.User.Posts.Count);
+            k_FacebookService = i_FbService;
+            k_PostsContainer = new VerticalBox(k_FacebookService.User.Posts.Count);
+            User thisUser = k_FacebookService.User;
             this.InitializeComponent();
             this.myInitializeComponent();
         }
@@ -41,7 +38,7 @@ namespace BasicFacebookFeatures
         private void myInitializeComponent()
         {
             this.Size = new Size(1500, 700);
-            tabInitPage.Controls.Add(k_PostsContainer);
+            this.Controls.Add(k_PostsContainer);
             loadToolbar();
             myRefresh();
         }
@@ -56,7 +53,7 @@ namespace BasicFacebookFeatures
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            notification.Text = m_FacebookService.GetNotification();
+            notification.Text = k_FacebookService.GetNotification();
             notification.Visible = true;
             Task.Run(() =>
             {
@@ -67,47 +64,30 @@ namespace BasicFacebookFeatures
                 }));
             });
         }
-
         private void myRefresh()
         {
             clearAllData();
             loadProfile();
-            loadActions();
         }
 
-        private void loadActions()
-        {
-            // foreach (var actionType in m_FacebookService.LogManager.logCollection.Keys)
-            // {
-            //     foreach (var singleAction in m_FacebookService.LogManager.logCollection[actionType])
-            //     {
-            //         listBoxLatestActions.Items.Add("Action Type: " + actionType + " " + singleAction.ToString());
-            //     }
-            // }
-
-            foreach (FaceBookAction action in m_FacebookService.LogManager.ActionsList)
-            {
-                listBoxLatestActions.Items.Add(action.ToString());
-            }
-        }
 
         private void loadToolbar()
         {
-            minimizedProfilePicture.Text = m_FacebookService.LoggedUser.FirstName;
-            minimizedProfilePicture.Image = m_FacebookService.LoggedUser.ImageSmall;
+            minimizedProfilePicture.Text = k_FacebookService.LoggedUser.FirstName;
+            minimizedProfilePicture.Image = k_FacebookService.LoggedUser.ImageSmall;
         }
 
         private void loadProfile()
         {
             //loadWindowName
-            String usersName = m_FacebookService.User.Name;
+            String usersName = k_FacebookService.User.Name;
             this.Text = usersName + "'s FaceBook";
 
             //loadUsersName
             labelLoggedUserName.Text = usersName;
 
             //loadProfilePicture
-            pictureBoxLoggedUserPicture.BackgroundImage = m_FacebookService.User.ImageLarge; //TODO: fix size;
+            pictureBoxLoggedUserPicture.BackgroundImage = k_FacebookService.User.ImageLarge; //TODO: fix size;
             pictureBoxLoggedUserPicture.BringToFront();
 
 
@@ -125,19 +105,19 @@ namespace BasicFacebookFeatures
         {
             StringBuilder text = new StringBuilder();
 
-            text.AppendLine(m_FacebookService.User.Hometown != null ? 
-                String.Format("From {0}", m_FacebookService.User.Hometown.Name) : "No hometown to show"); 
-            text.AppendLine(m_FacebookService.User.Educations != null && m_FacebookService.User.Educations.Length > 0 ? 
-                String.Format("Went to {0}", m_FacebookService.User.Educations[0].School.Name) : "No schools to show"); 
-            text.AppendLine(m_FacebookService.User.Birthday != null ? 
-                String.Format("Born on {0}", m_FacebookService.User.Birthday) : "No birthday to show");
+            text.AppendLine(k_FacebookService.User.Hometown != null ? 
+                String.Format("From {0}", k_FacebookService.User.Hometown.Name) : "No hometown to show"); 
+            text.AppendLine(k_FacebookService.User.Educations != null && k_FacebookService.User.Educations.Length > 0 ? 
+                String.Format("Went to {0}", k_FacebookService.User.Educations[0].School.Name) : "No schools to show"); 
+            text.AppendLine(k_FacebookService.User.Birthday != null ? 
+                String.Format("Born on {0}", k_FacebookService.User.Birthday) : "No birthday to show");
             infoLabel.Text = text.ToString();
             
         }
 
         private void loadLikedPages()
         {
-            foreach (Page page in m_FacebookService.User.LikedPages)
+            foreach (Page page in k_FacebookService.User.LikedPages)
             {
                 listBoxLikedPages.Items.Add(page);
             }
@@ -145,7 +125,7 @@ namespace BasicFacebookFeatures
 
         private void loadFriends()
         {
-            foreach (User friend in m_FacebookService.User.Friends)
+            foreach (User friend in k_FacebookService.User.Friends)
             {
                 listBoxFriends.Items.Add(friend);
             }
@@ -162,12 +142,12 @@ namespace BasicFacebookFeatures
             k_PostsContainer.Controls.Add(labelPosts);
             k_PostsContainer.Controls.Add(createHeaderHbox());
 
-            //this exists since we cannot post, thus we've created a demo to add as new posts
-            if (m_FacebookService.LocalAddedPosts.ContainsKey(m_FacebookService.User))
-            {
-                addLocalPosts();
-
-            }
+           // this exists since we cannot post(creating a new post is possible, but properties are readonly)
+           // Thus we've created a demo to add as new posts
+             if (k_FacebookService.LocalAddedPosts.ContainsKey(k_FacebookService.User))
+             {
+                 addLocalPosts();
+             }
 
             //this is data returned from fb services
             addRemotePosts();
@@ -176,7 +156,7 @@ namespace BasicFacebookFeatures
         private void addRemotePosts()
         {
             int i = 0;
-            foreach (Post post in m_FacebookService.User.Posts)
+            foreach (Post post in k_FacebookService.User.Posts)
             {
                 HorizontalBox hBox = new HorizontalBox(k_ElementsInPostsList);
                 hBox.AutoSize = true;
@@ -195,7 +175,6 @@ namespace BasicFacebookFeatures
                         addedPictureBox.Name = "pictureBoxNum " + i;
                         addedPictureBox.Size = new Size(100, 100);
                         hBox.Controls.Add(addedPictureBox);
-                        // foundPictures.AddLast(new LinkedListNode<PictureBox>(addedPictureBox));
                         addedPictureBox.Load(thisPostsPictureUrl);
                     }
                     else
@@ -225,8 +204,8 @@ namespace BasicFacebookFeatures
 
         private void addLocalPosts()
         {
-            foreach (MyFacebookService.LocalPost localAddedPost in m_FacebookService.LocalAddedPosts
-                [m_FacebookService.User])
+            foreach (MyFacebookService.LocalPost localAddedPost in k_FacebookService.LocalAddedPosts
+                [k_FacebookService.User])
             {
                 HorizontalBox box = new HorizontalBox(3);
                 Label labelPostTime = new Label();
@@ -269,7 +248,7 @@ namespace BasicFacebookFeatures
 
         private void loadAlbums()
         {
-            FacebookObjectCollection<Album> albums = m_FacebookService.User.Albums;
+            FacebookObjectCollection<Album> albums = k_FacebookService.User.Albums;
 
             foreach (Album album in albums)
             {
@@ -279,50 +258,51 @@ namespace BasicFacebookFeatures
             // listBoxAlbums.SelectedValueChanged += OnSelectionAlbumChanged;
         }
 
-
-
         //TODO: Post
         private void OnPostButtonClicked(object sender, EventArgs e)
         {
-            m_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.POST_CLICKED].Add(new FaceBookAction(FaceBookAction.ActionType.POST_CLICKED));
-            m_FacebookService.AddNewLocalPost(textBoxPost.Text);
+            k_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.POST_CLICKED].Add(new FaceBookAction(FaceBookAction.ActionType.POST_CLICKED));
+            k_FacebookService.AddNewLocalPost(textBoxPost.Text);
+            Post newPost = new Post();
+            //newPost.Caption = "g";
+            //Post.s_FieldsToLoadFull = "g";
+            //newPost.Message = textBoxPost.Text;
+            //k_FacebookService.User.Posts.Add(newPost);
+
+
+
             this.loadPosts();
         }
-         
-
-
+        
         private void refreshButton_Click(object sender, EventArgs e)
         {
-            m_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.REFRESH_CLICKED));
+            k_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.REFRESH_CLICKED));
             myRefresh();
         }
 
         private void signOutButton_Click(object sender, EventArgs e)
         {
-            m_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.LOGOUT_CLICKED));
+            k_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.LOGOUT_CLICKED));
             this.Close();
         }
-
- 
 
         private void listBoxFriends_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBoxFriends.SelectedItem != null)
             {
                 loadNewProfile((User)listBoxFriends.SelectedItem);
-                m_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.LOADED_DIFFERENT_PROFILE));
+                k_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.LOADED_DIFFERENT_PROFILE));
             }
         }
 
         private void loadNewProfile(User i_NewProfile)
         {
-            m_FacebookService.InitCurrentProfile(i_NewProfile);
+            k_FacebookService.InitCurrentProfile(i_NewProfile);
             myRefresh();
         }
 
         private void clearAllData()
         {
-            listBoxLatestActions.Items.Clear();
             listBoxAlbums.Items.Clear();
             listBoxFriends.Items.Clear();
             listBoxLikedPages.Items.Clear();
@@ -331,7 +311,7 @@ namespace BasicFacebookFeatures
 
         private void minimizedProfilePicture_Click(object sender, EventArgs e)
         {
-            loadNewProfile(m_FacebookService.LoggedUser);
+            loadNewProfile(k_FacebookService.LoggedUser);
         }
 
         private void minimizedProfilePicture_MouseHover(object sender, EventArgs e)
@@ -346,8 +326,8 @@ namespace BasicFacebookFeatures
 
         private void settingsButton_Click(object sender, EventArgs e)
         {
-            m_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.SETTINGS_CLICKED));
-            SettingsForm settingsFrom = new SettingsForm(m_FacebookService);
+            k_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.SETTINGS_CLICKED));
+            SettingsForm settingsFrom = new SettingsForm(k_FacebookService);
             settingsFrom.FormClosed += settingsForm_Closed;
             this.Hide();
             settingsFrom.Show();
@@ -361,18 +341,11 @@ namespace BasicFacebookFeatures
         private void fetchAlbumsWindow()
         {
             AlbumForm albumForm = new AlbumForm((Album)listBoxAlbums.SelectedItem);
-            m_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.ALBUM_VIEWED));
-            // albumForm.FormClosed += albumForm_Closed;
-            // this.Hide();
-            // albumForm.Show();
-            TabPage tp = new TabPage();
-            tp.Name = "test";
-            foreach (Control control in albumForm.Controls)
-            {
-                tp.Controls.Add(control);
-            }
-
-            tabControlMainApp.TabPages.Add(tp);
+            k_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.ALBUM_VIEWED));
+            albumForm.FormClosed += albumForm_Closed;
+            this.Hide();
+            albumForm.Show();
+           
         }
 
         private void settingsForm_Closed(object sender, EventArgs e)
@@ -393,28 +366,29 @@ namespace BasicFacebookFeatures
         private void initCommercials()
         {
             System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
-            timer1.Tick += Timer1_Tick;
+            timer1.Tick += showCommercial;
             timer1.Interval = 10000;
             timer1.Start();
-            showCommercial();
+          //  showCommercial();
         }
 
-        private void Timer1_Tick(object sender, EventArgs e)
-        {
-            showCommercial();
-        }
+        // private void Timer1_Tick(object sender, EventArgs e)
+        // {
+        //     showCommercial();
+        // }
 
-        private void showCommercial()
+        private void showCommercial(object sender, EventArgs e)
         {
-            string runningPath = System.AppDomain.CurrentDomain.BaseDirectory;
-            List<string> files = new List<string>(Directory.GetFiles(String.Format("{0}Resources/Commercials/", Path.GetFullPath(Path.Combine(runningPath, @"..\..\..\")))));
-            string File = files.OrderBy(s => Guid.NewGuid()).First();
-            pictureBoxCommercial.Load(File);
+            // string runningPath = System.AppDomain.CurrentDomain.BaseDirectory;
+            // List<string> files = new List<string>(Directory.GetFiles(String.Format("{0}Resources/Commercials/", Path.GetFullPath(Path.Combine(runningPath, @"..\..\..\")))));
+            // string File = files.OrderBy(s => Guid.NewGuid()).First();
+            // pictureBoxCommercial.Load(File);
         }
 
         private void gameOfLifeButton_Click(object sender, EventArgs e)
         {
-            GameOfLifeForm gameForm = new GameOfLifeForm(m_FacebookService);
+            k_FacebookService.LogManager.logCollection[FaceBookAction.ActionType.POST_CLICKED].Add(new FaceBookAction(FaceBookAction.ActionType.PLAYING_GAME_OF_LIFE)); //TODO: maybe can update some value to the user, same for every event
+            GameOfLifeForm gameForm = new GameOfLifeForm(k_FacebookService);
             this.Hide();
             gameForm.FormClosed += GameForm_FormClosed;
             gameForm.Show();

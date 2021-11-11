@@ -29,9 +29,9 @@ namespace BasicFacebookFeatures
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabPersonalData = new System.Windows.Forms.TabPage();
             this.title = new System.Windows.Forms.Label();
             this.tabPageLog = new System.Windows.Forms.TabPage();
@@ -42,6 +42,21 @@ namespace BasicFacebookFeatures
             this.actionTypeChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.personalDataTab = new System.Windows.Forms.TabControl();
             this.friendsTabPage = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.textBoxFamily = new System.Windows.Forms.TextBox();
+            this.textBoxAge = new System.Windows.Forms.TextBox();
+            this.textBoxWorkPlace = new System.Windows.Forms.TextBox();
+            this.textBoxHomeTown = new System.Windows.Forms.TextBox();
+            this.textBoxEducation = new System.Windows.Forms.TextBox();
+            this.buttonSettingsChanger = new System.Windows.Forms.Button();
             this.tabPersonalData.SuspendLayout();
             this.tabPageLog.SuspendLayout();
             this.statisticsTabControl.SuspendLayout();
@@ -53,12 +68,26 @@ namespace BasicFacebookFeatures
             // 
             // tabPersonalData
             // 
+            this.tabPersonalData.Controls.Add(this.buttonSettingsChanger);
+            this.tabPersonalData.Controls.Add(this.textBoxEducation);
+            this.tabPersonalData.Controls.Add(this.textBoxHomeTown);
+            this.tabPersonalData.Controls.Add(this.textBoxWorkPlace);
+            this.tabPersonalData.Controls.Add(this.textBoxAge);
+            this.tabPersonalData.Controls.Add(this.textBoxFamily);
+            this.tabPersonalData.Controls.Add(this.textBoxEmail);
+            this.tabPersonalData.Controls.Add(this.textBoxName);
+            this.tabPersonalData.Controls.Add(this.label7);
+            this.tabPersonalData.Controls.Add(this.label6);
+            this.tabPersonalData.Controls.Add(this.label5);
+            this.tabPersonalData.Controls.Add(this.label4);
+            this.tabPersonalData.Controls.Add(this.label3);
+            this.tabPersonalData.Controls.Add(this.label2);
+            this.tabPersonalData.Controls.Add(this.label1);
             this.tabPersonalData.Controls.Add(this.title);
-            this.tabPersonalData.Location = new System.Drawing.Point(4, 25);
-            this.tabPersonalData.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPersonalData.Location = new System.Drawing.Point(4, 22);
             this.tabPersonalData.Name = "tabPersonalData";
-            this.tabPersonalData.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPersonalData.Size = new System.Drawing.Size(1477, 633);
+            this.tabPersonalData.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPersonalData.Size = new System.Drawing.Size(1106, 512);
             this.tabPersonalData.TabIndex = 1;
             this.tabPersonalData.Text = "Personal Data";
             this.tabPersonalData.UseVisualStyleBackColor = true;
@@ -67,20 +96,20 @@ namespace BasicFacebookFeatures
             // 
             this.title.AutoSize = true;
             this.title.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.title.Location = new System.Drawing.Point(561, 22);
+            this.title.Location = new System.Drawing.Point(421, 18);
+            this.title.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(233, 39);
+            this.title.Size = new System.Drawing.Size(186, 31);
             this.title.TabIndex = 0;
             this.title.Text = "Personal Data";
             // 
             // tabPageLog
             // 
             this.tabPageLog.Controls.Add(this.statisticsTabControl);
-            this.tabPageLog.Location = new System.Drawing.Point(4, 25);
-            this.tabPageLog.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPageLog.Location = new System.Drawing.Point(4, 22);
             this.tabPageLog.Name = "tabPageLog";
-            this.tabPageLog.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPageLog.Size = new System.Drawing.Size(1477, 633);
+            this.tabPageLog.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageLog.Size = new System.Drawing.Size(1106, 512);
             this.tabPageLog.TabIndex = 0;
             this.tabPageLog.Text = "Activity Log";
             this.tabPageLog.UseVisualStyleBackColor = true;
@@ -90,22 +119,20 @@ namespace BasicFacebookFeatures
             this.statisticsTabControl.Controls.Add(this.tabRecentActions);
             this.statisticsTabControl.Controls.Add(this.tabLogStatistics);
             this.statisticsTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.statisticsTabControl.Location = new System.Drawing.Point(4, 4);
-            this.statisticsTabControl.Margin = new System.Windows.Forms.Padding(4);
+            this.statisticsTabControl.Location = new System.Drawing.Point(3, 3);
             this.statisticsTabControl.Name = "statisticsTabControl";
             this.statisticsTabControl.SelectedIndex = 0;
-            this.statisticsTabControl.Size = new System.Drawing.Size(1469, 625);
+            this.statisticsTabControl.Size = new System.Drawing.Size(1100, 506);
             this.statisticsTabControl.TabIndex = 0;
             this.statisticsTabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.statisticsTab_Selected);
             // 
             // tabRecentActions
             // 
             this.tabRecentActions.Controls.Add(this.tableLayoutRecentActions);
-            this.tabRecentActions.Location = new System.Drawing.Point(4, 25);
-            this.tabRecentActions.Margin = new System.Windows.Forms.Padding(4);
+            this.tabRecentActions.Location = new System.Drawing.Point(4, 22);
             this.tabRecentActions.Name = "tabRecentActions";
-            this.tabRecentActions.Padding = new System.Windows.Forms.Padding(4);
-            this.tabRecentActions.Size = new System.Drawing.Size(1461, 596);
+            this.tabRecentActions.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabRecentActions.Size = new System.Drawing.Size(1092, 480);
             this.tabRecentActions.TabIndex = 0;
             this.tabRecentActions.Text = "Recent Actions";
             this.tabRecentActions.UseVisualStyleBackColor = true;
@@ -116,44 +143,43 @@ namespace BasicFacebookFeatures
             this.tableLayoutRecentActions.ColumnCount = 3;
             this.tableLayoutRecentActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutRecentActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutRecentActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 350F));
+            this.tableLayoutRecentActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 266F));
             this.tableLayoutRecentActions.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutRecentActions.Location = new System.Drawing.Point(4, 4);
-            this.tableLayoutRecentActions.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutRecentActions.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutRecentActions.Name = "tableLayoutRecentActions";
             this.tableLayoutRecentActions.RowCount = 2;
             this.tableLayoutRecentActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutRecentActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutRecentActions.Size = new System.Drawing.Size(1453, 123);
+            this.tableLayoutRecentActions.Size = new System.Drawing.Size(1086, 100);
             this.tableLayoutRecentActions.TabIndex = 0;
             // 
             // tabLogStatistics
             // 
             this.tabLogStatistics.Controls.Add(this.actionTypeChart);
-            this.tabLogStatistics.Location = new System.Drawing.Point(4, 25);
-            this.tabLogStatistics.Margin = new System.Windows.Forms.Padding(4);
+            this.tabLogStatistics.Location = new System.Drawing.Point(4, 22);
             this.tabLogStatistics.Name = "tabLogStatistics";
-            this.tabLogStatistics.Padding = new System.Windows.Forms.Padding(4);
-            this.tabLogStatistics.Size = new System.Drawing.Size(1461, 596);
+            this.tabLogStatistics.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabLogStatistics.Size = new System.Drawing.Size(1094, 482);
             this.tabLogStatistics.TabIndex = 1;
             this.tabLogStatistics.Text = "Log Statistics";
             this.tabLogStatistics.UseVisualStyleBackColor = true;
             // 
             // actionTypeChart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.actionTypeChart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.actionTypeChart.Legends.Add(legend2);
-            this.actionTypeChart.Location = new System.Drawing.Point(259, 57);
+            chartArea1.Name = "ChartArea1";
+            this.actionTypeChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.actionTypeChart.Legends.Add(legend1);
+            this.actionTypeChart.Location = new System.Drawing.Point(194, 46);
+            this.actionTypeChart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.actionTypeChart.Name = "actionTypeChart";
-            series2.ChartArea = "ChartArea1";
-            series2.EmptyPointStyle.IsValueShownAsLabel = true;
-            series2.IsValueShownAsLabel = true;
-            series2.Legend = "Legend1";
-            series2.Name = "Activity Type";
-            this.actionTypeChart.Series.Add(series2);
-            this.actionTypeChart.Size = new System.Drawing.Size(945, 438);
+            series1.ChartArea = "ChartArea1";
+            series1.EmptyPointStyle.IsValueShownAsLabel = true;
+            series1.IsValueShownAsLabel = true;
+            series1.Legend = "Legend1";
+            series1.Name = "Activity Type";
+            this.actionTypeChart.Series.Add(series1);
+            this.actionTypeChart.Size = new System.Drawing.Size(709, 356);
             this.actionTypeChart.TabIndex = 2;
             this.actionTypeChart.Text = "chart1";
             // 
@@ -164,30 +190,151 @@ namespace BasicFacebookFeatures
             this.personalDataTab.Controls.Add(this.friendsTabPage);
             this.personalDataTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.personalDataTab.Location = new System.Drawing.Point(0, 0);
-            this.personalDataTab.Margin = new System.Windows.Forms.Padding(4);
             this.personalDataTab.Name = "personalDataTab";
             this.personalDataTab.SelectedIndex = 0;
-            this.personalDataTab.Size = new System.Drawing.Size(1485, 662);
+            this.personalDataTab.Size = new System.Drawing.Size(1114, 538);
             this.personalDataTab.TabIndex = 0;
             this.personalDataTab.Selected += new System.Windows.Forms.TabControlEventHandler(this.personalDataTab_Selected);
             // 
             // friendsTabPage
             // 
-            this.friendsTabPage.Location = new System.Drawing.Point(4, 25);
+            this.friendsTabPage.Location = new System.Drawing.Point(4, 22);
+            this.friendsTabPage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.friendsTabPage.Name = "friendsTabPage";
-            this.friendsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.friendsTabPage.Size = new System.Drawing.Size(1477, 633);
+            this.friendsTabPage.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.friendsTabPage.Size = new System.Drawing.Size(1106, 512);
             this.friendsTabPage.TabIndex = 2;
             this.friendsTabPage.Text = "Friend Suggestions";
             this.friendsTabPage.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(414, 91);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Full Name:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(415, 131);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Email:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(415, 171);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Age:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(415, 211);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(39, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Family:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(415, 251);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(66, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Work-Place:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(414, 291);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(65, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "HomeTown:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(414, 331);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 13);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Education:";
+            // 
+            // textBoxName
+            // 
+            this.textBoxName.Location = new System.Drawing.Point(488, 91);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(119, 20);
+            this.textBoxName.TabIndex = 8;
+            // 
+            // textBoxEmail
+            // 
+            this.textBoxEmail.Location = new System.Drawing.Point(488, 131);
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(119, 20);
+            this.textBoxEmail.TabIndex = 9;
+            // 
+            // textBoxFamily
+            // 
+            this.textBoxFamily.Location = new System.Drawing.Point(488, 211);
+            this.textBoxFamily.Name = "textBoxFamily";
+            this.textBoxFamily.Size = new System.Drawing.Size(119, 20);
+            this.textBoxFamily.TabIndex = 10;
+            // 
+            // textBoxAge
+            // 
+            this.textBoxAge.Location = new System.Drawing.Point(488, 171);
+            this.textBoxAge.Name = "textBoxAge";
+            this.textBoxAge.Size = new System.Drawing.Size(119, 20);
+            this.textBoxAge.TabIndex = 11;
+            // 
+            // textBoxWorkPlace
+            // 
+            this.textBoxWorkPlace.Location = new System.Drawing.Point(488, 251);
+            this.textBoxWorkPlace.Name = "textBoxWorkPlace";
+            this.textBoxWorkPlace.Size = new System.Drawing.Size(119, 20);
+            this.textBoxWorkPlace.TabIndex = 12;
+            // 
+            // textBoxHomeTown
+            // 
+            this.textBoxHomeTown.Location = new System.Drawing.Point(488, 291);
+            this.textBoxHomeTown.Name = "textBoxHomeTown";
+            this.textBoxHomeTown.Size = new System.Drawing.Size(119, 20);
+            this.textBoxHomeTown.TabIndex = 13;
+            // 
+            // textBoxEducation
+            // 
+            this.textBoxEducation.Location = new System.Drawing.Point(488, 331);
+            this.textBoxEducation.Name = "textBoxEducation";
+            this.textBoxEducation.Size = new System.Drawing.Size(119, 20);
+            this.textBoxEducation.TabIndex = 14;
+            // 
+            // buttonSettingsChanger
+            // 
+            this.buttonSettingsChanger.Location = new System.Drawing.Point(418, 389);
+            this.buttonSettingsChanger.Name = "buttonSettingsChanger";
+            this.buttonSettingsChanger.Size = new System.Drawing.Size(189, 23);
+            this.buttonSettingsChanger.TabIndex = 15;
+            this.buttonSettingsChanger.Text = "Change Settings";
+            this.buttonSettingsChanger.UseVisualStyleBackColor = true;
+            this.buttonSettingsChanger.Click += new System.EventHandler(this.button1_Click);
+            // 
             // SettingsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1485, 662);
+            this.ClientSize = new System.Drawing.Size(1114, 538);
             this.Controls.Add(this.personalDataTab);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SettingsForm";
             this.Text = "Settings";
             this.tabPersonalData.ResumeLayout(false);
@@ -214,5 +361,20 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.TabPage tabLogStatistics;
         private System.Windows.Forms.DataVisualization.Charting.Chart actionTypeChart;
+        private System.Windows.Forms.TextBox textBoxEducation;
+        private System.Windows.Forms.TextBox textBoxHomeTown;
+        private System.Windows.Forms.TextBox textBoxWorkPlace;
+        private System.Windows.Forms.TextBox textBoxAge;
+        private System.Windows.Forms.TextBox textBoxFamily;
+        private System.Windows.Forms.TextBox textBoxEmail;
+        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonSettingsChanger;
     }
 }

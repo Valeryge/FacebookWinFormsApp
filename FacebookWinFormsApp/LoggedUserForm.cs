@@ -112,6 +112,7 @@ namespace BasicFacebookFeatures
             text.AppendLine(k_FacebookService.User.Birthday != null ? 
                 String.Format("Born on {0}", k_FacebookService.User.Birthday) : "No birthday to show");
             infoLabel.Text = text.ToString();
+            pictureBoxInfo.SendToBack();
             
         }
 
@@ -365,24 +366,24 @@ namespace BasicFacebookFeatures
 
         private void initCommercials()
         {
-            System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
-            timer1.Tick += showCommercial;
-            timer1.Interval = 10000;
-            timer1.Start();
-          //  showCommercial();
+            System.Windows.Forms.Timer commercialTimer = new System.Windows.Forms.Timer();
+            commercialTimer.Tick += commercialTimer_Tick;
+            commercialTimer.Interval = 10000;
+            commercialTimer.Start();
+            showCommercial();
         }
 
-        // private void Timer1_Tick(object sender, EventArgs e)
-        // {
-        //     showCommercial();
-        // }
+         private void commercialTimer_Tick(object sender, EventArgs e)
+         {
+             showCommercial();
+         }
 
-        private void showCommercial(object sender, EventArgs e)
+        private void showCommercial()
         {
-            // string runningPath = System.AppDomain.CurrentDomain.BaseDirectory;
-            // List<string> files = new List<string>(Directory.GetFiles(String.Format("{0}Resources/Commercials/", Path.GetFullPath(Path.Combine(runningPath, @"..\..\..\")))));
-            // string File = files.OrderBy(s => Guid.NewGuid()).First();
-            // pictureBoxCommercial.Load(File);
+            string runningPath = System.AppDomain.CurrentDomain.BaseDirectory;
+             List<string> files = new List<string>(Directory.GetFiles(String.Format("{0}Resources/Commercials/", Path.GetFullPath(Path.Combine(runningPath, @"..\..\..\")))));
+             string File = files.OrderBy(s => Guid.NewGuid()).First();
+             pictureBoxCommercial.Load(File);
         }
 
         private void gameOfLifeButton_Click(object sender, EventArgs e)

@@ -18,7 +18,7 @@ namespace BasicFacebookFeatures
             this.Padding = new Padding(10);
             this.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
             this.GrowStyle = TableLayoutPanelGrowStyle.AddColumns;
-            this.MaximumSize = new Size(400, 400);
+            this.MaximumSize = new Size(600, 600);
             this.AutoSize = true;
             this.AutoScroll = true;
             this.RowCount = 1;

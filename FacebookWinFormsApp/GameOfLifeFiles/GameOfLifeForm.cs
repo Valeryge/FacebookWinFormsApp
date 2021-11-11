@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BasicFacebookFeatures
+namespace BasicFacebookFeatures.GameOfLifeFiles
 {
     public partial class GameOfLifeForm : Form
     {
@@ -48,11 +42,11 @@ namespace BasicFacebookFeatures
         {
             for (int rowsIndex = 0; rowsIndex < k_GameRows; ++rowsIndex)
             {
-                for (int columIndex = 0; columIndex < k_GameColumns; ++columIndex)
+                for (int columnIndex = 0; columnIndex < k_GameColumns; ++columnIndex)
                 {
                     {
                         TableLayoutGameOfLife.Controls.Add(createGameButton()
-                      , columIndex, rowsIndex);
+                      , columnIndex, rowsIndex);
 
                     }
                 }
@@ -89,23 +83,19 @@ namespace BasicFacebookFeatures
 
                         if (k_Engine.GameBoard.GameMatrix[rowIndex, colIndex] == true)
                         {
-                            //      Button currButton = TableLayoutGameOfLife.GetControlFromPosition(i, j) as Button;
-
-                            // TableLayoutGameOfLife.GetControlFromPosition(colIndex, rowIndex).ForeColor = Color.Yellow;
                             TableLayoutGameOfLife.GetControlFromPosition(colIndex, rowIndex).Visible = false;
-                            //    test();
-
                         }
                         else
                         {
-                            // TableLayoutGameOfLife.GetControlFromPosition(colIndex, rowIndex).ForeColor = Color.Gray;
                             TableLayoutGameOfLife.GetControlFromPosition(colIndex, rowIndex).Visible = true;
                         }
                 }
+
+                labelRoundsCounter.Text = k_Engine.Rounds.ToString();
             }
         }
 
-        private void updateAndDrawNextGeneration(object sender, EventArgs e)
+        private void updateAndDrawNextGeneration(object i_Sender, EventArgs i_E)
         {
             k_Engine.UpdateToNextGeneration();
             updatesVisualEffects();
@@ -119,7 +109,7 @@ namespace BasicFacebookFeatures
         }
         //TODO: Move to an engine class
 
-        private void buttonStart_Click(object sender, EventArgs e)
+        private void buttonStart_Click(object i_Sender, EventArgs i_E)
         {
             
             if (isPlaying)
@@ -157,7 +147,7 @@ namespace BasicFacebookFeatures
 
         private void buttonReset_Click(object sender, EventArgs e)
         {
-            k_Engine.restart();
+            k_Engine.Restart();
             updatesVisualEffects();
         }
 
@@ -174,6 +164,14 @@ namespace BasicFacebookFeatures
         private void buttonRules_Click(object sender, EventArgs e)
         {
             pictureBoxRules.Visible = pictureBoxRules.Visible != true;
+        }
+
+        private void GameOfLifeForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (isPlaying)
+            {
+                m_GameProgressionTimer.Stop();
+            }
         }
     }
 }

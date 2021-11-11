@@ -1,5 +1,5 @@
 ﻿
-namespace BasicFacebookFeatures
+namespace BasicFacebookFeatures.GameOfLifeFiles
 {
     partial class GameOfLifeForm
     {
@@ -36,6 +36,8 @@ namespace BasicFacebookFeatures
             this.button3 = new System.Windows.Forms.Button();
             this.buttonRules = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.labelRoundsCounter = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRules)).BeginInit();
             this.SuspendLayout();
             // 
@@ -136,12 +138,32 @@ namespace BasicFacebookFeatures
             this.label1.TabIndex = 7;
             this.label1.Text = "Game Controls:";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(27, 384);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Rounds passed:";
+            // 
+            // labelRoundsCounter
+            // 
+            this.labelRoundsCounter.AutoSize = true;
+            this.labelRoundsCounter.Location = new System.Drawing.Point(117, 384);
+            this.labelRoundsCounter.Name = "labelRoundsCounter";
+            this.labelRoundsCounter.Size = new System.Drawing.Size(13, 13);
+            this.labelRoundsCounter.TabIndex = 9;
+            this.labelRoundsCounter.Text = "0";
+            // 
             // GameOfLifeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(752, 529);
+            this.Controls.Add(this.labelRoundsCounter);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBoxRules);
             this.Controls.Add(this.button5);
@@ -152,6 +174,7 @@ namespace BasicFacebookFeatures
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GameOfLifeForm";
             this.Text = "GameOfLifeForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameOfLifeForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRules)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -167,5 +190,7 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.PictureBox pictureBoxRules;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelRoundsCounter;
     }
 }

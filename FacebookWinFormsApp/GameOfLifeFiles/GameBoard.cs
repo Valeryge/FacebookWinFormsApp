@@ -43,6 +43,12 @@ namespace BasicFacebookFeatures
                 }
             }
         }
+
+        public void ChangeValue(int i_PositionRow, int i_PositionColumn)
+        {
+            k_GameMatrix[i_PositionRow, i_PositionColumn] =
+                k_GameMatrix[i_PositionRow, i_PositionColumn] != true;
+        }
     }
 
 

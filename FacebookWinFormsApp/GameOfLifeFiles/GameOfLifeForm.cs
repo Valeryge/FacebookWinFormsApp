@@ -51,25 +51,30 @@ namespace BasicFacebookFeatures
                 for (int columIndex = 0; columIndex < k_GameColumns; ++columIndex)
                 {
                     {
-                        TableLayoutGameOfLife.Controls.Add(new Button()
-                        {
-                            Dock = DockStyle.Fill,
-                            Size = new Size(k_CellLength, k_CellLength),
-                            //   Click  += new System.EventHandler(gameButtonClicked);  //TODO: doesn't work.
-
-                            Padding = new Padding(0),
-                            Margin = new Padding(0),
-                            ForeColor = Color.Black
-                        }, columIndex, rowsIndex);
+                        TableLayoutGameOfLife.Controls.Add(createGameButton()
+                      , columIndex, rowsIndex);
 
                     }
                 }
             }
         }
 
-        private void gameButtonClicked(object i_Sender, EventArgs i_E)
+        private Button createGameButton()
         {
-            throw new NotImplementedException();
+            Button button = new Button();
+            button.Dock = DockStyle.Fill;
+            button.Size = new Size(k_CellLength, k_CellLength);
+            button.Click += new System.EventHandler(gameButton_Clicked);  //TODO: doesn't work.
+            button.Padding = new Padding(0);
+            button.Margin = new Padding(0);
+            button.ForeColor = Color.Black;
+            return button;
+        }
+        private void gameButton_Clicked(object i_Sender, EventArgs i_E)
+        {
+            TableLayoutPanelCellPosition position = TableLayoutGameOfLife.GetPositionFromControl(i_Sender as Button);
+            k_Engine.GameBoard.ChangeValue(position.Row, position.Column);
+            updatesVisualEffects();
         }
 
 
@@ -82,7 +87,7 @@ namespace BasicFacebookFeatures
                 {
                     for (int colIndex = 0; colIndex < k_GameColumns; ++colIndex)
 
-                        if (k_Engine.TemplateCurrentlyBeingUsed.GameMatrix[rowIndex, colIndex] == true)
+                        if (k_Engine.GameBoard.GameMatrix[rowIndex, colIndex] == true)
                         {
                             //      Button currButton = TableLayoutGameOfLife.GetControlFromPosition(i, j) as Button;
 
@@ -151,6 +156,7 @@ namespace BasicFacebookFeatures
         private void buttonReset_Click(object sender, EventArgs e)
         {
             k_Engine.restart();
+            updatesVisualEffects();
         }
 
         protected override void OnShown(EventArgs e)

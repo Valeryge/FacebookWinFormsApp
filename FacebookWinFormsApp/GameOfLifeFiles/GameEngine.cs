@@ -10,7 +10,7 @@ namespace BasicFacebookFeatures
     {
         private GameBoard m_gameBoard;
 
-        public GameBoard TemplateCurrentlyBeingUsed
+        public GameBoard GameBoard
         {
             get => m_gameBoard;
             set => m_gameBoard = value;

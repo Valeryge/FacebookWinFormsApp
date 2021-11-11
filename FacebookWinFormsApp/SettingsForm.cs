@@ -21,13 +21,35 @@ namespace BasicFacebookFeatures
         {
             k_LogManager = i_MyFacebookService.LogManager;
             k_MyFacebookService = i_MyFacebookService;
-            
+            initializePersonalSettingsPage();
             //k_LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.ActionType.SETTINGS_CLICKED));
           
             InitializeComponent();
             myInitComponents();
         }
-         
+
+        private void initializePersonalSettingsPage()
+        {
+            // User user = k_MyFacebookService.User;
+            // validateData();
+            // textBoxAge.Text = getAgeFromBirthDay();
+            // textBoxEmail.Text = user.Email;
+            // textBoxEducation.Text = user.Educations[0].ToString();
+            //textBoxFamily.Text = user.
+        }
+        //this is a demo, not really validating.
+        private void validateData()
+        {
+            throw new NotImplementedException();
+        }
+
+        //TODO: this
+        private string getAgeFromBirthDay()
+        {
+            return "26";
+        }
+
+
         //TODO: condition to if was today show time and write today, otherwise write date.
         private void myInitComponents()
         {
@@ -114,6 +136,11 @@ namespace BasicFacebookFeatures
 
         private void personalDataTab_Selected(object sender, TabControlEventArgs e)
         {
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+          //  changeSettings();
         }
     }
 }

@@ -32,7 +32,8 @@ namespace BasicFacebookFeatures
             SETTINGS_CLICKED,
             LOADED_DIFFERENT_PROFILE,
             ALBUM_VIEWED,
-            REFRESH_CLICKED
+            REFRESH_CLICKED,
+            PLAYING_GAME_OF_LIFE
         }
 
         public FaceBookAction(ActionType i_Type, bool i_ErrorStatus = false)

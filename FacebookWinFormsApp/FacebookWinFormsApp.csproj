@@ -191,6 +191,8 @@
     <None Include="Resources\back.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="GameOfLifeFiles\Resources\gameIcon.png" />
+    <Content Include="GameOfLifeFiles\Resources\gameOfLifeRules.png" />
     <Content Include="Resources\Commercials\commercial1.png" />
     <Content Include="Resources\Commercials\commercial2.PNG" />
     <Content Include="Resources\Commercials\commercial3.PNG" />
@@ -198,7 +200,6 @@
     <Content Include="Resources\Commercials\commercial5.PNG" />
     <Content Include="Resources\Commercials\commercial6.PNG" />
     <Content Include="Resources\Commercials\commercial7.PNG" />
-    <None Include="Resources\gameoflife.PNG" />
     <Content Include="Resources\NEXT.PNG" />
     <None Include="Resources\STOP1.PNG" />
     <None Include="Resources\NEXT1.PNG" />

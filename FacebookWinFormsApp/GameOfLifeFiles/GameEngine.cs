@@ -107,7 +107,6 @@ namespace BasicFacebookFeatures
         public void restart()
         {
             m_gameBoard.CleanBoard();
-            
         }
     }
 }

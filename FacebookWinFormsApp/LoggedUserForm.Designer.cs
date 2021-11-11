@@ -33,12 +33,7 @@ namespace BasicFacebookFeatures
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoggedUserForm));
             this.toolstrip = new System.Windows.Forms.ToolStrip();
-            this.facebookLogo = new System.Windows.Forms.ToolStripLabel();
-            this.settingsButton = new System.Windows.Forms.ToolStripButton();
-            this.signoutButton = new System.Windows.Forms.ToolStripButton();
             this.minimizedProfilePicture = new System.Windows.Forms.ToolStripLabel();
-            this.gameOfLifeButton = new System.Windows.Forms.ToolStripButton();
-            this.refreshButton = new System.Windows.Forms.ToolStripButton();
             this.infoLabel = new System.Windows.Forms.Label();
             this.aboutLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -49,16 +44,21 @@ namespace BasicFacebookFeatures
             this.panel1 = new System.Windows.Forms.Panel();
             this.listBoxFriends = new System.Windows.Forms.ListBox();
             this.notification = new System.Windows.Forms.Button();
-            this.pictureBoxCommercial = new System.Windows.Forms.PictureBox();
             this.centralPanelArea = new System.Windows.Forms.Panel();
-            this.pictureBoxLoggedUserPicture = new System.Windows.Forms.PictureBox();
             this.textBoxPost = new System.Windows.Forms.RichTextBox();
             this.buttonPost = new System.Windows.Forms.Button();
             this.labelLoggedUserName = new System.Windows.Forms.Label();
+            this.pictureBoxCommercial = new System.Windows.Forms.PictureBox();
+            this.pictureBoxLoggedUserPicture = new System.Windows.Forms.PictureBox();
+            this.facebookLogo = new System.Windows.Forms.ToolStripLabel();
+            this.settingsButton = new System.Windows.Forms.ToolStripButton();
+            this.signoutButton = new System.Windows.Forms.ToolStripButton();
+            this.gameOfLifeButton = new System.Windows.Forms.ToolStripButton();
+            this.refreshButton = new System.Windows.Forms.ToolStripButton();
             this.toolstrip.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCommercial)).BeginInit();
             this.centralPanelArea.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCommercial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoggedUserPicture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,38 +83,6 @@ namespace BasicFacebookFeatures
             this.toolstrip.TabIndex = 14;
             this.toolstrip.Text = "toolStrip1";
             // 
-            // facebookLogo
-            // 
-            this.facebookLogo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.facebookLogo.Image = global::BasicFacebookFeatures.Properties.Resources.logo;
-            this.facebookLogo.Margin = new System.Windows.Forms.Padding(0);
-            this.facebookLogo.Name = "facebookLogo";
-            this.facebookLogo.Size = new System.Drawing.Size(20, 27);
-            this.facebookLogo.Text = "toolStripLabel1";
-            // 
-            // settingsButton
-            // 
-            this.settingsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.settingsButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.settingsButton.Image = ((System.Drawing.Image)(resources.GetObject("settingsButton.Image")));
-            this.settingsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(66, 24);
-            this.settingsButton.Text = "Settings";
-            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
-            // 
-            // signoutButton
-            // 
-            this.signoutButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.signoutButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.signoutButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.signoutButton.Image = ((System.Drawing.Image)(resources.GetObject("signoutButton.Image")));
-            this.signoutButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.signoutButton.Name = "signoutButton";
-            this.signoutButton.Size = new System.Drawing.Size(64, 24);
-            this.signoutButton.Text = "Signout";
-            this.signoutButton.Click += new System.EventHandler(this.signOutButton_Click);
-            // 
             // minimizedProfilePicture
             // 
             this.minimizedProfilePicture.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -126,31 +94,6 @@ namespace BasicFacebookFeatures
             this.minimizedProfilePicture.Click += new System.EventHandler(this.minimizedProfilePicture_Click);
             this.minimizedProfilePicture.MouseLeave += new System.EventHandler(this.minimizedProfilePicture_MouseLeave);
             this.minimizedProfilePicture.MouseHover += new System.EventHandler(this.minimizedProfilePicture_MouseHover);
-            // 
-            // gameOfLifeButton
-            // 
-            this.gameOfLifeButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.gameOfLifeButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.gameOfLifeButton.Image = ((System.Drawing.Image)(resources.GetObject("gameOfLifeButton.Image")));
-            this.gameOfLifeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.gameOfLifeButton.Name = "gameOfLifeButton";
-            this.gameOfLifeButton.Size = new System.Drawing.Size(98, 24);
-            this.gameOfLifeButton.Text = "Game of Life";
-            this.gameOfLifeButton.Click += new System.EventHandler(this.gameOfLifeButton_Click);
-            // 
-            // refreshButton
-            // 
-            this.refreshButton.BackgroundImage = global::BasicFacebookFeatures.Properties.Resources.refresh;
-            this.refreshButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.refreshButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.refreshButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.refreshButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.refreshButton.Image = ((System.Drawing.Image)(resources.GetObject("refreshButton.Image")));
-            this.refreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(24, 24);
-            this.refreshButton.Text = "refresh";
-            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
             // infoLabel
             // 
@@ -265,16 +208,6 @@ namespace BasicFacebookFeatures
             this.notification.UseVisualStyleBackColor = false;
             this.notification.Visible = false;
             // 
-            // pictureBoxCommercial
-            // 
-            this.pictureBoxCommercial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxCommercial.Location = new System.Drawing.Point(8, 555);
-            this.pictureBoxCommercial.Name = "pictureBoxCommercial";
-            this.pictureBoxCommercial.Size = new System.Drawing.Size(188, 153);
-            this.pictureBoxCommercial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxCommercial.TabIndex = 34;
-            this.pictureBoxCommercial.TabStop = false;
-            // 
             // centralPanelArea
             // 
             this.centralPanelArea.Controls.Add(this.pictureBoxLoggedUserPicture);
@@ -285,16 +218,6 @@ namespace BasicFacebookFeatures
             this.centralPanelArea.Name = "centralPanelArea";
             this.centralPanelArea.Size = new System.Drawing.Size(599, 309);
             this.centralPanelArea.TabIndex = 33;
-            // 
-            // pictureBoxLoggedUserPicture
-            // 
-            this.pictureBoxLoggedUserPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxLoggedUserPicture.Location = new System.Drawing.Point(195, 2);
-            this.pictureBoxLoggedUserPicture.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBoxLoggedUserPicture.Name = "pictureBoxLoggedUserPicture";
-            this.pictureBoxLoggedUserPicture.Size = new System.Drawing.Size(180, 164);
-            this.pictureBoxLoggedUserPicture.TabIndex = 2;
-            this.pictureBoxLoggedUserPicture.TabStop = false;
             // 
             // textBoxPost
             // 
@@ -317,6 +240,7 @@ namespace BasicFacebookFeatures
             this.buttonPost.TabIndex = 9;
             this.buttonPost.Text = "POST";
             this.buttonPost.UseVisualStyleBackColor = false;
+            this.buttonPost.Click += new System.EventHandler(this.OnPostButtonClicked);
             // 
             // labelLoggedUserName
             // 
@@ -329,6 +253,83 @@ namespace BasicFacebookFeatures
             this.labelLoggedUserName.TabIndex = 19;
             this.labelLoggedUserName.Text = "-Logged user label-";
             this.labelLoggedUserName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBoxCommercial
+            // 
+            this.pictureBoxCommercial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxCommercial.Location = new System.Drawing.Point(8, 555);
+            this.pictureBoxCommercial.Name = "pictureBoxCommercial";
+            this.pictureBoxCommercial.Size = new System.Drawing.Size(188, 153);
+            this.pictureBoxCommercial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxCommercial.TabIndex = 34;
+            this.pictureBoxCommercial.TabStop = false;
+            // 
+            // pictureBoxLoggedUserPicture
+            // 
+            this.pictureBoxLoggedUserPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxLoggedUserPicture.Location = new System.Drawing.Point(195, 2);
+            this.pictureBoxLoggedUserPicture.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxLoggedUserPicture.Name = "pictureBoxLoggedUserPicture";
+            this.pictureBoxLoggedUserPicture.Size = new System.Drawing.Size(180, 164);
+            this.pictureBoxLoggedUserPicture.TabIndex = 2;
+            this.pictureBoxLoggedUserPicture.TabStop = false;
+            // 
+            // facebookLogo
+            // 
+            this.facebookLogo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.facebookLogo.Image = global::BasicFacebookFeatures.Properties.Resources.logo;
+            this.facebookLogo.Margin = new System.Windows.Forms.Padding(0);
+            this.facebookLogo.Name = "facebookLogo";
+            this.facebookLogo.Size = new System.Drawing.Size(20, 27);
+            this.facebookLogo.Text = "toolStripLabel1";
+            // 
+            // settingsButton
+            // 
+            this.settingsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.settingsButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.settingsButton.Image = ((System.Drawing.Image)(resources.GetObject("settingsButton.Image")));
+            this.settingsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(66, 24);
+            this.settingsButton.Text = "Settings";
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
+            // 
+            // signoutButton
+            // 
+            this.signoutButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.signoutButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.signoutButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.signoutButton.Image = ((System.Drawing.Image)(resources.GetObject("signoutButton.Image")));
+            this.signoutButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.signoutButton.Name = "signoutButton";
+            this.signoutButton.Size = new System.Drawing.Size(64, 24);
+            this.signoutButton.Text = "Signout";
+            this.signoutButton.Click += new System.EventHandler(this.signOutButton_Click);
+            // 
+            // gameOfLifeButton
+            // 
+            this.gameOfLifeButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.gameOfLifeButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.gameOfLifeButton.Image = ((System.Drawing.Image)(resources.GetObject("gameOfLifeButton.Image")));
+            this.gameOfLifeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.gameOfLifeButton.Name = "gameOfLifeButton";
+            this.gameOfLifeButton.Size = new System.Drawing.Size(98, 24);
+            this.gameOfLifeButton.Text = "Game of Life";
+            this.gameOfLifeButton.Click += new System.EventHandler(this.gameOfLifeButton_Click);
+            // 
+            // refreshButton
+            // 
+            this.refreshButton.BackgroundImage = global::BasicFacebookFeatures.Properties.Resources.refresh;
+            this.refreshButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.refreshButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.refreshButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.refreshButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.refreshButton.Image = ((System.Drawing.Image)(resources.GetObject("refreshButton.Image")));
+            this.refreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(24, 24);
+            this.refreshButton.Text = "refresh";
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
             // LoggedUserForm
             // 
@@ -353,9 +354,9 @@ namespace BasicFacebookFeatures
             this.toolstrip.ResumeLayout(false);
             this.toolstrip.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCommercial)).EndInit();
             this.centralPanelArea.ResumeLayout(false);
             this.centralPanelArea.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCommercial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoggedUserPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -136,15 +136,17 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void buttonRules_MouseHover(object sender, EventArgs e)
-        {
-            pictureBoxRules.Visible = true;
-        }
-
-        private void buttonRules_MouseLeave(object sender, EventArgs e)
-        {
-            pictureBoxRules.Visible = false;
-        }
+        // private void buttonRules_MouseHover(object sender, EventArgs e)
+        // {
+        //     pictureBoxRules.Visible = true;
+        //     Button button = sender as Button;
+        //     
+        // }
+        //
+        // private void buttonRules_MouseLeave(object sender, EventArgs e)
+        // {
+        //     pictureBoxRules.Visible = false;
+        // }
 
       
 
@@ -159,17 +161,19 @@ namespace BasicFacebookFeatures
             updatesVisualEffects();
         }
 
-        protected override void OnShown(EventArgs e)
-        {
-            base.OnShown(e);
-        }
 
         private bool isPlaying = false;
         private MyFacebookService k_FacebookService;
         private readonly int k_CellLength = 30;
-        private readonly int k_GameRows = 10;
-        private readonly int k_GameColumns = 10;
+
+        private readonly int k_GameRows = 15;
+        private readonly int k_GameColumns = 15;
         private readonly GameEngine k_Engine;
         private Timer m_GameProgressionTimer;//TODO: this should be inside the engine
+
+        private void buttonRules_Click(object sender, EventArgs e)
+        {
+            pictureBoxRules.Visible = pictureBoxRules.Visible != true;
+        }
     }
 }

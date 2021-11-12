@@ -16,7 +16,6 @@ namespace BasicFacebookFeatures
 {
     public partial class LoggedUserForm : Form
     {
-       
         public LoggedUserForm(MyFacebookService i_FbService)
         {
             k_FacebookService = i_FbService;
@@ -26,6 +25,7 @@ namespace BasicFacebookFeatures
             this.InitializeComponent();
             this.myInitializeComponent();
         }
+
         private void myInitializeComponent()
         {
             this.Size = new Size(1500, 700);
@@ -48,10 +48,13 @@ namespace BasicFacebookFeatures
             Task.Run(() =>
             {
                 Thread.Sleep(2000);
-                this.Invoke(new Action(() =>
+                if (this.Visible)
                 {
-                    notification.Visible = false;
-                }));
+                    this.Invoke(new Action(() =>
+                    {
+                        notification.Visible = false;
+                    }));
+                }
             });
         }
         private void myRefresh()
@@ -71,17 +74,13 @@ namespace BasicFacebookFeatures
             //loadWindowName
             String usersName = k_FacebookService.User.Name;
             this.Text = usersName + "'s FaceBook";
-
             //loadUsersName
             labelLoggedUserName.Text = usersName;
-
             //loadProfilePicture
             pictureBoxLoggedUserPicture.BackgroundImage = k_FacebookService.User.ImageLarge; //TODO: fix size;
             pictureBoxLoggedUserPicture.BringToFront();
-
             k_PostsContainer.MaximumSize = new Size(700, 500);
             k_PostsContainer.Location = new Point(450,450);  //better
-
             this.loadAlbums();
             this.loadLikedPages();
             this.loadFriends();
@@ -100,8 +99,6 @@ namespace BasicFacebookFeatures
             text.AppendLine(k_FacebookService.User.Birthday != null ? 
                 String.Format("Born on {0}", k_FacebookService.User.Birthday) : "No birthday to show");
             infoLabel.Text = text.ToString();
-            pictureBoxInfo.SendToBack();
-            
         }
 
         private void loadLikedPages()
@@ -120,7 +117,6 @@ namespace BasicFacebookFeatures
             }
         }
 
-        
         private void loadPosts()
         {
             k_PostsContainer.Clear();
@@ -128,13 +124,13 @@ namespace BasicFacebookFeatures
             labelPosts.Text = "Posts:";
             k_PostsContainer.Controls.Add(labelPosts);
             k_PostsContainer.Controls.Add(createHeaderHbox());
-
            // this exists since we cannot post(creating a new post is possible, but properties are readonly)
            // Thus we've created a demo to add as new posts
              if (k_FacebookService.LocalAddedPosts.ContainsKey(k_FacebookService.User))
              {
                  addLocalPosts();
              }
+
              //this is data returned from fb services
             addRemotePosts();
         }
@@ -142,6 +138,7 @@ namespace BasicFacebookFeatures
         private void addRemotePosts()
         {
             int i = 0;
+
             foreach (Post post in k_FacebookService.User.Posts)
             {
                 HorizontalBox hBox = new HorizontalBox(k_ElementsInPostsList);
@@ -197,34 +194,27 @@ namespace BasicFacebookFeatures
                 Label labelPostTime = new Label();
                 labelPostTime.Text = DateTime.Now.ToString();
                 box.Controls.Add(labelPostTime);
-
                 Label labelPicture = new Label();
                 labelPicture.Text = "-No Pictures-";
                 box.Controls.Add(labelPicture);
-
                 Label localPost = new Label();
                 localPost.Text = localAddedPost.Message;
-
                 Post post = new Post();
-                
                 box.Controls.Add(localPost);
                 k_PostsContainer.Controls.Add(box);
-
             }
         }
 
         private HorizontalBox createHeaderHbox()
         {
             HorizontalBox hBoxHeader = new HorizontalBox(k_ElementsInPostsList);
-
             Label labelTime = new Label();
+
             labelTime.Text = "Time";
             hBoxHeader.Controls.Add((labelTime));
-
             Label labelPicture = new Label();
             labelPicture.Text = "Photo";
             hBoxHeader.Controls.Add(labelPicture);
-
             Label labelName = new Label();
             labelName.Text = "Name/Description";
             hBoxHeader.Controls.Add(labelName);

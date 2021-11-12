@@ -78,7 +78,7 @@ namespace BasicFacebookFeatures
             this.toolstrip.Location = new System.Drawing.Point(0, 0);
             this.toolstrip.Name = "toolstrip";
             this.toolstrip.Padding = new System.Windows.Forms.Padding(2);
-            this.toolstrip.Size = new System.Drawing.Size(1346, 31);
+            this.toolstrip.Size = new System.Drawing.Size(1346, 34);
             this.toolstrip.TabIndex = 14;
             this.toolstrip.Text = "toolStrip1";
             // 
@@ -88,7 +88,7 @@ namespace BasicFacebookFeatures
             this.facebookLogo.Image = global::BasicFacebookFeatures.Properties.Resources.logo;
             this.facebookLogo.Margin = new System.Windows.Forms.Padding(0);
             this.facebookLogo.Name = "facebookLogo";
-            this.facebookLogo.Size = new System.Drawing.Size(20, 27);
+            this.facebookLogo.Size = new System.Drawing.Size(20, 30);
             this.facebookLogo.Text = "toolStripLabel1";
             // 
             // settingsButton
@@ -98,7 +98,7 @@ namespace BasicFacebookFeatures
             this.settingsButton.Image = ((System.Drawing.Image)(resources.GetObject("settingsButton.Image")));
             this.settingsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(66, 24);
+            this.settingsButton.Size = new System.Drawing.Size(80, 27);
             this.settingsButton.Text = "Settings";
             this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
@@ -110,7 +110,7 @@ namespace BasicFacebookFeatures
             this.signoutButton.Image = ((System.Drawing.Image)(resources.GetObject("signoutButton.Image")));
             this.signoutButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.signoutButton.Name = "signoutButton";
-            this.signoutButton.Size = new System.Drawing.Size(64, 24);
+            this.signoutButton.Size = new System.Drawing.Size(77, 27);
             this.signoutButton.Text = "Signout";
             this.signoutButton.Click += new System.EventHandler(this.signOutButton_Click);
             // 
@@ -120,7 +120,7 @@ namespace BasicFacebookFeatures
             this.minimizedProfilePicture.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.minimizedProfilePicture.Margin = new System.Windows.Forms.Padding(0);
             this.minimizedProfilePicture.Name = "minimizedProfilePicture";
-            this.minimizedProfilePicture.Size = new System.Drawing.Size(171, 27);
+            this.minimizedProfilePicture.Size = new System.Drawing.Size(204, 30);
             this.minimizedProfilePicture.Text = "minimizedProfilePicture";
             this.minimizedProfilePicture.Click += new System.EventHandler(this.minimizedProfilePicture_Click);
             this.minimizedProfilePicture.MouseLeave += new System.EventHandler(this.minimizedProfilePicture_MouseLeave);
@@ -133,7 +133,7 @@ namespace BasicFacebookFeatures
             this.gameOfLifeButton.Image = ((System.Drawing.Image)(resources.GetObject("gameOfLifeButton.Image")));
             this.gameOfLifeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.gameOfLifeButton.Name = "gameOfLifeButton";
-            this.gameOfLifeButton.Size = new System.Drawing.Size(98, 24);
+            this.gameOfLifeButton.Size = new System.Drawing.Size(117, 27);
             this.gameOfLifeButton.Text = "Game of Life";
             this.gameOfLifeButton.Click += new System.EventHandler(this.gameOfLifeButton_Click);
             // 
@@ -141,13 +141,13 @@ namespace BasicFacebookFeatures
             // 
             this.refreshButton.BackgroundImage = global::BasicFacebookFeatures.Properties.Resources.refresh;
             this.refreshButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.refreshButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.refreshButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.None;
             this.refreshButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.refreshButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.refreshButton.Image = ((System.Drawing.Image)(resources.GetObject("refreshButton.Image")));
             this.refreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(24, 24);
+            this.refreshButton.Size = new System.Drawing.Size(29, 27);
             this.refreshButton.Text = "refresh";
             this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
@@ -158,7 +158,7 @@ namespace BasicFacebookFeatures
             this.infoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.infoLabel.Location = new System.Drawing.Point(1042, 108);
             this.infoLabel.Name = "infoLabel";
-            this.infoLabel.Size = new System.Drawing.Size(52, 17);
+            this.infoLabel.Size = new System.Drawing.Size(59, 20);
             this.infoLabel.TabIndex = 40;
             this.infoLabel.Text = "label1";
             // 
@@ -170,7 +170,7 @@ namespace BasicFacebookFeatures
             this.label4.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label4.Location = new System.Drawing.Point(101, 242);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(97, 17);
+            this.label4.Size = new System.Drawing.Size(112, 20);
             this.label4.TabIndex = 38;
             this.label4.Text = "Liked Pages";
             // 
@@ -179,10 +179,10 @@ namespace BasicFacebookFeatures
             this.listBoxLikedPages.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.listBoxLikedPages.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxLikedPages.FormattingEnabled = true;
-            this.listBoxLikedPages.ItemHeight = 16;
+            this.listBoxLikedPages.ItemHeight = 20;
             this.listBoxLikedPages.Location = new System.Drawing.Point(70, 262);
             this.listBoxLikedPages.Name = "listBoxLikedPages";
-            this.listBoxLikedPages.Size = new System.Drawing.Size(247, 116);
+            this.listBoxLikedPages.Size = new System.Drawing.Size(247, 104);
             this.listBoxLikedPages.TabIndex = 37;
             // 
             // albumsLabel
@@ -193,7 +193,7 @@ namespace BasicFacebookFeatures
             this.albumsLabel.ForeColor = System.Drawing.Color.MidnightBlue;
             this.albumsLabel.Location = new System.Drawing.Point(103, 67);
             this.albumsLabel.Name = "albumsLabel";
-            this.albumsLabel.Size = new System.Drawing.Size(60, 17);
+            this.albumsLabel.Size = new System.Drawing.Size(71, 20);
             this.albumsLabel.TabIndex = 36;
             this.albumsLabel.Text = "Albums";
             // 
@@ -202,10 +202,10 @@ namespace BasicFacebookFeatures
             this.listBoxAlbums.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.listBoxAlbums.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxAlbums.FormattingEnabled = true;
-            this.listBoxAlbums.ItemHeight = 16;
+            this.listBoxAlbums.ItemHeight = 20;
             this.listBoxAlbums.Location = new System.Drawing.Point(70, 87);
             this.listBoxAlbums.Name = "listBoxAlbums";
-            this.listBoxAlbums.Size = new System.Drawing.Size(247, 116);
+            this.listBoxAlbums.Size = new System.Drawing.Size(247, 104);
             this.listBoxAlbums.TabIndex = 30;
             this.listBoxAlbums.SelectedIndexChanged += new System.EventHandler(this.listBoxAlbums_SelectedIndexChanged);
             // 
@@ -217,7 +217,7 @@ namespace BasicFacebookFeatures
             this.label2.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label2.Location = new System.Drawing.Point(1123, 243);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 17);
+            this.label2.Size = new System.Drawing.Size(72, 20);
             this.label2.TabIndex = 31;
             this.label2.Text = "Friends";
             // 
@@ -226,11 +226,11 @@ namespace BasicFacebookFeatures
             this.listBoxFriends.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.listBoxFriends.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxFriends.FormattingEnabled = true;
-            this.listBoxFriends.ItemHeight = 16;
+            this.listBoxFriends.ItemHeight = 20;
             this.listBoxFriends.Location = new System.Drawing.Point(1033, 262);
             this.listBoxFriends.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxFriends.Name = "listBoxFriends";
-            this.listBoxFriends.Size = new System.Drawing.Size(224, 116);
+            this.listBoxFriends.Size = new System.Drawing.Size(224, 104);
             this.listBoxFriends.TabIndex = 3;
             this.listBoxFriends.SelectedIndexChanged += new System.EventHandler(this.listBoxFriends_SelectedIndexChanged);
             // 
@@ -302,7 +302,7 @@ namespace BasicFacebookFeatures
             this.labelLoggedUserName.Location = new System.Drawing.Point(168, 164);
             this.labelLoggedUserName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelLoggedUserName.Name = "labelLoggedUserName";
-            this.labelLoggedUserName.Size = new System.Drawing.Size(243, 29);
+            this.labelLoggedUserName.Size = new System.Drawing.Size(292, 36);
             this.labelLoggedUserName.TabIndex = 19;
             this.labelLoggedUserName.Text = "-Logged user label-";
             this.labelLoggedUserName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

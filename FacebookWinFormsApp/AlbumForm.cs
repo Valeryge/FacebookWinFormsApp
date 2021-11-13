@@ -21,7 +21,6 @@ namespace BasicFacebookFeatures
             int currentY = 50;
 
             albumNameLabel.Text = i_Album.Name;
-        
             this.Size = new Size(1200, 700);
             this.AutoScroll = true;
             foreach (Photo photo in i_Album.Photos)
@@ -32,7 +31,6 @@ namespace BasicFacebookFeatures
                 pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
                 pictureBox.Size = new Size(300, 300);
                 pictureBox.Location = new Point(currentX, currentY);
-
                 new ToolTip().SetToolTip(pictureBox, buildPhotoDescription(photo));
 
                 if (currentX + 300 > this.Width)
@@ -44,12 +42,15 @@ namespace BasicFacebookFeatures
                 {
                     currentX += 300;
                 }
+
                 this.Controls.Add(pictureBox);
             }
         }
+
         private String buildPhotoDescription(Photo i_Photo)
         {
             StringBuilder description = new StringBuilder();
+
             if (!string.IsNullOrEmpty(i_Photo.Name))
             {
                 description.AppendLine("Name: " + i_Photo.Name);
@@ -58,35 +59,28 @@ namespace BasicFacebookFeatures
             {
                 description.AppendLine("Unnamed photo");
             }
+
             description.AppendLine("Date: " + i_Photo.CreatedTime);
             description.AppendLine("Liked by: " + getStringOfUsers(i_Photo.LikedBy));
-            description.AppendLine("Comments: " + getStringOfComments(i_Photo.Comments));
 
             return description.ToString();
         }
+
         private String getStringOfUsers(FacebookObjectCollection<User> i_Users)
         {
             StringBuilder names = new StringBuilder();
+
             foreach(User user in i_Users)
             {
                 names.Append(user.Name + ", ");
             }
+
             return names.ToString();
         }
 
-        private String getStringOfComments(FacebookObjectCollection<Comment> i_Comments)
-        {
-            StringBuilder names = new StringBuilder();
-
-            foreach (Comment comment in i_Comments)
-            {
-                names.Append(String.Format("{0}: '{1}'", comment.From, comment.Message));
-            }
-            return names.ToString();
-        }
         private void backButton_Click(object i_Sender, EventArgs i_E)
         {
             this.Close();
         }
-        }
+    }
 }

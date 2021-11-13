@@ -61,10 +61,10 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
             // 
             this.pictureBoxRules.BackgroundImage = global::BasicFacebookFeatures.Properties.Resources.gameoflife;
             this.pictureBoxRules.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxRules.Location = new System.Drawing.Point(941, 25);
+            this.pictureBoxRules.Location = new System.Drawing.Point(945, 161);
             this.pictureBoxRules.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxRules.Name = "pictureBoxRules";
-            this.pictureBoxRules.Size = new System.Drawing.Size(585, 578);
+            this.pictureBoxRules.Size = new System.Drawing.Size(585, 415);
             this.pictureBoxRules.TabIndex = 6;
             this.pictureBoxRules.TabStop = false;
             this.pictureBoxRules.Visible = false;
@@ -121,7 +121,7 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
             this.buttonRules.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonRules.FlatAppearance.BorderSize = 0;
             this.buttonRules.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRules.Location = new System.Drawing.Point(15, 71);
+            this.buttonRules.Location = new System.Drawing.Point(1128, 40);
             this.buttonRules.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonRules.Name = "buttonRules";
             this.buttonRules.Size = new System.Drawing.Size(221, 85);
@@ -132,7 +132,7 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 53);
+            this.label1.Location = new System.Drawing.Point(36, 128);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(106, 17);
@@ -164,7 +164,7 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(998, 651);
+            this.ClientSize = new System.Drawing.Size(1554, 651);
             this.Controls.Add(this.labelRoundsCounter);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

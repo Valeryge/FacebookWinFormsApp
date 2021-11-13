@@ -96,7 +96,6 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
         {
             k_Engine.UpdateToNextGeneration();
             updatesVisualEffects();
-         
         }
 
         private void updateAndDrawNextGeneration()
@@ -122,20 +121,6 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
                 buttonStart.BackgroundImage = new Bitmap(BasicFacebookFeatures.Properties.Resources.STOP);
             }
         }
-
-        // private void buttonRules_MouseHover(object sender, EventArgs e)
-        // {
-        //     pictureBoxRules.Visible = true;
-        //     Button button = sender as Button;
-        //     
-        // }
-        //
-        // private void buttonRules_MouseLeave(object sender, EventArgs e)
-        // {
-        //     pictureBoxRules.Visible = false;
-        // }
-
-      
 
         private void buttonNext_Click(object sender, EventArgs e)
         {

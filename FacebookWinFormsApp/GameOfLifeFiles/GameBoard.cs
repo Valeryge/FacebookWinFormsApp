@@ -22,9 +22,6 @@
             k_Cols = i_Cols;
             k_GameMatrix = new bool[i_Rows, i_Cols];
             CleanBoard();
-            k_GameMatrix[3, 3] = true;
-            k_GameMatrix[3, 4] = true;
-            k_GameMatrix[3, 5] = true;
         }
 
         public bool[,] GameMatrix => k_GameMatrix;

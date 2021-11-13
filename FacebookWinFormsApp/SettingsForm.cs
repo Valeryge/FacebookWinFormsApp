@@ -19,7 +19,7 @@ namespace BasicFacebookFeatures
 
         private void initializePersonalSettingsPage()
         {
-            User user = k_MyFacebookService.CurrentProfileUser;
+            User user = k_MyFacebookService.LoggedUser;
             textBoxName.Text = user.Name;
             textBoxBirthDay.Text = user.Birthday;
             textBoxEmail.Text = user.Email;
@@ -28,7 +28,6 @@ namespace BasicFacebookFeatures
             textBoxSignificantOther.Text = "Love of my life";
             textBoxHomeTown.Text = "TLV baby";
         }
-    
 
         private void myInitComponents()
         {
@@ -94,6 +93,8 @@ namespace BasicFacebookFeatures
         private void EditUserData()
         {
             // also a demo - here we would change the user personal information with the facebook api (but it is readonly)
+            // for example:
+            // this.k_MyFacebookService.LoggedUser.Name = textBoxName.Text;
         }
     }
 }

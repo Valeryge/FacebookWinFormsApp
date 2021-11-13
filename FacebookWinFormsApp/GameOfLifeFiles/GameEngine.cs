@@ -1,15 +1,12 @@
-﻿namespace BasicFacebookFeatures.GameOfLifeFiles
+﻿
+namespace BasicFacebookFeatures.GameOfLifeFiles
 {
     public class GameEngine
     {
         private GameBoard m_GameBoard;
-
         public GameBoard GameBoard => m_GameBoard;
-
         public int GameRows => k_GameRows;
-
         public int GameColumns => k_GameColumns;
-
         private readonly int k_GameRows;
         private readonly int k_GameColumns;
 

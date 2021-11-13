@@ -48,23 +48,23 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
             this.TableLayoutGameOfLife.ColumnCount = 2;
             this.TableLayoutGameOfLife.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.TableLayoutGameOfLife.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableLayoutGameOfLife.Location = new System.Drawing.Point(240, 20);
+            this.TableLayoutGameOfLife.Location = new System.Drawing.Point(320, 25);
             this.TableLayoutGameOfLife.Margin = new System.Windows.Forms.Padding(0);
             this.TableLayoutGameOfLife.Name = "TableLayoutGameOfLife";
             this.TableLayoutGameOfLife.RowCount = 2;
             this.TableLayoutGameOfLife.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 56.79012F));
             this.TableLayoutGameOfLife.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43.20988F));
-            this.TableLayoutGameOfLife.Size = new System.Drawing.Size(150, 81);
+            this.TableLayoutGameOfLife.Size = new System.Drawing.Size(200, 100);
             this.TableLayoutGameOfLife.TabIndex = 0;
             // 
             // pictureBoxRules
             // 
             this.pictureBoxRules.BackgroundImage = global::BasicFacebookFeatures.Properties.Resources.gameoflife;
             this.pictureBoxRules.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxRules.Location = new System.Drawing.Point(706, 20);
-            this.pictureBoxRules.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxRules.Location = new System.Drawing.Point(941, 25);
+            this.pictureBoxRules.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxRules.Name = "pictureBoxRules";
-            this.pictureBoxRules.Size = new System.Drawing.Size(439, 470);
+            this.pictureBoxRules.Size = new System.Drawing.Size(585, 578);
             this.pictureBoxRules.TabIndex = 6;
             this.pictureBoxRules.TabStop = false;
             this.pictureBoxRules.Visible = false;
@@ -76,10 +76,10 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
             this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(11, 277);
-            this.button5.Margin = new System.Windows.Forms.Padding(2);
+            this.button5.Location = new System.Drawing.Point(15, 341);
+            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(166, 69);
+            this.button5.Size = new System.Drawing.Size(221, 85);
             this.button5.TabIndex = 5;
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.buttonReset_Click);
@@ -91,10 +91,10 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
             this.buttonStart.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonStart.FlatAppearance.BorderSize = 0;
             this.buttonStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStart.Location = new System.Drawing.Point(11, 131);
-            this.buttonStart.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonStart.Location = new System.Drawing.Point(15, 161);
+            this.buttonStart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(166, 69);
+            this.buttonStart.Size = new System.Drawing.Size(221, 85);
             this.buttonStart.TabIndex = 4;
             this.buttonStart.UseVisualStyleBackColor = true;
             this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
@@ -106,10 +106,10 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(11, 204);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Location = new System.Drawing.Point(15, 251);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(166, 69);
+            this.button3.Size = new System.Drawing.Size(221, 85);
             this.button3.TabIndex = 3;
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.buttonNext_Click);
@@ -121,10 +121,10 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
             this.buttonRules.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonRules.FlatAppearance.BorderSize = 0;
             this.buttonRules.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRules.Location = new System.Drawing.Point(11, 58);
-            this.buttonRules.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonRules.Location = new System.Drawing.Point(15, 71);
+            this.buttonRules.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonRules.Name = "buttonRules";
-            this.buttonRules.Size = new System.Drawing.Size(166, 69);
+            this.buttonRules.Size = new System.Drawing.Size(221, 85);
             this.buttonRules.TabIndex = 1;
             this.buttonRules.UseVisualStyleBackColor = true;
             this.buttonRules.Click += new System.EventHandler(this.buttonRules_Click);
@@ -132,36 +132,39 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 43);
+            this.label1.Location = new System.Drawing.Point(32, 53);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.Size = new System.Drawing.Size(106, 17);
             this.label1.TabIndex = 7;
             this.label1.Text = "Game Controls:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 384);
+            this.label2.Location = new System.Drawing.Point(36, 473);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 13);
+            this.label2.Size = new System.Drawing.Size(111, 17);
             this.label2.TabIndex = 8;
             this.label2.Text = "Rounds passed:";
             // 
             // labelRoundsCounter
             // 
             this.labelRoundsCounter.AutoSize = true;
-            this.labelRoundsCounter.Location = new System.Drawing.Point(117, 384);
+            this.labelRoundsCounter.Location = new System.Drawing.Point(156, 473);
+            this.labelRoundsCounter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelRoundsCounter.Name = "labelRoundsCounter";
-            this.labelRoundsCounter.Size = new System.Drawing.Size(13, 13);
+            this.labelRoundsCounter.Size = new System.Drawing.Size(16, 17);
             this.labelRoundsCounter.TabIndex = 9;
             this.labelRoundsCounter.Text = "0";
             // 
             // GameOfLifeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(752, 529);
+            this.ClientSize = new System.Drawing.Size(998, 651);
             this.Controls.Add(this.labelRoundsCounter);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -171,7 +174,7 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
             this.Controls.Add(this.button3);
             this.Controls.Add(this.buttonRules);
             this.Controls.Add(this.TableLayoutGameOfLife);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GameOfLifeForm";
             this.Text = "GameOfLifeForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameOfLifeForm_FormClosing);

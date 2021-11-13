@@ -2,7 +2,7 @@
 
 namespace BasicFacebookFeatures
 {
-    partial class LoggedUserForm
+    partial class UserForm
     {
         
         /// <summary>
@@ -31,7 +31,7 @@ namespace BasicFacebookFeatures
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoggedUserForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserForm));
             this.toolstrip = new System.Windows.Forms.ToolStrip();
             this.facebookLogo = new System.Windows.Forms.ToolStripLabel();
             this.settingsButton = new System.Windows.Forms.ToolStripButton();

@@ -11,7 +11,6 @@ namespace BasicFacebookFeatures
     {
         private LogManager k_LogManager;
         private Dictionary<User, List<LocalPost>> k_LocalAddedPosts;
-        private LoginResult k_LoginResult;
 
         public LogManager LogManager
         {
@@ -21,7 +20,6 @@ namespace BasicFacebookFeatures
 
         private User k_LoggedUser;
         private User m_CurrentProfileUser;
-
         public Dictionary<User, List<LocalPost>> LocalAddedPosts => k_LocalAddedPosts;
 
         public MyFacebookService()
@@ -29,6 +27,7 @@ namespace BasicFacebookFeatures
             k_LogManager = new LogManager();
             k_LocalAddedPosts = new Dictionary<User, List<LocalPost>>();
         }
+
         public class LocalPost
         {
             private string k_Message;
@@ -44,16 +43,17 @@ namespace BasicFacebookFeatures
                 k_Message = i_Message;
             }
         }
+
         public User LoggedUser => k_LoggedUser;
 
-        public User User
+        public User CurrentProfileUser
         {
             get => m_CurrentProfileUser;
             set => m_CurrentProfileUser = value;
         }
+
         public void Init(LoginResult i_Result)
         {
-            k_LoginResult = i_Result;
             k_LoggedUser = i_Result.LoggedInUser;
             m_CurrentProfileUser = k_LoggedUser;
         }
@@ -62,14 +62,18 @@ namespace BasicFacebookFeatures
         {
             m_CurrentProfileUser = i_NewUser;
         }
+
         public LocalPost AddNewLocalPost(string i_Text)
         {
             LocalPost lp = new LocalPost(i_Text);
-            if (!LocalAddedPosts.ContainsKey(User))
+
+            if (!LocalAddedPosts.ContainsKey(CurrentProfileUser))
             {
-                LocalAddedPosts.Add(User,new List<LocalPost>());
+                LocalAddedPosts.Add(CurrentProfileUser,new List<LocalPost>());
             }
-            LocalAddedPosts[User].Add(lp);
+
+            LocalAddedPosts[CurrentProfileUser].Add(lp);
+
             return lp;
         }
 
@@ -77,11 +81,13 @@ namespace BasicFacebookFeatures
         {
             Random rnd = new Random();
             int r = rnd.Next(5);
+
             List<string> activities = new List<string> { "liked your photo", "commented on your photo", "liked your post", "liked your album",
             "commented on your photo" };
 
             return String.Format("{0} {1}!", getRandomFriendName(), activities[r]);
         }
+
         private String getRandomFriendName()
         {
             Random rnd = new Random();

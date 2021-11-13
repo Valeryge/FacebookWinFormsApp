@@ -6,13 +6,12 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
 {
     public partial class GameOfLifeForm : Form
     {
-        public GameOfLifeForm(MyFacebookService i_FacebookService)
+        public GameOfLifeForm(Image i_BackgroundImage)
         {
             initGameTimer();
             k_Engine = new GameEngine(k_GameRows, k_GameColumns);
-            k_FacebookService = i_FacebookService;
             InitializeComponent();
-            myInitComponents();
+            myInitComponents(i_BackgroundImage);
         }
 
         private void initGameTimer()
@@ -20,19 +19,17 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
             m_GameProgressionTimer = new System.Windows.Forms.Timer();
             m_GameProgressionTimer.Tick += updateAndDrawNextGeneration;
             m_GameProgressionTimer.Interval = 1000;
-
         }
 
-        private void myInitComponents()
+        private void myInitComponents(Image i_BackgroundImage)
         {
+            TableLayoutGameOfLife.BackgroundImage = i_BackgroundImage;
             TableLayoutGameOfLife.RowCount = k_GameRows;
             TableLayoutGameOfLife.ColumnCount = k_GameColumns;
             TableLayoutGameOfLife.Size = new Size(k_CellLength * k_GameRows, k_CellLength * k_GameColumns);
-            TableLayoutGameOfLife.BackgroundImage = k_FacebookService.GetRandomFriendImage();
             // Photo gamePhotos = FaceBookServices.getPhotos();
             //GridTemplateNum1 gt = k_Engine.
             createCellButtons();
-
             updatesVisualEffects();
             updateAndDrawNextGeneration();
             //updateAndDrawNextGeneration();
@@ -151,16 +148,6 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
             updatesVisualEffects();
         }
 
-
-        private bool isPlaying = false;
-        private MyFacebookService k_FacebookService;
-        private readonly int k_CellLength = 30;
-
-        private readonly int k_GameRows = 15;
-        private readonly int k_GameColumns = 15;
-        private readonly GameEngine k_Engine;
-        private Timer m_GameProgressionTimer;//TODO: this should be inside the engine
-
         private void buttonRules_Click(object sender, EventArgs e)
         {
             pictureBoxRules.Visible = pictureBoxRules.Visible != true;
@@ -173,5 +160,12 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
                 m_GameProgressionTimer.Stop();
             }
         }
+
+        private bool isPlaying = false;
+        private readonly int k_CellLength = 30;
+        private readonly int k_GameRows = 15;
+        private readonly int k_GameColumns = 15;
+        private readonly GameEngine k_Engine;
+        private Timer m_GameProgressionTimer;//TODO: this should be inside the engine
     }
 }

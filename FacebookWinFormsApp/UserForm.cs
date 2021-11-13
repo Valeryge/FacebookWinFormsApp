@@ -14,12 +14,12 @@ using Timer = System.Windows.Forms.Timer;
 
 namespace BasicFacebookFeatures
 {
-    public partial class LoggedUserForm : Form
+    public partial class UserForm : Form
     {
-        public LoggedUserForm(MyFacebookService i_FbService)
+        public UserForm(MyFacebookService i_FbService)
         {
             k_FacebookService = i_FbService;
-            k_PostsContainer = new VerticalBox(k_FacebookService.User.Posts.Count);
+            k_PostsContainer = new VerticalBox(k_FacebookService.CurrentProfileUser.Posts.Count);
            r_CommercialsTimer = new Timer();
             r_NotificationTimer = new Timer();
             this.InitializeComponent();
@@ -72,12 +72,12 @@ namespace BasicFacebookFeatures
         private void loadProfile()
         {
             //loadWindowName
-            String usersName = k_FacebookService.User.Name;
+            String usersName = k_FacebookService.CurrentProfileUser.Name;
             this.Text = usersName + "'s FaceBook";
             //loadUsersName
             labelLoggedUserName.Text = usersName;
             //loadProfilePicture
-            pictureBoxLoggedUserPicture.BackgroundImage = k_FacebookService.User.ImageLarge; //TODO: fix size;
+            pictureBoxLoggedUserPicture.BackgroundImage = k_FacebookService.CurrentProfileUser.ImageLarge; //TODO: fix size;
             pictureBoxLoggedUserPicture.BringToFront();
             k_PostsContainer.MaximumSize = new Size(700, 500);
             k_PostsContainer.Location = new Point(450,450);  //better
@@ -92,18 +92,18 @@ namespace BasicFacebookFeatures
         {
             StringBuilder text = new StringBuilder();
 
-            text.AppendLine(k_FacebookService.User.Hometown != null ? 
-                String.Format("From {0}", k_FacebookService.User.Hometown.Name) : "No hometown to show"); 
-            text.AppendLine(k_FacebookService.User.Educations != null && k_FacebookService.User.Educations.Length > 0 ? 
-                String.Format("Went to {0}", k_FacebookService.User.Educations[0].School.Name) : "No schools to show"); 
-            text.AppendLine(k_FacebookService.User.Birthday != null ? 
-                String.Format("Born on {0}", k_FacebookService.User.Birthday) : "No birthday to show");
+            text.AppendLine(k_FacebookService.CurrentProfileUser.Hometown != null ? 
+                String.Format("From {0}", k_FacebookService.CurrentProfileUser.Hometown.Name) : "No hometown to show"); 
+            text.AppendLine(k_FacebookService.CurrentProfileUser.Educations != null && k_FacebookService.CurrentProfileUser.Educations.Length > 0 ? 
+                String.Format("Went to {0}", k_FacebookService.CurrentProfileUser.Educations[0].School.Name) : "No schools to show"); 
+            text.AppendLine(k_FacebookService.CurrentProfileUser.Birthday != null ? 
+                String.Format("Born on {0}", k_FacebookService.CurrentProfileUser.Birthday) : "No birthday to show");
             infoLabel.Text = text.ToString();
         }
 
         private void loadLikedPages()
         {
-            foreach (Page page in k_FacebookService.User.LikedPages)
+            foreach (Page page in k_FacebookService.CurrentProfileUser.LikedPages)
             {
                 listBoxLikedPages.Items.Add(page);
             }
@@ -111,7 +111,7 @@ namespace BasicFacebookFeatures
 
         private void loadFriends()
         {
-            foreach (User friend in k_FacebookService.User.Friends)
+            foreach (User friend in k_FacebookService.CurrentProfileUser.Friends)
             {
                 listBoxFriends.Items.Add(friend);
             }
@@ -126,7 +126,7 @@ namespace BasicFacebookFeatures
             k_PostsContainer.Controls.Add(createHeaderHbox());
            // this exists since we cannot post(creating a new post is possible, but properties are readonly)
            // Thus we've created a demo to add as new posts
-             if (k_FacebookService.LocalAddedPosts.ContainsKey(k_FacebookService.User))
+             if (k_FacebookService.LocalAddedPosts.ContainsKey(k_FacebookService.CurrentProfileUser))
              {
                  addLocalPosts();
              }
@@ -139,7 +139,7 @@ namespace BasicFacebookFeatures
         {
             int i = 0;
 
-            foreach (Post post in k_FacebookService.User.Posts)
+            foreach (Post post in k_FacebookService.CurrentProfileUser.Posts)
             {
                 HorizontalBox hBox = new HorizontalBox(k_ElementsInPostsList);
                 hBox.AutoSize = true;
@@ -188,7 +188,7 @@ namespace BasicFacebookFeatures
         private void addLocalPosts()
         {
             foreach (MyFacebookService.LocalPost localAddedPost in k_FacebookService.LocalAddedPosts
-                [k_FacebookService.User])
+                [k_FacebookService.CurrentProfileUser])
             {
                 HorizontalBox box = new HorizontalBox(3);
                 Label labelPostTime = new Label();
@@ -224,7 +224,7 @@ namespace BasicFacebookFeatures
 
         private void loadAlbums()
         {
-            FacebookObjectCollection<Album> albums = k_FacebookService.User.Albums;
+            FacebookObjectCollection<Album> albums = k_FacebookService.CurrentProfileUser.Albums;
 
             foreach (Album album in albums)
             {
@@ -355,7 +355,7 @@ namespace BasicFacebookFeatures
         private void gameOfLifeButton_Click(object sender, EventArgs e)
         {
             k_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.eActionType.PlayingGameOfLife));
-            GameOfLifeForm gameForm = new GameOfLifeForm(k_FacebookService);
+            GameOfLifeForm gameForm = new GameOfLifeForm(k_FacebookService.GetRandomFriendImage());
             this.Hide();
             gameForm.FormClosed += GameForm_FormClosed;
             gameForm.Show();

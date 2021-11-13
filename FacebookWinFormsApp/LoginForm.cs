@@ -8,7 +8,7 @@ namespace BasicFacebookFeatures
     public partial class LoginForm : Form
     {
         private int k_CollectionLimit = 50;
-        private LoggedUserForm m_MainForm;
+        private UserForm m_MainForm;
         private readonly MyFacebookService k_MyFBServices;
         public LoginForm()
         {
@@ -17,7 +17,6 @@ namespace BasicFacebookFeatures
             myInitComponent();
             k_MyFBServices = new MyFacebookService();
             FacebookService.s_CollectionLimit = k_CollectionLimit;
-
         }
         
         private void myInitComponent()
@@ -61,7 +60,7 @@ namespace BasicFacebookFeatures
             if (!string.IsNullOrEmpty(loginResult.AccessToken))
             {
                 k_MyFBServices.Init(loginResult);
-                m_MainForm = new LoggedUserForm(k_MyFBServices);
+                m_MainForm = new UserForm(k_MyFBServices);
                 this.Hide();
                 m_MainForm.Closed += mainForm_Closed;
                 m_MainForm.Show();

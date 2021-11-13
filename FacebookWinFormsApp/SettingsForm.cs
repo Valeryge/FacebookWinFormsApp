@@ -8,12 +8,10 @@ namespace BasicFacebookFeatures
 {
     public partial class SettingsForm : Form
     {
-        private readonly LogManager k_LogManager;
         private readonly MyFacebookService k_MyFacebookService;
 
         public SettingsForm(MyFacebookService i_MyFacebookService)
         {
-            k_LogManager = i_MyFacebookService.LogManager;
             k_MyFacebookService = i_MyFacebookService;
             InitializeComponent();
             myInitComponents();
@@ -21,7 +19,7 @@ namespace BasicFacebookFeatures
 
         private void initializePersonalSettingsPage()
         {
-            User user = k_MyFacebookService.User;
+            User user = k_MyFacebookService.CurrentProfileUser;
             validateData();
             textBoxName.Text = user.Name;
             textBoxBirthDay.Text = user.Birthday;
@@ -40,6 +38,7 @@ namespace BasicFacebookFeatures
             createTableOfUserActions();
             initializePersonalSettingsPage();
         }
+
         private void createTableOfUserActions()
         {
             List<string> titles = new List<string> { "Time", "Action Type", "Status" };
@@ -53,8 +52,8 @@ namespace BasicFacebookFeatures
                 tableLayoutRecentActions.Controls.Add(titleLabel);
             }
 
-            tableLayoutRecentActions.RowCount = k_LogManager.ActionsList.Count;
-            foreach (FaceBookAction fbAction in k_LogManager.ActionsList)
+            tableLayoutRecentActions.RowCount = k_MyFacebookService.LogManager.ActionsList.Count;
+            foreach (FaceBookAction fbAction in k_MyFacebookService.LogManager.ActionsList)
             {
                 Label labelTime = new Label();
                 labelTime.Text = fbAction.Time.TimeOfDay.ToString();
@@ -67,11 +66,12 @@ namespace BasicFacebookFeatures
                 tableLayoutRecentActions.Controls.Add(labelErrorStatus);
             }
         }
+
         private void loadStatistics()
         {
             foreach (FaceBookAction.eActionType type in Enum.GetValues(typeof(FaceBookAction.eActionType)))
             {
-                this.actionTypeChart.Series["Activity Type"].Points.AddXY(type.ToString(), k_LogManager.GetActivityCountByType(type));
+                this.actionTypeChart.Series["Activity Type"].Points.AddXY(type.ToString(), k_MyFacebookService.LogManager.GetActivityCountByType(type));
             }
         }
 

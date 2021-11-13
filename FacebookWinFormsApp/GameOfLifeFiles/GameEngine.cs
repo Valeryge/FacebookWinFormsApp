@@ -5,17 +5,17 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
     {
         private GameBoard m_GameBoard;
         public GameBoard GameBoard => m_GameBoard;
-        public int GameRows => k_GameRows;
-        public int GameColumns => k_GameColumns;
-        private readonly int k_GameRows;
-        private readonly int k_GameColumns;
+        public int GameRows => GameBoard.Rows;
+        public int GameColumns => GameBoard.Cols;
+//private readonly int k_GameRows;
+       // private readonly int k_GameColumns;
 
         public GameEngine(int i_GameRows, int i_GameColumns)
         {
             Rounds = 0;
-            k_GameRows = i_GameRows;
-            k_GameColumns = i_GameColumns;
-            m_GameBoard = new GameBoard(k_GameRows,k_GameColumns);
+        //    k_GameRows = i_GameRows;
+       //     k_GameColumns = i_GameColumns;
+            m_GameBoard = new GameBoard(i_GameRows, i_GameColumns);
         }
 
         private int getNeighbors(int i_RowIndex, int i_ColumnIndex, bool[,] i_Tmp)
@@ -27,7 +27,7 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
                 {
                     if (!(i_RowIndex == rowIndex && i_ColumnIndex == columnIndex))//if not the caller
                     {
-                        if (!((rowIndex < 0 || columnIndex < 0) || (rowIndex >= k_GameRows || columnIndex >= k_GameColumns)))
+                        if (!((rowIndex < 0 || columnIndex < 0) || (rowIndex >= m_GameBoard.Rows || columnIndex >= m_GameBoard.Cols)))
                         {
                             if (i_Tmp[rowIndex, columnIndex] == true)
                             {
@@ -43,19 +43,19 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
         public void UpdateToNextGeneration()
         {
 
-            bool[,] tmp = new bool[k_GameRows, k_GameColumns];
-            for (int i = 0; i < k_GameRows; ++i)
+            bool[,] tmp = new bool[m_GameBoard.Rows, m_GameBoard.Cols];
+            for (int i = 0; i < m_GameBoard.Rows; ++i)
             {
-                for (int j = 0; j < k_GameColumns; ++j)
+                for (int j = 0; j < m_GameBoard.Cols; ++j)
                 {
                     tmp[i, j] = m_GameBoard.GameMatrix[i, j];
                 }
             }
 
 
-            for (int rowIndex = 0; rowIndex < k_GameRows; rowIndex++)
+            for (int rowIndex = 0; rowIndex < m_GameBoard.Rows; rowIndex++)
             {
-                for (int columnIndex = 0; columnIndex < k_GameColumns; columnIndex++)
+                for (int columnIndex = 0; columnIndex < m_GameBoard.Cols; columnIndex++)
                 {
                     int numOfAliveNeighbors = getNeighbors(rowIndex, columnIndex, tmp);
 

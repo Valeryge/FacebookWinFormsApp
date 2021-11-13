@@ -20,7 +20,6 @@ namespace BasicFacebookFeatures
         private void initializePersonalSettingsPage()
         {
             User user = k_MyFacebookService.CurrentProfileUser;
-            validateData();
             textBoxName.Text = user.Name;
             textBoxBirthDay.Text = user.Birthday;
             textBoxEmail.Text = user.Email;
@@ -28,10 +27,9 @@ namespace BasicFacebookFeatures
             textBoxWorkPlace.Text = "Worked here, Worked there.";
             textBoxSignificantOther.Text = "Love of my life";
             textBoxHomeTown.Text = "TLV baby";
-            }
+        }
+    
 
-        //this is a demo, not really validating.
-        private void validateData() { }
         private void myInitComponents()
         {
             loadStatistics();
@@ -77,7 +75,25 @@ namespace BasicFacebookFeatures
 
         private void Confirmation_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Press O.K if you're sure the data you've entered is correct.", "Confirmation", MessageBoxButtons.OKCancel);
+            DialogResult result = MessageBox.Show("Press O.K if you're sure the data you've entered is correct.", "Confirmation", MessageBoxButtons.OKCancel);
+           
+            if (result == DialogResult.OK)
+            {
+                if (validateData())
+                {
+                    EditUserData();
+                }
+            }
+        }
+
+        //this is a demo, not really validating.
+        private bool validateData() {
+            return true;
+        }
+
+        private void EditUserData()
+        {
+            // also a demo - here we would change the user personal information with the facebook api (but it is readonly)
         }
     }
 }

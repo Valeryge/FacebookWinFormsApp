@@ -6,6 +6,16 @@
         private readonly int k_Rows;
         private readonly int k_Cols;
 
+        public int Rows
+        {
+            get { return k_Rows; }
+        }
+
+        public int Cols
+        {
+            get { return k_Rows; }
+        }
+
         public GameBoard(int i_Rows, int i_Cols)
         {
             k_Rows = i_Rows;

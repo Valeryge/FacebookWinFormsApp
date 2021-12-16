@@ -24,7 +24,7 @@ namespace BasicFacebookFeatures
 
         public MyFacebookService()
         {
-            k_LogManager = new LogManager();
+            k_LogManager = LogManager.Instance;
             k_LocalAddedPosts = new Dictionary<User, List<LocalPost>>();
         }
 

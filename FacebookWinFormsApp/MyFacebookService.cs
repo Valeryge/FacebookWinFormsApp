@@ -4,7 +4,7 @@ using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 using System.Drawing;
 
-namespace BasicFacebookFeatures
+namespace FacebookApp
 {
     
     public class MyFacebookService

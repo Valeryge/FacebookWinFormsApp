@@ -8,9 +8,9 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{905D5BF1-A7E4-4440-85E8-84772F5312D5}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>BasicFacebookFeatures</RootNamespace>
-    <AssemblyName>BasicFacebookFeatures</AssemblyName>
+    <OutputType>Library</OutputType>
+    <RootNamespace>FacebookApp</RootNamespace>
+    <AssemblyName>FacebookApp</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -57,6 +57,9 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CefSharp, Version=94.4.110.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
       <HintPath>..\packages\CefSharp.Common.94.4.110\lib\net452\CefSharp.dll</HintPath>
@@ -72,6 +75,10 @@
     </Reference>
     <Reference Include="Facebook">
       <HintPath>..\FBApi\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="FacebookApp, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x64\Debug\FacebookApp.dll</HintPath>
     </Reference>
     <Reference Include="FbGraphApiWrapper">
       <HintPath>..\FBApi\FbGraphApiWrapper.dll</HintPath>
@@ -93,6 +100,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DemoFullUserData.cs" />
     <Compile Include="FaceBookAction.cs" />
     <Compile Include="AlbumForm.cs">
       <SubType>Form</SubType>
@@ -222,7 +230,9 @@
     <None Include="Resources\START1.PNG" />
     <Content Include="Resources\STOP.PNG" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

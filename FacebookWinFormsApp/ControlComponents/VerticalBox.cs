@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace BasicFacebookFeatures
+namespace FacebookApp
 {
     public class VerticalBox : TableLayoutPanel
     {

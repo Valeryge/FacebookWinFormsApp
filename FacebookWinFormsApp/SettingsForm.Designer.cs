@@ -1,5 +1,5 @@
 ﻿
-namespace BasicFacebookFeatures
+namespace FacebookApp
 {
     partial class SettingsForm
     {

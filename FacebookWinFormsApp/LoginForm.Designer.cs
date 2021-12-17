@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace BasicFacebookFeatures
+namespace FacebookApp
 {
     partial class LoginForm
     {
@@ -36,7 +36,7 @@ namespace BasicFacebookFeatures
             // buttonLogin
             // 
             this.buttonLogin.AutoSize = true;
-            this.buttonLogin.BackgroundImage = global::BasicFacebookFeatures.Properties.Resources.login;
+            this.buttonLogin.BackgroundImage = global::FacebookApp.Properties.Resources.login;
             this.buttonLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonLogin.FlatAppearance.BorderSize = 0;
@@ -53,7 +53,7 @@ namespace BasicFacebookFeatures
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::BasicFacebookFeatures.Properties.Resources.facebook_reactions;
+            this.BackgroundImage = global::FacebookApp.Properties.Resources.facebook_reactions;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1185, 662);
             this.Controls.Add(this.buttonLogin);

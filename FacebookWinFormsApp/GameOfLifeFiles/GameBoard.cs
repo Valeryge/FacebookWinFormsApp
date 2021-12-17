@@ -1,4 +1,4 @@
-﻿namespace BasicFacebookFeatures.GameOfLifeFiles
+﻿namespace FacebookApp.GameOfLifeFiles
 {
     public class GameBoard
     {

@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace BasicFacebookFeatures.GameOfLifeFiles
+namespace FacebookApp.GameOfLifeFiles
 {
     public partial class GameOfLifeForm : Form
     {
@@ -32,7 +33,7 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
             createCellButtons();
             updatesVisualEffects();
             updateAndDrawNextGeneration();
-            //updateAndDrawNextGeneration();
+          
         }
 
         private void createCellButtons()
@@ -55,7 +56,7 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
             Button button = new Button();
             button.Dock = DockStyle.Fill;
             button.Size = new Size(k_CellLength, k_CellLength);
-            button.Click += new System.EventHandler(gameButton_Clicked);  //TODO: doesn't work.
+            button.Click += new System.EventHandler(gameButton_Clicked); 
             button.Padding = new Padding(0);
             button.Margin = new Padding(0);
             button.ForeColor = Color.Black;
@@ -67,10 +68,6 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
             k_Engine.GameBoard.ChangeValue(position.Row, position.Column);
             updatesVisualEffects();
         }
-
-
-
-        //TODO: switch yellow color with pictures from facebook
         private void updatesVisualEffects()
         {
             {
@@ -103,22 +100,20 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
             k_Engine.UpdateToNextGeneration();
             updatesVisualEffects();
         }
-        //TODO: Move to an engine class
-
+    
         private void buttonStart_Click(object i_Sender, EventArgs i_E)
         {
-            
             if (isPlaying)
             {
                 m_GameProgressionTimer.Stop();
                 isPlaying = false;
-                buttonStart.BackgroundImage = new Bitmap(BasicFacebookFeatures.Properties.Resources.START);
+                buttonStart.BackgroundImage = new Bitmap(FacebookApp.Properties.Resources.START);
 
             } else
             {
                 m_GameProgressionTimer.Start();
                 isPlaying = true;
-                buttonStart.BackgroundImage = new Bitmap(BasicFacebookFeatures.Properties.Resources.STOP);
+                buttonStart.BackgroundImage = new Bitmap(FacebookApp.Properties.Resources.STOP);
             }
         }
 
@@ -152,5 +147,6 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
         private readonly int k_GameColumns = 15;
         private readonly GameEngine k_Engine;
         private Timer m_GameProgressionTimer;//TODO: this should be inside the engine
+        
     }
 }

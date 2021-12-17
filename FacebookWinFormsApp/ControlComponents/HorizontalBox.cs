@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 using Size = System.Drawing.Size;
 
-namespace BasicFacebookFeatures.ControlComponents
+namespace FacebookApp.ControlComponents
 {
     public class HorizontalBox : TableLayoutPanel
     {

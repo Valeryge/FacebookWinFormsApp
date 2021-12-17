@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BasicFacebookFeatures
+namespace FacebookApp
 {
     public class FaceBookAction
     {

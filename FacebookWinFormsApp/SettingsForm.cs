@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 
-namespace BasicFacebookFeatures
+namespace FacebookApp
 {
     public partial class SettingsForm : Form
     {
@@ -19,14 +19,16 @@ namespace BasicFacebookFeatures
 
         private void initializePersonalSettingsPage()
         {
-            User user = k_MyFacebookService.LoggedUser;
-            textBoxName.Text = user.Name;
-            textBoxBirthDay.Text = user.Birthday;
-            textBoxEmail.Text = user.Email;
-            textBoxEducation.Text = "Go ask Guy Ronen";
-            textBoxWorkPlace.Text = "Worked here, Worked there.";
-            textBoxSignificantOther.Text = "Love of my life";
-            textBoxHomeTown.Text = "TLV baby";
+            DemoFullUserData userData  = new DemoFullUserData(k_MyFacebookService.LoggedUser);
+            
+            textBoxName.Text = userData.Name;
+            textBoxBirthDay.Text = userData.BirthDay;
+            textBoxEmail.Text = userData.Email;
+            textBoxEducation.Text = userData.Education;
+            textBoxWorkPlace.Text = userData.WorkPlace;
+            textBoxSignificantOther.Text = userData.SignificantOther;
+            textBoxHomeTown.Text = userData.HomeTown;
+
         }
 
         private void myInitComponents()

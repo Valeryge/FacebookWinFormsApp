@@ -1,5 +1,5 @@
 ﻿
-namespace BasicFacebookFeatures.GameOfLifeFiles
+namespace FacebookApp.GameOfLifeFiles
 {
     partial class GameOfLifeForm
     {
@@ -59,7 +59,7 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
             // 
             // pictureBoxRules
             // 
-            this.pictureBoxRules.BackgroundImage = global::BasicFacebookFeatures.Properties.Resources.gameoflife;
+            this.pictureBoxRules.BackgroundImage = global::FacebookApp.Properties.Resources.gameoflife;
             this.pictureBoxRules.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBoxRules.Location = new System.Drawing.Point(945, 161);
             this.pictureBoxRules.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -71,7 +71,7 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
             // 
             // button5
             // 
-            this.button5.BackgroundImage = global::BasicFacebookFeatures.Properties.Resources.RESET;
+            this.button5.BackgroundImage = global::FacebookApp.Properties.Resources.RESET;
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button5.FlatAppearance.BorderSize = 0;
@@ -86,7 +86,7 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
             // 
             // buttonStart
             // 
-            this.buttonStart.BackgroundImage = global::BasicFacebookFeatures.Properties.Resources.START;
+            this.buttonStart.BackgroundImage = global::FacebookApp.Properties.Resources.START;
             this.buttonStart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonStart.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonStart.FlatAppearance.BorderSize = 0;
@@ -101,7 +101,7 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
             // 
             // button3
             // 
-            this.button3.BackgroundImage = global::BasicFacebookFeatures.Properties.Resources.NEXT;
+            this.button3.BackgroundImage = global::FacebookApp.Properties.Resources.NEXT;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.FlatAppearance.BorderSize = 0;
@@ -116,7 +116,7 @@ namespace BasicFacebookFeatures.GameOfLifeFiles
             // 
             // buttonRules
             // 
-            this.buttonRules.BackgroundImage = global::BasicFacebookFeatures.Properties.Resources.RULES;
+            this.buttonRules.BackgroundImage = global::FacebookApp.Properties.Resources.RULES;
             this.buttonRules.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonRules.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonRules.FlatAppearance.BorderSize = 0;

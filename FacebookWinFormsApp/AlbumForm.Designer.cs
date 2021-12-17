@@ -1,5 +1,5 @@
 ﻿
-namespace BasicFacebookFeatures
+namespace FacebookApp
 {
     partial class AlbumForm
     {
@@ -35,7 +35,7 @@ namespace BasicFacebookFeatures
             // 
             // backButton
             // 
-            this.backButton.BackgroundImage = global::BasicFacebookFeatures.Properties.Resources.back;
+            this.backButton.BackgroundImage = global::FacebookApp.Properties.Resources.back;
             this.backButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.backButton.Location = new System.Drawing.Point(0, -4);
             this.backButton.Name = "backButton";

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace BasicFacebookFeatures
+namespace FacebookApp
 {
     partial class UserForm
     {
@@ -85,7 +85,7 @@ namespace BasicFacebookFeatures
             // facebookLogo
             // 
             this.facebookLogo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.facebookLogo.Image = global::BasicFacebookFeatures.Properties.Resources.logo;
+            this.facebookLogo.Image = global::FacebookApp.Properties.Resources.logo;
             this.facebookLogo.Margin = new System.Windows.Forms.Padding(0);
             this.facebookLogo.Name = "facebookLogo";
             this.facebookLogo.Size = new System.Drawing.Size(20, 30);
@@ -139,7 +139,7 @@ namespace BasicFacebookFeatures
             // 
             // refreshButton
             // 
-            this.refreshButton.BackgroundImage = global::BasicFacebookFeatures.Properties.Resources.refresh;
+            this.refreshButton.BackgroundImage = global::FacebookApp.Properties.Resources.refresh;
             this.refreshButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.refreshButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.None;
             this.refreshButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
@@ -310,7 +310,7 @@ namespace BasicFacebookFeatures
             // pictureBoxInfo
             // 
             this.pictureBoxInfo.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBoxInfo.BackgroundImage = global::BasicFacebookFeatures.Properties.Resources.infobox;
+            this.pictureBoxInfo.BackgroundImage = global::FacebookApp.Properties.Resources.infobox;
             this.pictureBoxInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBoxInfo.Location = new System.Drawing.Point(1027, 70);
             this.pictureBoxInfo.Name = "pictureBoxInfo";

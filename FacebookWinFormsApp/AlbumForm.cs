@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 
-namespace BasicFacebookFeatures
+namespace FacebookApp
 {
     public partial class AlbumForm : Form
     {

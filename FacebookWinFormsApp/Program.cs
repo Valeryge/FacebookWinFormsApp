@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
+using FacebookApp.GameOfLifeFiles;
 using FacebookWrapper;
 
-namespace BasicFacebookFeatures
+namespace FacebookApp
 {
     static class Program
     {

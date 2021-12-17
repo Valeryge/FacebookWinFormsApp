@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using System.Threading;
-using BasicFacebookFeatures.ControlComponents;
-using BasicFacebookFeatures.GameOfLifeFiles;
+using FacebookApp.ControlComponents;
+using FacebookApp.GameOfLifeFiles;
 using Timer = System.Windows.Forms.Timer;
 
-namespace BasicFacebookFeatures
+namespace FacebookApp
 {
     public partial class UserForm : Form
     {

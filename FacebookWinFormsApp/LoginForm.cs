@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using FacebookWrapper;
 
-namespace BasicFacebookFeatures
+namespace FacebookApp
 {
     public partial class LoginForm : Form
     {

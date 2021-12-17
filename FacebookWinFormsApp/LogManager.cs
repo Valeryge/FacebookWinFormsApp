@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BasicFacebookFeatures
+namespace FacebookApp
 {
     public sealed class LogManager
     {

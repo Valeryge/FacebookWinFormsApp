@@ -124,9 +124,14 @@ namespace FacebookApp
             labelPosts.Text = "Posts:";
             k_PostsContainer.Controls.Add(labelPosts);
             k_PostsContainer.Controls.Add(createHeaderHbox());
-           // this exists since we cannot post(creating a new post is possible, but properties are readonly)
-           // Thus we've created a demo to add as new posts
-             if (k_FacebookService.LocalAddedPosts.ContainsKey(k_FacebookService.CurrentProfileUser))
+            // this exists since we cannot post(creating a new post is possible, but properties are readonly)
+            // Thus we've created a demo to add as new posts
+            foreach (Post post in k_FacebookService.CurrentProfileUser.Posts)
+            {
+
+            }
+
+                if (k_FacebookService.LocalAddedPosts.ContainsKey(k_FacebookService.CurrentProfileUser))
              {
                  addLocalPosts();
              }
@@ -184,7 +189,8 @@ namespace FacebookApp
                 }
             }
         }
-
+        //client - vbox
+        //realSubject - hbox contains label1, label2, label3, post
         private void addLocalPosts()
         {
             foreach (MyFacebookService.LocalPost localAddedPost in k_FacebookService.LocalAddedPosts
@@ -202,9 +208,25 @@ namespace FacebookApp
                 Post post = new Post();
                 box.Controls.Add(localPost);
                 k_PostsContainer.Controls.Add(box);
+            //    k_PostsContainer.Controls.Add(new PostsHboxProxy { Box = box });
+                
             }
         }
 
+        // public class PostsHboxProxy : Control
+        // {
+        //     public HorizontalBox Box { get; set; }
+        //
+        //     public void AddToControl()
+        //     {
+        //
+        //     }
+        //
+        //     public override string ToString()
+        //     {
+        //         return "";
+        //     }
+        // }
         private HorizontalBox createHeaderHbox()
         {
             HorizontalBox hBoxHeader = new HorizontalBox(k_ElementsInPostsList);
@@ -238,7 +260,7 @@ namespace FacebookApp
         {
             k_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.eActionType.PostClicked));
             k_FacebookService.AddNewLocalPost(textBoxPost.Text);
-            Post newPost = new Post();
+          //  Post newPost = new Post();
             this.loadPosts();
         }
         

@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using FacebookApp.GameOfLifeFiles;
 using FacebookWrapper;
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp
 {
@@ -11,6 +12,9 @@ namespace FacebookApp
  [STAThread]
         static void Main()
         {
+
+            
+
             Clipboard.SetText("design.patterns20cc");
             FacebookService.s_UseForamttedToStrings = true;
             Application.EnableVisualStyles();

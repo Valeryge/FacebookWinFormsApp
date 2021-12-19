@@ -1,17 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 using System.Drawing;
+using CefSharp.DevTools.Target;
 
 namespace FacebookApp
 {
     
     public class MyFacebookService
     {
-        private LogManager k_LogManager;
-        private Dictionary<User, List<LocalPost>> k_LocalAddedPosts;
+      //  private Dictionary<User, List<IFaceBookPost>> k_UserPosts;
+        public Dictionary<User, List<IFaceBookPost>> UserPosts { get; set; }
 
+        private LogManager k_LogManager;
+        private Dictionary<User, List<LocalPost>> k_LocalAddedPosts; //remove when generalized complete
+        public Dictionary<User, List<LocalPost>> LocalAddedPosts => k_LocalAddedPosts; //remove when generalized complete
         public LogManager LogManager
         {
             get => k_LogManager;
@@ -20,15 +25,30 @@ namespace FacebookApp
 
         private User k_LoggedUser;
         private User m_CurrentProfileUser;
-        public Dictionary<User, List<LocalPost>> LocalAddedPosts => k_LocalAddedPosts;
-
+        
+        
         public MyFacebookService()
         {
             k_LogManager = LogManager.Instance;
-            k_LocalAddedPosts = new Dictionary<User, List<LocalPost>>();
+            k_LocalAddedPosts = new Dictionary<User, List<LocalPost>>(); //remove when generalized complete
+            UserPosts = new Dictionary<User, List<IFaceBookPost>>();
         }
 
-        public class LocalPost
+       
+
+        // public class PostsProxy 
+        // {
+        //     private Collection<Post> userPosts;
+        //     private Collection<LocalPost> localUserPosts;
+        //
+        //     void addPosts(){}
+        // }
+
+        public interface IFaceBookPost
+        {
+            void Create(IFaceBookPost post);
+        }
+        public class LocalPost  : IFaceBookPost
         {
             private string k_Message;
 
@@ -42,6 +62,21 @@ namespace FacebookApp
             {
                 k_Message = i_Message;
             }
+
+            public void Create(IFaceBookPost post)
+            {
+                throw new NotImplementedException();
+            }
+
+            public class OriginalPostAdapter : IFaceBookPost
+            {
+                private Post m_OriginalPost;
+
+                public void Create(IFaceBookPost post)
+                {
+                    throw new NotImplementedException();
+                }
+            }
         }
 
         public User LoggedUser => k_LoggedUser;
@@ -52,10 +87,77 @@ namespace FacebookApp
             set => m_CurrentProfileUser = value;
         }
 
+        public class UserWrapper
+        {
+            public User OriginalUser{ get; set; }
+            public UserExtendedData ExtendedData { get; set; }
+
+            public List<IFaceBookPost> getPosts()
+            {
+                List<IFaceBookPost> list = new List<IFaceBookPost>();
+                foreach (IFaceBookPost originalUserPost in OriginalUser.Posts)
+                {
+                    list.Add(originalUserPost);
+                }
+
+                foreach (LocalPost lp  in ExtendedData.extended)
+                {
+                    list.Add(ExtendedData);
+                }
+
+                return list;
+            }
+        }
+
+
+        public class UserExtendedData : IFaceBookPost
+        {
+          public  List<LocalPost> extended = new List<LocalPost>();
+
+
+          public void Create(IFaceBookPost post)
+          {
+              throw new NotImplementedException();
+          }
+        }
+        public class ourFbPost
+        {
+            private Post originalPost; 
+            private LocalPost localPost;
+
+
+            void changeName(string i_NewName)
+            {
+                base.Name = i_NewName;
+            }
+        }
         public void Init(LoginResult i_Result)
         {
             k_LoggedUser = i_Result.LoggedInUser;
             m_CurrentProfileUser = k_LoggedUser;
+
+
+            Post post = new Post();
+            k_LoggedUser.Posts.Add(post);
+
+            ourFbPost fp = new ourFbPost();
+            fp.Name = "5";
+            
+            try
+            {
+                //post.Name = "hello";
+                //post.ReFetch(DynamicWrapper.eLoadOptions.Basic);
+                //post.ReFetch(DynamicWrapper.eLoadOptions.Full);
+                //   post.ReFetch(DynamicWrapper.eLoadOptions.FullWithConnections);
+            }
+            catch (Exception e)
+            {
+            //    Console.Write(e.Message);
+            }
+            
+
+            //Console.WriteLine(post.CreatedTime.ToString());
+            LoggedUser.Posts.Add(post);
         }
 
         public void InitCurrentProfile(User i_NewUser)
@@ -63,18 +165,10 @@ namespace FacebookApp
             m_CurrentProfileUser = i_NewUser;
         }
 
-        public LocalPost AddNewLocalPost(string i_Text)
+        public void AddNewLocalPost(string i_Text)
         {
             LocalPost lp = new LocalPost(i_Text);
-
-            if (!LocalAddedPosts.ContainsKey(CurrentProfileUser))
-            {
-                LocalAddedPosts.Add(CurrentProfileUser,new List<LocalPost>());
-            }
-
-            LocalAddedPosts[CurrentProfileUser].Add(lp);
-
-            return lp;
+            UserPosts [CurrentProfileUser].Add(lp);
         }
 
         public String GetNotification()
@@ -104,4 +198,6 @@ namespace FacebookApp
             return k_LoggedUser.Friends[r].ImageLarge;
         }
     }
+
+    
 }

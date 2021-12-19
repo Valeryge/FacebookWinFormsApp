@@ -21,22 +21,22 @@ namespace FacebookApp
             }
         }
         
-        private static LogManager instance = null;
+        private static LogManager s_Instance = null;
         public static LogManager Instance
         {
             get
             {
-                if (instance == null)
+                if (s_Instance == null)
                 {
                     lock (objectLock)
                         {
-                            if (instance == null)
+                            if (s_Instance == null)
                             {
-                                instance = new LogManager();
+                                s_Instance = new LogManager();
                             }
                         }
                 }
-                return instance;
+                return s_Instance;
             }
         }
 

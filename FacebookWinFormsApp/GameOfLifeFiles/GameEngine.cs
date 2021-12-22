@@ -5,6 +5,13 @@ namespace FacebookApp.GameOfLifeFiles
 {
     public class GameEngine
     {
+        private int m_Rounds;
+        public int Rounds
+        {
+            get => m_Rounds;
+            private set => m_Rounds = value;
+        }
+
         private GameBoard m_GameBoard;
         public GameBoard GameBoard => m_GameBoard;
         public int GameRows => GameBoard.Rows;
@@ -16,10 +23,8 @@ namespace FacebookApp.GameOfLifeFiles
             Rounds = 0;
             m_GameBoard = i_GameBoard;
         }
-        public GameEngine(int i_GameRows, int i_GameColumns) : this(new GameBoard(i_GameRows, i_GameColumns))
-        {
 
-        }
+        public GameEngine(int i_GameRows, int i_GameColumns) : this(new GameBoard(i_GameRows, i_GameColumns)) { }
 
         public void AttemptAwakeRandomControls()
         {
@@ -100,18 +105,14 @@ namespace FacebookApp.GameOfLifeFiles
             }
             m_Rounds++;
         }
-        private int m_Rounds;
-        public int Rounds
-        {
-            get => m_Rounds;
-            private set => m_Rounds = value;
-        }
-
-        public bool CheckStatus { get; set; }
 
         public void Restart()
         {
             m_GameBoard.CleanBoard();
         }
+
+        
+
+ 
     }
 }

@@ -10,6 +10,7 @@ using FacebookWrapper.ObjectModel;
 using System.Threading;
 using FacebookApp.ControlComponents;
 using FacebookApp.GameOfLifeFiles;
+using FacebookApp.GameOfLifeFiles.IBuilder;
 using Timer = System.Windows.Forms.Timer;
 
 namespace FacebookApp

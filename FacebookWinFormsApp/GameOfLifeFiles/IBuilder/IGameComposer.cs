@@ -8,7 +8,7 @@ namespace FacebookApp.GameOfLifeFiles
 {
     interface IGameComposer : IGameCreator
     {
-        IGameBuilder builder { get; set; }
+        IGameBuilder Builder { get; set; }
         GameOfLifeForm Compose();
     }
 }

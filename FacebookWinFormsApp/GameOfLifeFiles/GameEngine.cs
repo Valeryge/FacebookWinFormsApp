@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace FacebookApp.GameOfLifeFiles
 {
     public class GameEngine
@@ -16,8 +18,24 @@ namespace FacebookApp.GameOfLifeFiles
         }
         public GameEngine(int i_GameRows, int i_GameColumns) : this(new GameBoard(i_GameRows, i_GameColumns))
         {
+
         }
 
+        public void AttemptAwakeRandomControls()
+        {
+            for (int i = 0; i < m_GameBoard.Rows; ++i)
+            {
+                for (int j = 0; j < m_GameBoard.Cols; ++j)
+                {
+                    Random rand = new Random();
+                    int num = rand.Next(1, 8);
+                    if (num == 1)
+                    {
+                        m_GameBoard.GameMatrix[i, j] = true;
+                    }
+                }
+            }
+        }
         private int getNeighbors(int i_RowIndex, int i_ColumnIndex, bool[,] i_Tmp)
         {
             int numOfAliveNeighbors = 0;
@@ -88,6 +106,8 @@ namespace FacebookApp.GameOfLifeFiles
             get => m_Rounds;
             private set => m_Rounds = value;
         }
+
+        public bool CheckStatus { get; set; }
 
         public void Restart()
         {

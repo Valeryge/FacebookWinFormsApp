@@ -8,10 +8,10 @@ namespace FacebookApp.GameOfLifeFiles
     public partial class GameOfLifeForm : Form
     {
         
-        public GameOfLifeForm(Image i_BackgroundImage)
+        public GameOfLifeForm(Image i_BackgroundImage, GameEngine i_GameEngine)
         {
             initGameTimer();
-            k_Engine = new GameEngine(k_GameRows, k_GameColumns);
+            k_Engine = i_GameEngine;
             InitializeComponent();
             myInitComponents(i_BackgroundImage);
         }
@@ -26,11 +26,9 @@ namespace FacebookApp.GameOfLifeFiles
         private void myInitComponents(Image i_BackgroundImage)
         {
             TableLayoutGameOfLife.BackgroundImage = i_BackgroundImage;
-            TableLayoutGameOfLife.RowCount = k_GameRows;
-            TableLayoutGameOfLife.ColumnCount = k_GameColumns;
-            TableLayoutGameOfLife.Size = new Size(k_CellLength * k_GameRows, k_CellLength * k_GameColumns);
-            // Photo gamePhotos = FaceBookServices.getPhotos();
-            //GridTemplateNum1 gt = k_Engine.
+            TableLayoutGameOfLife.RowCount = k_Engine.GameRows;
+            TableLayoutGameOfLife.ColumnCount = k_Engine.GameColumns;
+            TableLayoutGameOfLife.Size = new Size(k_CellLength * k_Engine.GameBoard.Rows, k_CellLength * k_Engine.GameBoard.Cols);
             createCellButtons();
             updatesVisualEffects();
             updateAndDrawNextGeneration();
@@ -39,14 +37,13 @@ namespace FacebookApp.GameOfLifeFiles
 
         private void createCellButtons()
         {
-            for (int rowsIndex = 0; rowsIndex < k_GameRows; ++rowsIndex)
+            for (int rowsIndex = 0; rowsIndex < k_Engine.GameBoard.Rows; ++rowsIndex)
             {
-                for (int columnIndex = 0; columnIndex < k_GameColumns; ++columnIndex)
+                for (int columnIndex = 0; columnIndex < k_Engine.GameBoard.Cols; ++columnIndex)
                 {
                     {
                         TableLayoutGameOfLife.Controls.Add(createGameButton()
                       , columnIndex, rowsIndex);
-
                     }
                 }
             }
@@ -72,9 +69,9 @@ namespace FacebookApp.GameOfLifeFiles
         private void updatesVisualEffects()
         {
             {
-                for (int rowIndex = 0; rowIndex < k_GameRows; ++rowIndex)
+                for (int rowIndex = 0; rowIndex < k_Engine.GameBoard.Rows; ++rowIndex)
                 {
-                    for (int colIndex = 0; colIndex < k_GameColumns; ++colIndex)
+                    for (int colIndex = 0; colIndex < k_Engine.GameBoard.Cols; ++colIndex)
 
                         if (k_Engine.GameBoard.GameMatrix[rowIndex, colIndex] == true)
                         {
@@ -143,9 +140,10 @@ namespace FacebookApp.GameOfLifeFiles
         }
 
         private bool isPlaying = false;
+        
         private readonly int k_CellLength = 30;
-        private readonly int k_GameRows = 15;
-        private readonly int k_GameColumns = 15;
+        private readonly Size cellSize;
+
         private readonly GameEngine k_Engine;
         private Timer m_GameProgressionTimer;//TODO: this should be inside the engine
         

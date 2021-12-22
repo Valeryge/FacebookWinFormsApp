@@ -10,13 +10,23 @@ using FacebookApp.GameOfLifeFiles.IBuilder;
 namespace FacebookApp.GameOfLifeFiles
 {
     class MyGameComposer : IGameComposer
-
     {
-    private TextWriter output = Console.Out;
-    public IGameBuilder Builder { get; set; }
-    public int Rows { get; set; }
-    public int Columns { get; set; }
-    public Image BackGroundImage { get; set; }
+        public IGameBuilder Builder { get; set; }
+
+    public int Rows
+    {
+        get => Builder.Rows;
+        set => Builder.Rows = value;
+    }
+
+    public int Columns { get => Builder.Columns;
+        set => Builder.Columns = value; }
+
+    public Image BackGroundImage
+    {
+        get => Builder.BackGroundImage;
+        set=>Builder.BackGroundImage = value;
+    }
 
     public bool InformMissing()
     {
@@ -26,6 +36,7 @@ namespace FacebookApp.GameOfLifeFiles
     public GameOfLifeForm Compose()
     {
         injectDataToBuilder();
+        Builder.BuildBoard();
         return Builder.BuildComplexObject();
        
     }

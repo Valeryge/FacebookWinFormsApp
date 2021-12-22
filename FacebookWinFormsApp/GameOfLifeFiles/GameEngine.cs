@@ -16,8 +16,7 @@ namespace FacebookApp.GameOfLifeFiles
         public GameBoard GameBoard => m_GameBoard;
         public int GameRows => GameBoard.Rows;
         public int GameColumns => GameBoard.Cols;
-//private readonly int k_GameRows;
-       // private readonly int k_GameColumns;
+
        public GameEngine(GameBoard i_GameBoard)
         {
             Rounds = 0;

@@ -19,24 +19,19 @@ namespace FacebookApp.GameOfLifeFiles
         public Image BackGroundImage { get; set; }
         public bool InformMissing()
         {
-            string outputManipulator = "";
-            bool currentResult = false; 
             bool finalResult = true;
 
-            currentResult = Rows > 0 ? true : false;
+            bool currentResult = Rows > 0;
             finalResult &= currentResult;
             Console.WriteLine("Rows: " + currentResult);
 
-            currentResult = Columns > 0 ? true : false;
+            currentResult = Columns > 0;
             finalResult &= currentResult;
             Console.WriteLine("Columns: " + currentResult);
 
-
-            currentResult = BackGroundImage != null ? true: false;
+            currentResult = BackGroundImage != null;
             finalResult &= currentResult;
             Console.WriteLine("Image: " + currentResult);
-
-
 
             if (finalResult == false)
             {

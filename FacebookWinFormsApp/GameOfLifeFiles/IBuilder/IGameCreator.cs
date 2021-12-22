@@ -6,8 +6,6 @@
         int Columns { get; set; }
         System.Drawing.Image BackGroundImage { get; set; }
         bool InformMissing();
-
-
     }
     public enum InformationMissing { eMissingRows, eMissingCols, eMissingDrawing}
 }

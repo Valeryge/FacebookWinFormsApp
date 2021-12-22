@@ -13,18 +13,21 @@
 
         public int Cols
         {
-            get { return k_Rows; }
+            get { return k_Cols; }
         }
 
         public GameBoard(int i_Rows, int i_Cols)
         {
+            CheckStatus = false;
             k_Rows = i_Rows;
             k_Cols = i_Cols;
             k_GameMatrix = new bool[i_Rows, i_Cols];
             CleanBoard();
+            CheckStatus = true;
         }
 
         public bool[,] GameMatrix => k_GameMatrix;
+        public bool CheckStatus { get;  }
 
         public void CleanBoard()
         {

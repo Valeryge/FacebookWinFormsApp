@@ -89,6 +89,8 @@ namespace FacebookApp.GameOfLifeFiles
             private set => m_Rounds = value;
         }
 
+        public bool CheckStatus { get; set; }
+
         public void Restart()
         {
             m_GameBoard.CleanBoard();

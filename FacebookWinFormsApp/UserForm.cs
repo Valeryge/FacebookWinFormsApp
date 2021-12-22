@@ -354,12 +354,31 @@ namespace FacebookApp
 
         private void gameOfLifeButton_Click(object sender, EventArgs e)
         {
-            k_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.eActionType.PlayingGameOfLife));
+            k_FacebookService.LogManager.ActionsList.Add(
+                new FaceBookAction(FaceBookAction.eActionType.PlayingGameOfLife));
+            try
+            {
+                //  GameOfLifeForm gameForm = new GameOfLifeForm(k_FacebookService.GetRandomFriendImage());
+                IGameComposer myGameComposer = MyGameComposer.Create();
+                injectToGameComposer(myGameComposer);
+                GameOfLifeForm gameForm = myGameComposer.Compose();
+                gameForm.FormClosed += GameForm_FormClosed;
+                this.Hide();
+                gameForm.Show();
+                
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine(exc.Message);
+            }
+        }
 
-            GameOfLifeForm gameForm = new GameOfLifeForm(k_FacebookService.GetRandomFriendImage());
-            this.Hide();
-            gameForm.FormClosed += GameForm_FormClosed;
-            gameForm.Show();
+        
+        private void injectToGameComposer(IGameComposer myGameComposer)
+        {
+            myGameComposer.Rows = 20;
+            myGameComposer.Columns = myGameComposer.Rows;
+            myGameComposer.BackGroundImage = k_FacebookService.GetRandomFriendImage();
         }
 
         private void GameForm_FormClosed(object i_Sender, EventArgs i_E)

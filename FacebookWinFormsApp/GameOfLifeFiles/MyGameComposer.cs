@@ -1,34 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FacebookApp.GameOfLifeFiles
 {
-    class MyGameComposer : IGameComposer, IGameCreator
+    class MyGameComposer : IGameComposer
+
     {
-        public IGameBuilder builder { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int Rows { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int Columns { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Image BackGroundImage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public static MyGameComposer getNew() { return new MyGameComposer(); }
-  
-        public GameOfLifeForm Compose()
-        {
-            throw new NotImplementedException();
-        }
+    private TextWriter output = Console.Out;
+    public IGameBuilder Builder { get; set; }
+    public int Rows { get; set; }
+    public int Columns { get; set; }
+    public Image BackGroundImage { get; set; }
 
-        public static IGameCreator Create()
-        {
-            throw new NotImplementedException();
-        }
+    public bool InformMissing()
+    {
+        return Builder.InformMissing();
+    }
 
-        public string InformMissing()
-        {
-            return builder.InformMissing();
-        }
+    public GameOfLifeForm Compose()
+    {
+        injectDataToBuilder();
+        return Builder.BuildComplexObject();
+       
+    }
 
+    private void injectDataToBuilder()
+    {
+        Builder.Rows = this.Rows;
+        Builder.Columns = this.Columns;
+        Builder.BackGroundImage = this.BackGroundImage;
+    }
+
+    public static IGameComposer Create()
+    {
+        return new MyGameComposer();
+    }
+
+    private MyGameComposer()
+    {
+        Builder = new MyGameBuilder();
+        
+    }
+   
     }
 }

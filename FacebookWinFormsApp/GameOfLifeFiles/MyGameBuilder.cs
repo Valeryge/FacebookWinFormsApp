@@ -1,38 +1,95 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FacebookApp.GameOfLifeFiles
 {
-    class MyGameBuilder : IGameBuilder
+    internal class MyGameBuilder : IGameBuilder
     {
         GameBoard gameBoard;
         GameEngine gameEngine;
         GameOfLifeForm gameForm;
-
         public int Rows { get; set; }
         public int Columns { get; set; }
-
-        public GameOfLifeForm Build()
+        public Image BackGroundImage { get; set; }
+        public bool InformMissing()
         {
-            throw new NotImplementedException();
+            string outputManipulator = "";
+            bool currentResult = false; 
+            bool finalResult = true;
+
+            currentResult = Rows > 0 ? true : false;
+            finalResult &= currentResult;
+            Console.WriteLine("Rows: " + currentResult);
+
+            currentResult = Columns > 0 ? true : false;
+            finalResult &= currentResult;
+            Console.WriteLine("Columns: " + currentResult);
+
+
+            currentResult = BackGroundImage != null ? true: false;
+            finalResult &= currentResult;
+            Console.WriteLine("Image: " + currentResult);
+
+
+
+            if (finalResult == false)
+            {
+                Console.WriteLine("There has been an error with the creation");
+            }
+            return !finalResult;
         }
 
-        public void BuildBoard()
+        public GameBoard BuildBoard()
         {
-            throw new NotImplementedException();
+            return new GameBoard(Rows, Columns); //GameBoard OK!
         }
 
-        public void BuildEngine()
+        public GameEngine BuildEngine(GameBoard i_Board)
         {
-            throw new NotImplementedException();
+            if (gameBoard != null)
+            {
+                return new GameEngine(gameBoard);
+            }
+            else
+            {
+                throw new Exception("Error! Bad gameBoard input");
+            }
+            
         }
 
-        public void BuildForm()
+        public GameOfLifeForm BuildForm(GameEngine i_Engine)
         {
-            throw new NotImplementedException();
+            if (gameEngine != null)
+            {
+                return new GameOfLifeForm(BackGroundImage, i_Engine);
+            }
+            else
+            {
+                throw new Exception("Error! Bad gameBoard input");
+            }
+        }
+
+        public GameOfLifeForm BuildComplexObject()
+        {
+            if (InformMissing() == false)
+            {
+                gameBoard = BuildBoard();
+                Console.WriteLine("GameBoard: OK");
+                gameEngine = BuildEngine(gameBoard);
+                Console.WriteLine("GameEngine: OK");
+                gameForm = BuildForm(gameEngine);
+                Console.WriteLine("GameForm: OK");
+                return gameForm;
+            }
+            else
+            {
+                throw new Exception("BuildComplexObject - Dysfunctional.");
+            }
         }
     }
 }

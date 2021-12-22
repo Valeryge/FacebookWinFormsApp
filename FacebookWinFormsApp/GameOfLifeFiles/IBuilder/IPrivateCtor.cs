@@ -1,4 +1,4 @@
-﻿namespace FacebookApp.GameOfLifeFiles
+﻿namespace FacebookApp.GameOfLifeFiles.IBuilder
 {
     internal interface IPrivateCtor
     {

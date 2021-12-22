@@ -9,13 +9,13 @@ namespace FacebookApp.GameOfLifeFiles
         public int GameColumns => GameBoard.Cols;
 //private readonly int k_GameRows;
        // private readonly int k_GameColumns;
-
-        public GameEngine(int i_GameRows, int i_GameColumns)
+       public GameEngine(GameBoard i_GameBoard)
         {
             Rounds = 0;
-        //    k_GameRows = i_GameRows;
-       //     k_GameColumns = i_GameColumns;
-            m_GameBoard = new GameBoard(i_GameRows, i_GameColumns);
+            m_GameBoard = i_GameBoard;
+        }
+        public GameEngine(int i_GameRows, int i_GameColumns) : this(new GameBoard(i_GameRows, i_GameColumns))
+        {
         }
 
         private int getNeighbors(int i_RowIndex, int i_ColumnIndex, bool[,] i_Tmp)

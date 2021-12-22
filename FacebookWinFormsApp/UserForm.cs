@@ -355,6 +355,7 @@ namespace FacebookApp
         private void gameOfLifeButton_Click(object sender, EventArgs e)
         {
             k_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.eActionType.PlayingGameOfLife));
+
             GameOfLifeForm gameForm = new GameOfLifeForm(k_FacebookService.GetRandomFriendImage());
             this.Hide();
             gameForm.FormClosed += GameForm_FormClosed;

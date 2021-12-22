@@ -7,6 +7,7 @@ namespace FacebookApp.GameOfLifeFiles
 {
     public partial class GameOfLifeForm : Form
     {
+        
         public GameOfLifeForm(Image i_BackgroundImage)
         {
             initGameTimer();

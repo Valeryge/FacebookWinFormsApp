@@ -173,8 +173,6 @@
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="FBApi\Developing Facebook .NET 4 WinForm Desktop Apps.pdf" />
-    <None Include="FBApi\FbApiWrapper - Documentation.chm" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -207,12 +205,6 @@
     <None Include="Resources\back.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FBApi\ClassDiagram.V6.8.0.13.png" />
-    <Content Include="FBApi\Facebook.dll" />
-    <Content Include="FBApi\FacebookGraphApiWrapper_CD.png" />
-    <Content Include="FBApi\FacebookGraphApiWrapper_CD_WithRelations.png" />
-    <Content Include="FBApi\FbGraphApiWrapper.dll" />
-    <Content Include="FBApi\ReleaseNotes - READ ME!!.txt" />
     <Content Include="GameOfLifeFiles\Resources\gameIcon.png" />
     <Content Include="GameOfLifeFiles\Resources\gameOfLifeRules.png" />
     <Content Include="Resources\Commercials\commercial1.png" />

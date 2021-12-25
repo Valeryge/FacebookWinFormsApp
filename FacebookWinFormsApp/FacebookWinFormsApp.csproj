@@ -104,6 +104,7 @@
     <Compile Include="AlbumForm.Designer.cs">
       <DependentUpon>AlbumForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameOfLifeFiles\GameEngineFacade.cs" />
     <Compile Include="GameOfLifeFiles\IBuilder\IGameCreator.cs" />
     <Compile Include="GameOfLifeFiles\IBuilder\IGameBuilder.cs" />
     <Compile Include="GameOfLifeFiles\GameEngine.cs" />

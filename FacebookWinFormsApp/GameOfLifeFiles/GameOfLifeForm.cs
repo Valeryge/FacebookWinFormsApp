@@ -7,11 +7,10 @@ namespace FacebookApp.GameOfLifeFiles
 {
     public partial class GameOfLifeForm : Form
     {
-        
         public GameOfLifeForm(Image i_BackgroundImage, GameEngine i_GameEngine)
         {
             initGameTimer();
-            k_Engine = i_GameEngine;
+            k_Engine = new GameEngineFacade(i_GameEngine);
             InitializeComponent();
             myInitComponents(i_BackgroundImage);
         }
@@ -26,8 +25,8 @@ namespace FacebookApp.GameOfLifeFiles
         private void myInitComponents(Image i_BackgroundImage)
         {
             TableLayoutGameOfLife.BackgroundImage = i_BackgroundImage;
-            TableLayoutGameOfLife.RowCount = k_Engine.GameRows;
-            TableLayoutGameOfLife.ColumnCount = k_Engine.GameColumns;
+            TableLayoutGameOfLife.RowCount = k_Engine.GameBoard.Rows;
+            TableLayoutGameOfLife.ColumnCount = k_Engine.GameBoard.Cols;
             TableLayoutGameOfLife.Size = new Size(k_CellLength * k_Engine.GameBoard.Rows, k_CellLength * k_Engine.GameBoard.Cols);
             createCellButtons();
             updatesVisualEffects();
@@ -66,14 +65,15 @@ namespace FacebookApp.GameOfLifeFiles
             k_Engine.GameBoard.ChangeValue(position.Row, position.Column);
             updatesVisualEffects();
         }
+
         private void updatesVisualEffects()
         {
             {
                 for (int rowIndex = 0; rowIndex < k_Engine.GameBoard.Rows; ++rowIndex)
                 {
                     for (int colIndex = 0; colIndex < k_Engine.GameBoard.Cols; ++colIndex)
-
-                        if (k_Engine.GameBoard.GameMatrix[rowIndex, colIndex] == true)
+                    {
+                        if (k_Engine.IsCellFull(rowIndex, colIndex))
                         {
                             TableLayoutGameOfLife.GetControlFromPosition(colIndex, rowIndex).Visible = false;
                         }
@@ -81,6 +81,7 @@ namespace FacebookApp.GameOfLifeFiles
                         {
                             TableLayoutGameOfLife.GetControlFromPosition(colIndex, rowIndex).Visible = true;
                         }
+                    }
                 }
 
                 labelRoundsCounter.Text = k_Engine.Rounds.ToString();
@@ -89,13 +90,13 @@ namespace FacebookApp.GameOfLifeFiles
 
         private void updateAndDrawNextGeneration(object i_Sender, EventArgs i_E)
         {
-            k_Engine.UpdateToNextGeneration();
+            k_Engine.Update();
             updatesVisualEffects();
         }
 
         private void updateAndDrawNextGeneration()
         {
-            k_Engine.UpdateToNextGeneration();
+            k_Engine.Update();
             updatesVisualEffects();
         }
     
@@ -144,8 +145,7 @@ namespace FacebookApp.GameOfLifeFiles
         private readonly int k_CellLength = 30;
         private readonly Size cellSize;
 
-        private readonly GameEngine k_Engine;
+        private readonly GameEngineFacade k_Engine;
         private Timer m_GameProgressionTimer;//TODO: this should be inside the engine
-        
     }
 }

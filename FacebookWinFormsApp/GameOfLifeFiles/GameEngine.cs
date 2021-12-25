@@ -14,8 +14,6 @@ namespace FacebookApp.GameOfLifeFiles
 
         private GameBoard m_GameBoard;
         public GameBoard GameBoard => m_GameBoard;
-        public int GameRows => GameBoard.Rows;
-        public int GameColumns => GameBoard.Cols;
 
        public GameEngine(GameBoard i_GameBoard)
         {
@@ -25,7 +23,7 @@ namespace FacebookApp.GameOfLifeFiles
 
         public GameEngine(int i_GameRows, int i_GameColumns) : this(new GameBoard(i_GameRows, i_GameColumns)) { }
 
-        public void AttemptAwakeRandomControls()
+        private void AttemptAwakeRandomControls()
         {
             for (int i = 0; i < m_GameBoard.Rows; ++i)
             {
@@ -40,9 +38,11 @@ namespace FacebookApp.GameOfLifeFiles
                 }
             }
         }
+
         private int getNeighbors(int i_RowIndex, int i_ColumnIndex, bool[,] i_Tmp)
         {
             int numOfAliveNeighbors = 0;
+
             for (int rowIndex = i_RowIndex - 1; rowIndex < i_RowIndex + 2; rowIndex++)
             {
                 for (int columnIndex = i_ColumnIndex - 1; columnIndex < i_ColumnIndex + 2; columnIndex++)
@@ -59,12 +59,12 @@ namespace FacebookApp.GameOfLifeFiles
                     }
                 }
             }
+
             return numOfAliveNeighbors; //always counts itself
         }
 
         public void UpdateToNextGeneration()
         {
-
             bool[,] tmp = new bool[m_GameBoard.Rows, m_GameBoard.Cols];
             for (int i = 0; i < m_GameBoard.Rows; ++i)
             {
@@ -73,7 +73,6 @@ namespace FacebookApp.GameOfLifeFiles
                     tmp[i, j] = m_GameBoard.GameMatrix[i, j];
                 }
             }
-
 
             for (int rowIndex = 0; rowIndex < m_GameBoard.Rows; rowIndex++)
             {
@@ -102,16 +101,13 @@ namespace FacebookApp.GameOfLifeFiles
                     }
                 }
             }
+
             m_Rounds++;
         }
 
-        public void Restart()
+        public void ClearBoard()
         {
             m_GameBoard.CleanBoard();
         }
-
-        
-
- 
     }
 }

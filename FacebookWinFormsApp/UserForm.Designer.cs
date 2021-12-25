@@ -32,12 +32,11 @@ namespace FacebookApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label categoryLabel;
-            System.Windows.Forms.Label talkingAboutCountLabel;
-            System.Windows.Forms.Label descriptionLabel;
-            System.Windows.Forms.Label likesCountLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserForm));
-            System.Windows.Forms.Label userNameLabel;
+            this.categoryLabel = new System.Windows.Forms.Label();
+            this.talkingAboutCountLabel = new System.Windows.Forms.Label();
+            this.descriptionLabel = new System.Windows.Forms.Label();
+            this.likesCountLabel = new System.Windows.Forms.Label();
             this.toolstrip = new System.Windows.Forms.ToolStrip();
             this.facebookLogo = new System.Windows.Forms.ToolStripLabel();
             this.settingsButton = new System.Windows.Forms.ToolStripButton();
@@ -82,12 +81,7 @@ namespace FacebookApp
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.pageBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.adminsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.userNameLabel1 = new System.Windows.Forms.Label();
-            categoryLabel = new System.Windows.Forms.Label();
-            talkingAboutCountLabel = new System.Windows.Forms.Label();
-            descriptionLabel = new System.Windows.Forms.Label();
-            likesCountLabel = new System.Windows.Forms.Label();
-            userNameLabel = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.toolstrip.SuspendLayout();
             this.centralPanelArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoggedUserPicture)).BeginInit();
@@ -103,39 +97,39 @@ namespace FacebookApp
             // 
             // categoryLabel
             // 
-            categoryLabel.AutoSize = true;
-            categoryLabel.Location = new System.Drawing.Point(3, 33);
-            categoryLabel.Name = "categoryLabel";
-            categoryLabel.Size = new System.Drawing.Size(52, 13);
-            categoryLabel.TabIndex = 0;
-            categoryLabel.Text = "Category:";
+            this.categoryLabel.AutoSize = true;
+            this.categoryLabel.Location = new System.Drawing.Point(3, 33);
+            this.categoryLabel.Name = "categoryLabel";
+            this.categoryLabel.Size = new System.Drawing.Size(52, 13);
+            this.categoryLabel.TabIndex = 0;
+            this.categoryLabel.Text = "Category:";
             // 
             // talkingAboutCountLabel
             // 
-            talkingAboutCountLabel.AutoSize = true;
-            talkingAboutCountLabel.Location = new System.Drawing.Point(44, 115);
-            talkingAboutCountLabel.Name = "talkingAboutCountLabel";
-            talkingAboutCountLabel.Size = new System.Drawing.Size(106, 13);
-            talkingAboutCountLabel.TabIndex = 10;
-            talkingAboutCountLabel.Text = "Are talking about this";
+            this.talkingAboutCountLabel.AutoSize = true;
+            this.talkingAboutCountLabel.Location = new System.Drawing.Point(44, 115);
+            this.talkingAboutCountLabel.Name = "talkingAboutCountLabel";
+            this.talkingAboutCountLabel.Size = new System.Drawing.Size(106, 13);
+            this.talkingAboutCountLabel.TabIndex = 10;
+            this.talkingAboutCountLabel.Text = "Are talking about this";
             // 
             // descriptionLabel
             // 
-            descriptionLabel.AutoSize = true;
-            descriptionLabel.Location = new System.Drawing.Point(2, 60);
-            descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.Size = new System.Drawing.Size(63, 13);
-            descriptionLabel.TabIndex = 13;
-            descriptionLabel.Text = "Description:";
+            this.descriptionLabel.AutoSize = true;
+            this.descriptionLabel.Location = new System.Drawing.Point(2, 60);
+            this.descriptionLabel.Name = "descriptionLabel";
+            this.descriptionLabel.Size = new System.Drawing.Size(63, 13);
+            this.descriptionLabel.TabIndex = 13;
+            this.descriptionLabel.Text = "Description:";
             // 
             // likesCountLabel
             // 
-            likesCountLabel.AutoSize = true;
-            likesCountLabel.Location = new System.Drawing.Point(3, 86);
-            likesCountLabel.Name = "likesCountLabel";
-            likesCountLabel.Size = new System.Drawing.Size(66, 13);
-            likesCountLabel.TabIndex = 14;
-            likesCountLabel.Text = "Likes Count:";
+            this.likesCountLabel.AutoSize = true;
+            this.likesCountLabel.Location = new System.Drawing.Point(3, 86);
+            this.likesCountLabel.Name = "likesCountLabel";
+            this.likesCountLabel.Size = new System.Drawing.Size(66, 13);
+            this.likesCountLabel.TabIndex = 14;
+            this.likesCountLabel.Text = "Likes Count:";
             // 
             // toolstrip
             // 
@@ -230,7 +224,7 @@ namespace FacebookApp
             this.infoLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.infoLabel.AutoSize = true;
             this.infoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.infoLabel.Location = new System.Drawing.Point(1042, 108);
+            this.infoLabel.Location = new System.Drawing.Point(1009, 108);
             this.infoLabel.Name = "infoLabel";
             this.infoLabel.Size = new System.Drawing.Size(52, 17);
             this.infoLabel.TabIndex = 40;
@@ -242,7 +236,7 @@ namespace FacebookApp
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label4.Location = new System.Drawing.Point(94, 186);
+            this.label4.Location = new System.Drawing.Point(61, 186);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(97, 17);
             this.label4.TabIndex = 38;
@@ -254,7 +248,7 @@ namespace FacebookApp
             this.listBoxLikedPages.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxLikedPages.FormattingEnabled = true;
             this.listBoxLikedPages.ItemHeight = 16;
-            this.listBoxLikedPages.Location = new System.Drawing.Point(63, 206);
+            this.listBoxLikedPages.Location = new System.Drawing.Point(30, 206);
             this.listBoxLikedPages.Name = "listBoxLikedPages";
             this.listBoxLikedPages.Size = new System.Drawing.Size(247, 100);
             this.listBoxLikedPages.TabIndex = 37;
@@ -265,7 +259,7 @@ namespace FacebookApp
             this.albumsLabel.AutoSize = true;
             this.albumsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.albumsLabel.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.albumsLabel.Location = new System.Drawing.Point(94, 37);
+            this.albumsLabel.Location = new System.Drawing.Point(61, 37);
             this.albumsLabel.Name = "albumsLabel";
             this.albumsLabel.Size = new System.Drawing.Size(60, 17);
             this.albumsLabel.TabIndex = 36;
@@ -277,7 +271,7 @@ namespace FacebookApp
             this.listBoxAlbums.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxAlbums.FormattingEnabled = true;
             this.listBoxAlbums.ItemHeight = 16;
-            this.listBoxAlbums.Location = new System.Drawing.Point(61, 57);
+            this.listBoxAlbums.Location = new System.Drawing.Point(28, 57);
             this.listBoxAlbums.Name = "listBoxAlbums";
             this.listBoxAlbums.Size = new System.Drawing.Size(247, 100);
             this.listBoxAlbums.TabIndex = 30;
@@ -289,7 +283,7 @@ namespace FacebookApp
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label2.Location = new System.Drawing.Point(1123, 243);
+            this.label2.Location = new System.Drawing.Point(1090, 243);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 17);
             this.label2.TabIndex = 31;
@@ -301,7 +295,7 @@ namespace FacebookApp
             this.listBoxFriends.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxFriends.FormattingEnabled = true;
             this.listBoxFriends.ItemHeight = 16;
-            this.listBoxFriends.Location = new System.Drawing.Point(1033, 262);
+            this.listBoxFriends.Location = new System.Drawing.Point(1000, 262);
             this.listBoxFriends.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxFriends.Name = "listBoxFriends";
             this.listBoxFriends.Size = new System.Drawing.Size(224, 100);
@@ -314,7 +308,7 @@ namespace FacebookApp
             this.notification.BackColor = System.Drawing.Color.MidnightBlue;
             this.notification.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.notification.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.notification.Location = new System.Drawing.Point(38, 557);
+            this.notification.Location = new System.Drawing.Point(5, 557);
             this.notification.Name = "notification";
             this.notification.Size = new System.Drawing.Size(245, 88);
             this.notification.TabIndex = 35;
@@ -329,7 +323,7 @@ namespace FacebookApp
             this.centralPanelArea.Controls.Add(this.textBoxPost);
             this.centralPanelArea.Controls.Add(this.buttonPost);
             this.centralPanelArea.Controls.Add(this.labelLoggedUserName);
-            this.centralPanelArea.Location = new System.Drawing.Point(377, 37);
+            this.centralPanelArea.Location = new System.Drawing.Point(344, 37);
             this.centralPanelArea.Name = "centralPanelArea";
             this.centralPanelArea.Size = new System.Drawing.Size(599, 309);
             this.centralPanelArea.TabIndex = 33;
@@ -385,7 +379,7 @@ namespace FacebookApp
             // 
             this.pictureBoxInfo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBoxInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxInfo.Location = new System.Drawing.Point(1027, 70);
+            this.pictureBoxInfo.Location = new System.Drawing.Point(994, 70);
             this.pictureBoxInfo.Name = "pictureBoxInfo";
             this.pictureBoxInfo.Size = new System.Drawing.Size(230, 133);
             this.pictureBoxInfo.TabIndex = 42;
@@ -395,7 +389,7 @@ namespace FacebookApp
             // 
             this.pictureBoxCommercial.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBoxCommercial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxCommercial.Location = new System.Drawing.Point(1027, 407);
+            this.pictureBoxCommercial.Location = new System.Drawing.Point(1012, 468);
             this.pictureBoxCommercial.Name = "pictureBoxCommercial";
             this.pictureBoxCommercial.Size = new System.Drawing.Size(264, 236);
             this.pictureBoxCommercial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -405,22 +399,20 @@ namespace FacebookApp
             // panelPageInfo
             // 
             this.panelPageInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelPageInfo.Controls.Add(userNameLabel);
-            this.panelPageInfo.Controls.Add(this.userNameLabel1);
-            this.panelPageInfo.Controls.Add(likesCountLabel);
+            this.panelPageInfo.Controls.Add(this.likesCountLabel);
             this.panelPageInfo.Controls.Add(this.likesCountLabel1);
-            this.panelPageInfo.Controls.Add(descriptionLabel);
+            this.panelPageInfo.Controls.Add(this.descriptionLabel);
             this.panelPageInfo.Controls.Add(this.descriptionTextBox);
             this.panelPageInfo.Controls.Add(this.nameLabel1);
-            this.panelPageInfo.Controls.Add(categoryLabel);
+            this.panelPageInfo.Controls.Add(this.categoryLabel);
             this.panelPageInfo.Controls.Add(this.categoryLabel1);
             this.panelPageInfo.Controls.Add(this.imageNormalPictureBox);
-            this.panelPageInfo.Controls.Add(talkingAboutCountLabel);
+            this.panelPageInfo.Controls.Add(this.talkingAboutCountLabel);
             this.panelPageInfo.Controls.Add(this.talkingAboutCountTextBox);
             this.panelPageInfo.ForeColor = System.Drawing.Color.Maroon;
-            this.panelPageInfo.Location = new System.Drawing.Point(12, 303);
+            this.panelPageInfo.Location = new System.Drawing.Point(26, 352);
             this.panelPageInfo.Name = "panelPageInfo";
-            this.panelPageInfo.Size = new System.Drawing.Size(360, 192);
+            this.panelPageInfo.Size = new System.Drawing.Size(360, 140);
             this.panelPageInfo.TabIndex = 43;
             // 
             // likesCountLabel1
@@ -562,6 +554,7 @@ namespace FacebookApp
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -609,28 +602,18 @@ namespace FacebookApp
             this.adminsBindingSource.DataMember = "Admins";
             this.adminsBindingSource.DataSource = this.pageBindingSource;
             // 
-            // userNameLabel
+            // flowLayoutPanel1
             // 
-            userNameLabel.AutoSize = true;
-            userNameLabel.Location = new System.Drawing.Point(6, 149);
-            userNameLabel.Name = "userNameLabel";
-            userNameLabel.Size = new System.Drawing.Size(44, 13);
-            userNameLabel.TabIndex = 15;
-            userNameLabel.Text = "Admins:";
-            // 
-            // userNameLabel1
-            // 
-            this.userNameLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.adminsBindingSource, "UserName", true));
-            this.userNameLabel1.Location = new System.Drawing.Point(75, 149);
-            this.userNameLabel1.Name = "userNameLabel1";
-            this.userNameLabel1.Size = new System.Drawing.Size(100, 23);
-            this.userNameLabel1.TabIndex = 16;
-            this.userNameLabel1.Text = "label1";
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(1053, 476);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(200, 100);
+            this.flowLayoutPanel1.TabIndex = 45;
             // 
             // UserForm
             // 
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1346, 745);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.pageBindingNavigator);
             this.Controls.Add(this.panelPageInfo);
             this.Controls.Add(this.listBoxFriends);
@@ -715,7 +698,11 @@ namespace FacebookApp
         private Label nameLabel1;
         private Label likesCountLabel1;
         private TextBox descriptionTextBox;
-        private Label userNameLabel1;
         private BindingSource adminsBindingSource;
+        private Label categoryLabel;
+        private Label talkingAboutCountLabel;
+        private Label descriptionLabel;
+        private Label likesCountLabel;
+        private FlowLayoutPanel flowLayoutPanel1;
     }
 }

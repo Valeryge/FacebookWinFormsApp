@@ -104,7 +104,11 @@ namespace FacebookApp
 
         private void loadLikedPages()
         {
-            pageBindingSource.DataSource = k_FacebookService.CurrentProfileUser.LikedPages;
+            //pageBindingSource.DataSource = k_FacebookService.CurrentProfileUser.LikedPages;
+            foreach (Page page in k_FacebookService.CurrentProfileUser.LikedPages)
+            {
+                listBoxLikedPages.Items.Add(page);
+            }
         }
 
         private void loadFriends()

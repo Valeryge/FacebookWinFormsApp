@@ -15,7 +15,6 @@ namespace FacebookApp
         public LogManager LogManager
         {
             get => k_LogManager;
-            set => k_LogManager = value;
         }
 
         private User k_LoggedUser;

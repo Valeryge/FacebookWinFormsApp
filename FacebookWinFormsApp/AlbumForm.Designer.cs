@@ -37,9 +37,10 @@ namespace FacebookApp
             // 
             this.backButton.BackgroundImage = global::FacebookApp.Properties.Resources.back;
             this.backButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.backButton.Location = new System.Drawing.Point(0, -4);
+            this.backButton.Location = new System.Drawing.Point(0, -3);
+            this.backButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(90, 43);
+            this.backButton.Size = new System.Drawing.Size(68, 35);
             this.backButton.TabIndex = 0;
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
@@ -49,20 +50,22 @@ namespace FacebookApp
             this.albumNameLabel.AutoSize = true;
             this.albumNameLabel.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.albumNameLabel.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.albumNameLabel.Location = new System.Drawing.Point(376, 9);
+            this.albumNameLabel.Location = new System.Drawing.Point(282, 7);
+            this.albumNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.albumNameLabel.Name = "albumNameLabel";
-            this.albumNameLabel.Size = new System.Drawing.Size(68, 30);
+            this.albumNameLabel.Size = new System.Drawing.Size(54, 24);
             this.albumNameLabel.TabIndex = 1;
             this.albumNameLabel.Text = "none";
             this.albumNameLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // AlbumForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.albumNameLabel);
             this.Controls.Add(this.backButton);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AlbumForm";
             this.Text = "Form1";
             this.ResumeLayout(false);

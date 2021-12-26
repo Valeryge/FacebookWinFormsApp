@@ -76,8 +76,9 @@
     <Reference Include="Facebook">
       <HintPath>..\FBApi\Facebook.dll</HintPath>
     </Reference>
-    <Reference Include="FbGraphApiWrapper">
-      <HintPath>..\FBApi\FbGraphApiWrapper.dll</HintPath>
+    <Reference Include="FbGraphApiWrapper, Version=8.0.2.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Desktop\FbGraphApiWrapper.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
@@ -104,6 +105,7 @@
     <Compile Include="AlbumForm.Designer.cs">
       <DependentUpon>AlbumForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameOfLifeFiles\GameEngineFacade.cs" />
     <Compile Include="GameOfLifeFiles\IBuilder\IGameCreator.cs" />
     <Compile Include="GameOfLifeFiles\IBuilder\IGameBuilder.cs" />
     <Compile Include="GameOfLifeFiles\GameEngine.cs" />

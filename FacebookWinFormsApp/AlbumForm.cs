@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
+using System.Threading;
 
 namespace FacebookApp
 {
@@ -11,7 +12,7 @@ namespace FacebookApp
         public AlbumForm(Album i_Album)
         {
             InitializeComponent();
-            myInitializeComponent(i_Album);
+            new Thread(() => myInitializeComponent(i_Album)).Start();
         }
 
         private void myInitializeComponent(Album i_Album)
@@ -19,10 +20,10 @@ namespace FacebookApp
             this.Padding = new Padding(10);
             int currentX = 40;
             int currentY = 50;
-
-            albumNameLabel.Text = i_Album.Name;
+            albumNameLabel.Invoke(new Action(() => albumNameLabel.Text = i_Album.Name));
             this.Size = new Size(1200, 700);
             this.AutoScroll = true;
+
             foreach (Photo photo in i_Album.Photos)
             {
                 PictureBox pictureBox = new PictureBox();

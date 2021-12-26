@@ -104,6 +104,7 @@ namespace FacebookApp
 
         private void loadLikedPages()
         {
+            //pageBindingSource.DataSource = k_FacebookService.CurrentProfileUser.LikedPages;
             foreach (Page page in k_FacebookService.CurrentProfileUser.LikedPages)
             {
                 listBoxLikedPages.Items.Add(page);
@@ -403,5 +404,6 @@ namespace FacebookApp
         private readonly VerticalBox k_PostsContainer;
         private readonly Timer r_CommercialsTimer;
         private readonly Timer r_NotificationTimer;
+
     }
 }

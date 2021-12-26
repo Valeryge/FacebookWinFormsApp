@@ -9,20 +9,22 @@ namespace FacebookApp
 {
     public partial class AlbumForm : Form
     {
+        private readonly Album r_Album;
+
         public AlbumForm(Album i_Album)
         {
+            r_Album = i_Album;
             InitializeComponent();
-            new Thread(() => myInitializeComponent(i_Album)).Start();
         }
 
         private void myInitializeComponent(Album i_Album)
         {
-            this.Padding = new Padding(10);
+            this.Invoke(new Action(() => this.Padding = new Padding(10)));
             int currentX = 40;
             int currentY = 50;
             albumNameLabel.Invoke(new Action(() => albumNameLabel.Text = i_Album.Name));
-            this.Size = new Size(1200, 700);
-            this.AutoScroll = true;
+            this.Invoke(new Action(() => this.Size = new Size(1200, 700)));
+            this.Invoke(new Action(() => this.AutoScroll = true));
 
             foreach (Photo photo in i_Album.Photos)
             {
@@ -44,7 +46,7 @@ namespace FacebookApp
                     currentX += 300;
                 }
 
-                this.Controls.Add(pictureBox);
+                this.Invoke(new Action(() => this.Controls.Add(pictureBox)));
             }
         }
 
@@ -82,6 +84,11 @@ namespace FacebookApp
         private void backButton_Click(object i_Sender, EventArgs i_E)
         {
             this.Close();
+        }
+
+        private void AlbumForm_Shown(object sender, EventArgs e)
+        {
+            new Thread(() => myInitializeComponent(r_Album)).Start();
         }
     }
 }

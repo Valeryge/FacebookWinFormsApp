@@ -104,11 +104,11 @@ namespace FacebookApp
 
         private void loadLikedPages()
         {
-            //pageBindingSource.DataSource = k_FacebookService.CurrentProfileUser.LikedPages;
-            foreach (Page page in k_FacebookService.CurrentProfileUser.LikedPages)
-            {
-                listBoxLikedPages.Items.Add(page);
-            }
+            pageBindingSource.DataSource = k_FacebookService.CurrentProfileUser.LikedPages;
+            //foreach (Page page in k_FacebookService.CurrentProfileUser.LikedPages)
+            //{
+            //    listBoxLikedPages.Items.Add(page);
+            //}
         }
 
         private void loadFriends()
@@ -275,7 +275,7 @@ namespace FacebookApp
         {
             listBoxAlbums.Items.Clear();
             listBoxFriends.Items.Clear();
-            listBoxLikedPages.Items.Clear();
+         //   listBoxLikedPages.Items.Clear();
             k_PostsContainer.Clear();
         }
 

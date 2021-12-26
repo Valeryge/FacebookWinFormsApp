@@ -68,6 +68,7 @@ namespace FacebookApp
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AlbumForm";
             this.Text = "Form1";
+            this.Shown += new System.EventHandler(this.AlbumForm_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

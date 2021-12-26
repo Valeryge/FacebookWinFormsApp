@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FacebookApp.GameOfLifeFiles
 { 
-    class GameEngineFacade
+    internal class GameEngineFacade
     {
         private GameEngine m_Engine;
         public GameBoard GameBoard { get { return m_Engine.GameBoard; } }

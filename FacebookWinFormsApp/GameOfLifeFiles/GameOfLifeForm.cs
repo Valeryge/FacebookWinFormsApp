@@ -7,6 +7,14 @@ namespace FacebookApp.GameOfLifeFiles
 {
     public partial class GameOfLifeForm : Form
     {
+        public GameOfLifeForm(Image i_BackGroundImage, GameEngineFacade i_EngineControl)
+        {
+            initGameTimer();
+            k_Engine = i_EngineControl;
+            InitializeComponent();
+            myInitComponents(i_BackGroundImage);
+        }
+
         public GameOfLifeForm(Image i_BackgroundImage, GameEngine i_GameEngine)
         {
             initGameTimer();
@@ -123,6 +131,7 @@ namespace FacebookApp.GameOfLifeFiles
 
         private void buttonReset_Click(object sender, EventArgs e)
         {
+            
             k_Engine.Restart();
             updatesVisualEffects();
         }
@@ -147,5 +156,7 @@ namespace FacebookApp.GameOfLifeFiles
 
         private readonly GameEngineFacade k_Engine;
         private Timer m_GameProgressionTimer;//TODO: this should be inside the engine
+
+       
     }
 }

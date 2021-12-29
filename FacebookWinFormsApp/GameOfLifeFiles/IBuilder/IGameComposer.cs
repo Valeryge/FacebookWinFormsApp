@@ -2,7 +2,6 @@
 {
     interface IGameComposer : IGameCreator
     {
-        IGameBuilder Builder { get; set; }
         GameOfLifeForm Compose();
     }
 }

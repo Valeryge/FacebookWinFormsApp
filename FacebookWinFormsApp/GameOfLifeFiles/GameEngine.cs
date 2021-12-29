@@ -21,7 +21,7 @@ namespace FacebookApp.GameOfLifeFiles
             m_GameBoard = i_GameBoard;
         }
 
-        public GameEngine(int i_GameRows, int i_GameColumns) : this(new GameBoard(i_GameRows, i_GameColumns)) { }
+        /*public GameEngine(int i_GameRows, int i_GameColumns) : this(new GameBoard(i_GameRows, i_GameColumns)) { }
 
         private void AttemptAwakeRandomControls()
         {
@@ -37,7 +37,7 @@ namespace FacebookApp.GameOfLifeFiles
                     }
                 }
             }
-        }
+        }*/
 
         private int getNeighbors(int i_RowIndex, int i_ColumnIndex, bool[,] i_Tmp)
         {
@@ -108,6 +108,7 @@ namespace FacebookApp.GameOfLifeFiles
         public void ClearBoard()
         {
             m_GameBoard.CleanBoard();
+            Rounds = 0;
         }
     }
 }

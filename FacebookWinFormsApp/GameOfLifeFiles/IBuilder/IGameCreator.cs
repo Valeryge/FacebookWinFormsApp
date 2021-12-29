@@ -1,6 +1,6 @@
 ﻿namespace FacebookApp.GameOfLifeFiles.IBuilder
 {
-    internal interface IGameCreator : IPrivateCtor
+    internal interface IGameCreator
     {
         int Rows { get; set; }
         int Columns { get; set; }

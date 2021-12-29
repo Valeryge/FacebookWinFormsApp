@@ -18,8 +18,6 @@ namespace FacebookApp.GameOfLifeFiles
             get => Builder.Rows;
             set => Builder.Rows = value;
         }
-
-
         public int Columns
         {
             get => Builder.Columns;

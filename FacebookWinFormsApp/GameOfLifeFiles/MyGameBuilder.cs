@@ -12,7 +12,6 @@ namespace FacebookApp.GameOfLifeFiles
         private GameOfLifeForm GameForm { get; set; }
         public Image BackGroundImage { get; set; }
         public int Rows { get; set; }
-
         public int Columns { get; set; }
         
         public bool InformMissing()

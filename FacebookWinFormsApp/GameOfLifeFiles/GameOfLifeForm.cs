@@ -15,13 +15,13 @@ namespace FacebookApp.GameOfLifeFiles
             myInitComponents(i_BackGroundImage);
         }
 
-        public GameOfLifeForm(Image i_BackgroundImage, GameEngine i_GameEngine)
-        {
-            initGameTimer();
-            k_Engine = new GameEngineFacade(i_GameEngine);
-            InitializeComponent();
-            myInitComponents(i_BackgroundImage);
-        }
+        // public GameOfLifeForm(Image i_BackgroundImage, GameEngine i_GameEngine)
+        // {
+        //     initGameTimer();
+        //     k_Engine = new GameEngineFacade(i_GameEngine);
+        //     InitializeComponent();
+        //     myInitComponents(i_BackgroundImage);
+        // }
 
         private void initGameTimer()
         {
@@ -152,7 +152,7 @@ namespace FacebookApp.GameOfLifeFiles
         private bool isPlaying = false;
         
         private readonly int k_CellLength = 30;
-        private readonly Size cellSize;
+        //private readonly Size cellSize;
 
         private readonly GameEngineFacade k_Engine;
         private Timer m_GameProgressionTimer;//TODO: this should be inside the engine

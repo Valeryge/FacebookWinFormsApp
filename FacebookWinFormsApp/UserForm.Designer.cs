@@ -47,6 +47,7 @@ namespace FacebookApp
             this.infoLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.listBoxLikedPages = new System.Windows.Forms.ListBox();
+            this.pageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.albumsLabel = new System.Windows.Forms.Label();
             this.listBoxAlbums = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -61,20 +62,18 @@ namespace FacebookApp
             this.pictureBoxCommercial = new System.Windows.Forms.PictureBox();
             this.panelPageInfo = new System.Windows.Forms.Panel();
             this.likesCountLabel1 = new System.Windows.Forms.Label();
-            this.pageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.nameLabel1 = new System.Windows.Forms.Label();
             this.categoryLabel1 = new System.Windows.Forms.Label();
             this.imageNormalPictureBox = new System.Windows.Forms.PictureBox();
             this.talkingAboutCountTextBox = new System.Windows.Forms.TextBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.toolstrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).BeginInit();
             this.centralPanelArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoggedUserPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCommercial)).BeginInit();
             this.panelPageInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageNormalPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -237,6 +236,10 @@ namespace FacebookApp
             this.listBoxLikedPages.Name = "listBoxLikedPages";
             this.listBoxLikedPages.Size = new System.Drawing.Size(247, 100);
             this.listBoxLikedPages.TabIndex = 37;
+            // 
+            // pageBindingSource
+            // 
+            this.pageBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Page);
             // 
             // albumsLabel
             // 
@@ -409,10 +412,6 @@ namespace FacebookApp
             this.likesCountLabel1.TabIndex = 15;
             this.likesCountLabel1.Text = "label1";
             // 
-            // pageBindingSource
-            // 
-            this.pageBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Page);
-            // 
             // descriptionTextBox
             // 
             this.descriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Description", true));
@@ -457,18 +456,10 @@ namespace FacebookApp
             this.talkingAboutCountTextBox.Size = new System.Drawing.Size(35, 20);
             this.talkingAboutCountTextBox.TabIndex = 11;
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(1053, 476);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(200, 100);
-            this.flowLayoutPanel1.TabIndex = 45;
-            // 
             // UserForm
             // 
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1346, 745);
-            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panelPageInfo);
             this.Controls.Add(this.listBoxFriends);
             this.Controls.Add(this.infoLabel);
@@ -489,6 +480,7 @@ namespace FacebookApp
             this.Load += new System.EventHandler(this.LoggedUserForm_Load);
             this.toolstrip.ResumeLayout(false);
             this.toolstrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).EndInit();
             this.centralPanelArea.ResumeLayout(false);
             this.centralPanelArea.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoggedUserPicture)).EndInit();
@@ -496,7 +488,6 @@ namespace FacebookApp
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCommercial)).EndInit();
             this.panelPageInfo.ResumeLayout(false);
             this.panelPageInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageNormalPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -539,6 +530,5 @@ namespace FacebookApp
         private Label talkingAboutCountLabel;
         private Label descriptionLabel;
         private Label likesCountLabel;
-        private FlowLayoutPanel flowLayoutPanel1;
     }
 }

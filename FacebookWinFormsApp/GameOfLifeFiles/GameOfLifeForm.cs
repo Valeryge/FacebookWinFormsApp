@@ -33,20 +33,20 @@ namespace FacebookApp.GameOfLifeFiles
         private void myInitComponents(Image i_BackgroundImage)
         {
             TableLayoutGameOfLife.BackgroundImage = i_BackgroundImage;
-            TableLayoutGameOfLife.RowCount = k_Engine.GameBoard.Rows;
-            TableLayoutGameOfLife.ColumnCount = k_Engine.GameBoard.Cols;
-            TableLayoutGameOfLife.Size = new Size(k_CellLength * k_Engine.GameBoard.Rows, k_CellLength * k_Engine.GameBoard.Cols);
+            TableLayoutGameOfLife.RowCount = k_Engine.GetRows();
+            TableLayoutGameOfLife.ColumnCount = k_Engine.GetCols(); ;
+            TableLayoutGameOfLife.Size = new Size(k_CellLength * k_Engine.GetRows(), k_CellLength * k_Engine.GetCols());
             createCellButtons();
             updatesVisualEffects();
             updateAndDrawNextGeneration();
-          
+
         }
 
         private void createCellButtons()
         {
-            for (int rowsIndex = 0; rowsIndex < k_Engine.GameBoard.Rows; ++rowsIndex)
+            for (int rowsIndex = 0; rowsIndex < k_Engine.GetRows(); ++rowsIndex)
             {
-                for (int columnIndex = 0; columnIndex < k_Engine.GameBoard.Cols; ++columnIndex)
+                for (int columnIndex = 0; columnIndex < k_Engine.GetCols(); ++columnIndex)
                 {
                     {
                         TableLayoutGameOfLife.Controls.Add(createGameButton()
@@ -61,7 +61,7 @@ namespace FacebookApp.GameOfLifeFiles
             Button button = new Button();
             button.Dock = DockStyle.Fill;
             button.Size = new Size(k_CellLength, k_CellLength);
-            button.Click += new System.EventHandler(gameButton_Clicked); 
+            button.Click += new System.EventHandler(gameButton_Clicked);
             button.Padding = new Padding(0);
             button.Margin = new Padding(0);
             button.ForeColor = Color.Black;
@@ -70,16 +70,16 @@ namespace FacebookApp.GameOfLifeFiles
         private void gameButton_Clicked(object i_Sender, EventArgs i_E)
         {
             TableLayoutPanelCellPosition position = TableLayoutGameOfLife.GetPositionFromControl(i_Sender as Button);
-            k_Engine.GameBoard.ChangeValue(position.Row, position.Column);
+            k_Engine.ChangeCell(position.Row, position.Column);
             updatesVisualEffects();
         }
 
         private void updatesVisualEffects()
         {
             {
-                for (int rowIndex = 0; rowIndex < k_Engine.GameBoard.Rows; ++rowIndex)
+                for (int rowIndex = 0; rowIndex < k_Engine.GetRows(); ++rowIndex)
                 {
-                    for (int colIndex = 0; colIndex < k_Engine.GameBoard.Cols; ++colIndex)
+                    for (int colIndex = 0; colIndex < k_Engine.GetCols(); ++colIndex)
                     {
                         if (k_Engine.IsCellFull(rowIndex, colIndex))
                         {
@@ -107,7 +107,7 @@ namespace FacebookApp.GameOfLifeFiles
             k_Engine.Update();
             updatesVisualEffects();
         }
-    
+
         private void buttonStart_Click(object i_Sender, EventArgs i_E)
         {
             if (isPlaying)
@@ -116,7 +116,8 @@ namespace FacebookApp.GameOfLifeFiles
                 isPlaying = false;
                 buttonStart.BackgroundImage = new Bitmap(FacebookApp.Properties.Resources.START);
 
-            } else
+            }
+            else
             {
                 m_GameProgressionTimer.Start();
                 isPlaying = true;
@@ -126,12 +127,12 @@ namespace FacebookApp.GameOfLifeFiles
 
         private void buttonNext_Click(object sender, EventArgs e)
         {
-            updateAndDrawNextGeneration(sender,e);
+            updateAndDrawNextGeneration(sender, e);
         }
 
         private void buttonReset_Click(object sender, EventArgs e)
         {
-            
+
             k_Engine.Restart();
             updatesVisualEffects();
         }
@@ -150,13 +151,11 @@ namespace FacebookApp.GameOfLifeFiles
         }
 
         private bool isPlaying = false;
-        
+
         private readonly int k_CellLength = 30;
-        //private readonly Size cellSize;
+        private readonly Size cellSize;
 
         private readonly GameEngineFacade k_Engine;
-        private Timer m_GameProgressionTimer;//TODO: this should be inside the engine
-
-       
+        private Timer m_GameProgressionTimer;//TODO: this should be inside the engine     
     }
 }

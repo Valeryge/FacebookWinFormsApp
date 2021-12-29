@@ -330,7 +330,7 @@ namespace FacebookApp
         private void LoggedUserForm_Load(object i_Sender, EventArgs i_E)
         {
             initNotifications();
-        //    initCommercials();
+            initCommercials();
         }
 
         private void initCommercials()
@@ -378,7 +378,7 @@ namespace FacebookApp
         
         private void injectToGameComposer(IGameComposer myGameComposer)
         {
-            myGameComposer.Rows = 20;
+            myGameComposer.Rows = 12;
             myGameComposer.Columns = myGameComposer.Rows;
             myGameComposer.BackGroundImage = k_FacebookService.GetRandomFriendImage();
         }

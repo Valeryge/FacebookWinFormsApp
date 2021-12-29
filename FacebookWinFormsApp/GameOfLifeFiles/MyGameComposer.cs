@@ -19,6 +19,7 @@ namespace FacebookApp.GameOfLifeFiles
             set => Builder.Rows = value;
         }
 
+
         public int Columns
         {
             get => Builder.Columns;
@@ -36,12 +37,18 @@ namespace FacebookApp.GameOfLifeFiles
             return Builder.InformMissing();
         }
 
+        //may throw an exception if missing components
         public GameOfLifeForm Compose()
         {
-            injectDataToBuilder();
-            Builder.BuildBoard();
-            return Builder.BuildComplexObject();
-
+            if (!Builder.InformMissing())
+            {
+                injectDataToBuilder();
+                Builder.BuildBoard();
+                Builder.BuildEngine();
+                Builder.BuildForm();
+                return Builder.GetComplexObject();
+            }
+            return null;
         }
 
         private void injectDataToBuilder()

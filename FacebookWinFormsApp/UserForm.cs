@@ -330,7 +330,7 @@ namespace FacebookApp
         private void LoggedUserForm_Load(object i_Sender, EventArgs i_E)
         {
             initNotifications();
-            initCommercials();
+        //    initCommercials();
         }
 
         private void initCommercials()

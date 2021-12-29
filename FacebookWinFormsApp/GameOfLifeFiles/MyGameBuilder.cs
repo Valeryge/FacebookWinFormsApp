@@ -11,12 +11,15 @@ namespace FacebookApp.GameOfLifeFiles
 {
     internal class MyGameBuilder : IGameBuilder
     {
-        GameBoard gameBoard;
-        GameEngine gameEngine;
-        GameOfLifeForm gameForm;
-        public int Rows { get; set; }
-        public int Columns { get; set; }
+        private GameEngineFacade EngineControl { get; set; }
+        private GameBoard GameBoard { get; set; }
+      //  private GameEngine GameEngine { get; set; }
+        private GameOfLifeForm GameForm { get; set; }
         public Image BackGroundImage { get; set; }
+        public int Rows { get; set; }
+
+        public int Columns { get; set; }
+        
         public bool InformMissing()
         {
             bool finalResult = true;
@@ -35,57 +38,62 @@ namespace FacebookApp.GameOfLifeFiles
 
             if (finalResult == false)
             {
-                Console.WriteLine("There has been an error with the creation");
+                Console.WriteLine("Final result: Information Missing!");
             }
             return !finalResult;
         }
 
-        public GameBoard BuildBoard()
-        {
-            return new GameBoard(Rows, Columns); //GameBoard OK!
-        }
 
-        public GameEngine BuildEngine(GameBoard i_Board)
+        public void BuildBoard()
         {
-            if (gameBoard != null)
+            if (!(Rows <= 0 || Columns <= 0))
             {
-                return new GameEngine(gameBoard);
+                GameBoard = new GameBoard(Rows, Columns);
+                Console.WriteLine("GameBoard: OK");
             }
             else
             {
-                throw new Exception("Error! Bad gameBoard input");
+                throw new Exception("Missing arguments");
+            }
+        }
+
+        public void BuildEngine()
+        {
+            if (GameBoard != null)
+            {
+             //   GameEngine = new GameEngine(Rows, Columns);
+             EngineControl = new GameEngineFacade(new GameEngine(GameBoard));
+             Console.WriteLine("GameEngine: OK");
+            }
+            else
+            {
+                throw new Exception("Error! Bad GameBoard input");
             }
             
         }
 
-        public GameOfLifeForm BuildForm(GameEngine i_Engine)
+        public void BuildForm()
         {
-            if (gameEngine != null)
+            if (EngineControl != null)
             {
-                return new GameOfLifeForm(BackGroundImage, i_Engine);
+            
+                GameForm = new GameOfLifeForm(BackGroundImage, EngineControl);
+                Console.WriteLine("GameForm: OK");
+                //    GameForm =  new GameOfLifeForm(BackGroundImage, GameEngine);
             }
             else
             {
-                throw new Exception("Error! Bad gameBoard input");
+                throw new Exception("Error! Bad GameBoard input");
             }
         }
 
-        public GameOfLifeForm BuildComplexObject()
+        public GameOfLifeForm GetComplexObject()
         {
             if (InformMissing() == false)
             {
-                gameBoard = BuildBoard();
-                Console.WriteLine("GameBoard: OK");
-                gameEngine = BuildEngine(gameBoard);
-                Console.WriteLine("GameEngine: OK");
-                gameForm = BuildForm(gameEngine);
-                Console.WriteLine("GameForm: OK");
-                return gameForm;
+                return GameForm;
             }
-            else
-            {
-                throw new Exception("BuildComplexObject - Dysfunctional.");
-            }
+            throw new Exception("GetComplexObject - Dysfunctional.");
         }
     }
 }

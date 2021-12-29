@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FacebookApp.GameOfLifeFiles
-{ 
-    internal class GameEngineFacade
+{
+    public class GameEngineFacade
     {
         private GameEngine m_Engine;
         public GameBoard GameBoard { get { return m_Engine.GameBoard; } }
         public int Rounds { get { return m_Engine.Rounds; } }
 
+        //assuming engine is good
         internal GameEngineFacade(GameEngine i_Engine) {
             m_Engine = i_Engine;
         }

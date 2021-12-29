@@ -26,10 +26,10 @@ using System.Runtime.InteropServices;
 //
 //      Major Version
 //      Minor Version
-//      BuildComplexObject Number
+//      GetComplexObject Number
 //      Revision
 //
-// You can specify all the values or you can default the BuildComplexObject and Revision Numbers
+// You can specify all the values or you can default the GetComplexObject and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]

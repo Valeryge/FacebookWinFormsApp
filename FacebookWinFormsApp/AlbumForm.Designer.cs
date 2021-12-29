@@ -38,7 +38,7 @@ namespace FacebookApp
             this.backButton.BackgroundImage = global::FacebookApp.Properties.Resources.back;
             this.backButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.backButton.Location = new System.Drawing.Point(0, -3);
-            this.backButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.backButton.Margin = new System.Windows.Forms.Padding(2);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(68, 35);
             this.backButton.TabIndex = 0;
@@ -65,7 +65,7 @@ namespace FacebookApp
             this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.albumNameLabel);
             this.Controls.Add(this.backButton);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AlbumForm";
             this.Text = "Form1";
             this.Shown += new System.EventHandler(this.AlbumForm_Shown);

@@ -87,6 +87,12 @@ namespace FacebookApp
             this.loadFriends();
             this.loadPosts();
             this.loadInfo();
+            this.loadGroups();
+        }
+
+        private void loadGroups()
+        {
+            groupBindingSource.DataSource = k_FacebookService.CurrentProfileUser.Groups;
         }
 
         private void loadInfo()
@@ -105,6 +111,8 @@ namespace FacebookApp
         private void loadLikedPages()
         {
             pageBindingSource.DataSource = k_FacebookService.CurrentProfileUser.LikedPages;
+          //  listBoxLikedPages.DataSource = pageBindingSource;
+           // listBoxLikedPages.DisplayMember = Name;
             //foreach (Page page in k_FacebookService.CurrentProfileUser.LikedPages)
             //{
             //    listBoxLikedPages.Items.Add(page);

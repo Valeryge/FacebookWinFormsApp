@@ -132,7 +132,6 @@ namespace FacebookApp.GameOfLifeFiles
 
         private void buttonReset_Click(object sender, EventArgs e)
         {
-
             k_Engine.Restart();
             updatesVisualEffects();
         }
@@ -154,8 +153,7 @@ namespace FacebookApp.GameOfLifeFiles
 
         private readonly int k_CellLength = 30;
         private readonly Size cellSize;
-
         private readonly GameEngineFacade k_Engine;
-        private Timer m_GameProgressionTimer;//TODO: this should be inside the engine     
+        private Timer m_GameProgressionTimer;     
     }
 }

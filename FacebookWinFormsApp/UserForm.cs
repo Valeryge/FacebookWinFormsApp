@@ -78,7 +78,7 @@ namespace FacebookApp
             //loadUsersName
             labelLoggedUserName.Text = usersName;
             //loadProfilePicture
-            pictureBoxLoggedUserPicture.BackgroundImage = k_FacebookService.CurrentProfileUser.ImageLarge; //TODO: fix size;
+            pictureBoxLoggedUserPicture.BackgroundImage = k_FacebookService.CurrentProfileUser.ImageLarge; 
             pictureBoxLoggedUserPicture.BringToFront();
             k_PostsContainer.MaximumSize = new Size(700, 500);
             k_PostsContainer.Location = new Point(450,450);  //better
@@ -87,12 +87,6 @@ namespace FacebookApp
             this.loadFriends();
             this.loadPosts();
             this.loadInfo();
-            this.loadGroups();
-        }
-
-        private void loadGroups()
-        {
-            groupBindingSource.DataSource = k_FacebookService.CurrentProfileUser.Groups;
         }
 
         private void loadInfo()
@@ -243,7 +237,6 @@ namespace FacebookApp
 
         }
 
-        //TODO: Post
         private void OnPostButtonClicked(object i_Sender, EventArgs i_E)
         {
             k_FacebookService.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.eActionType.PostClicked));
@@ -368,7 +361,6 @@ namespace FacebookApp
                 new FaceBookAction(FaceBookAction.eActionType.PlayingGameOfLife));
             try
             {
-                //  GameOfLifeForm gameForm = new GameOfLifeForm(k_FacebookService.GetRandomFriendImage());
                 IGameComposer myGameComposer = MyGameComposer.Create();
                 injectToGameComposer(myGameComposer);
                 GameOfLifeForm gameForm = myGameComposer.Compose();
@@ -412,6 +404,5 @@ namespace FacebookApp
         private readonly VerticalBox k_PostsContainer;
         private readonly Timer r_CommercialsTimer;
         private readonly Timer r_NotificationTimer;
-
     }
 }

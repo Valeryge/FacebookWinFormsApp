@@ -11,7 +11,6 @@ namespace FacebookApp.GameOfLifeFiles
         private GameEngine m_Engine;
         public int Rounds { get { return m_Engine.Rounds; } }
 
-        //assuming engine is good
         internal GameEngineFacade(GameEngine i_Engine) {
             m_Engine = i_Engine;
         }

@@ -33,13 +33,10 @@ namespace FacebookApp
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserForm));
-            System.Windows.Forms.Label categoryLabel;
             System.Windows.Forms.Label checkinsCountLabel;
             System.Windows.Forms.Label descriptionLabel;
-            System.Windows.Forms.Label idLabel;
-            System.Windows.Forms.Label imageNormalLabel;
-            System.Windows.Forms.Label likesCountLabel;
             System.Windows.Forms.Label nameLabel;
+            System.Windows.Forms.Label cityLabel;
             this.toolstrip = new System.Windows.Forms.ToolStrip();
             this.facebookLogo = new System.Windows.Forms.ToolStripLabel();
             this.settingsButton = new System.Windows.Forms.ToolStripButton();
@@ -50,6 +47,7 @@ namespace FacebookApp
             this.infoLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.listBoxLikedPages = new System.Windows.Forms.ListBox();
+            this.pageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.albumsLabel = new System.Windows.Forms.Label();
             this.listBoxAlbums = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -63,31 +61,23 @@ namespace FacebookApp
             this.pictureBoxInfo = new System.Windows.Forms.PictureBox();
             this.pictureBoxCommercial = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pageBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.categoryTextBox = new System.Windows.Forms.TextBox();
-            this.checkinsCountTextBox = new System.Windows.Forms.TextBox();
-            this.descriptionTextBox = new System.Windows.Forms.TextBox();
-            this.idTextBox = new System.Windows.Forms.TextBox();
+            this.checkinsCountLabel1 = new System.Windows.Forms.Label();
+            this.descriptionLabel1 = new System.Windows.Forms.Label();
             this.imageNormalPictureBox = new System.Windows.Forms.PictureBox();
-            this.likesCountTextBox = new System.Windows.Forms.TextBox();
             this.nameLabel1 = new System.Windows.Forms.Label();
-            this.groupBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            categoryLabel = new System.Windows.Forms.Label();
+            this.cityLabel1 = new System.Windows.Forms.Label();
             checkinsCountLabel = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
-            idLabel = new System.Windows.Forms.Label();
-            imageNormalLabel = new System.Windows.Forms.Label();
-            likesCountLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
+            cityLabel = new System.Windows.Forms.Label();
             this.toolstrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).BeginInit();
             this.centralPanelArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoggedUserPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCommercial)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageNormalPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // toolstrip
@@ -213,6 +203,10 @@ namespace FacebookApp
             this.listBoxLikedPages.Name = "listBoxLikedPages";
             this.listBoxLikedPages.Size = new System.Drawing.Size(247, 100);
             this.listBoxLikedPages.TabIndex = 37;
+            // 
+            // pageBindingSource
+            // 
+            this.pageBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Page);
             // 
             // albumsLabel
             // 
@@ -359,153 +353,100 @@ namespace FacebookApp
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(categoryLabel);
-            this.panel1.Controls.Add(this.categoryTextBox);
+            this.panel1.Controls.Add(cityLabel);
+            this.panel1.Controls.Add(this.cityLabel1);
             this.panel1.Controls.Add(checkinsCountLabel);
-            this.panel1.Controls.Add(this.checkinsCountTextBox);
+            this.panel1.Controls.Add(this.checkinsCountLabel1);
             this.panel1.Controls.Add(descriptionLabel);
-            this.panel1.Controls.Add(this.descriptionTextBox);
-            this.panel1.Controls.Add(idLabel);
-            this.panel1.Controls.Add(this.idTextBox);
-            this.panel1.Controls.Add(imageNormalLabel);
+            this.panel1.Controls.Add(this.descriptionLabel1);
             this.panel1.Controls.Add(this.imageNormalPictureBox);
-            this.panel1.Controls.Add(likesCountLabel);
-            this.panel1.Controls.Add(this.likesCountTextBox);
             this.panel1.Controls.Add(nameLabel);
             this.panel1.Controls.Add(this.nameLabel1);
-            this.panel1.Location = new System.Drawing.Point(12, 337);
+            this.panel1.Location = new System.Drawing.Point(42, 337);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(380, 217);
+            this.panel1.Size = new System.Drawing.Size(339, 249);
             this.panel1.TabIndex = 43;
-            // 
-            // pageBindingSource
-            // 
-            this.pageBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Page);
-            // 
-            // categoryLabel
-            // 
-            categoryLabel.AutoSize = true;
-            categoryLabel.Location = new System.Drawing.Point(84, 37);
-            categoryLabel.Name = "categoryLabel";
-            categoryLabel.Size = new System.Drawing.Size(52, 13);
-            categoryLabel.TabIndex = 0;
-            categoryLabel.Text = "Category:";
-            // 
-            // categoryTextBox
-            // 
-            this.categoryTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Category", true));
-            this.categoryTextBox.Location = new System.Drawing.Point(175, 34);
-            this.categoryTextBox.Name = "categoryTextBox";
-            this.categoryTextBox.Size = new System.Drawing.Size(100, 20);
-            this.categoryTextBox.TabIndex = 1;
             // 
             // checkinsCountLabel
             // 
             checkinsCountLabel.AutoSize = true;
-            checkinsCountLabel.Location = new System.Drawing.Point(84, 63);
+            checkinsCountLabel.Location = new System.Drawing.Point(24, 92);
             checkinsCountLabel.Name = "checkinsCountLabel";
             checkinsCountLabel.Size = new System.Drawing.Size(85, 13);
-            checkinsCountLabel.TabIndex = 2;
+            checkinsCountLabel.TabIndex = 0;
             checkinsCountLabel.Text = "Checkins Count:";
             // 
-            // checkinsCountTextBox
+            // checkinsCountLabel1
             // 
-            this.checkinsCountTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "CheckinsCount", true));
-            this.checkinsCountTextBox.Location = new System.Drawing.Point(175, 60);
-            this.checkinsCountTextBox.Name = "checkinsCountTextBox";
-            this.checkinsCountTextBox.Size = new System.Drawing.Size(100, 20);
-            this.checkinsCountTextBox.TabIndex = 3;
+            this.checkinsCountLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "CheckinsCount", true));
+            this.checkinsCountLabel1.Location = new System.Drawing.Point(115, 92);
+            this.checkinsCountLabel1.Name = "checkinsCountLabel1";
+            this.checkinsCountLabel1.Size = new System.Drawing.Size(100, 23);
+            this.checkinsCountLabel1.TabIndex = 1;
+            this.checkinsCountLabel1.Text = "label1";
             // 
             // descriptionLabel
             // 
             descriptionLabel.AutoSize = true;
-            descriptionLabel.Location = new System.Drawing.Point(84, 89);
+            descriptionLabel.Location = new System.Drawing.Point(24, 115);
             descriptionLabel.Name = "descriptionLabel";
             descriptionLabel.Size = new System.Drawing.Size(63, 13);
-            descriptionLabel.TabIndex = 4;
+            descriptionLabel.TabIndex = 2;
             descriptionLabel.Text = "Description:";
             // 
-            // descriptionTextBox
+            // descriptionLabel1
             // 
-            this.descriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Description", true));
-            this.descriptionTextBox.Location = new System.Drawing.Point(175, 86);
-            this.descriptionTextBox.Name = "descriptionTextBox";
-            this.descriptionTextBox.Size = new System.Drawing.Size(100, 20);
-            this.descriptionTextBox.TabIndex = 5;
-            // 
-            // idLabel
-            // 
-            idLabel.AutoSize = true;
-            idLabel.Location = new System.Drawing.Point(84, 115);
-            idLabel.Name = "idLabel";
-            idLabel.Size = new System.Drawing.Size(19, 13);
-            idLabel.TabIndex = 6;
-            idLabel.Text = "Id:";
-            // 
-            // idTextBox
-            // 
-            this.idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Id", true));
-            this.idTextBox.Location = new System.Drawing.Point(175, 112);
-            this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(100, 20);
-            this.idTextBox.TabIndex = 7;
-            // 
-            // imageNormalLabel
-            // 
-            imageNormalLabel.AutoSize = true;
-            imageNormalLabel.Location = new System.Drawing.Point(84, 138);
-            imageNormalLabel.Name = "imageNormalLabel";
-            imageNormalLabel.Size = new System.Drawing.Size(75, 13);
-            imageNormalLabel.TabIndex = 8;
-            imageNormalLabel.Text = "Image Normal:";
+            this.descriptionLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Description", true));
+            this.descriptionLabel1.Location = new System.Drawing.Point(115, 115);
+            this.descriptionLabel1.Name = "descriptionLabel1";
+            this.descriptionLabel1.Size = new System.Drawing.Size(100, 23);
+            this.descriptionLabel1.TabIndex = 3;
+            this.descriptionLabel1.Text = "label1";
             // 
             // imageNormalPictureBox
             // 
             this.imageNormalPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.pageBindingSource, "ImageNormal", true));
-            this.imageNormalPictureBox.Location = new System.Drawing.Point(175, 138);
+            this.imageNormalPictureBox.Location = new System.Drawing.Point(189, 141);
             this.imageNormalPictureBox.Name = "imageNormalPictureBox";
-            this.imageNormalPictureBox.Size = new System.Drawing.Size(100, 50);
-            this.imageNormalPictureBox.TabIndex = 9;
+            this.imageNormalPictureBox.Size = new System.Drawing.Size(100, 76);
+            this.imageNormalPictureBox.TabIndex = 5;
             this.imageNormalPictureBox.TabStop = false;
-            // 
-            // likesCountLabel
-            // 
-            likesCountLabel.AutoSize = true;
-            likesCountLabel.Location = new System.Drawing.Point(84, 197);
-            likesCountLabel.Name = "likesCountLabel";
-            likesCountLabel.Size = new System.Drawing.Size(66, 13);
-            likesCountLabel.TabIndex = 10;
-            likesCountLabel.Text = "Likes Count:";
-            // 
-            // likesCountTextBox
-            // 
-            this.likesCountTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "LikesCount", true));
-            this.likesCountTextBox.Location = new System.Drawing.Point(175, 194);
-            this.likesCountTextBox.Name = "likesCountTextBox";
-            this.likesCountTextBox.Size = new System.Drawing.Size(100, 20);
-            this.likesCountTextBox.TabIndex = 11;
             // 
             // nameLabel
             // 
             nameLabel.AutoSize = true;
-            nameLabel.Location = new System.Drawing.Point(84, 217);
+            nameLabel.Location = new System.Drawing.Point(24, 16);
             nameLabel.Name = "nameLabel";
-            nameLabel.Size = new System.Drawing.Size(38, 13);
-            nameLabel.TabIndex = 12;
-            nameLabel.Text = "Name:";
+            nameLabel.Size = new System.Drawing.Size(35, 13);
+            nameLabel.TabIndex = 6;
+            nameLabel.Text = "Page:";
             // 
             // nameLabel1
             // 
             this.nameLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Name", true));
-            this.nameLabel1.Location = new System.Drawing.Point(175, 217);
+            this.nameLabel1.Location = new System.Drawing.Point(115, 16);
             this.nameLabel1.Name = "nameLabel1";
             this.nameLabel1.Size = new System.Drawing.Size(100, 23);
-            this.nameLabel1.TabIndex = 13;
+            this.nameLabel1.TabIndex = 7;
             this.nameLabel1.Text = "label1";
             // 
-            // groupBindingSource
+            // cityLabel
             // 
-            this.groupBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Group);
+            cityLabel.AutoSize = true;
+            cityLabel.Location = new System.Drawing.Point(28, 194);
+            cityLabel.Name = "cityLabel";
+            cityLabel.Size = new System.Drawing.Size(27, 13);
+            cityLabel.TabIndex = 8;
+            cityLabel.Text = "City:";
+            // 
+            // cityLabel1
+            // 
+            this.cityLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Location.City", true));
+            this.cityLabel1.Location = new System.Drawing.Point(61, 194);
+            this.cityLabel1.Name = "cityLabel1";
+            this.cityLabel1.Size = new System.Drawing.Size(100, 23);
+            this.cityLabel1.TabIndex = 9;
+            this.cityLabel1.Text = "label1";
             // 
             // UserForm
             // 
@@ -532,6 +473,7 @@ namespace FacebookApp
             this.Load += new System.EventHandler(this.LoggedUserForm_Load);
             this.toolstrip.ResumeLayout(false);
             this.toolstrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).EndInit();
             this.centralPanelArea.ResumeLayout(false);
             this.centralPanelArea.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoggedUserPicture)).EndInit();
@@ -539,9 +481,7 @@ namespace FacebookApp
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCommercial)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageNormalPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -572,14 +512,11 @@ namespace FacebookApp
         private Label labelLoggedUserName;
         private PictureBox pictureBoxInfo;
         private Panel panel1;
-        private TextBox categoryTextBox;
         private BindingSource pageBindingSource;
-        private TextBox checkinsCountTextBox;
-        private TextBox descriptionTextBox;
-        private TextBox idTextBox;
+        private Label cityLabel1;
+        private Label checkinsCountLabel1;
+        private Label descriptionLabel1;
         private PictureBox imageNormalPictureBox;
-        private TextBox likesCountTextBox;
         private Label nameLabel1;
-        private BindingSource groupBindingSource;
     }
 }

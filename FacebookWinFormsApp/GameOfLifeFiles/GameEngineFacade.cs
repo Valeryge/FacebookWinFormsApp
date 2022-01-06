@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace FacebookApp.GameOfLifeFiles
 {
-    public class GameEngineFacade
+    public class GameEngineFacade : IGameTimerObserver
     {
         private GameEngine m_Engine;
         public int Rounds { get { return m_Engine.Rounds; } }
+        public GameBoard Board { get => m_Engine.GameBoard; }
 
         internal GameEngineFacade(GameEngine i_Engine) {
             m_Engine = i_Engine;

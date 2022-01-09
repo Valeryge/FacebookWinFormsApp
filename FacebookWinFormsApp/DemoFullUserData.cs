@@ -10,9 +10,8 @@ namespace FacebookApp
             Email = "(server)" + i_FbUser.Email;
             BirthDay = "(server)" + i_FbUser.Birthday;
             SignificantOther = i_FbUser.SignificantOther != null ? "(server)" + i_FbUser.SignificantOther.Name : "(Default)Ashley";
-            WorkPlace = i_FbUser.WorkExperiences[0] != null ? "(server)" + i_FbUser.WorkExperiences[0].Name : "(Default)Facebook inc.";
             HomeTown = i_FbUser.Hometown != null ? "(server)" + i_FbUser.Hometown.Name : "(Default)NewYork west";
-            Education = i_FbUser.Educations[0] != null ? "(server)" + i_FbUser.Educations[0].ToString() : "(Default)Harvard";
+            Education = i_FbUser.Educations != null ? "(server)" + i_FbUser.Educations.ToString() : "(Default)Harvard";
         }
 
         public string Name { get; }

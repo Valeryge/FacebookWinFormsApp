@@ -25,7 +25,6 @@ namespace FacebookApp.GameOfLifeFiles
 
         public void Update()
         {
-   
                 for (int rowIndex = 0; rowIndex < m_GameBoard.Rows; ++rowIndex)
                 {
                     for (int colIndex = 0; colIndex < m_GameBoard.Cols; ++colIndex)
@@ -40,11 +39,6 @@ namespace FacebookApp.GameOfLifeFiles
                         }
                     }
                 }
-                   
-            
         }
-
-        
-
     }
 }

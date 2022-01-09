@@ -52,6 +52,7 @@ namespace FacebookApp
             this.tabPageLog = new System.Windows.Forms.TabPage();
             this.statisticsTabControl = new System.Windows.Forms.TabControl();
             this.tabRecentActions = new System.Windows.Forms.TabPage();
+            this.actionTypesListBox = new System.Windows.Forms.ListBox();
             this.tableLayoutRecentActions = new System.Windows.Forms.TableLayoutPanel();
             this.tabLogStatistics = new System.Windows.Forms.TabPage();
             this.actionTypeChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -83,21 +84,19 @@ namespace FacebookApp
             this.tabPersonalData.Controls.Add(this.label2);
             this.tabPersonalData.Controls.Add(this.label1);
             this.tabPersonalData.Controls.Add(this.title);
-            this.tabPersonalData.Location = new System.Drawing.Point(4, 25);
-            this.tabPersonalData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPersonalData.Location = new System.Drawing.Point(4, 22);
             this.tabPersonalData.Name = "tabPersonalData";
-            this.tabPersonalData.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPersonalData.Size = new System.Drawing.Size(1477, 633);
+            this.tabPersonalData.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPersonalData.Size = new System.Drawing.Size(1106, 512);
             this.tabPersonalData.TabIndex = 1;
             this.tabPersonalData.Text = "Personal Data";
             this.tabPersonalData.UseVisualStyleBackColor = true;
             // 
             // buttonSettingsChanger
             // 
-            this.buttonSettingsChanger.Location = new System.Drawing.Point(557, 479);
-            this.buttonSettingsChanger.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSettingsChanger.Location = new System.Drawing.Point(418, 389);
             this.buttonSettingsChanger.Name = "buttonSettingsChanger";
-            this.buttonSettingsChanger.Size = new System.Drawing.Size(252, 28);
+            this.buttonSettingsChanger.Size = new System.Drawing.Size(189, 23);
             this.buttonSettingsChanger.TabIndex = 15;
             this.buttonSettingsChanger.Text = "Change Settings";
             this.buttonSettingsChanger.UseVisualStyleBackColor = true;
@@ -105,127 +104,113 @@ namespace FacebookApp
             // 
             // textBoxEducation
             // 
-            this.textBoxEducation.Location = new System.Drawing.Point(651, 407);
-            this.textBoxEducation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxEducation.Location = new System.Drawing.Point(488, 331);
             this.textBoxEducation.Name = "textBoxEducation";
-            this.textBoxEducation.Size = new System.Drawing.Size(157, 22);
+            this.textBoxEducation.Size = new System.Drawing.Size(119, 20);
             this.textBoxEducation.TabIndex = 14;
             // 
             // textBoxHomeTown
             // 
-            this.textBoxHomeTown.Location = new System.Drawing.Point(651, 358);
-            this.textBoxHomeTown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxHomeTown.Location = new System.Drawing.Point(488, 291);
             this.textBoxHomeTown.Name = "textBoxHomeTown";
-            this.textBoxHomeTown.Size = new System.Drawing.Size(157, 22);
+            this.textBoxHomeTown.Size = new System.Drawing.Size(119, 20);
             this.textBoxHomeTown.TabIndex = 13;
             // 
             // textBoxWorkPlace
             // 
-            this.textBoxWorkPlace.Location = new System.Drawing.Point(651, 309);
-            this.textBoxWorkPlace.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxWorkPlace.Location = new System.Drawing.Point(488, 251);
             this.textBoxWorkPlace.Name = "textBoxWorkPlace";
-            this.textBoxWorkPlace.Size = new System.Drawing.Size(157, 22);
+            this.textBoxWorkPlace.Size = new System.Drawing.Size(119, 20);
             this.textBoxWorkPlace.TabIndex = 12;
             // 
             // textBoxBirthDay
             // 
-            this.textBoxBirthDay.Location = new System.Drawing.Point(651, 210);
-            this.textBoxBirthDay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxBirthDay.Location = new System.Drawing.Point(488, 171);
             this.textBoxBirthDay.Name = "textBoxBirthDay";
-            this.textBoxBirthDay.Size = new System.Drawing.Size(157, 22);
+            this.textBoxBirthDay.Size = new System.Drawing.Size(119, 20);
             this.textBoxBirthDay.TabIndex = 11;
             // 
             // textBoxSignificantOther
             // 
-            this.textBoxSignificantOther.Location = new System.Drawing.Point(651, 260);
-            this.textBoxSignificantOther.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxSignificantOther.Location = new System.Drawing.Point(488, 211);
             this.textBoxSignificantOther.Name = "textBoxSignificantOther";
-            this.textBoxSignificantOther.Size = new System.Drawing.Size(157, 22);
+            this.textBoxSignificantOther.Size = new System.Drawing.Size(119, 20);
             this.textBoxSignificantOther.TabIndex = 10;
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(651, 161);
-            this.textBoxEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxEmail.Location = new System.Drawing.Point(488, 131);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(157, 22);
+            this.textBoxEmail.Size = new System.Drawing.Size(119, 20);
             this.textBoxEmail.TabIndex = 9;
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(651, 112);
-            this.textBoxName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxName.Location = new System.Drawing.Point(488, 91);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(157, 22);
+            this.textBoxName.Size = new System.Drawing.Size(119, 20);
             this.textBoxName.TabIndex = 8;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(533, 407);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(400, 331);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(75, 17);
+            this.label7.Size = new System.Drawing.Size(58, 13);
             this.label7.TabIndex = 7;
             this.label7.Text = "Education:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(533, 358);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(400, 291);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 17);
+            this.label6.Size = new System.Drawing.Size(65, 13);
             this.label6.TabIndex = 6;
             this.label6.Text = "HomeTown:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(535, 309);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(401, 251);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 17);
+            this.label5.Size = new System.Drawing.Size(66, 13);
             this.label5.TabIndex = 5;
             this.label5.Text = "Work-Place:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(535, 260);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(401, 211);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(109, 17);
+            this.label4.Size = new System.Drawing.Size(82, 13);
             this.label4.TabIndex = 4;
             this.label4.Text = "Significat Other:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(535, 210);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(401, 171);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 17);
+            this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "BirthDay:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(535, 161);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(401, 131);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 17);
+            this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Email:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(533, 112);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(400, 91);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 17);
+            this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Full Name:";
             // 
@@ -233,20 +218,20 @@ namespace FacebookApp
             // 
             this.title.AutoSize = true;
             this.title.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.title.Location = new System.Drawing.Point(561, 22);
+            this.title.Location = new System.Drawing.Point(421, 18);
+            this.title.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(233, 39);
+            this.title.Size = new System.Drawing.Size(186, 31);
             this.title.TabIndex = 0;
             this.title.Text = "Personal Data";
             // 
             // tabPageLog
             // 
             this.tabPageLog.Controls.Add(this.statisticsTabControl);
-            this.tabPageLog.Location = new System.Drawing.Point(4, 25);
-            this.tabPageLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageLog.Location = new System.Drawing.Point(4, 22);
             this.tabPageLog.Name = "tabPageLog";
-            this.tabPageLog.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPageLog.Size = new System.Drawing.Size(1477, 633);
+            this.tabPageLog.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageLog.Size = new System.Drawing.Size(1106, 512);
             this.tabPageLog.TabIndex = 0;
             this.tabPageLog.Text = "Activity Log";
             this.tabPageLog.UseVisualStyleBackColor = true;
@@ -256,24 +241,32 @@ namespace FacebookApp
             this.statisticsTabControl.Controls.Add(this.tabRecentActions);
             this.statisticsTabControl.Controls.Add(this.tabLogStatistics);
             this.statisticsTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.statisticsTabControl.Location = new System.Drawing.Point(4, 4);
-            this.statisticsTabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.statisticsTabControl.Location = new System.Drawing.Point(3, 3);
             this.statisticsTabControl.Name = "statisticsTabControl";
             this.statisticsTabControl.SelectedIndex = 0;
-            this.statisticsTabControl.Size = new System.Drawing.Size(1469, 625);
+            this.statisticsTabControl.Size = new System.Drawing.Size(1100, 506);
             this.statisticsTabControl.TabIndex = 0;
             // 
             // tabRecentActions
             // 
+            this.tabRecentActions.Controls.Add(this.actionTypesListBox);
             this.tabRecentActions.Controls.Add(this.tableLayoutRecentActions);
-            this.tabRecentActions.Location = new System.Drawing.Point(4, 25);
-            this.tabRecentActions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabRecentActions.Location = new System.Drawing.Point(4, 22);
             this.tabRecentActions.Name = "tabRecentActions";
-            this.tabRecentActions.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabRecentActions.Size = new System.Drawing.Size(1461, 596);
+            this.tabRecentActions.Padding = new System.Windows.Forms.Padding(3);
+            this.tabRecentActions.Size = new System.Drawing.Size(1092, 480);
             this.tabRecentActions.TabIndex = 0;
             this.tabRecentActions.Text = "Recent Actions";
             this.tabRecentActions.UseVisualStyleBackColor = true;
+            // 
+            // actionTypesListBox
+            // 
+            this.actionTypesListBox.FormattingEnabled = true;
+            this.actionTypesListBox.Location = new System.Drawing.Point(946, 19);
+            this.actionTypesListBox.Name = "actionTypesListBox";
+            this.actionTypesListBox.Size = new System.Drawing.Size(120, 95);
+            this.actionTypesListBox.TabIndex = 1;
+            this.actionTypesListBox.SelectedIndexChanged += new System.EventHandler(this.actionTypesListBox_SelectedIndexChanged);
             // 
             // tableLayoutRecentActions
             // 
@@ -282,25 +275,40 @@ namespace FacebookApp
             this.tableLayoutRecentActions.ColumnCount = 3;
             this.tableLayoutRecentActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutRecentActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutRecentActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 375F));
-            this.tableLayoutRecentActions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutRecentActions.Location = new System.Drawing.Point(5, 5);
-            this.tableLayoutRecentActions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutRecentActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 287F));
+            this.tableLayoutRecentActions.Location = new System.Drawing.Point(3, 6);
             this.tableLayoutRecentActions.Name = "tableLayoutRecentActions";
-            this.tableLayoutRecentActions.RowCount = 2;
+            this.tableLayoutRecentActions.RowCount = 20;
             this.tableLayoutRecentActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutRecentActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutRecentActions.Size = new System.Drawing.Size(1816, 735);
+            this.tableLayoutRecentActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutRecentActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutRecentActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutRecentActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutRecentActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutRecentActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutRecentActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutRecentActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutRecentActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutRecentActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutRecentActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutRecentActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutRecentActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutRecentActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutRecentActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutRecentActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutRecentActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutRecentActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutRecentActions.Size = new System.Drawing.Size(922, 471);
             this.tableLayoutRecentActions.TabIndex = 0;
             // 
             // tabLogStatistics
             // 
             this.tabLogStatistics.Controls.Add(this.actionTypeChart);
-            this.tabLogStatistics.Location = new System.Drawing.Point(4, 25);
-            this.tabLogStatistics.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabLogStatistics.Location = new System.Drawing.Point(4, 22);
             this.tabLogStatistics.Name = "tabLogStatistics";
-            this.tabLogStatistics.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabLogStatistics.Size = new System.Drawing.Size(1459, 594);
+            this.tabLogStatistics.Padding = new System.Windows.Forms.Padding(3);
+            this.tabLogStatistics.Size = new System.Drawing.Size(1092, 480);
             this.tabLogStatistics.TabIndex = 1;
             this.tabLogStatistics.Text = "Log Statistics";
             this.tabLogStatistics.UseVisualStyleBackColor = true;
@@ -311,8 +319,8 @@ namespace FacebookApp
             this.actionTypeChart.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
             this.actionTypeChart.Legends.Add(legend3);
-            this.actionTypeChart.Location = new System.Drawing.Point(259, 57);
-            this.actionTypeChart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.actionTypeChart.Location = new System.Drawing.Point(194, 46);
+            this.actionTypeChart.Margin = new System.Windows.Forms.Padding(2);
             this.actionTypeChart.Name = "actionTypeChart";
             series3.ChartArea = "ChartArea1";
             series3.EmptyPointStyle.IsValueShownAsLabel = true;
@@ -320,7 +328,7 @@ namespace FacebookApp
             series3.Legend = "Legend1";
             series3.Name = "Activity Type";
             this.actionTypeChart.Series.Add(series3);
-            this.actionTypeChart.Size = new System.Drawing.Size(945, 438);
+            this.actionTypeChart.Size = new System.Drawing.Size(709, 356);
             this.actionTypeChart.TabIndex = 2;
             this.actionTypeChart.Text = "chart1";
             // 
@@ -330,19 +338,17 @@ namespace FacebookApp
             this.personalDataTab.Controls.Add(this.tabPersonalData);
             this.personalDataTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.personalDataTab.Location = new System.Drawing.Point(0, 0);
-            this.personalDataTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.personalDataTab.Name = "personalDataTab";
             this.personalDataTab.SelectedIndex = 0;
-            this.personalDataTab.Size = new System.Drawing.Size(1485, 662);
+            this.personalDataTab.Size = new System.Drawing.Size(1114, 538);
             this.personalDataTab.TabIndex = 0;
             // 
             // SettingsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1485, 662);
+            this.ClientSize = new System.Drawing.Size(1114, 538);
             this.Controls.Add(this.personalDataTab);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SettingsForm";
             this.Text = "Settings";
             this.tabPersonalData.ResumeLayout(false);
@@ -379,9 +385,10 @@ namespace FacebookApp
         private System.Windows.Forms.TabPage tabPageLog;
         private System.Windows.Forms.TabControl statisticsTabControl;
         private System.Windows.Forms.TabPage tabRecentActions;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutRecentActions;
         private System.Windows.Forms.TabPage tabLogStatistics;
         private System.Windows.Forms.DataVisualization.Charting.Chart actionTypeChart;
         private System.Windows.Forms.TabControl personalDataTab;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutRecentActions;
+        private System.Windows.Forms.ListBox actionTypesListBox;
     }
 }

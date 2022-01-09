@@ -1,24 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections;
+
 
 namespace FacebookApp
 {
-    public sealed class LogManager
+    public sealed class LogManager: IEnumerable<FaceBookAction>
     {
-        private Dictionary<FaceBookAction.eActionType, List<FaceBookAction>> m_LogCollection;
+      //  private Dictionary<FaceBookAction.eActionType, List<FaceBookAction>> m_LogCollection;
         private List<FaceBookAction> k_ActionsList;
         public List<FaceBookAction> ActionsList => k_ActionsList;
         private static readonly object objectLock = new object();
+        public Func<FaceBookAction, bool> FilterByActionTypes { get; set; }
 
         private LogManager() 
         {
-            m_LogCollection = new Dictionary<FaceBookAction.eActionType, List<FaceBookAction>>();
+       //     m_LogCollection = new Dictionary<FaceBookAction.eActionType, List<FaceBookAction>>();
             k_ActionsList = new List<FaceBookAction>();
-            foreach (FaceBookAction.eActionType enumsValue in Enum.GetValues(typeof(FaceBookAction.eActionType)))
-            {
-                m_LogCollection.Add(enumsValue, new List<FaceBookAction>());
-            }
+            FilterByActionTypes = (action) => true;
+ 
         }
         
         private static LogManager instance = null;
@@ -37,6 +38,22 @@ namespace FacebookApp
                         }
                 }
                 return instance;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
+        }
+
+        public IEnumerator<FaceBookAction> GetEnumerator()
+        {
+            foreach (FaceBookAction action in ActionsList)
+            {
+                if (FilterByActionTypes.Invoke(action))
+                {
+                    yield return action;
+                }
             }
         }
 

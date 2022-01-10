@@ -359,8 +359,10 @@ namespace FacebookApp
         {
             k_FacebookService.LogManager.ActionsList.Add(
                 new FaceBookAction(FaceBookAction.eActionType.PlayingGameOfLife));
+
             try
             {
+                setImagePickerStrategy();
                 IGameComposer myGameComposer = MyGameComposer.Create();
                 injectToGameComposer(myGameComposer);
                 GameOfLifeForm gameForm = myGameComposer.Compose();
@@ -375,12 +377,22 @@ namespace FacebookApp
             }
         }
 
-        
+        private void setImagePickerStrategy()
+        {
+            if (k_FacebookService.CurrentProfileUser == k_FacebookService.LoggedUser)
+            {
+                m_ImagePicker = new FromMyPageStrategy();
+            } else
+            {
+                m_ImagePicker = new FromFriendsStrategy();
+            }
+        }
+
         private void injectToGameComposer(IGameComposer myGameComposer)
         {
             myGameComposer.Rows = 12;
             myGameComposer.Columns = myGameComposer.Rows;
-            myGameComposer.BackGroundImage = k_FacebookService.GetRandomFriendImage();
+            myGameComposer.BackGroundImage = m_ImagePicker.GetImage(k_FacebookService.LoggedUser);
         }
 
         private void GameForm_FormClosed(object i_Sender, EventArgs i_E)
@@ -404,5 +416,6 @@ namespace FacebookApp
         private readonly VerticalBox k_PostsContainer;
         private readonly Timer r_CommercialsTimer;
         private readonly Timer r_NotificationTimer;
+        private IImagePickerStrategy m_ImagePicker;
     }
 }

@@ -5,11 +5,10 @@ using System.Windows.Forms;
 
 namespace FacebookApp.GameOfLifeFiles
 {
-    public partial class GameOfLifeForm : Form
+    public partial class GameOfLifeForm : Form, IGameTimerObserver
     {
         public GameOfLifeForm(Image i_BackGroundImage, GameEngineFacade i_EngineControl)
         {
-            initGameTimer();
             k_Engine = i_EngineControl;
             InitializeComponent();
             myInitComponents(i_BackGroundImage);
@@ -25,31 +24,34 @@ namespace FacebookApp.GameOfLifeFiles
 
         private void initGameTimer()
         {
-            m_GameProgressionTimer = new System.Windows.Forms.Timer();
-            m_GameProgressionTimer.Tick += updateAndDrawNextGeneration;
-            m_GameProgressionTimer.Interval = 1000;
+            m_GameProgressionTimer = new SubjectGameTimer();
+            m_GameProgressionTimer.Attach(m_table);
+            m_GameProgressionTimer.Attach(this);
+            m_GameProgressionTimer.Attach(k_Engine);
         }
 
         private void myInitComponents(Image i_BackgroundImage)
         {
             TableLayoutGameOfLife.BackgroundImage = i_BackgroundImage;
-            TableLayoutGameOfLife.RowCount = k_Engine.GetRows();
-            TableLayoutGameOfLife.ColumnCount = k_Engine.GetCols(); ;
             TableLayoutGameOfLife.Size = new Size(k_CellLength * k_Engine.GetRows(), k_CellLength * k_Engine.GetCols());
-            createCellButtons();
-            updatesVisualEffects();
-            updateAndDrawNextGeneration();
+            TableLayoutGameOfLife.RowCount = k_Engine.GetRows();
+            TableLayoutGameOfLife.ColumnCount = k_Engine.GetCols();
+            m_table = new GameTableWrapper(TableLayoutGameOfLife, k_Engine.Board);
 
+            createCellButtons();
+       //     Update();
+       //     updateAndDrawNextGeneration();
+            initGameTimer();
         }
 
         private void createCellButtons()
         {
             for (int rowsIndex = 0; rowsIndex < k_Engine.GetRows(); ++rowsIndex)
             {
-                for (int columnIndex = 0; columnIndex < k_Engine.GetCols(); ++columnIndex)
+                for (int columnIndex = 0; columnIndex < k_Engine.GetRows(); ++columnIndex)
                 {
                     {
-                        TableLayoutGameOfLife.Controls.Add(createGameButton()
+                        m_table.Table.Controls.Add(createGameButton()
                       , columnIndex, rowsIndex);
                     }
                 }
@@ -67,46 +69,23 @@ namespace FacebookApp.GameOfLifeFiles
             button.ForeColor = Color.Black;
             return button;
         }
+
+
+
         private void gameButton_Clicked(object i_Sender, EventArgs i_E)
         {
             TableLayoutPanelCellPosition position = TableLayoutGameOfLife.GetPositionFromControl(i_Sender as Button);
             k_Engine.ChangeCell(position.Row, position.Column);
-            updatesVisualEffects();
+            m_table.Update();
         }
 
-        private void updatesVisualEffects()
+       new public void Update()
         {
             {
-                for (int rowIndex = 0; rowIndex < k_Engine.GetRows(); ++rowIndex)
-                {
-                    for (int colIndex = 0; colIndex < k_Engine.GetCols(); ++colIndex)
-                    {
-                        if (k_Engine.IsCellFull(rowIndex, colIndex))
-                        {
-                            TableLayoutGameOfLife.GetControlFromPosition(colIndex, rowIndex).Visible = false;
-                        }
-                        else
-                        {
-                            TableLayoutGameOfLife.GetControlFromPosition(colIndex, rowIndex).Visible = true;
-                        }
-                    }
-                }
-
                 labelRoundsCounter.Text = k_Engine.Rounds.ToString();
             }
         }
 
-        private void updateAndDrawNextGeneration(object i_Sender, EventArgs i_E)
-        {
-            k_Engine.Update();
-            updatesVisualEffects();
-        }
-
-        private void updateAndDrawNextGeneration()
-        {
-            k_Engine.Update();
-            updatesVisualEffects();
-        }
 
         private void buttonStart_Click(object i_Sender, EventArgs i_E)
         {
@@ -127,13 +106,16 @@ namespace FacebookApp.GameOfLifeFiles
 
         private void buttonNext_Click(object sender, EventArgs e)
         {
-            updateAndDrawNextGeneration(sender, e);
+            k_Engine.Update();
+            m_table.Update();
+            Update();
         }
 
         private void buttonReset_Click(object sender, EventArgs e)
         {
             k_Engine.Restart();
-            updatesVisualEffects();
+            Update();
+            m_table.Update();
         }
 
         private void buttonRules_Click(object sender, EventArgs e)
@@ -154,6 +136,8 @@ namespace FacebookApp.GameOfLifeFiles
         private readonly int k_CellLength = 30;
         private readonly Size cellSize;
         private readonly GameEngineFacade k_Engine;
-        private Timer m_GameProgressionTimer;     
+        private GameTableWrapper m_table;
+
+        private SubjectGameTimer m_GameProgressionTimer;
     }
 }

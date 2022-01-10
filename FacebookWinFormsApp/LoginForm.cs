@@ -26,28 +26,29 @@ namespace FacebookApp
         private void buttonLogin_Click(object i_Sender, EventArgs i_E)
         {
             Clipboard.SetText("design.patterns20cc"); /// the current password for Desig Patter
+            FacebookWrapper.LoginResult loginResult = FacebookService.Connect("EAACTrYdYvoEBALJNpbUxHj9LdZBkSRlMU5DZB6RiZCgYLOb8xZB5uRVO8jmBcSITCfH7Cjhj4YP0WmxsFAkZAsnZCGwuBqxz69lmvOlZBZCl62zUO4JGAdR1ZC6lhrx1YmCIzefog21FEcAKHzkYCPRavZBRKIjMmv6uOOLplRI5BbOxd7ZACOCWg5ZB");
             k_MyFBServices.LogManager.ActionsList.Add(new FaceBookAction(FaceBookAction.eActionType.LoginClicked));
-            FacebookWrapper.LoginResult loginResult = FacebookService.Login(
-                    "162373509365377",
-                    "email",
-                    "public_profile",
-                    "user_age_range",
-                    "user_birthday",
-                    "user_events",
-                    "user_friends",
-                    "user_gender",
-                    "user_hometown",
-                    "user_likes",
-                    "user_link",
-                    "user_location",
-                    "user_photos",
-                    "user_posts",
-                    "user_videos",
-                    "pages_manage_posts",
-                    "pages_read_engagement",
-                    "pages_manage_posts",
-                    "publish_to_groups"
-                    );
+            //FacebookWrapper.LoginResult loginResult = FacebookService.Login(
+            //        "162373509365377",
+            //        "email",
+            //        "public_profile",
+            //        "user_age_range",
+            //        "user_birthday",
+            //        "user_events",
+            //        "user_friends",
+            //        "user_gender",
+            //        "user_hometown",
+            //        "user_likes",
+            //        "user_link",
+            //        "user_location",
+            //        "user_photos",
+            //        "user_posts",
+            //        "user_videos",
+            //        "pages_manage_posts",
+            //        "pages_read_engagement",
+            //        "pages_manage_posts",
+            //        "publish_to_groups"
+            //        );
 
             if (!string.IsNullOrEmpty(loginResult.AccessToken))
             {

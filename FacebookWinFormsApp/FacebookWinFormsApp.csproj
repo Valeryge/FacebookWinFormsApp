@@ -106,6 +106,8 @@
       <DependentUpon>AlbumForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GameOfLifeFiles\GameEngineFacade.cs" />
+    <Compile Include="GameOfLifeFiles\GameTableWrapper.cs" />
+    <Compile Include="GameOfLifeFiles\IGameTimerObserver.cs" />
     <Compile Include="GameOfLifeFiles\IBuilder\IGameCreator.cs" />
     <Compile Include="GameOfLifeFiles\IBuilder\IGameBuilder.cs" />
     <Compile Include="GameOfLifeFiles\GameEngine.cs" />
@@ -119,6 +121,7 @@
     <Compile Include="GameOfLifeFiles\IBuilder\IGameComposer.cs" />
     <Compile Include="GameOfLifeFiles\MyGameBuilder.cs" />
     <Compile Include="GameOfLifeFiles\MyGameComposer.cs" />
+    <Compile Include="GameOfLifeFiles\SubjectGameTimer.cs" />
     <Compile Include="LogManager.cs" />
     <Compile Include="MyFacebookService.cs" />
     <Compile Include="ControlComponents\HorizontalBox.cs">

@@ -6,6 +6,7 @@ namespace FacebookApp.GameOfLifeFiles
 {
     internal class MyGameBuilder : IGameBuilder
     {
+        private GameTableWrapper WinformsGameTable { get; set; }
         private GameEngineFacade EngineControl { get; set; }
         private GameBoard GameBoard { get; set; }
       //  private GameEngine GameEngine { get; set; }

@@ -36,6 +36,15 @@ namespace FacebookApp
             loadStatistics();
             createTableOfUserActions();
             initializePersonalSettingsPage();
+            initCheckedListBox();
+        }
+
+        private void initCheckedListBox()
+        {
+            foreach (string name in Enum.GetNames(typeof(FaceBookAction.eActionType)))
+            {
+                actionTypesListBox.Items.Add(name);
+            }
         }
 
         private void createTableOfUserActions()
@@ -52,17 +61,21 @@ namespace FacebookApp
             }
 
             tableLayoutRecentActions.RowCount = k_MyFacebookService.LogManager.ActionsList.Count;
-            foreach (FaceBookAction fbAction in k_MyFacebookService.LogManager.ActionsList)
+            //  foreach (FaceBookAction fbAction in k_MyFacebookService.LogManager)
+            using (IEnumerator<FaceBookAction> iterator = k_MyFacebookService.LogManager.GetEnumerator())
             {
-                Label labelTime = new Label();
-                labelTime.Text = fbAction.Time.TimeOfDay.ToString();
-                Label labelType = new Label();
-                labelType.Text = fbAction.Type.ToString();
-                Label labelErrorStatus = new Label();
-                labelErrorStatus.Text = fbAction.ErrorStatus ? "Failed" : "Completed Successfully";
-                tableLayoutRecentActions.Controls.Add(labelTime);
-                tableLayoutRecentActions.Controls.Add(labelType);
-                tableLayoutRecentActions.Controls.Add(labelErrorStatus);
+                while (iterator.MoveNext())
+                {
+                    Label labelTime = new Label();
+                    labelTime.Text = iterator.Current.Time.TimeOfDay.ToString();
+                    Label labelType = new Label();
+                    labelType.Text = iterator.Current.Type.ToString();
+                    Label labelErrorStatus = new Label();
+                    labelErrorStatus.Text = iterator.Current.ErrorStatus ? "Failed" : "Completed Successfully";
+                    tableLayoutRecentActions.Controls.Add(labelTime);
+                    tableLayoutRecentActions.Controls.Add(labelType);
+                    tableLayoutRecentActions.Controls.Add(labelErrorStatus);
+                }
             }
         }
 
@@ -97,6 +110,22 @@ namespace FacebookApp
             // also a demo - here we would change the user personal information with the facebook api (but it is readonly)
             // for example:
             // this.k_MyFacebookService.LoggedUser.Name = textBoxName.Text;
+        }
+
+        private void actionTypesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            k_MyFacebookService.LogManager.FilterByActionTypes = (action => action.Type.ToString() == actionTypesListBox.SelectedItem.ToString());
+            updateActionsTable();
+        }
+
+        private void updateActionsTable()
+        {
+            while (tableLayoutRecentActions.Controls.Count > 0)
+            {
+                tableLayoutRecentActions.Controls[0].Dispose();
+            }
+
+            createTableOfUserActions();
         }
     }
 }

@@ -13,14 +13,10 @@ namespace FacebookApp.GameOfLifeFiles
         public TableLayoutPanel Table { get; }
         public GameBoard m_GameBoard;
         
-
         public GameTableWrapper(TableLayoutPanel i_TabelLayout, GameBoard i_Board)
         {
             Table = i_TabelLayout;
-            
-
-            m_GameBoard = i_Board;
-           
+            m_GameBoard = i_Board;   
         }
 
         public void Update()

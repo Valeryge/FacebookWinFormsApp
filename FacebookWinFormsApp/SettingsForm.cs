@@ -127,5 +127,11 @@ namespace FacebookApp
 
             createTableOfUserActions();
         }
+
+        private void buttonShowAll_Click(object sender, EventArgs e)
+        {
+            k_MyFacebookService.LogManager.FilterByActionTypes = (action => true);
+            updateActionsTable();
+        }
     }
 }

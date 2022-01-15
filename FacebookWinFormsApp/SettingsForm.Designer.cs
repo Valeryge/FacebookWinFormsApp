@@ -29,9 +29,9 @@ namespace FacebookApp
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabPersonalData = new System.Windows.Forms.TabPage();
             this.buttonSettingsChanger = new System.Windows.Forms.Button();
             this.textBoxEducation = new System.Windows.Forms.TextBox();
@@ -54,6 +54,7 @@ namespace FacebookApp
             this.tabRecentActions = new System.Windows.Forms.TabPage();
             this.actionTypesListBox = new System.Windows.Forms.ListBox();
             this.tableLayoutRecentActions = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonShowAll = new System.Windows.Forms.Button();
             this.tabLogStatistics = new System.Windows.Forms.TabPage();
             this.actionTypeChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.personalDataTab = new System.Windows.Forms.TabControl();
@@ -249,6 +250,7 @@ namespace FacebookApp
             // 
             // tabRecentActions
             // 
+            this.tabRecentActions.Controls.Add(this.buttonShowAll);
             this.tabRecentActions.Controls.Add(this.actionTypesListBox);
             this.tabRecentActions.Controls.Add(this.tableLayoutRecentActions);
             this.tabRecentActions.Location = new System.Drawing.Point(4, 22);
@@ -264,7 +266,7 @@ namespace FacebookApp
             this.actionTypesListBox.FormattingEnabled = true;
             this.actionTypesListBox.Location = new System.Drawing.Point(946, 19);
             this.actionTypesListBox.Name = "actionTypesListBox";
-            this.actionTypesListBox.Size = new System.Drawing.Size(120, 95);
+            this.actionTypesListBox.Size = new System.Drawing.Size(120, 134);
             this.actionTypesListBox.TabIndex = 1;
             this.actionTypesListBox.SelectedIndexChanged += new System.EventHandler(this.actionTypesListBox_SelectedIndexChanged);
             // 
@@ -275,7 +277,7 @@ namespace FacebookApp
             this.tableLayoutRecentActions.ColumnCount = 3;
             this.tableLayoutRecentActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutRecentActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutRecentActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 287F));
+            this.tableLayoutRecentActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 295F));
             this.tableLayoutRecentActions.Location = new System.Drawing.Point(3, 6);
             this.tableLayoutRecentActions.Name = "tableLayoutRecentActions";
             this.tableLayoutRecentActions.RowCount = 20;
@@ -302,6 +304,16 @@ namespace FacebookApp
             this.tableLayoutRecentActions.Size = new System.Drawing.Size(922, 471);
             this.tableLayoutRecentActions.TabIndex = 0;
             // 
+            // buttonShowAll
+            // 
+            this.buttonShowAll.Location = new System.Drawing.Point(957, 159);
+            this.buttonShowAll.Name = "buttonShowAll";
+            this.buttonShowAll.Size = new System.Drawing.Size(103, 28);
+            this.buttonShowAll.TabIndex = 2;
+            this.buttonShowAll.Text = "Show all";
+            this.buttonShowAll.UseVisualStyleBackColor = true;
+            this.buttonShowAll.Click += new System.EventHandler(this.buttonShowAll_Click);
+            // 
             // tabLogStatistics
             // 
             this.tabLogStatistics.Controls.Add(this.actionTypeChart);
@@ -315,19 +327,19 @@ namespace FacebookApp
             // 
             // actionTypeChart
             // 
-            chartArea3.Name = "ChartArea1";
-            this.actionTypeChart.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.actionTypeChart.Legends.Add(legend3);
+            chartArea2.Name = "ChartArea1";
+            this.actionTypeChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.actionTypeChart.Legends.Add(legend2);
             this.actionTypeChart.Location = new System.Drawing.Point(194, 46);
             this.actionTypeChart.Margin = new System.Windows.Forms.Padding(2);
             this.actionTypeChart.Name = "actionTypeChart";
-            series3.ChartArea = "ChartArea1";
-            series3.EmptyPointStyle.IsValueShownAsLabel = true;
-            series3.IsValueShownAsLabel = true;
-            series3.Legend = "Legend1";
-            series3.Name = "Activity Type";
-            this.actionTypeChart.Series.Add(series3);
+            series2.ChartArea = "ChartArea1";
+            series2.EmptyPointStyle.IsValueShownAsLabel = true;
+            series2.IsValueShownAsLabel = true;
+            series2.Legend = "Legend1";
+            series2.Name = "Activity Type";
+            this.actionTypeChart.Series.Add(series2);
             this.actionTypeChart.Size = new System.Drawing.Size(709, 356);
             this.actionTypeChart.TabIndex = 2;
             this.actionTypeChart.Text = "chart1";
@@ -360,7 +372,6 @@ namespace FacebookApp
             ((System.ComponentModel.ISupportInitialize)(this.actionTypeChart)).EndInit();
             this.personalDataTab.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
 
         #endregion
@@ -390,5 +401,6 @@ namespace FacebookApp
         private System.Windows.Forms.TabControl personalDataTab;
         private System.Windows.Forms.TableLayoutPanel tableLayoutRecentActions;
         private System.Windows.Forms.ListBox actionTypesListBox;
+        private System.Windows.Forms.Button buttonShowAll;
     }
 }

@@ -107,7 +107,7 @@ namespace FacebookApp
 
         private void EditUserData()
         {
-            // also a demo - here we would change the user personal information with the facebook api (but it is readonly)
+            // also a demo - here we would change the userData personal information with the facebook api (but it is readonly)
             // for example:
             // this.k_MyFacebookService.LoggedUser.Name = textBoxName.Text;
         }

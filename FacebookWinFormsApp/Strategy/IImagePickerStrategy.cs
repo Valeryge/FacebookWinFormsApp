@@ -10,6 +10,7 @@ namespace FacebookApp
 {
     interface IImagePickerStrategy
     {
-        Image GetImage(User i_LoggedUser);
+        User RequestedUser { get; set; }
+        Image GetImage();
     }
 }

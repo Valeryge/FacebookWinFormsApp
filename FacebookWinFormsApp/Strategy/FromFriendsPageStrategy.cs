@@ -6,19 +6,18 @@ using System.Threading.Tasks;
 using System.Drawing;
 using FacebookWrapper.ObjectModel;
 
-namespace FacebookApp
-{
-    class FromMyPageStrategy : IImagePickerStrategy
+namespace FacebookApp { 
+    public class FromFriendsStrategy : IImagePickerStrategy
     {
         public User RequestedUser { get; set; }
-
         public Image GetImage()
         {
             Random rnd = new Random();
-            int r = rnd.Next(RequestedUser.Friends.Count);
+            int albumIndex = rnd.Next(RequestedUser.Albums.Count);
+            int photoIndex = rnd.Next(RequestedUser.Albums[albumIndex].Photos.Count);
 
-            return RequestedUser.Friends[r].ImageLarge;
-
+            return RequestedUser.Albums[albumIndex].Photos[photoIndex].ImageNormal;
         }
+    
     }
 }

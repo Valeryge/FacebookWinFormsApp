@@ -133,7 +133,7 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Strategy\FromFriendsStrategy.cs" />
+    <Compile Include="Strategy\FromFriendsPageStrategy.cs" />
     <Compile Include="Strategy\FromMyPageStrategy.cs" />
     <Compile Include="Strategy\IImagePickerStrategy.cs" />
     <Compile Include="UserForm.cs">

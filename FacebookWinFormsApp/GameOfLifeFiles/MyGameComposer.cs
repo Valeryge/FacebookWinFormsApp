@@ -6,11 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FacebookApp.GameOfLifeFiles.IBuilder;
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp.GameOfLifeFiles
 {
     class MyGameComposer : IGameComposer
     {
+       
         public IGameBuilder Builder { get; set; }
 
         public int Rows
@@ -30,6 +32,12 @@ namespace FacebookApp.GameOfLifeFiles
             set => Builder.BackGroundImage = value;
         }
 
+        public IImagePickerStrategy ImagePickerStrategy
+        {
+            get => Builder.ImagePickerStrategy;
+            set => Builder.ImagePickerStrategy = value;
+        }
+
         public bool InformMissing()
         {
             return Builder.InformMissing();
@@ -40,7 +48,7 @@ namespace FacebookApp.GameOfLifeFiles
         {
             if (!Builder.InformMissing())
             {
-                injectDataToBuilder();
+                //injectDataToBuilder();
                 Builder.BuildBoard();
                 Builder.BuildEngine();
                 Builder.BuildForm();
@@ -53,7 +61,8 @@ namespace FacebookApp.GameOfLifeFiles
         {
             Builder.Rows = this.Rows;
             Builder.Columns = this.Columns;
-            Builder.BackGroundImage = this.BackGroundImage;
+            Builder.ImagePickerStrategy = this.ImagePickerStrategy;
+            //Builder.BackGroundImage = this.BackGroundImage;
         }
 
         public static IGameComposer Create()

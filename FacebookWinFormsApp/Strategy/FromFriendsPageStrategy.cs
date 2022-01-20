@@ -13,9 +13,11 @@ namespace FacebookApp {
         public Image GetImage()
         {
             Random rnd = new Random();
-            int r = rnd.Next(RequestedUser.Friends.Count);
+            int albumIndex = rnd.Next(RequestedUser.Albums.Count);
+            int photoIndex = rnd.Next(RequestedUser.Albums[albumIndex].Photos.Count);
 
-            return RequestedUser.Friends[r].ImageLarge;
+            return RequestedUser.Albums[albumIndex].Photos[photoIndex].ImageNormal;
         }
+    
     }
 }

@@ -10,13 +10,15 @@ namespace FacebookApp
 {
     class FromMyPageStrategy : IImagePickerStrategy
     {
-        public Image GetImage(User i_LoggedUser)
+        public User RequestedUser { get; set; }
+
+        public Image GetImage()
         {
             Random rnd = new Random();
-            int albumIndex = rnd.Next(i_LoggedUser.Albums.Count);
-            int photoIndex = rnd.Next(i_LoggedUser.Albums[albumIndex].Photos.Count);
+            int albumIndex = rnd.Next(RequestedUser.Albums.Count);
+            int photoIndex = rnd.Next(RequestedUser.Albums[albumIndex].Photos.Count);
 
-            return i_LoggedUser.Albums[albumIndex].Photos[photoIndex].ImageNormal;
+            return RequestedUser.Albums[albumIndex].Photos[photoIndex].ImageNormal;
         }
     }
 }

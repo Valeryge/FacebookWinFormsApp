@@ -327,7 +327,7 @@ namespace FacebookApp
             this.labelLoggedUserName.Name = "labelLoggedUserName";
             this.labelLoggedUserName.Size = new System.Drawing.Size(243, 29);
             this.labelLoggedUserName.TabIndex = 19;
-            this.labelLoggedUserName.Text = "-Logged user label-";
+            this.labelLoggedUserName.Text = "-Logged userData label-";
             this.labelLoggedUserName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBoxInfo

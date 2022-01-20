@@ -9,11 +9,13 @@ using FacebookWrapper.ObjectModel;
 namespace FacebookApp { 
     public class FromFriendsStrategy : IImagePickerStrategy
     {
-        public Image GetImage(User i_LoggedUser) { 
+        public User RequestedUser { get; set; }
+        public Image GetImage()
+        {
             Random rnd = new Random();
-            int r = rnd.Next(i_LoggedUser.Friends.Count);
+            int r = rnd.Next(RequestedUser.Friends.Count);
 
-            return i_LoggedUser.Friends[r].ImageLarge;
+            return RequestedUser.Friends[r].ImageLarge;
         }
     }
 }

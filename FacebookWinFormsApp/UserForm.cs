@@ -44,7 +44,7 @@ namespace FacebookApp
 
         private void Timer_Tick(object i_Sender, EventArgs i_E)
         {
-            notification.Text = k_FacebookService.GetNotification();
+            //notification.Text = k_FacebookService.GetNotification(); 
             notification.Visible = true;
             Task.Run(() =>
             {

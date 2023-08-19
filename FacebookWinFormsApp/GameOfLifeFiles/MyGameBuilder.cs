@@ -78,8 +78,8 @@ namespace FacebookApp.GameOfLifeFiles
             if (EngineControl != null)
             {
 
-                GameForm = new GameOfLifeForm(ImagePickerStrategy.GetImage(), EngineControl);
-              //  GameForm = new GameOfLifeForm(BackGroundImage, EngineControl);
+                //GameForm = new GameOfLifeForm(ImagePickerStrategy.GetImage(), EngineControl);
+                GameForm = new GameOfLifeForm(BackGroundImage, EngineControl);
                 Console.WriteLine("GameForm: OK");
                 //    GameForm =  new GameOfLifeForm(BackGroundImage, GameEngine);
             }

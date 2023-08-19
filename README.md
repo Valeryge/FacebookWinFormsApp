@@ -1,6 +1,6 @@
 Certainly! Here's the entire README.md content in a format that you can easily copy and paste:
 
-```markdown
+markdown
 # Facebook Application README
 
 Welcome to the **Facebook Application** repository! This project is a C# application that demonstrates the use of various design patterns, integration with external APIs, and implementation of applicative features. The application allows users to retrieve generic Facebook information, manage their actions log, and even play a version of Conway's Game of Life.

@@ -5,7 +5,7 @@ markdown
 
 Welcome to the **Facebook Application** repository! This project is a C# application that demonstrates the use of various design patterns, integration with external APIs, and implementation of applicative features. The application allows users to retrieve generic Facebook information, manage their actions log, and even play a version of Conway's Game of Life.
 
-![Project Demo](link_to_demo_screenshot_or_gif)
+![Project Demo](https://github.com/Valeryge/FacebookWinFormsApp/assets/76201610/5f8e203c-0efe-4b27-bc12-95ee1f843d64)
 
 ## Table of Contents
 
